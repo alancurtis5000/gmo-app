@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "gmoapp0f834690": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
