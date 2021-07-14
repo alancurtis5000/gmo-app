@@ -20,3 +20,15 @@ type Comment @model {
   content: String
   post: Post @connection(name: "PostComments")
 }
+
+type User @model {
+  id: ID!
+  sub: String!
+  characters: [Character] @connection(name: "UserCharacters")
+}
+
+type Character @model {
+  id: ID!
+  name: String!
+  user: User @connection(name: "UserCharacters")
+}

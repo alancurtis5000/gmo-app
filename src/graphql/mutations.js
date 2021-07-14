@@ -286,3 +286,135 @@ export const deleteComment = /* GraphQL */ `
     }
   }
 `;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createCharacter = /* GraphQL */ `
+  mutation CreateCharacter(
+    $input: CreateCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    createCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCharacter = /* GraphQL */ `
+  mutation UpdateCharacter(
+    $input: UpdateCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    updateCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCharacter = /* GraphQL */ `
+  mutation DeleteCharacter(
+    $input: DeleteCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    deleteCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;

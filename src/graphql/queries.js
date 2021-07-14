@@ -171,3 +171,84 @@ export const listComments = /* GraphQL */ `
     }
   }
 `;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCharacter = /* GraphQL */ `
+  query GetCharacter($id: ID!) {
+    getCharacter(id: $id) {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCharacters = /* GraphQL */ `
+  query ListCharacters(
+    $filter: ModelCharacterFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCharacters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        user {
+          id
+          sub
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

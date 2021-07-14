@@ -250,3 +250,117 @@ export const onDeleteComment = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      sub
+      characters {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateCharacter = /* GraphQL */ `
+  subscription OnCreateCharacter {
+    onCreateCharacter {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCharacter = /* GraphQL */ `
+  subscription OnUpdateCharacter {
+    onUpdateCharacter {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCharacter = /* GraphQL */ `
+  subscription OnDeleteCharacter {
+    onDeleteCharacter {
+      id
+      name
+      user {
+        id
+        sub
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
