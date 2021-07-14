@@ -43,9 +43,11 @@ function App() {
     });
   }
 
+  const environment = process.env.NODE_ENV;
   return (
     <div className="App">
       <h1>My Notes App dev</h1>
+      <h1>{environment}</h1>
       <input
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         placeholder="Note name"
