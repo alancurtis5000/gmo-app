@@ -73,7 +73,7 @@ function Examples() {
         value={formData.description}
       />
       <button onClick={createNote}>Create Note</button>
-      <div style={{ marginBottom: 30 }}>
+      <div>
         {notes.map((note) => (
           <div key={note.id || note.name}>
             <h2>{note.name}</h2>
