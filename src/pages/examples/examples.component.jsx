@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./../../App.css";
 import { API, Auth } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { listNotes } from "../../graphql/queries";
@@ -53,7 +52,7 @@ function Examples() {
 
   const environment = process.env.NODE_ENV;
   return (
-    <div className="app">
+    <div className="examples">
       <h1>My Notes Examples dev</h1>
       <h1>{environment}</h1>
       <div className="user">

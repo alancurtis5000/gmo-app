@@ -1,0 +1,22 @@
+body {
+  font-family: $black;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  background-color: grey;
+}
+
+html {
+  // allows for rems to match pixel by power of 10.
+  font-size: 62.5%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}

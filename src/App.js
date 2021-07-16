@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./App.css";
 import AppRouter from "./router/app-router";
 
 import { withAuthenticator } from "@aws-amplify/ui-react";
