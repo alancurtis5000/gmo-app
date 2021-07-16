@@ -1,13 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AppRouter from "./router/app-router";
-
+import { Auth } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
 const App = () => {
-  useEffect(() => {}, []);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
 
+  const getCurrentUser = async () => {
+    const user = await Auth.currentUserInfo();
+    console.log(user);
+    setUser(user);
+  };
   return (
     <div className="App">
+      <div className="user">{user.username}</div>
       <AppRouter />
     </div>
   );
