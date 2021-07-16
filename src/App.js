@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { listNotes } from "./graphql/queries";
 import {
@@ -11,11 +11,13 @@ import {
 const initialFormState = { name: "", description: "" };
 
 function App() {
+  const [user, setUser] = useState({});
   const [notes, setNotes] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
   useEffect(() => {
     fetchNotes();
+    getUser();
   }, []);
 
   async function fetchNotes() {
@@ -43,11 +45,22 @@ function App() {
     });
   }
 
+  async function getUser() {
+    const user = await Auth.currentUserInfo();
+    console.log(user);
+    setUser(user);
+  }
+
   const environment = process.env.NODE_ENV;
   return (
     <div className="App">
       <h1>My Notes App dev</h1>
       <h1>{environment}</h1>
+      <div className="user">
+        <h2>User:</h2>
+        <h2>{user.username}</h2>
+      </div>
+
       <input
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         placeholder="Note name"
