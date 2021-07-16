@@ -16,6 +16,7 @@ const App = () => {
   };
   return (
     <div className="App">
+      {/* user name here for debuging remove later */}
       <div className="user">{user.username}</div>
       <AppRouter />
     </div>
