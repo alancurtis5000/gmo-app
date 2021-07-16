@@ -9,3 +9,14 @@ type Note @model {
   name: String!
   description: String
 }
+
+type Game @model {
+  id: ID!
+  name: String!
+  description: String
+}
+
+# here is where you add custom subscriptions.
+type Subscription {
+  newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
+}
