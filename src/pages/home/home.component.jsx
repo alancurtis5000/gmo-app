@@ -7,6 +7,7 @@ import {
   deleteGame as deleteGameMutation,
 } from "../../graphql/mutations";
 import { listGames as listGamesQuery } from "../../graphql/queries";
+import { useHistory } from "react-router-dom";
 
 const initialFormState = { name: "", description: "" };
 
@@ -14,6 +15,7 @@ const Home = () => {
   const [update, setUpdate] = useState(false);
   const [games, setGames] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
+  let history = useHistory();
 
   let subscriptionOnCreate;
   let subscriptionOnDelete;
@@ -61,6 +63,7 @@ const Home = () => {
       subscriptionOnCreate.unsubscribe();
       subscriptionOnDelete.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function createGame() {
@@ -93,6 +96,11 @@ const Home = () => {
 
   const joinGame = () => {
     console.log("joinGame");
+    history.push("/join");
+  };
+  const createCharacter = () => {
+    console.log("createCharacter");
+    history.push("/create-character");
   };
 
   const displayGames = () => {
@@ -115,6 +123,7 @@ const Home = () => {
     <div className="home page">
       <h1>home</h1>
       <Button text="Join" onClick={joinGame} />
+      <Button text="Create Character" onClick={createCharacter} />
       {/* create game */}
       <input
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}

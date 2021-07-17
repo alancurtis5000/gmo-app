@@ -65,6 +65,14 @@ export const getGame = /* GraphQL */ `
       id
       name
       description
+      players {
+        id
+        usersub
+        name
+        createdAt
+        updatedAt
+      }
+      gameMaster
       createdAt
       updatedAt
     }
@@ -81,6 +89,115 @@ export const listGames = /* GraphQL */ `
         id
         name
         description
+        players {
+          id
+          usersub
+          name
+          createdAt
+          updatedAt
+        }
+        gameMaster
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getPlayers = /* GraphQL */ `
+  query GetPlayers($id: ID!) {
+    getPlayers(id: $id) {
+      id
+      usersub
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listPlayerss = /* GraphQL */ `
+  query ListPlayerss(
+    $filter: ModelPlayersFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPlayerss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        usersub
+        name
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      name
+      characters {
+        items {
+          id
+          name
+          userID
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCharacter = /* GraphQL */ `
+  query GetCharacter($id: ID!) {
+    getCharacter(id: $id) {
+      id
+      name
+      userID
+      content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCharacters = /* GraphQL */ `
+  query ListCharacters(
+    $filter: ModelCharacterFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCharacters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        userID
+        content
         createdAt
         updatedAt
       }

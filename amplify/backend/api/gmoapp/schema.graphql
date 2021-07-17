@@ -14,6 +14,28 @@ type Game @model {
   id: ID!
   name: String!
   description: String
+  players: [Players]
+  gameMaster: String! # user who created game
+}
+
+type Players @model {
+  id: ID!
+  userSub: ID!
+  name: String!
+}
+# Todo: Users and Character relationship and storing userSub
+type User @model {
+  id: ID!
+  userSub: ID! # user sub attribute from auth
+  name: String!
+  characters: [Character] @connection(keyName: "byUser", fields: ["userSub"])
+}
+
+type Character @model @key(name: "byUser", fields: ["userSub", "content"]) {
+  id: ID!
+  name: String!
+  userSub: ID!
+  content: String!
 }
 
 # here is where you add custom subscriptions.
