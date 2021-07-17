@@ -1,6 +1,17 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getUserByUserSub = /* GraphQL */ `
+  query GetUserByUserSub($userSub: ID!) {
+    getUserByUserSub(userSub: $userSub) {
+      id
+      userSub
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const getTodo = /* GraphQL */ `
   query GetTodo($id: ID!) {
     getTodo(id: $id) {
@@ -65,13 +76,6 @@ export const getGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -89,13 +93,6 @@ export const listGames = /* GraphQL */ `
         id
         name
         description
-        players {
-          id
-          usersub
-          name
-          createdAt
-          updatedAt
-        }
         gameMaster
         createdAt
         updatedAt
@@ -108,7 +105,7 @@ export const getPlayers = /* GraphQL */ `
   query GetPlayers($id: ID!) {
     getPlayers(id: $id) {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -124,7 +121,7 @@ export const listPlayerss = /* GraphQL */ `
     listPlayerss(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        usersub
+        userSub
         name
         createdAt
         updatedAt
@@ -137,18 +134,8 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -163,41 +150,8 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        userSub
         name
-        characters {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getCharacter = /* GraphQL */ `
-  query GetCharacter($id: ID!) {
-    getCharacter(id: $id) {
-      id
-      name
-      userID
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listCharacters = /* GraphQL */ `
-  query ListCharacters(
-    $filter: ModelCharacterFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCharacters(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        userID
-        content
         createdAt
         updatedAt
       }

@@ -7,13 +7,6 @@ export const newOnCreateGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -26,13 +19,6 @@ export const newOnDeleteGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -111,13 +97,6 @@ export const onCreateGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -130,13 +109,6 @@ export const onUpdateGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -149,13 +121,6 @@ export const onDeleteGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -166,7 +131,7 @@ export const onCreatePlayers = /* GraphQL */ `
   subscription OnCreatePlayers {
     onCreatePlayers {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -177,7 +142,7 @@ export const onUpdatePlayers = /* GraphQL */ `
   subscription OnUpdatePlayers {
     onUpdatePlayers {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -188,7 +153,7 @@ export const onDeletePlayers = /* GraphQL */ `
   subscription OnDeletePlayers {
     onDeletePlayers {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -199,18 +164,8 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -220,18 +175,8 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -241,54 +186,8 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateCharacter = /* GraphQL */ `
-  subscription OnCreateCharacter {
-    onCreateCharacter {
-      id
-      name
-      userID
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateCharacter = /* GraphQL */ `
-  subscription OnUpdateCharacter {
-    onUpdateCharacter {
-      id
-      name
-      userID
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteCharacter = /* GraphQL */ `
-  subscription OnDeleteCharacter {
-    onDeleteCharacter {
-      id
-      name
-      userID
-      content
       createdAt
       updatedAt
     }

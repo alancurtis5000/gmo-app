@@ -14,7 +14,7 @@ type Game @model {
   id: ID!
   name: String!
   description: String
-  players: [Players]
+  # players: [Players]
   gameMaster: String! # user who created game
 }
 
@@ -28,18 +28,35 @@ type User @model {
   id: ID!
   userSub: ID! # user sub attribute from auth
   name: String!
-  characters: [Character] @connection(keyName: "byUser", fields: ["userSub"])
+  # characters: [Character] @connection(keyName: "byUser", fields: ["userSub"])
 }
 
-type Character @model @key(name: "byUser", fields: ["userSub", "content"]) {
-  id: ID!
-  name: String!
-  userSub: ID!
-  content: String!
-}
+# type Character @model @key(name: "byUser", fields: ["userSub", "content"]) {
+#   id: ID!
+#   name: String!
+#   userSub: ID!
+#   content: String!
+# }
 
 # here is where you add custom subscriptions.
 type Subscription {
   newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
   newOnDeleteGame: Game @aws_subscribe(mutations: ["deleteGame"])
 }
+
+# Add all the custom inputs here
+input ExampleInput {
+  lat: Float
+  lon: Float
+}
+
+type Query {
+  # Add all the custom queries here
+
+  # TODO: left off here , need custom query to get user by userSub Id
+  getUserByUserSub(userSub: ID!): User
+}
+
+# type Mutation {
+#   # Add all the custom mutations here
+# }

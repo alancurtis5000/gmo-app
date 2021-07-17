@@ -94,13 +94,6 @@ export const createGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -116,13 +109,6 @@ export const updateGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -138,13 +124,6 @@ export const deleteGame = /* GraphQL */ `
       id
       name
       description
-      players {
-        id
-        usersub
-        name
-        createdAt
-        updatedAt
-      }
       gameMaster
       createdAt
       updatedAt
@@ -158,7 +137,7 @@ export const createPlayers = /* GraphQL */ `
   ) {
     createPlayers(input: $input, condition: $condition) {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -172,7 +151,7 @@ export const updatePlayers = /* GraphQL */ `
   ) {
     updatePlayers(input: $input, condition: $condition) {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -186,7 +165,7 @@ export const deletePlayers = /* GraphQL */ `
   ) {
     deletePlayers(input: $input, condition: $condition) {
       id
-      usersub
+      userSub
       name
       createdAt
       updatedAt
@@ -200,18 +179,8 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -224,18 +193,8 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       createdAt
       updatedAt
     }
@@ -248,63 +207,8 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
+      userSub
       name
-      characters {
-        items {
-          id
-          name
-          userID
-          content
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createCharacter = /* GraphQL */ `
-  mutation CreateCharacter(
-    $input: CreateCharacterInput!
-    $condition: ModelCharacterConditionInput
-  ) {
-    createCharacter(input: $input, condition: $condition) {
-      id
-      name
-      userID
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateCharacter = /* GraphQL */ `
-  mutation UpdateCharacter(
-    $input: UpdateCharacterInput!
-    $condition: ModelCharacterConditionInput
-  ) {
-    updateCharacter(input: $input, condition: $condition) {
-      id
-      name
-      userID
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteCharacter = /* GraphQL */ `
-  mutation DeleteCharacter(
-    $input: DeleteCharacterInput!
-    $condition: ModelCharacterConditionInput
-  ) {
-    deleteCharacter(input: $input, condition: $condition) {
-      id
-      name
-      userID
-      content
       createdAt
       updatedAt
     }
