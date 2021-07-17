@@ -12,6 +12,17 @@ export const newOnCreateGame = /* GraphQL */ `
     }
   }
 `;
+export const newOnDeleteGame = /* GraphQL */ `
+  subscription NewOnDeleteGame {
+    newOnDeleteGame {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateTodo = /* GraphQL */ `
   subscription OnCreateTodo {
     onCreateTodo {

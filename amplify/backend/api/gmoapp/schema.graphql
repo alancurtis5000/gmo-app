@@ -19,4 +19,5 @@ type Game @model {
 # here is where you add custom subscriptions.
 type Subscription {
   newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
+  newOnDeleteGame: Game @aws_subscribe(mutations: ["deleteGame"])
 }
