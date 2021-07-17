@@ -10,9 +10,8 @@ import { listGames as listGamesQuery } from "../../graphql/queries";
 
 const initialFormState = { name: "", description: "" };
 
-//Todo: null if you click fast on deleting games.
-
 const Home = () => {
+  const [update, setUpdate] = useState(false);
   const [games, setGames] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -20,42 +19,44 @@ const Home = () => {
   let subscriptionOnDelete;
 
   const getAllGamesToState = async () => {
-    const result = await API.graphql(graphqlOperation(listGamesQuery));
-    console.log({ result });
-    // Todo: avoid this infinite render loop.
-    if (games.length !== result.data.listGames.items.length) {
+    try {
+      const result = await API.graphql(graphqlOperation(listGamesQuery));
       setGames(result.data.listGames.items);
+      setUpdate(false);
+    } catch (error) {
+      console.log(error);
+      setUpdate(false);
     }
   };
 
   useEffect(() => {
-    // Todo: avoid this infinite render loop.
-    getAllGamesToState();
-  }, [games]);
+    if (update) {
+      getAllGamesToState();
+    }
+  }, [update]);
 
   const setupSubscriptions = () => {
     subscriptionOnCreate = API.graphql(
       graphqlOperation(newOnCreateGame)
     ).subscribe({
       next: (gamesData) => {
-        console.log({ gamesData });
-        // Todo: avoid this infinite render loop.
-        getAllGamesToState();
+        console.log("create sub", { gamesData });
+        setUpdate(true);
       },
     });
     subscriptionOnDelete = API.graphql(
       graphqlOperation(newOnDeleteGame)
     ).subscribe({
       next: (gamesData) => {
-        console.log({ gamesData });
-        // Todo: avoid this infinite render loop.
-        getAllGamesToState();
+        console.log("delete sub", { gamesData });
+        setUpdate(true);
       },
     });
   };
 
   useEffect(() => {
     setupSubscriptions();
+    getAllGamesToState();
     return () => {
       subscriptionOnCreate.unsubscribe();
       subscriptionOnDelete.unsubscribe();
@@ -64,26 +65,30 @@ const Home = () => {
 
   async function createGame() {
     if (!formData.name || !formData.description) return;
-    const response = await API.graphql({
-      query: createGameMutation,
-      variables: { input: formData },
-    });
-    console.log({ response });
-    // Todo: avoid this infinite render loop.
-    // setGames([...games, response.data.createGame]);
-    setFormData(initialFormState);
+    try {
+      const response = await API.graphql({
+        query: createGameMutation,
+        variables: { input: formData },
+      });
+      console.log("create button", { response });
+      setUpdate(true);
+      setFormData(initialFormState);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function deleteGame(id) {
-    console.log("deleteGame", id);
-    const response = await API.graphql({
-      query: deleteGameMutation,
-      variables: { input: { id } },
-    });
-    console.log({ response });
-    getAllGamesToState();
-    // Todo: avoid this infinite render loop.
-    setGames([...games, response.data.deleteGame]);
+    try {
+      const response = await API.graphql({
+        query: deleteGameMutation,
+        variables: { input: { id } },
+      });
+      console.log({ response });
+      setUpdate(true);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const joinGame = () => {
@@ -92,7 +97,6 @@ const Home = () => {
 
   const displayGames = () => {
     return games.map((game, i) => {
-      console.log(game);
       return (
         <div key={i} style={{ display: "flex" }}>
           <button
