@@ -7,6 +7,7 @@ import {
   deleteGame as deleteGameMutation,
 } from "../../graphql/mutations";
 import { listGames as listGamesQuery } from "../../graphql/queries";
+import { useHistory } from "react-router-dom";
 
 const initialFormState = {
   name: "",
@@ -16,6 +17,7 @@ const initialFormState = {
 };
 
 const CreateGame = () => {
+  const history = useHistory();
   const [update, setUpdate] = useState(false);
   const [games, setGames] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
@@ -50,6 +52,8 @@ const CreateGame = () => {
       console.log("create button", { response });
       setUpdate(true);
       setFormData(initialFormState);
+      const gameID = response.data.createGame.id;
+      history.push(`/game-lobby/${gameID}`);
     } catch (error) {
       console.log(error);
     }
