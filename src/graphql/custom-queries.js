@@ -18,6 +18,7 @@ export const listUsersCustom = /* GraphQL */ `
   ) {
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         name
       }
       nextToken

@@ -4,9 +4,15 @@ import { Auth, API } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 import { createUser as createUserMutation } from "./graphql/mutations";
 import { listUsersCustom as listUsersCustomQuery } from "./graphql/custom-queries";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userAdd } from "./redux/user/user.actions";
 
 const App = () => {
   const [userState, setUserState] = useState({});
+  const dispatch = useDispatch();
+  const userRedux = useSelector((state) => state.user);
+
   useEffect(() => {
     getCurrentUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,10 +24,11 @@ const App = () => {
         name: user.username,
         userSub: user.attributes.sub,
       };
-      await API.graphql({
+      const user = await API.graphql({
         query: createUserMutation,
         variables: { input: input },
       });
+      dispatch(userAdd(user));
     } catch (error) {
       console.log(error);
     }
@@ -34,6 +41,7 @@ const App = () => {
       const userSub = user.attributes.sub;
       if (!(await doesUserExist(userSub))) {
         createUser(user);
+      } else {
       }
     } catch (error) {
       console.log(error);
@@ -54,6 +62,7 @@ const App = () => {
       if (result.data.listUsers.items.length === 0) {
         return false;
       } else {
+        dispatch(userAdd(result.data.listUsers.items[0]));
         return true;
       }
     } catch (error) {
@@ -66,6 +75,7 @@ const App = () => {
       {/* user name here for debuging remove later */}
       <div className="user">
         {userState.username}
+        <button onClick={() => console.log(userRedux)}>logProps</button>
         <AmplifySignOut />
       </div>
       <AppRouter />

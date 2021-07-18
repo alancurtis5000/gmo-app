@@ -12,7 +12,7 @@ const initialFormState = {
   name: "",
   description: "",
   gameMaster: "",
-  players: [],
+  // players: [],
 };
 
 const CreateGame = () => {
