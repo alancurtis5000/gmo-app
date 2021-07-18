@@ -7,7 +7,13 @@ export const getGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -24,7 +30,13 @@ export const listGames = /* GraphQL */ `
         id
         name
         description
-        gameMaster
+        gameMaster {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

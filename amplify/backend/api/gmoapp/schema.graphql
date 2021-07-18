@@ -3,7 +3,7 @@ type Game @model {
   name: String!
   description: String
   # players: [Players]
-  gameMaster: String! # user who created game
+  gameMaster: User! @connection # user who created game // one to one relationship
 }
 
 type Players @model {

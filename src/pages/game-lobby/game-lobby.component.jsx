@@ -10,11 +10,13 @@ const GameLobby = () => {
     name: "",
     players: [],
   });
+
   const location = useLocation();
   const match = useRouteMatch();
   console.log({ location, match });
   useEffect(() => {
     getGame();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getGame = async () => {
@@ -45,7 +47,7 @@ const GameLobby = () => {
       <div>{`ID: ${lobby.id}`}</div>
       <div>{`Name: ${lobby.name}`}</div>
       <div>{`Description: ${lobby.description}`}</div>
-      <div>{`Game Master: ${lobby.gameMaster}`}</div>
+      <div>{`Game Master: ${lobby.gameMaster.name}`}</div>
     </div>
   );
 };

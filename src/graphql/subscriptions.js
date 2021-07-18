@@ -7,7 +7,13 @@ export const newOnCreateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -19,7 +25,13 @@ export const newOnDeleteGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -31,7 +43,13 @@ export const onCreateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -43,7 +61,13 @@ export const onUpdateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -55,7 +79,13 @@ export const onDeleteGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster
+      gameMaster {
+        id
+        userSub
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

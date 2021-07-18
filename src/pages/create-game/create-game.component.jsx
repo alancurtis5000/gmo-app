@@ -49,7 +49,7 @@ const CreateGame = () => {
     const input = {
       name: formData.name,
       description: formData.description,
-      gameMaster: gameMaster,
+      gameGameMasterId: gameMaster,
     };
     try {
       const response = await API.graphql({
@@ -110,6 +110,7 @@ const CreateGame = () => {
 
   const displayGames = () => {
     return games.map((game, i) => {
+      console.log({ games });
       return (
         <div key={i} style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -128,7 +129,7 @@ const CreateGame = () => {
           </div>
           <div style={{ display: "flex" }}>
             <h5 style={{ paddingRight: "10px" }}>{`game Master:`}</h5>
-            <div>{`${game.gameMaster}`}</div>
+            <div>{`${game.gameMaster.name}`}</div>
           </div>
         </div>
       );
