@@ -7,10 +7,27 @@ export const newOnCreateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -25,10 +42,62 @@ export const newOnDeleteGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const newOnUpdateGame = /* GraphQL */ `
+  subscription NewOnUpdateGame {
+    newOnUpdateGame {
+      id
+      name
+      description
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -43,10 +112,27 @@ export const onCreateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -61,10 +147,27 @@ export const onUpdateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -79,46 +182,30 @@ export const onDeleteGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreatePlayers = /* GraphQL */ `
-  subscription OnCreatePlayers {
-    onCreatePlayers {
-      id
-      userSub
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdatePlayers = /* GraphQL */ `
-  subscription OnUpdatePlayers {
-    onUpdatePlayers {
-      id
-      userSub
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeletePlayers = /* GraphQL */ `
-  subscription OnDeletePlayers {
-    onDeletePlayers {
-      id
-      userSub
-      name
       createdAt
       updatedAt
     }
@@ -130,6 +217,23 @@ export const onCreateUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -141,6 +245,23 @@ export const onUpdateUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -152,6 +273,23 @@ export const onDeleteUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

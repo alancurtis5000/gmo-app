@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import Button from "../../components/button/button.component";
-import { newOnCreateGame, newOnDeleteGame } from "../../graphql/subscriptions";
+import {
+  newOnCreateGame,
+  newOnDeleteGame,
+  newOnUpdateGame,
+} from "../../graphql/subscriptions";
 import {
   createGame as createGameMutation,
   deleteGame as deleteGameMutation,
@@ -26,6 +30,7 @@ const CreateGame = () => {
 
   let subscriptionOnCreate;
   let subscriptionOnDelete;
+  let subscriptionOnUpdate;
 
   const getAllGamesToState = async () => {
     try {
@@ -49,7 +54,7 @@ const CreateGame = () => {
     const input = {
       name: formData.name,
       description: formData.description,
-      gameGameMasterId: gameMaster,
+      gameMasterId: gameMaster,
     };
     try {
       const response = await API.graphql({
@@ -96,6 +101,14 @@ const CreateGame = () => {
         setUpdate(true);
       },
     });
+    subscriptionOnUpdate = API.graphql(
+      graphqlOperation(newOnUpdateGame)
+    ).subscribe({
+      next: (gamesData) => {
+        console.log("update sub", { gamesData });
+        setUpdate(true);
+      },
+    });
   };
 
   useEffect(() => {
@@ -104,6 +117,7 @@ const CreateGame = () => {
     return () => {
       subscriptionOnCreate.unsubscribe();
       subscriptionOnDelete.unsubscribe();
+      subscriptionOnUpdate.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -129,7 +143,7 @@ const CreateGame = () => {
           </div>
           <div style={{ display: "flex" }}>
             <h5 style={{ paddingRight: "10px" }}>{`game Master:`}</h5>
-            <div>{`${game.gameMaster.name}`}</div>
+            <div>{`${game.master.name}`}</div>
           </div>
         </div>
       );

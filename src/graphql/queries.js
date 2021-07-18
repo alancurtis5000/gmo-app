@@ -7,10 +7,27 @@ export const getGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -30,7 +47,10 @@ export const listGames = /* GraphQL */ `
         id
         name
         description
-        gameMaster {
+        players {
+          nextToken
+        }
+        master {
           id
           userSub
           name
@@ -44,41 +64,29 @@ export const listGames = /* GraphQL */ `
     }
   }
 `;
-export const getPlayers = /* GraphQL */ `
-  query GetPlayers($id: ID!) {
-    getPlayers(id: $id) {
-      id
-      userSub
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listPlayerss = /* GraphQL */ `
-  query ListPlayerss(
-    $filter: ModelPlayersFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPlayerss(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        userSub
-        name
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -95,6 +103,13 @@ export const listUsers = /* GraphQL */ `
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }

@@ -2,20 +2,22 @@ type Game @model {
   id: ID!
   name: String!
   description: String
-  # players: [Players]
-  gameMaster: User! @connection # user who created game // one to one relationship
+  players: [User] @connection(name: "GamePlayers") # one to many relationship
+  master: User! @connection # user who created game // one to one relationship
 }
 
-type Players @model {
-  id: ID!
-  userSub: ID!
-  name: String!
-}
+# type Players @model {
+#   id: ID!
+#   userSub: ID!
+#   name: String!
+# }
+
 # Todo: Users and Character relationship and storing userSub
 type User @model {
   id: ID!
   userSub: ID! # user sub attribute from auth
   name: String!
+  game: Game @connection(name: "GamePlayers")
   # characters: [Character] @connection(keyName: "byUser", fields: ["userSub"])
 }
 
@@ -30,6 +32,7 @@ type User @model {
 type Subscription {
   newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
   newOnDeleteGame: Game @aws_subscribe(mutations: ["deleteGame"])
+  newOnUpdateGame: Game @aws_subscribe(mutations: ["updateGame"])
 }
 
 # Add all the custom inputs here

@@ -10,10 +10,27 @@ export const createGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -31,10 +48,27 @@ export const updateGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -52,55 +86,30 @@ export const deleteGame = /* GraphQL */ `
       id
       name
       description
-      gameMaster {
+      players {
+        items {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      master {
         id
         userSub
         name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createPlayers = /* GraphQL */ `
-  mutation CreatePlayers(
-    $input: CreatePlayersInput!
-    $condition: ModelPlayersConditionInput
-  ) {
-    createPlayers(input: $input, condition: $condition) {
-      id
-      userSub
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updatePlayers = /* GraphQL */ `
-  mutation UpdatePlayers(
-    $input: UpdatePlayersInput!
-    $condition: ModelPlayersConditionInput
-  ) {
-    updatePlayers(input: $input, condition: $condition) {
-      id
-      userSub
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deletePlayers = /* GraphQL */ `
-  mutation DeletePlayers(
-    $input: DeletePlayersInput!
-    $condition: ModelPlayersConditionInput
-  ) {
-    deletePlayers(input: $input, condition: $condition) {
-      id
-      userSub
-      name
       createdAt
       updatedAt
     }
@@ -115,6 +124,23 @@ export const createUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -129,6 +155,23 @@ export const updateUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -143,6 +186,23 @@ export const deleteUser = /* GraphQL */ `
       id
       userSub
       name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

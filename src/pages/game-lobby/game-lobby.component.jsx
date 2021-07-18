@@ -6,7 +6,7 @@ import { getGame as getGameQuery } from "../../graphql/queries";
 const GameLobby = () => {
   const [lobby, setLobby] = useState({
     id: "",
-    gameMaster: "",
+    master: "",
     name: "",
     players: [],
   });
@@ -29,10 +29,10 @@ const GameLobby = () => {
         },
       });
       console.log({ result });
-      const { id, description, gameMaster, name } = result.data.getGame;
+      const { id, description, master, name } = result.data.getGame;
       setLobby({
         id,
-        gameMaster,
+        master,
         name,
         description,
       });
@@ -47,7 +47,7 @@ const GameLobby = () => {
       <div>{`ID: ${lobby.id}`}</div>
       <div>{`Name: ${lobby.name}`}</div>
       <div>{`Description: ${lobby.description}`}</div>
-      <div>{`Game Master: ${lobby.gameMaster.name}`}</div>
+      <div>{`Game Master: ${lobby.master.name}`}</div>
     </div>
   );
 };
