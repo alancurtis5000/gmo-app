@@ -15,11 +15,11 @@ const JoinGame = () => {
     console.log("joinGame");
     if (!formData.name || !formData.gameCode) return;
     try {
-      const response = await API.graphql({
-        query: updateGameMutation,
-        variables: { input: formData },
-      });
-      console.log("update button", { response });
+      // const response = await API.graphql({
+      //   query: updateGameMutation,
+      //   variables: { input: formData },
+      // });
+      // console.log("update button", { response });
     } catch (error) {
       console.log(error);
     }

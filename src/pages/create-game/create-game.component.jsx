@@ -100,14 +100,21 @@ const CreateGame = () => {
   const displayGames = () => {
     return games.map((game, i) => {
       return (
-        <div key={i} style={{ display: "flex" }}>
-          <button
-            style={{ marginRight: "5px" }}
-            onClick={() => deleteGame(game.id)}
-          >
-            X
-          </button>
-          <div>{`${game.name}`}</div>
+        <div key={i} style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <h5>{`game name: `}</h5>
+            <div>{`${game.name}`}</div>
+            <button
+              style={{ marginRight: "5px" }}
+              onClick={() => deleteGame(game.id)}
+            >
+              X
+            </button>
+          </div>
+          <div style={{ display: "flex" }}>
+            <h5 style={{ paddingRight: "10px" }}>{`game code:`}</h5>
+            <div>{`${game.id}`}</div>
+          </div>
         </div>
       );
     });
