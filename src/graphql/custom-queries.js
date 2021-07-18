@@ -9,3 +9,18 @@
 //     }
 //   }
 // `;
+
+export const listUsersCustom = /* GraphQL */ `
+  query ListUsersCustom(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        name
+      }
+      nextToken
+    }
+  }
+`;
