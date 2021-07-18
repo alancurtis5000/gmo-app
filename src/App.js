@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AppRouter from "./router/app-router";
 import { Auth, API } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userAdd } from "./redux/user/user.actions";
 
 const App = () => {
-  const [userState, setUserState] = useState({});
   const dispatch = useDispatch();
   const userRedux = useSelector((state) => state.user);
 
@@ -37,7 +36,6 @@ const App = () => {
   const getCurrentUser = async () => {
     try {
       const user = await Auth.currentUserInfo();
-      setUserState(user);
       const userSub = user.attributes.sub;
       if (!(await doesUserExist(userSub))) {
         createUser(user);
@@ -74,7 +72,7 @@ const App = () => {
     <div className="App">
       {/* user name here for debuging remove later */}
       <div className="user">
-        {userState.username}
+        {userRedux.username}
         <button onClick={() => console.log(userRedux)}>logProps</button>
         <AmplifySignOut />
       </div>
