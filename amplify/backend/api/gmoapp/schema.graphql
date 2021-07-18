@@ -1,14 +1,3 @@
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
-}
-
-type Note @model {
-  id: ID!
-  name: String!
-  description: String
-}
 
 type Game @model {
   id: ID!
@@ -54,7 +43,7 @@ type Query {
   # Add all the custom queries here
 
   # TODO: left off here , need custom query to get user by userSub Id
-  getUserByUserSub(userSub: ID!): User
+  # getUserByUserSub(userSub: ID!): User
 }
 
 # type Mutation {
