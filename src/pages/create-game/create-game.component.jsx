@@ -8,6 +8,7 @@ import {
 } from "../../graphql/mutations";
 import { listGames as listGamesQuery } from "../../graphql/queries";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const initialFormState = {
   name: "",
@@ -21,6 +22,7 @@ const CreateGame = () => {
   const [update, setUpdate] = useState(false);
   const [games, setGames] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
+  const gameMaster = useSelector((state) => state.user.id);
 
   let subscriptionOnCreate;
   let subscriptionOnDelete;
@@ -44,13 +46,18 @@ const CreateGame = () => {
 
   async function createGame() {
     if (!formData.name || !formData.description) return;
+    const input = {
+      name: formData.name,
+      description: formData.description,
+      gameMaster: gameMaster,
+    };
     try {
       const response = await API.graphql({
         query: createGameMutation,
-        variables: { input: formData },
+        variables: { input: input },
       });
       console.log("create button", { response });
-      setUpdate(true);
+
       setFormData(initialFormState);
       const gameID = response.data.createGame.id;
       history.push(`/game-lobby/${gameID}`);
@@ -118,6 +125,10 @@ const CreateGame = () => {
           <div style={{ display: "flex" }}>
             <h5 style={{ paddingRight: "10px" }}>{`game code:`}</h5>
             <div>{`${game.id}`}</div>
+          </div>
+          <div style={{ display: "flex" }}>
+            <h5 style={{ paddingRight: "10px" }}>{`game Master:`}</h5>
+            <div>{`${game.gameMaster}`}</div>
           </div>
         </div>
       );
