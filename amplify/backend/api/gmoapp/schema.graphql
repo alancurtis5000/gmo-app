@@ -1,4 +1,3 @@
-
 type Game @model {
   id: ID!
   name: String!
@@ -39,12 +38,12 @@ input ExampleInput {
   lon: Float
 }
 
-type Query {
-  # Add all the custom queries here
+# type Query {
+# Add all the custom queries here
 
-  # TODO: left off here , need custom query to get user by userSub Id
-  # getUserByUserSub(userSub: ID!): User
-}
+# TODO: left off here , need custom query to get user by userSub Id
+# getUserByUserSub(userSub: ID!): User
+# }
 
 # type Mutation {
 #   # Add all the custom mutations here
