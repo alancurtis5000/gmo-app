@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import { API, graphqlOperation } from "aws-amplify";
+import { useSelector } from "react-redux";
+import { API } from "aws-amplify";
 import Button from "../../components/button/button.component";
-import { updateGame as updateGameMutation } from "../../graphql/mutations";
-import { listGames as listGamesQuery } from "../../graphql/queries";
+import { updateUser as updateUserMutation } from "../../graphql/mutations";
+import { getGame as getGameQuery } from "../../graphql/queries";
+import { useHistory } from "react-router-dom";
 
 const initialFormState = { name: "", gameCode: "" };
 
 const JoinGame = () => {
   const [formData, setFormData] = useState(initialFormState);
+  const userId = useSelector((state) => state.user.id);
+  const history = useHistory();
 
   useEffect(() => {}, []);
 
@@ -15,11 +19,28 @@ const JoinGame = () => {
     console.log("joinGame");
     if (!formData.name || !formData.gameCode) return;
     try {
-      // const response = await API.graphql({
-      //   query: updateGameMutation,
-      //   variables: { input: formData },
-      // });
-      // console.log("update button", { response });
+      const result = await API.graphql({
+        query: getGameQuery,
+        variables: {
+          id: formData.gameCode,
+        },
+      });
+      console.log({ result });
+      const doesGameExist = result.data.getGame;
+      if (doesGameExist) {
+        const gameId = result.data.getGame.id;
+        const input = {
+          id: userId,
+          userGameId: gameId,
+        };
+        const response = await API.graphql({
+          query: updateUserMutation,
+          variables: { input: input },
+        });
+        console.log("Join Game button", { response });
+        history.push(`/game-lobby/${gameId}`);
+      }
+      // const { id, description, master, name } = result.data.getGame;
     } catch (error) {
       console.log(error);
     }

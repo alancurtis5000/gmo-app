@@ -8,9 +8,11 @@ const GameLobby = () => {
     id: "",
     master: "",
     name: "",
+    description: "",
     players: [],
   });
 
+  // Todo: add subscriptions to game update, when players join.
   const location = useLocation();
   const match = useRouteMatch();
   console.log({ location, match });
@@ -29,25 +31,39 @@ const GameLobby = () => {
         },
       });
       console.log({ result });
-      const { id, description, master, name } = result.data.getGame;
+      const { id, description, master, name, players } = result.data.getGame;
       setLobby({
         id,
         master,
         name,
         description,
+        players: players.items,
       });
     } catch (error) {
       console.log(error);
     }
   };
 
+  const displayPlayers = () => {
+    return lobby.players.map((player, i) => {
+      return (
+        <div key={i}>
+          <div>{player.name}</div>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className="game-lobby page">
       <h1>Game Lobby</h1>
-      <div>{`ID: ${lobby.id}`}</div>
+      <div>{`ID:`}</div>
+      <div>{`${lobby.id}`}</div>
       <div>{`Name: ${lobby.name}`}</div>
       <div>{`Description: ${lobby.description}`}</div>
       <div>{`Game Master: ${lobby.master.name}`}</div>
+      <div>{`Players:`}</div>
+      <div>{displayPlayers()}</div>
     </div>
   );
 };
