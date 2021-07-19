@@ -17,22 +17,6 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function createUser(user) {
-    try {
-      const input = {
-        name: user.username,
-        userSub: user.attributes.sub,
-      };
-      const user = await API.graphql({
-        query: createUserMutation,
-        variables: { input: input },
-      });
-      dispatch(userAdd(user));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const getCurrentUser = async () => {
     try {
       const user = await Auth.currentUserInfo();
@@ -56,7 +40,6 @@ const App = () => {
           },
         },
       });
-      console.log({ result });
       if (result.data.listUsers.items.length === 0) {
         return false;
       } else {
@@ -68,11 +51,28 @@ const App = () => {
     }
   };
 
+  async function createUser(user) {
+    try {
+      const input = {
+        name: user.username,
+        userSub: user.attributes.sub,
+      };
+      const createdUser = await API.graphql({
+        query: createUserMutation,
+        variables: { input: input },
+      });
+      console.log({ createdUser });
+      dispatch(userAdd(createdUser));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="App">
       {/* user name here for debuging remove later */}
       <div className="user">
-        {userRedux.username}
+        <div>{userRedux.name}</div>
         <button onClick={() => console.log(userRedux)}>logProps</button>
         <AmplifySignOut />
       </div>
