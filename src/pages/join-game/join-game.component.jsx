@@ -6,7 +6,7 @@ import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { getGame as getGameQuery } from "../../graphql/queries";
 import { useHistory } from "react-router-dom";
 
-const initialFormState = { name: "", gameCode: "" };
+const initialFormState = { playerName: "", gameCode: "" };
 
 const JoinGame = () => {
   const [formData, setFormData] = useState(initialFormState);
@@ -17,7 +17,7 @@ const JoinGame = () => {
 
   async function joinGame() {
     console.log("joinGame");
-    if (!formData.name || !formData.gameCode) return;
+    if (!formData.playerName || !formData.gameCode) return;
     try {
       const result = await API.graphql({
         query: getGameQuery,
@@ -32,6 +32,7 @@ const JoinGame = () => {
         const input = {
           id: userId,
           userGameId: gameId,
+          playerName: formData.playerName,
         };
         const response = await API.graphql({
           query: updateUserMutation,
@@ -52,9 +53,11 @@ const JoinGame = () => {
     <div className="join-game page">
       <h1>Join Game</h1>
       <input
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        onChange={(e) =>
+          setFormData({ ...formData, playerName: e.target.value })
+        }
         placeholder="Player Name"
-        value={formData.name}
+        value={formData.playerName}
       />
       <input
         onChange={(e) => setFormData({ ...formData, gameCode: e.target.value })}

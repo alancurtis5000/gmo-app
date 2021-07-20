@@ -12,6 +12,7 @@ export const getGame = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
@@ -27,6 +28,10 @@ export const getGame = /* GraphQL */ `
           description
           createdAt
           updatedAt
+        }
+        playerName
+        characters {
+          nextToken
         }
         createdAt
         updatedAt
@@ -54,6 +59,7 @@ export const listGames = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
@@ -81,11 +87,23 @@ export const getUser = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
         createdAt
         updatedAt
+      }
+      playerName
+      characters {
+        items {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -110,6 +128,65 @@ export const listUsers = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        playerName
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCharacter = /* GraphQL */ `
+  query GetCharacter($id: ID!) {
+    getCharacter(id: $id) {
+      id
+      name
+      user {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        playerName
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCharacters = /* GraphQL */ `
+  query ListCharacters(
+    $filter: ModelCharacterFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCharacters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
         createdAt
         updatedAt
       }

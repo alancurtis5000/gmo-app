@@ -15,6 +15,7 @@ export const createGame = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
@@ -30,6 +31,10 @@ export const createGame = /* GraphQL */ `
           description
           createdAt
           updatedAt
+        }
+        playerName
+        characters {
+          nextToken
         }
         createdAt
         updatedAt
@@ -53,6 +58,7 @@ export const updateGame = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
@@ -68,6 +74,10 @@ export const updateGame = /* GraphQL */ `
           description
           createdAt
           updatedAt
+        }
+        playerName
+        characters {
+          nextToken
         }
         createdAt
         updatedAt
@@ -91,6 +101,7 @@ export const deleteGame = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
@@ -106,6 +117,10 @@ export const deleteGame = /* GraphQL */ `
           description
           createdAt
           updatedAt
+        }
+        playerName
+        characters {
+          nextToken
         }
         createdAt
         updatedAt
@@ -135,11 +150,23 @@ export const createUser = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
         createdAt
         updatedAt
+      }
+      playerName
+      characters {
+        items {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -166,11 +193,23 @@ export const updateUser = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
         createdAt
         updatedAt
+      }
+      playerName
+      characters {
+        items {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -197,12 +236,120 @@ export const deleteUser = /* GraphQL */ `
           id
           userSub
           name
+          playerName
           createdAt
           updatedAt
         }
         createdAt
         updatedAt
       }
+      playerName
+      characters {
+        items {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createCharacter = /* GraphQL */ `
+  mutation CreateCharacter(
+    $input: CreateCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    createCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        playerName
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCharacter = /* GraphQL */ `
+  mutation UpdateCharacter(
+    $input: UpdateCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    updateCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        playerName
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCharacter = /* GraphQL */ `
+  mutation DeleteCharacter(
+    $input: DeleteCharacterInput!
+    $condition: ModelCharacterConditionInput
+  ) {
+    deleteCharacter(input: $input, condition: $condition) {
+      id
+      name
+      user {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        playerName
+        characters {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      content
       createdAt
       updatedAt
     }
