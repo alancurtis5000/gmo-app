@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
+  //Todo: remove me redeploy note
   let subscriptionOnUpdate;
   let subscriptionOnDelete;
   const history = useHistory();
