@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import AppRouter from "./router/app-router";
 import { Auth, API } from "aws-amplify";
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 import { createUser as createUserMutation } from "./graphql/mutations";
 import { listUsersCustom as listUsersCustomQuery } from "./graphql/custom-queries";
 import { useDispatch, useSelector } from "react-redux";
-
+import { updateUser as updateUserMutation } from "./graphql/mutations";
 import { userAdd } from "./redux/user/user.actions";
 
 const App = () => {
@@ -16,6 +16,31 @@ const App = () => {
     getCurrentUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleLeaveGame = async () => {
+    try {
+      const input = {
+        id: userRedux.id,
+        userGameId: null,
+      };
+      await API.graphql({
+        query: updateUserMutation,
+        variables: { input: input },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const signOut = async () => {
+    try {
+      await Auth.signOut({ global: true });
+      await handleLeaveGame();
+      window.location.href("/");
+    } catch (error) {
+      console.log("error signing out: ", error);
+    }
+  };
 
   const getCurrentUser = async () => {
     try {
@@ -74,7 +99,7 @@ const App = () => {
       <div className="user">
         <div>{userRedux.name}</div>
         <button onClick={() => console.log(userRedux)}>logProps</button>
-        <AmplifySignOut />
+        <button onClick={signOut}>Sign Out</button>
       </div>
       <AppRouter />
     </div>
