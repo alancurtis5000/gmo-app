@@ -17,6 +17,8 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // todo: what happens when gamemaster signs out during game.
+  // todo: what happens when game player signs out during game.
   const handleLeaveGame = async () => {
     try {
       const input = {
