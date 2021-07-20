@@ -7,6 +7,8 @@ import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteGame as deleteGameMutation } from "../../graphql/mutations";
+import Button from "@material-ui/core/Button";
+import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
   let subscriptionOnUpdate;
@@ -133,8 +135,15 @@ const GameLobby = () => {
         <div key={i} style={{ display: "flex" }}>
           <div style={{ paddingRight: "10px" }}>{player.name}</div>
           <div style={{ paddingRight: "10px" }}>{player.playerName}</div>
+          <SelectCharacter />
           {player.id === userId ? (
-            <button onClick={handleLeaveGame}>Leave Game</button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleLeaveGame}
+            >
+              Leave Game
+            </Button>
           ) : null}
         </div>
       );
