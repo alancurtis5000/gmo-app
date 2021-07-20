@@ -1,6 +1,6 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
-import { useLocation, useRouteMatch } from "react-router";
+import { useRouteMatch } from "react-router";
 import { getGame as getGameQuery } from "../../graphql/queries";
 // import { newOnUpdateGame } from "../../graphql/subscriptions";
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
@@ -41,9 +41,7 @@ const GameLobby = () => {
   }, []);
 
   // Todo: add subscriptions to game update, when players join.
-  const location = useLocation();
   const match = useRouteMatch();
-  console.log({ location, match });
   useEffect(() => {
     getGame();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,7 +64,7 @@ const GameLobby = () => {
           id: gameID,
         },
       });
-      console.log({ result });
+      console.log("game", { result });
       const { id, description, master, name, players } = result.data.getGame;
 
       setLobby({
