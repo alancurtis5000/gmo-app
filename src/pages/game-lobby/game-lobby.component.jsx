@@ -2,13 +2,15 @@ import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
 import { getGame as getGameQuery } from "../../graphql/queries";
-import { newOnUpdateUser } from "../../graphql/subscriptions";
+import { newOnUpdateUser, newOnDeleteGame } from "../../graphql/subscriptions";
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { deleteGame as deleteGameMutation } from "../../graphql/mutations";
 
 const GameLobby = () => {
   let subscriptionOnUpdate;
+  let subscriptionOnDelete;
   const history = useHistory();
   const userId = useSelector((state) => state.user.id);
   const [update, setUpdate] = useState(false);
@@ -29,6 +31,15 @@ const GameLobby = () => {
         setUpdate(true);
       },
     });
+    subscriptionOnDelete = API.graphql(
+      graphqlOperation(newOnDeleteGame)
+    ).subscribe({
+      next: (userData) => {
+        console.log("deletGame sub", { userData });
+        history.goBack();
+        setUpdate(true);
+      },
+    });
   };
 
   useEffect(() => {
@@ -36,6 +47,7 @@ const GameLobby = () => {
     getGame();
     return () => {
       subscriptionOnUpdate.unsubscribe();
+      subscriptionOnDelete.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -81,6 +93,19 @@ const GameLobby = () => {
     }
   };
 
+  async function deleteGame() {
+    try {
+      const response = await API.graphql({
+        query: deleteGameMutation,
+        variables: { input: { id: lobby.id } },
+      });
+      console.log({ response });
+      setUpdate(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleLeaveGame = async () => {
     console.log("handleLeaveGame");
     try {
@@ -101,20 +126,36 @@ const GameLobby = () => {
 
   const displayPlayers = () => {
     return lobby.players.map((player, i) => {
+      console.log({ player });
+      if (player.id === userId) {
+      }
       return (
         <div key={i} style={{ display: "flex" }}>
           <div style={{ paddingRight: "10px" }}>{player.name}</div>
-          <button onClick={handleLeaveGame}>Leave Game</button>
+          {player.id === userId ? (
+            <button onClick={handleLeaveGame}>Leave Game</button>
+          ) : null}
         </div>
       );
     });
   };
 
+  const handleCancelGame = () => {
+    console.log("handleCancelGame");
+    deleteGame();
+  };
+
+  const isGameMaster = userId === lobby.master.id;
+
   return (
     <div className="game-lobby page">
       <h1>Game Lobby</h1>
       <div>{`ID:`}</div>
+
       <div>{`${lobby.id}`}</div>
+      {isGameMaster ? (
+        <button onClick={handleCancelGame}> Cancel Game </button>
+      ) : null}
       <div>{`Name: ${lobby.name}`}</div>
       <div>{`Description: ${lobby.description}`}</div>
       <div>{`Game Master: ${lobby.master.name}`}</div>
