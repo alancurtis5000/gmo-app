@@ -33,6 +33,7 @@ type Subscription {
   newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
   newOnDeleteGame: Game @aws_subscribe(mutations: ["deleteGame"])
   newOnUpdateGame: Game @aws_subscribe(mutations: ["updateGame"])
+  newOnUpdateUser: User @aws_subscribe(mutations: ["updateUser"])
 }
 
 # Add all the custom inputs here

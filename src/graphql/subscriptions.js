@@ -106,6 +106,34 @@ export const newOnUpdateGame = /* GraphQL */ `
     }
   }
 `;
+export const newOnUpdateUser = /* GraphQL */ `
+  subscription NewOnUpdateUser {
+    newOnUpdateUser {
+      id
+      userSub
+      name
+      game {
+        id
+        name
+        description
+        players {
+          nextToken
+        }
+        master {
+          id
+          userSub
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateGame = /* GraphQL */ `
   subscription OnCreateGame {
     onCreateGame {

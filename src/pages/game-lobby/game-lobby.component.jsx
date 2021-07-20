@@ -2,16 +2,16 @@ import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
 import { getGame as getGameQuery } from "../../graphql/queries";
-// import { newOnUpdateGame } from "../../graphql/subscriptions";
+import { newOnUpdateUser } from "../../graphql/subscriptions";
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const GameLobby = () => {
-  // let subscriptionOnUpdate;
+  let subscriptionOnUpdate;
   const history = useHistory();
   const userId = useSelector((state) => state.user.id);
-  // const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(false);
   const [lobby, setLobby] = useState({
     id: "",
     master: "",
@@ -20,22 +20,22 @@ const GameLobby = () => {
     players: [],
   });
 
-  // const setupSubscriptions = () => {
-  //   subscriptionOnUpdate = API.graphql(
-  //     graphqlOperation(newOnUpdateGame)
-  //   ).subscribe({
-  //     next: (gamesData) => {
-  //       console.log("update sub", { gamesData });
-  //       setUpdate(true);
-  //     },
-  //   });
-  // };
+  const setupSubscriptions = () => {
+    subscriptionOnUpdate = API.graphql(
+      graphqlOperation(newOnUpdateUser)
+    ).subscribe({
+      next: (userData) => {
+        console.log("update sub", { userData });
+        setUpdate(true);
+      },
+    });
+  };
 
   useEffect(() => {
-    // setupSubscriptions();
+    setupSubscriptions();
     getGame();
     return () => {
-      // subscriptionOnUpdate.unsubscribe();
+      subscriptionOnUpdate.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,12 +47,12 @@ const GameLobby = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // useEffect(() => {
-  //   if (update) {
-  //     getGame();
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [update]);
+  useEffect(() => {
+    if (update) {
+      getGame();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [update]);
 
   const getGame = async () => {
     console.log("getGame");
@@ -74,10 +74,10 @@ const GameLobby = () => {
         description,
         players: players.items,
       });
-      // setUpdate(false);
+      setUpdate(false);
     } catch (error) {
       console.log(error);
-      // setUpdate(false);
+      setUpdate(false);
     }
   };
 
