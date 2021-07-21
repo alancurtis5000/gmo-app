@@ -7,6 +7,7 @@ import JoinGame from "../pages/join-game/join-game.component";
 import CreateCharacter from "../pages/create-character/create-character.component";
 import CreateGame from "../pages/create-game/create-game.component";
 import GameLobby from "../pages/game-lobby/game-lobby.component";
+import Playground from "../pages/playground/playground.component";
 
 const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ const AppRouter = () => {
         <Route exact path="/join" component={JoinGame} />
         <Route exact path="/create-character" component={CreateCharacter} />
         <Route exact path="/create-game" component={CreateGame} />
+        <Route exact path="/playground" component={Playground} />
         <Route exact path="/game-lobby/:id" component={GameLobby} />
         {/* <Route exact path="/examples" component={Examples} /> */}
         <Route component={NotFoundPage} />
