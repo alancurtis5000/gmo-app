@@ -38,7 +38,7 @@ const Select = (props) => {
         className="select-list-item"
         onClick={() => selectItem(option)}
       >
-        {option.title}
+        {option.title || option.name}
       </button>
     ));
   };

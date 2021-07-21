@@ -136,15 +136,18 @@ const GameLobby = () => {
         <div key={i} style={{ display: "flex" }}>
           <div style={{ paddingRight: "10px" }}>{player.name}</div>
           <div style={{ paddingRight: "10px" }}>{player.playerName}</div>
-          <SelectCharacter />
+
           {player.id === userId ? (
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleLeaveGame}
-            >
-              Leave Game
-            </Button>
+            <>
+              <SelectCharacter />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleLeaveGame}
+              >
+                Leave Game
+              </Button>
+            </>
           ) : null}
         </div>
       );

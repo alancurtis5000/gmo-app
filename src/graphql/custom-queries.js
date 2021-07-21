@@ -25,3 +25,17 @@ export const listUsersCustom = /* GraphQL */ `
     }
   }
 `;
+
+export const getCharactersByUserId = /* GraphQL */ `
+  query GetCharactersByUserId($id: ID!) {
+    getUser(id: $id) {
+      characters {
+        items {
+          id
+          name
+          content
+        }
+      }
+    }
+  }
+`;

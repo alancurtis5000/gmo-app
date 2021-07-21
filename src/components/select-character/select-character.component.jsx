@@ -1,69 +1,48 @@
 import { useState, useEffect } from "react";
-import Select from "@material-ui/core/Select";
-import { API } from "aws-amplify";
-import MenuItem from "@material-ui/core/MenuItem";
-import { getUser as getUserQuery, listCharacters } from "../../graphql/queries";
 import { useSelector } from "react-redux";
+import Select from "../../components/select/select.component";
+import { getCharactersByUserId as getCharactersByUserIdQuery } from "../../graphql/custom-queries";
+import { API } from "aws-amplify";
 
 const SelectCharacter = () => {
-  // TODO: working on character Select
-  // need to make it live update the game. so everyone can see characters choosen
-  const [selectedCharacter, setSelectedCharacter] = useState({});
-  const [list, setList] = useState([]);
+  const [selected, setSelected] = useState({});
+  const [options, setOptions] = useState([]);
+
   const userId = useSelector((state) => state.user.id);
-  const handleChange = (e) => {
-    const characterId = e.target.value;
-    const character = list.find((character) => character.id === characterId);
-    if (character) {
-      setSelectedCharacter(character);
-    }
-    console.log("handleChange", e.target.value);
+
+  const handleSelect = (item) => {
+    console.log("handleSelected");
+    setSelected(item);
   };
 
-  const getCharacterList = async () => {
-    if (userId) {
-      try {
-        const result = await API.graphql({
-          query: getUserQuery,
-          variables: {
-            id: userId,
-          },
-        });
-        const { characters } = result.data.getUser;
-        setList(characters.items);
-      } catch (error) {
-        console.log(error);
-      }
+  const getCharacters = async () => {
+    try {
+      const result = await API.graphql({
+        query: getCharactersByUserIdQuery,
+        variables: {
+          id: userId,
+        },
+      });
+      console.log("here", { result });
+      setOptions(result.data.getUser.characters.items);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   useEffect(() => {
-    getCharacterList();
-  }, [userId]);
-
-  const renderListOfCharacters = () => {
-    return list.map((character, i) => {
-      return (
-        <MenuItem key={i} value={character.id}>
-          {character.name}
-        </MenuItem>
-      );
-    });
-  };
+    getCharacters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div>
-      <button onClick={() => console.log({ list, selectedCharacter })}>
-        log
-      </button>
+    <div className="select-character">
       <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={selectedCharacter.name}
-        onChange={handleChange}
-      >
-        {renderListOfCharacters()}
-      </Select>
+        options={options}
+        handleSelect={handleSelect}
+        value={selected.name}
+        placeholder="Character"
+      />
     </div>
   );
 };
