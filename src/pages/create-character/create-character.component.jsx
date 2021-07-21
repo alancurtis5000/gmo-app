@@ -12,16 +12,13 @@ const CreateCharacter = () => {
 
   async function createCharacter() {
     if (!formData.name || !formData.content) return;
-    console.log("createCharacter");
 
     try {
       const input = { ...formData, characterUserId: userId };
-      console.log({ input });
-      const response = await API.graphql({
+      await API.graphql({
         query: createCharacterMutation,
         variables: { input: input },
       });
-      console.log("createCharacter mutation", { response });
       setFormData(initialFormState);
     } catch (error) {
       console.log(error);

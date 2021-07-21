@@ -26,7 +26,6 @@ const Select = (props) => {
   };
 
   const selectItem = (option) => {
-    console.log(option);
     handleSelect(option);
     setIsOpen(false);
   };

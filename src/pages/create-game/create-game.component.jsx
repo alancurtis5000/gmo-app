@@ -61,8 +61,6 @@ const CreateGame = () => {
         query: createGameMutation,
         variables: { input: input },
       });
-      console.log("create button", { response });
-
       setFormData(initialFormState);
       const gameID = response.data.createGame.id;
       history.push(`/game-lobby/${gameID}`);
@@ -73,11 +71,11 @@ const CreateGame = () => {
 
   async function deleteGame(id) {
     try {
-      const response = await API.graphql({
+      await API.graphql({
         query: deleteGameMutation,
         variables: { input: { id } },
       });
-      console.log({ response });
+
       setUpdate(true);
     } catch (error) {
       console.log(error);
@@ -88,24 +86,23 @@ const CreateGame = () => {
     subscriptionOnCreate = API.graphql(
       graphqlOperation(newOnCreateGame)
     ).subscribe({
-      next: (gamesData) => {
-        console.log("create sub", { gamesData });
+      next: () => {
         setUpdate(true);
       },
     });
     subscriptionOnDelete = API.graphql(
       graphqlOperation(newOnDeleteGame)
     ).subscribe({
-      next: (gamesData) => {
-        console.log("delete sub", { gamesData });
+      next: () => {
         setUpdate(true);
       },
     });
     subscriptionOnUpdate = API.graphql(
       graphqlOperation(newOnUpdateGame)
     ).subscribe({
-      next: (gamesData) => {
-        console.log("update sub", { gamesData });
+      next: () => {
+        // object that gets return
+        // next: (gameObject) => { do action }
         setUpdate(true);
       },
     });
@@ -124,7 +121,6 @@ const CreateGame = () => {
 
   const displayGames = () => {
     return games.map((game, i) => {
-      console.log({ games });
       return (
         <div key={i} style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>

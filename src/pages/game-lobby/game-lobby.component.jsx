@@ -29,16 +29,14 @@ const GameLobby = () => {
     subscriptionOnUpdate = API.graphql(
       graphqlOperation(newOnUpdateUser)
     ).subscribe({
-      next: (userData) => {
-        console.log("update sub", { userData });
+      next: () => {
         setUpdate(true);
       },
     });
     subscriptionOnDelete = API.graphql(
       graphqlOperation(newOnDeleteGame)
     ).subscribe({
-      next: (userData) => {
-        console.log("deletGame sub", { userData });
+      next: () => {
         history.goBack();
         setUpdate(true);
       },
@@ -70,7 +68,6 @@ const GameLobby = () => {
   }, [update]);
 
   const getGame = async () => {
-    console.log("getGame");
     const gameID = match.params.id;
     try {
       const result = await API.graphql({
@@ -79,7 +76,6 @@ const GameLobby = () => {
           id: gameID,
         },
       });
-      console.log("game", { result });
       const { id, description, master, name, players } = result.data.getGame;
 
       setLobby({
@@ -98,11 +94,10 @@ const GameLobby = () => {
 
   async function deleteGame() {
     try {
-      const response = await API.graphql({
+      await API.graphql({
         query: deleteGameMutation,
         variables: { input: { id: lobby.id } },
       });
-      console.log({ response });
       setUpdate(true);
     } catch (error) {
       console.log(error);
@@ -110,17 +105,15 @@ const GameLobby = () => {
   }
 
   const handleLeaveGame = async () => {
-    console.log("handleLeaveGame");
     try {
       const input = {
         id: userId,
         userGameId: null,
       };
-      const response = await API.graphql({
+      await API.graphql({
         query: updateUserMutation,
         variables: { input: input },
       });
-      console.log("Join Game button", { response });
       history.replace(`/join`);
     } catch (error) {
       console.log(error);
@@ -129,7 +122,6 @@ const GameLobby = () => {
 
   const displayPlayers = () => {
     return lobby.players.map((player, i) => {
-      console.log({ player });
       if (player.id === userId) {
       }
       return (
@@ -155,7 +147,6 @@ const GameLobby = () => {
   };
 
   const handleCancelGame = () => {
-    console.log("handleCancelGame");
     deleteGame();
   };
 

@@ -35,7 +35,6 @@ function Examples() {
   }
 
   async function deleteNote({ id }) {
-    console.log({ id });
     const newNotesArray = notes.filter((note) => note.id !== id);
     setNotes(newNotesArray);
     await API.graphql({
@@ -46,7 +45,6 @@ function Examples() {
 
   async function getUser() {
     const user = await Auth.currentUserInfo();
-    console.log(user);
     setUser(user);
   }
 

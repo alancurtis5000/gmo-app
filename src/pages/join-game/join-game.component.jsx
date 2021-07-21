@@ -16,7 +16,6 @@ const JoinGame = () => {
   useEffect(() => {}, []);
 
   async function joinGame() {
-    console.log("joinGame");
     if (!formData.playerName || !formData.gameCode) return;
     try {
       const result = await API.graphql({
@@ -25,7 +24,6 @@ const JoinGame = () => {
           id: formData.gameCode,
         },
       });
-      console.log({ result });
       const doesGameExist = result.data.getGame;
       if (doesGameExist) {
         const gameId = result.data.getGame.id;
@@ -34,11 +32,10 @@ const JoinGame = () => {
           userGameId: gameId,
           playerName: formData.playerName,
         };
-        const response = await API.graphql({
+        await API.graphql({
           query: updateUserMutation,
           variables: { input: input },
         });
-        console.log("Join Game button", { response });
         history.push(`/game-lobby/${gameId}`);
       }
       // const { id, description, master, name } = result.data.getGame;

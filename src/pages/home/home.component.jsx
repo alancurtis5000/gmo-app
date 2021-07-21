@@ -5,15 +5,12 @@ const Home = () => {
   let history = useHistory();
 
   const joinGame = () => {
-    console.log("joinGame");
     history.push("/join");
   };
   const createCharacter = () => {
-    console.log("createCharacter");
     history.push("/create-character");
   };
   const createGame = () => {
-    console.log("createCharacter");
     history.push("/create-game");
   };
 

@@ -88,7 +88,6 @@ const App = () => {
         query: createUserMutation,
         variables: { input: input },
       });
-      console.log({ createdUser });
       dispatch(userAdd(createdUser));
     } catch (error) {
       console.log(error);

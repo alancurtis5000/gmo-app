@@ -11,7 +11,6 @@ const SelectCharacter = () => {
   const userId = useSelector((state) => state.user.id);
 
   const handleSelect = (item) => {
-    console.log("handleSelected");
     setSelected(item);
   };
 
@@ -23,7 +22,6 @@ const SelectCharacter = () => {
           id: userId,
         },
       });
-      console.log("here", { result });
       setOptions(result.data.getUser.characters.items);
     } catch (error) {
       console.log(error);
