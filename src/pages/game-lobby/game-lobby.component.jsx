@@ -2,7 +2,11 @@ import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
 import { getGame as getGameQuery } from "../../graphql/queries";
-import { newOnUpdateUser, newOnDeleteGame } from "../../graphql/subscriptions";
+import {
+  newOnUpdateUser,
+  newOnDeleteGame,
+  newOnUpdateGame,
+} from "../../graphql/subscriptions";
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -11,9 +15,10 @@ import Button from "@material-ui/core/Button";
 import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
-  //Todo: remove me redeploy note
-  let subscriptionOnUpdate;
-  let subscriptionOnDelete;
+  let subscriptionOnUpdateUser;
+  let subscriptionOnUpdateGame;
+  let subscriptionOnDeleteGame;
+
   const history = useHistory();
   const userId = useSelector((state) => state.user.id);
   const [update, setUpdate] = useState(false);
@@ -26,18 +31,25 @@ const GameLobby = () => {
   });
 
   const setupSubscriptions = () => {
-    subscriptionOnUpdate = API.graphql(
+    subscriptionOnUpdateUser = API.graphql(
       graphqlOperation(newOnUpdateUser)
     ).subscribe({
       next: () => {
         setUpdate(true);
       },
     });
-    subscriptionOnDelete = API.graphql(
+    subscriptionOnDeleteGame = API.graphql(
       graphqlOperation(newOnDeleteGame)
     ).subscribe({
       next: () => {
         history.goBack();
+        setUpdate(true);
+      },
+    });
+    subscriptionOnUpdateGame = API.graphql(
+      graphqlOperation(newOnUpdateGame)
+    ).subscribe({
+      next: () => {
         setUpdate(true);
       },
     });
@@ -47,8 +59,9 @@ const GameLobby = () => {
     setupSubscriptions();
     getGame();
     return () => {
-      subscriptionOnUpdate.unsubscribe();
-      subscriptionOnDelete.unsubscribe();
+      subscriptionOnUpdateUser.unsubscribe();
+      subscriptionOnUpdateGame.unsubscribe();
+      subscriptionOnDeleteGame.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
