@@ -25,6 +25,7 @@ const SelectCharacter = (props) => {
         },
       });
       setOptions(result.data.getUser.characters.items);
+      setSelected(result.data.getUser.selectedCharacter);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +37,6 @@ const SelectCharacter = (props) => {
         id: userId,
         userSelectedCharacterId: characterId,
       };
-      console.log({ input });
       await API.graphql({
         query: updateUserMutation,
         variables: { input: input },
@@ -56,7 +56,7 @@ const SelectCharacter = (props) => {
       <Select
         options={options}
         handleSelect={handleSelect}
-        value={selected.name}
+        value={selected?.name}
         placeholder="Character"
         disabled={disabled}
       />

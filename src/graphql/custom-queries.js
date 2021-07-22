@@ -29,6 +29,11 @@ export const listUsersCustom = /* GraphQL */ `
 export const getCharactersByUserId = /* GraphQL */ `
   query GetCharactersByUserId($id: ID!) {
     getUser(id: $id) {
+      selectedCharacter {
+        id
+        content
+        name
+      }
       characters {
         items {
           id

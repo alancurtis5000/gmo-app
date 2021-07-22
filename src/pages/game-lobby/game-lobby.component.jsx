@@ -216,14 +216,17 @@ const GameLobby = () => {
 
   const validateGameIsReady = () => {
     // Left off here: start Game
+    console.log({ lobby });
     const arePlayersReady = !lobby.players.find((player) => {
       console.log({ player });
-      if (player.isReady === false || !player.selectedCharacter) {
+      if (player.isReady === false) {
         return player;
       }
+      return false;
     });
-
-    console.log({ arePlayersReady });
+    if (arePlayersReady) {
+      handleStartGame();
+    }
   };
 
   const handleStartGame = () => {
