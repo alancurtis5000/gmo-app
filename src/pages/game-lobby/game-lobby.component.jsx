@@ -29,6 +29,7 @@ const GameLobby = () => {
     description: "",
     players: [],
   });
+  const isGameMaster = userId === lobby.master.id;
 
   const setupSubscriptions = () => {
     subscriptionOnUpdateUser = API.graphql(
@@ -116,10 +117,11 @@ const GameLobby = () => {
     }
   }
 
-  const handleLeaveGame = async () => {
+  const handleLeaveGame = async (id) => {
+    // Todo: need to handle boot player, so their screen goes back to join game.
     try {
       const input = {
-        id: userId,
+        id: id,
         userGameId: null,
       };
       await API.graphql({
@@ -136,6 +138,15 @@ const GameLobby = () => {
     return lobby.players.map((player, i) => {
       return (
         <div key={i} style={{ display: "flex" }}>
+          {isGameMaster ? (
+            <button
+              variant="contained"
+              color="primary"
+              onClick={() => handleLeaveGame(player.id)}
+            >
+              Boot
+            </button>
+          ) : null}
           <div style={{ paddingRight: "10px" }}>{player.name}</div>
           <div style={{ paddingRight: "10px" }}>{player.playerName}</div>
           {player.id !== userId ? (
@@ -149,13 +160,9 @@ const GameLobby = () => {
           {player.id === userId ? (
             <>
               <SelectCharacter />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleLeaveGame}
-              >
+              <button onClick={() => handleLeaveGame(player.id)}>
                 Leave Game
-              </Button>
+              </button>
             </>
           ) : null}
         </div>
@@ -167,7 +174,6 @@ const GameLobby = () => {
     deleteGame();
   };
 
-  const isGameMaster = userId === lobby.master.id;
   return (
     <div className="game-lobby page">
       <h1>Game Lobby</h1>
