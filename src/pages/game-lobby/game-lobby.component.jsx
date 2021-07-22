@@ -54,7 +54,8 @@ const GameLobby = () => {
       next: (gameData) => {
         setUpdate(true);
         if (gameData?.value?.data?.newOnUpdateGame?.hasStarted) {
-          history.push(`/game/${lobby.id}`);
+          const gameID = match.params.id;
+          history.push(`/game/${gameID}`);
         }
       },
     });
