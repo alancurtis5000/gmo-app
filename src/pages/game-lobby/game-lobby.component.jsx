@@ -1,6 +1,5 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router";
 import { getGameLobbyById as getGameLobbyByIdQuery } from "../../graphql/custom-queries";
 import {
   newOnUpdateUser,
@@ -13,7 +12,7 @@ import {
   deleteGame as deleteGameMutation,
 } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
