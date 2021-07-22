@@ -27,6 +27,7 @@ export const newOnCreateGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -45,6 +46,7 @@ export const newOnCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -76,6 +78,7 @@ export const newOnDeleteGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -94,6 +97,7 @@ export const newOnDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -125,6 +129,7 @@ export const newOnUpdateGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -143,6 +148,7 @@ export const newOnUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -170,6 +176,7 @@ export const newOnUpdateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -232,6 +239,7 @@ export const onCreateGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -250,6 +258,7 @@ export const onCreateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -281,6 +290,7 @@ export const onUpdateGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -299,6 +309,7 @@ export const onUpdateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -330,6 +341,7 @@ export const onDeleteGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -348,6 +360,7 @@ export const onDeleteGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -375,6 +388,7 @@ export const onCreateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -433,6 +447,7 @@ export const onUpdateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -491,6 +506,7 @@ export const onDeleteUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -540,6 +556,7 @@ export const onCreateCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -577,6 +594,7 @@ export const onUpdateCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -614,6 +632,7 @@ export const onDeleteCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }

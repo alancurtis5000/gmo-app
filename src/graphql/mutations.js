@@ -30,6 +30,7 @@ export const createGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -48,6 +49,7 @@ export const createGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -82,6 +84,7 @@ export const updateGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -100,6 +103,7 @@ export const updateGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -134,6 +138,7 @@ export const deleteGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -152,6 +157,7 @@ export const deleteGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -182,6 +188,7 @@ export const createUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -243,6 +250,7 @@ export const updateUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -304,6 +312,7 @@ export const deleteUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -356,6 +365,7 @@ export const createCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -396,6 +406,7 @@ export const updateCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -436,6 +447,7 @@ export const deleteCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }

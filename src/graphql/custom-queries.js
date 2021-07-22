@@ -69,6 +69,7 @@ export const getGameLobbyById = /* GraphQL */ `
         playerName
       }
       name
+      hasStarted
     }
   }
 `;

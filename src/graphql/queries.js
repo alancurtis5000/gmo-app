@@ -27,6 +27,7 @@ export const getGame = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -45,6 +46,7 @@ export const getGame = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      hasStarted
       createdAt
       updatedAt
     }
@@ -73,6 +75,7 @@ export const listGames = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -102,6 +105,7 @@ export const getUser = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        hasStarted
         createdAt
         updatedAt
       }
@@ -153,6 +157,7 @@ export const listUsers = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }
@@ -188,6 +193,7 @@ export const getCharacter = /* GraphQL */ `
           id
           name
           description
+          hasStarted
           createdAt
           updatedAt
         }

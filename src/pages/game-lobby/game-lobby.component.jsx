@@ -7,10 +7,13 @@ import {
   newOnDeleteGame,
   newOnUpdateGame,
 } from "../../graphql/subscriptions";
-import { updateUser as updateUserMutation } from "../../graphql/mutations";
+import {
+  updateUser as updateUserMutation,
+  updateGame as updateGameMutation,
+  deleteGame as deleteGameMutation,
+} from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteGame as deleteGameMutation } from "../../graphql/mutations";
 import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
@@ -49,8 +52,11 @@ const GameLobby = () => {
     subscriptionOnUpdateGame = API.graphql(
       graphqlOperation(newOnUpdateGame)
     ).subscribe({
-      next: () => {
+      next: (gameData) => {
         setUpdate(true);
+        if (gameData?.value?.data?.newOnUpdateGame?.hasStarted) {
+          history.push(`/game/${lobby.id}`);
+        }
       },
     });
   };
@@ -229,8 +235,20 @@ const GameLobby = () => {
     }
   };
 
-  const handleStartGame = () => {
-    console.log("handleStartGame");
+  const handleStartGame = async () => {
+    try {
+      const input = {
+        id: lobby.id,
+        hasStarted: true,
+      };
+      await API.graphql({
+        query: updateGameMutation,
+        variables: { input: input },
+      });
+      history.push(`/game/${lobby.id}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ type Game @model {
   description: String
   players: [User] @connection(name: "GamePlayers") # one to many relationship
   master: User! @connection # user who created game // one to one relationship
+  hasStarted: Boolean
 }
 
 # Todo: Users and Character relationship and storing userSub
