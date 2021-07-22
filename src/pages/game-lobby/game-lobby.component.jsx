@@ -136,7 +136,6 @@ const GameLobby = () => {
     const isPlayerReady = lobby?.players?.find(
       (player) => player.id === userId
     ).isReady;
-    console.log({ isPlayerReady });
     try {
       const input = {
         id: userId,
@@ -153,7 +152,6 @@ const GameLobby = () => {
 
   const displayPlayers = () => {
     return lobby.players.map((player, i) => {
-      console.log({ player });
       return (
         <div key={i} style={{ display: "flex" }}>
           {isGameMaster ? (
@@ -177,7 +175,7 @@ const GameLobby = () => {
           ) : null}
           {player.id === userId ? (
             <>
-              <SelectCharacter />
+              <SelectCharacter disabled={player.isReady} />
               <button
                 onClick={() => handleLeaveGame(player.id)}
                 style={{ marginRight: "10px" }}
@@ -212,6 +210,22 @@ const GameLobby = () => {
     deleteGame();
   };
 
+  const validateGameIsReady = () => {
+    // Left off here: start Game
+    const arePlayersReady = !lobby.players.find((player) => {
+      console.log({ player });
+      if (player.isReady === false || !player.selectedCharacter) {
+        return player;
+      }
+    });
+
+    console.log({ arePlayersReady });
+  };
+
+  const handleStartGame = () => {
+    console.log("handleStartGame");
+  };
+
   return (
     <div className="game-lobby page">
       <h1>Game Lobby</h1>
@@ -221,9 +235,13 @@ const GameLobby = () => {
       {isGameMaster ? (
         <button onClick={handleCancelGame}> Cancel Game </button>
       ) : null}
+
       <div>{`Name: ${lobby.name}`}</div>
       <div>{`Description: ${lobby.description}`}</div>
       <div>{`Game Master: ${lobby.master.name}`}</div>
+      {isGameMaster ? (
+        <button onClick={validateGameIsReady}> Start Game </button>
+      ) : null}
       <div>{`Players:`}</div>
       <div>{displayPlayers()}</div>
     </div>

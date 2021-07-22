@@ -3,7 +3,7 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 
 const Select = (props) => {
-  const { options, handleSelect, value, placeholder } = props;
+  const { options, handleSelect, value, placeholder, disabled } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const close = () => {
@@ -44,7 +44,11 @@ const Select = (props) => {
 
   return (
     <div className="select-wrapper">
-      <button className="select-header" onClick={toggleList}>
+      <button
+        className="select-header"
+        disabled={disabled}
+        onClick={toggleList}
+      >
         {value ? (
           <div className="select-title">{value}</div>
         ) : (

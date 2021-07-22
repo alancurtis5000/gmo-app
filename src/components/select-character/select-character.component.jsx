@@ -5,7 +5,8 @@ import { getCharactersByUserId as getCharactersByUserIdQuery } from "../../graph
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { API } from "aws-amplify";
 
-const SelectCharacter = () => {
+const SelectCharacter = (props) => {
+  const { disabled } = props;
   const [selected, setSelected] = useState({});
   const [options, setOptions] = useState([]);
 
@@ -57,6 +58,7 @@ const SelectCharacter = () => {
         handleSelect={handleSelect}
         value={selected.name}
         placeholder="Character"
+        disabled={disabled}
       />
     </div>
   );
