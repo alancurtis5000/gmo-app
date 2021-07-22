@@ -122,6 +122,8 @@ const GameLobby = () => {
       const input = {
         id: id,
         userGameId: null,
+        userSelectedCharacterId: null,
+        isReady: false,
       };
       await API.graphql({
         query: updateUserMutation,
@@ -133,13 +135,15 @@ const GameLobby = () => {
     }
   };
   const handleIsReady = async () => {
-    const isPlayerReady = lobby?.players?.find(
-      (player) => player.id === userId
-    ).isReady;
+    const player = lobby?.players?.find((player) => player.id === userId);
+    if (!player.selectedCharacter) {
+      alert("You need to select a character first.");
+      return;
+    }
     try {
       const input = {
         id: userId,
-        isReady: !isPlayerReady,
+        isReady: !player.isReady,
       };
       await API.graphql({
         query: updateUserMutation,
