@@ -39,3 +39,30 @@ export const getCharactersByUserId = /* GraphQL */ `
     }
   }
 `;
+
+export const getGameLobbyById = /* GraphQL */ `
+  query GetGameLobbyById($id: ID!) {
+    getGame(id: $id) {
+      players {
+        items {
+          selectedCharacter {
+            content
+            id
+            name
+          }
+          id
+          name
+          playerName
+        }
+      }
+      description
+      id
+      master {
+        id
+        name
+        playerName
+      }
+      name
+    }
+  }
+`;

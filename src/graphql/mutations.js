@@ -36,6 +36,13 @@ export const createGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -79,6 +86,13 @@ export const updateGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -121,6 +135,13 @@ export const deleteGame = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -168,6 +189,21 @@ export const createUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -210,6 +246,21 @@ export const updateUser = /* GraphQL */ `
           updatedAt
         }
         nextToken
+      }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
@@ -254,6 +305,21 @@ export const deleteUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -281,6 +347,13 @@ export const createCharacter = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -314,6 +387,13 @@ export const updateCharacter = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -345,6 +425,13 @@ export const deleteCharacter = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt

@@ -1,7 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
-import { getGame as getGameQuery } from "../../graphql/queries";
+import { getGameLobbyById as getGameLobbyByIdQuery } from "../../graphql/custom-queries";
 import {
   newOnUpdateUser,
   newOnDeleteGame,
@@ -84,13 +84,12 @@ const GameLobby = () => {
     const gameID = match.params.id;
     try {
       const result = await API.graphql({
-        query: getGameQuery,
+        query: getGameLobbyByIdQuery,
         variables: {
           id: gameID,
         },
       });
       const { id, description, master, name, players } = result.data.getGame;
-
       setLobby({
         id,
         master,
@@ -135,13 +134,18 @@ const GameLobby = () => {
 
   const displayPlayers = () => {
     return lobby.players.map((player, i) => {
-      if (player.id === userId) {
-      }
       return (
         <div key={i} style={{ display: "flex" }}>
           <div style={{ paddingRight: "10px" }}>{player.name}</div>
           <div style={{ paddingRight: "10px" }}>{player.playerName}</div>
-
+          {player.id !== userId ? (
+            <>
+              <div>"Character"</div>
+              <div>{player?.selectedCharacter?.name}</div>
+              <div>"Description"</div>
+              <div>{player?.selectedCharacter?.content}</div>
+            </>
+          ) : null}
           {player.id === userId ? (
             <>
               <SelectCharacter />
@@ -164,7 +168,6 @@ const GameLobby = () => {
   };
 
   const isGameMaster = userId === lobby.master.id;
-
   return (
     <div className="game-lobby page">
       <h1>Game Lobby</h1>

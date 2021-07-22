@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Select from "../../components/select/select.component";
 import { getCharactersByUserId as getCharactersByUserIdQuery } from "../../graphql/custom-queries";
+import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { API } from "aws-amplify";
 
 const SelectCharacter = () => {
@@ -9,9 +10,9 @@ const SelectCharacter = () => {
   const [options, setOptions] = useState([]);
 
   const userId = useSelector((state) => state.user.id);
-
-  const handleSelect = (item) => {
-    setSelected(item);
+  const handleSelect = (character) => {
+    updateUserWithSelectedCharacter(character.id);
+    setSelected(character);
   };
 
   const getCharacters = async () => {
@@ -23,6 +24,22 @@ const SelectCharacter = () => {
         },
       });
       setOptions(result.data.getUser.characters.items);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUserWithSelectedCharacter = async (characterId) => {
+    try {
+      const input = {
+        id: userId,
+        userSelectedCharacterId: characterId,
+      };
+      console.log({ input });
+      await API.graphql({
+        query: updateUserMutation,
+        variables: { input: input },
+      });
     } catch (error) {
       console.log(error);
     }

@@ -33,6 +33,13 @@ export const newOnCreateGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -73,6 +80,13 @@ export const newOnDeleteGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -112,6 +126,13 @@ export const newOnUpdateGame = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -156,6 +177,21 @@ export const newOnUpdateUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -192,6 +228,13 @@ export const onCreateGame = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -233,6 +276,13 @@ export const onUpdateGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -272,6 +322,13 @@ export const onDeleteGame = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -316,6 +373,21 @@ export const onCreateUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -355,6 +427,21 @@ export const onUpdateUser = /* GraphQL */ `
           updatedAt
         }
         nextToken
+      }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
@@ -396,6 +483,21 @@ export const onDeleteUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -420,6 +522,13 @@ export const onCreateCharacter = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
@@ -450,6 +559,13 @@ export const onUpdateCharacter = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -478,6 +594,13 @@ export const onDeleteCharacter = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt

@@ -33,6 +33,13 @@ export const getGame = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -105,6 +112,21 @@ export const getUser = /* GraphQL */ `
         }
         nextToken
       }
+      selectedCharacter {
+        id
+        name
+        user {
+          id
+          userSub
+          name
+          playerName
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -132,6 +154,13 @@ export const listUsers = /* GraphQL */ `
         characters {
           nextToken
         }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -158,6 +187,13 @@ export const getCharacter = /* GraphQL */ `
         playerName
         characters {
           nextToken
+        }
+        selectedCharacter {
+          id
+          name
+          content
+          createdAt
+          updatedAt
         }
         createdAt
         updatedAt
