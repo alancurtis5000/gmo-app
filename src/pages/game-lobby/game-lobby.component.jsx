@@ -11,7 +11,6 @@ import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteGame as deleteGameMutation } from "../../graphql/mutations";
-import Button from "@material-ui/core/Button";
 import SelectCharacter from "../../components/select-character/select-character.component";
 
 const GameLobby = () => {
@@ -133,9 +132,28 @@ const GameLobby = () => {
       console.log(error);
     }
   };
+  const handleIsReady = async () => {
+    const isPlayerReady = lobby?.players?.find(
+      (player) => player.id === userId
+    ).isReady;
+    console.log({ isPlayerReady });
+    try {
+      const input = {
+        id: userId,
+        isReady: !isPlayerReady,
+      };
+      await API.graphql({
+        query: updateUserMutation,
+        variables: { input: input },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const displayPlayers = () => {
     return lobby.players.map((player, i) => {
+      console.log({ player });
       return (
         <div key={i} style={{ display: "flex" }}>
           {isGameMaster ? (
@@ -160,11 +178,31 @@ const GameLobby = () => {
           {player.id === userId ? (
             <>
               <SelectCharacter />
-              <button onClick={() => handleLeaveGame(player.id)}>
+              <button
+                onClick={() => handleLeaveGame(player.id)}
+                style={{ marginRight: "10px" }}
+              >
                 Leave Game
               </button>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              ></div>
             </>
           ) : null}
+          <input
+            type="checkbox"
+            id="playerReady"
+            name="playerReady"
+            style={{ marginRight: "10px" }}
+            checked={player.isReady}
+            disabled={userId !== player.id}
+            onClick={handleIsReady}
+          />
+          <label htmlFor="playerReady"> ready </label>
         </div>
       );
     });

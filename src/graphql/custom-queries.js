@@ -53,6 +53,7 @@ export const getGameLobbyById = /* GraphQL */ `
           id
           name
           playerName
+          isReady
         }
       }
       description

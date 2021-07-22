@@ -15,6 +15,7 @@ type User @model {
   playerName: String
   characters: [Character] @connection(name: "UserCharacters")
   selectedCharacter: Character @connection
+  isReady: Boolean
 }
 
 type Character @model {

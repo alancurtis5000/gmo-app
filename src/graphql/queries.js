@@ -13,6 +13,7 @@ export const getGame = /* GraphQL */ `
           userSub
           name
           playerName
+          isReady
           createdAt
           updatedAt
         }
@@ -40,6 +41,7 @@ export const getGame = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        isReady
         createdAt
         updatedAt
       }
@@ -67,6 +69,7 @@ export const listGames = /* GraphQL */ `
           userSub
           name
           playerName
+          isReady
           createdAt
           updatedAt
         }
@@ -95,6 +98,7 @@ export const getUser = /* GraphQL */ `
           userSub
           name
           playerName
+          isReady
           createdAt
           updatedAt
         }
@@ -120,6 +124,7 @@ export const getUser = /* GraphQL */ `
           userSub
           name
           playerName
+          isReady
           createdAt
           updatedAt
         }
@@ -127,6 +132,7 @@ export const getUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      isReady
       createdAt
       updatedAt
     }
@@ -161,6 +167,7 @@ export const listUsers = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        isReady
         createdAt
         updatedAt
       }
@@ -195,6 +202,7 @@ export const getCharacter = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        isReady
         createdAt
         updatedAt
       }
@@ -219,6 +227,7 @@ export const listCharacters = /* GraphQL */ `
           userSub
           name
           playerName
+          isReady
           createdAt
           updatedAt
         }
