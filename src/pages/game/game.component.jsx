@@ -6,7 +6,9 @@ import { getGameLobbyById as getGameLobbyByIdQuery } from "../../graphql/custom-
 import { useRouteMatch } from "react-router-dom";
 import { API } from "aws-amplify";
 import PlayerLandingPage from "../player-landing/player-landing.component";
+import PlayerCharacterPage from "../player-character/player-character.component";
 import GameMasterLandingPage from "../game-master-landing/game-master-landing.component";
+import GameMasterCharactersPage from "../game-master-characters/game-master-characters.component";
 
 const Game = () => {
   const userId = useSelector((state) => state.user.id);
@@ -40,13 +42,12 @@ const Game = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log({ game });
   const isGameMaster = userId === game?.master?.id;
 
   return (
     <div className="game page">
       <h1>Game</h1>
-      {isGameMaster ? <GameMasterLandingPage /> : <PlayerLandingPage />}
+      {isGameMaster ? <GameMasterCharactersPage /> : <PlayerCharacterPage />}
     </div>
   );
 };
