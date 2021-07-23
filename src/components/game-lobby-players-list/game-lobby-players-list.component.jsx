@@ -12,6 +12,8 @@ const GameLobbyPlayersList = () => {
     console.log("handleBootPlayer");
   };
 
+  // TODO: break players into player card components.
+
   const displayPlayers = () => {
     return game?.players?.items.map((player, i) => {
       console.log({ pid: player.id, userId });
