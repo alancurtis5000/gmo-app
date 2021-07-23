@@ -1,20 +1,19 @@
 import { API, graphqlOperation } from "aws-amplify";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   newOnUpdateUser,
   newOnDeleteGame,
   newOnUpdateGame,
 } from "../../graphql/subscriptions";
 import {
-  updateUser as updateUserMutation,
   updateGame as updateGameMutation,
   deleteGame as deleteGameMutation,
 } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import SelectCharacter from "../../components/select-character/select-character.component";
 import { connect } from "react-redux";
 import { getGame as getGameRedux } from "../../redux/game/game.actions";
+import GameLobbyPlayersList from "../../components/game-lobby-players-list/game-lobby-players-list.component";
 
 const GameLobby = (props) => {
   const { getGameRedux } = props;
@@ -26,7 +25,6 @@ const GameLobby = (props) => {
   const userId = useSelector((state) => state.user.id);
   const game = useSelector((state) => state.game);
 
-  const [update, setUpdate] = useState(false);
   const isGameMaster = userId === game?.master?.id;
   const match = useRouteMatch();
 
@@ -76,120 +74,16 @@ const GameLobby = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Todo: add subscriptions to game update, when players join.
-
-  useEffect(() => {
-    if (update) {
-      getGame();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [update]);
-
   async function deleteGame() {
     try {
       await API.graphql({
         query: deleteGameMutation,
         variables: { input: { id: game.id } },
       });
-      setUpdate(true);
     } catch (error) {
       console.log(error);
     }
   }
-
-  const handleLeaveGame = async (id) => {
-    // Todo: need to handle boot player, so their screen goes back to join game.
-    try {
-      const input = {
-        id: id,
-        userGameId: null,
-        userSelectedCharacterId: null,
-        isReady: false,
-      };
-      await API.graphql({
-        query: updateUserMutation,
-        variables: { input: input },
-      });
-      history.replace(`/join`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleIsReady = async () => {
-    const player = game?.players?.items.find((player) => player.id === userId);
-    if (!player.selectedCharacter) {
-      alert("You need to select a character first.");
-      return;
-    }
-    try {
-      const input = {
-        id: userId,
-        isReady: !player.isReady,
-      };
-      await API.graphql({
-        query: updateUserMutation,
-        variables: { input: input },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const displayPlayers = () => {
-    return game?.players?.items.map((player, i) => {
-      return (
-        <div key={i} style={{ display: "flex" }}>
-          {isGameMaster ? (
-            <button
-              variant="contained"
-              color="primary"
-              onClick={() => handleLeaveGame(player.id)}
-            >
-              Boot
-            </button>
-          ) : null}
-          <div style={{ paddingRight: "10px" }}>{player.name}</div>
-          <div style={{ paddingRight: "10px" }}>{player.playerName}</div>
-          {player.id !== userId ? (
-            <>
-              <div>"Character"</div>
-              <div>{player?.selectedCharacter?.name}</div>
-              <div>"Description"</div>
-              <div>{player?.selectedCharacter?.content}</div>
-            </>
-          ) : null}
-          {player.id === userId ? (
-            <>
-              <SelectCharacter disabled={player.isReady} />
-              <button
-                onClick={() => handleLeaveGame(player.id)}
-                style={{ marginRight: "10px" }}
-              >
-                Leave Game
-              </button>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              ></div>
-            </>
-          ) : null}
-          <input
-            type="checkbox"
-            id="playerReady"
-            name="playerReady"
-            style={{ marginRight: "10px" }}
-            checked={player.isReady}
-            disabled={userId !== player.id}
-            onClick={handleIsReady}
-          />
-          <label htmlFor="playerReady"> ready </label>
-        </div>
-      );
-    });
-  };
 
   const handleCancelGame = () => {
     deleteGame();
@@ -241,7 +135,7 @@ const GameLobby = (props) => {
         <button onClick={validateGameIsReady}> Start Game </button>
       ) : null}
       <div>{`Players:`}</div>
-      <div>{displayPlayers()}</div>
+      <GameLobbyPlayersList />
     </div>
   );
 };
