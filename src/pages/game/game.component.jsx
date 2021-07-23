@@ -9,6 +9,7 @@ import PlayerLandingPage from "../player-landing/player-landing.component";
 import PlayerCharacterPage from "../player-character/player-character.component";
 import GameMasterLandingPage from "../game-master-landing/game-master-landing.component";
 import GameMasterCharactersPage from "../game-master-characters/game-master-characters.component";
+import GameMasterRouter from "../../routers/game-master-router";
 
 const Game = () => {
   const userId = useSelector((state) => state.user.id);
@@ -47,7 +48,6 @@ const Game = () => {
   return (
     <div className="game page">
       <h1>Game</h1>
-      {isGameMaster ? <GameMasterCharactersPage /> : <PlayerCharacterPage />}
     </div>
   );
 };

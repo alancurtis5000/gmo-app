@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import AppRouter from "./router/app-router";
+import AppRouter from "./routers/app-router";
 import { Auth, API } from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { createUser as createUserMutation } from "./graphql/mutations";
