@@ -1,0 +1,7 @@
+const types = {
+  GET_GAME_START: "GET_GAME_START",
+  GET_GAME_SUCCESS: "GET_GAME_SUCCESS",
+  GET_GAME_FAILURE: "GET_GAME_FAILURE",
+};
+
+export default types;

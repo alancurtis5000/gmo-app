@@ -14,8 +14,11 @@ import {
 import { useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import SelectCharacter from "../../components/select-character/select-character.component";
+import { connect } from "react-redux";
+import { getGame as getGameRedux } from "../../redux/game/game.actions";
 
-const GameLobby = () => {
+const GameLobby = (props) => {
+  const { getGameRedux } = props;
   let subscriptionOnUpdateUser;
   let subscriptionOnUpdateGame;
   let subscriptionOnDeleteGame;
@@ -88,6 +91,7 @@ const GameLobby = () => {
 
   const getGame = async () => {
     const gameID = match.params.id;
+    getGameRedux(gameID);
     try {
       const result = await API.graphql({
         query: getGameLobbyByIdQuery,
@@ -247,6 +251,7 @@ const GameLobby = () => {
       console.log(error);
     }
   };
+  console.log({ props });
 
   return (
     <div className="game-lobby page">
@@ -270,4 +275,8 @@ const GameLobby = () => {
   );
 };
 
-export default GameLobby;
+const mapDispatchToProps = (dispatch) => ({
+  getGameRedux: (id) => dispatch(getGameRedux(id)),
+});
+
+export default connect(null, mapDispatchToProps)(GameLobby);
