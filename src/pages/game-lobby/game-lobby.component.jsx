@@ -1,6 +1,5 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
-import { getGameLobbyById as getGameLobbyByIdQuery } from "../../graphql/custom-queries";
 import {
   newOnUpdateUser,
   newOnDeleteGame,
@@ -25,22 +24,25 @@ const GameLobby = (props) => {
 
   const history = useHistory();
   const userId = useSelector((state) => state.user.id);
+  const game = useSelector((state) => state.game);
+
   const [update, setUpdate] = useState(false);
-  const [lobby, setLobby] = useState({
-    id: "",
-    master: "",
-    name: "",
-    description: "",
-    players: [],
-  });
-  const isGameMaster = userId === lobby.master.id;
+  const isGameMaster = userId === game?.master?.id;
+  const match = useRouteMatch();
+
+  const getGame = () => {
+    const id = match.params.id;
+    if (id) {
+      getGameRedux(id);
+    }
+  };
 
   const setupSubscriptions = () => {
     subscriptionOnUpdateUser = API.graphql(
       graphqlOperation(newOnUpdateUser)
     ).subscribe({
       next: () => {
-        setUpdate(true);
+        getGame();
       },
     });
     subscriptionOnDeleteGame = API.graphql(
@@ -48,17 +50,16 @@ const GameLobby = (props) => {
     ).subscribe({
       next: () => {
         history.goBack();
-        setUpdate(true);
       },
     });
     subscriptionOnUpdateGame = API.graphql(
       graphqlOperation(newOnUpdateGame)
     ).subscribe({
       next: (gameData) => {
-        setUpdate(true);
+        getGame();
         if (gameData?.value?.data?.newOnUpdateGame?.hasStarted) {
-          const gameID = match.params.id;
-          history.push(`/game/${gameID}`);
+          const gameId = match.params.id;
+          history.push(`/game/${gameId}`);
         }
       },
     });
@@ -76,11 +77,6 @@ const GameLobby = (props) => {
   }, []);
 
   // Todo: add subscriptions to game update, when players join.
-  const match = useRouteMatch();
-  useEffect(() => {
-    getGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     if (update) {
@@ -89,36 +85,11 @@ const GameLobby = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
 
-  const getGame = async () => {
-    const gameID = match.params.id;
-    getGameRedux(gameID);
-    try {
-      const result = await API.graphql({
-        query: getGameLobbyByIdQuery,
-        variables: {
-          id: gameID,
-        },
-      });
-      const { id, description, master, name, players } = result.data.getGame;
-      setLobby({
-        id,
-        master,
-        name,
-        description,
-        players: players.items,
-      });
-      setUpdate(false);
-    } catch (error) {
-      console.log(error);
-      setUpdate(false);
-    }
-  };
-
   async function deleteGame() {
     try {
       await API.graphql({
         query: deleteGameMutation,
-        variables: { input: { id: lobby.id } },
+        variables: { input: { id: game.id } },
       });
       setUpdate(true);
     } catch (error) {
@@ -145,7 +116,7 @@ const GameLobby = (props) => {
     }
   };
   const handleIsReady = async () => {
-    const player = lobby?.players?.find((player) => player.id === userId);
+    const player = game?.players?.items.find((player) => player.id === userId);
     if (!player.selectedCharacter) {
       alert("You need to select a character first.");
       return;
@@ -165,7 +136,7 @@ const GameLobby = (props) => {
   };
 
   const displayPlayers = () => {
-    return lobby.players.map((player, i) => {
+    return game?.players?.items.map((player, i) => {
       return (
         <div key={i} style={{ display: "flex" }}>
           {isGameMaster ? (
@@ -225,7 +196,7 @@ const GameLobby = (props) => {
   };
 
   const validateGameIsReady = () => {
-    const arePlayersReady = !lobby.players.find((player) => {
+    const arePlayersReady = !game?.players?.items.find((player) => {
       if (player.isReady === false) {
         return player;
       }
@@ -239,14 +210,14 @@ const GameLobby = (props) => {
   const handleStartGame = async () => {
     try {
       const input = {
-        id: lobby.id,
+        id: game.id,
         hasStarted: true,
       };
       await API.graphql({
         query: updateGameMutation,
         variables: { input: input },
       });
-      history.push(`/game/${lobby.id}`);
+      history.push(`/game/${game.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -258,14 +229,14 @@ const GameLobby = (props) => {
       <h1>Game Lobby</h1>
       <div>{`ID:`}</div>
 
-      <div>{`${lobby.id}`}</div>
+      <div>{`${game.id}`}</div>
       {isGameMaster ? (
         <button onClick={handleCancelGame}> Cancel Game </button>
       ) : null}
 
-      <div>{`Name: ${lobby.name}`}</div>
-      <div>{`Description: ${lobby.description}`}</div>
-      <div>{`Game Master: ${lobby.master.name}`}</div>
+      <div>{`Name: ${game?.name}`}</div>
+      <div>{`Description: ${game?.description}`}</div>
+      <div>{`Game Master: ${game?.master?.name}`}</div>
       {isGameMaster ? (
         <button onClick={validateGameIsReady}> Start Game </button>
       ) : null}

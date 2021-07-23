@@ -34,7 +34,7 @@ export const getGame = (id) => async (dispatch) => {
     const game = result.data.getGame;
     return dispatch(getGameSuccess(game));
   } catch (error) {
-    return dispatch(getGameFailure(error));
+    return dispatch(getGameFailure(error[0].message));
   }
 };
 
