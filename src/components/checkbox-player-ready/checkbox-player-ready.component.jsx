@@ -32,7 +32,7 @@ const CheckboxPlayerReady = () => {
   return (
     <Checkbox
       label="Ready"
-      onClick={handleIsReady}
+      onChange={handleIsReady}
       id="player-ready"
       checked={isChecked}
       disabled={disabled}

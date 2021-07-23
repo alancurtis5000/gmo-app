@@ -1,14 +1,13 @@
 const Checkbox = (props) => {
-  const { label, onClick, className, id, checked, disabled } = props;
+  const { label, onChange, className, id, checked, disabled } = props;
 
-  //
   return (
     <>
       <input
         type="checkbox"
         className={`checkbox ${className}`}
         id={id}
-        onClick={onClick}
+        onChange={onChange}
         checked={checked}
         disabled={disabled}
       />
