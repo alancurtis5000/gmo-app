@@ -37,7 +37,6 @@ export const newOnCreateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -88,7 +87,6 @@ export const newOnDeleteGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -139,7 +137,6 @@ export const newOnUpdateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -184,7 +181,6 @@ export const newOnUpdateUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -193,7 +189,17 @@ export const newOnUpdateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -249,7 +255,6 @@ export const onCreateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -300,7 +305,6 @@ export const onUpdateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -351,7 +355,6 @@ export const onDeleteGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -396,7 +399,6 @@ export const onCreateUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -405,7 +407,17 @@ export const onCreateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -455,7 +467,6 @@ export const onUpdateUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -464,7 +475,17 @@ export const onUpdateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -514,7 +535,6 @@ export const onDeleteUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -523,7 +543,17 @@ export const onDeleteUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -547,7 +577,71 @@ export const onCreateCharacter = /* GraphQL */ `
   subscription OnCreateCharacter {
     onCreateCharacter {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -566,7 +660,6 @@ export const onCreateCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -585,7 +678,71 @@ export const onUpdateCharacter = /* GraphQL */ `
   subscription OnUpdateCharacter {
     onUpdateCharacter {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -604,7 +761,6 @@ export const onUpdateCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -623,7 +779,71 @@ export const onDeleteCharacter = /* GraphQL */ `
   subscription OnDeleteCharacter {
     onDeleteCharacter {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -642,7 +862,6 @@ export const onDeleteCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -652,6 +871,627 @@ export const onDeleteCharacter = /* GraphQL */ `
         updatedAt
       }
       content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateDetail = /* GraphQL */ `
+  subscription OnCreateDetail {
+    onCreateDetail {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateDetail = /* GraphQL */ `
+  subscription OnUpdateDetail {
+    onUpdateDetail {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteDetail = /* GraphQL */ `
+  subscription OnDeleteDetail {
+    onDeleteDetail {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAbility = /* GraphQL */ `
+  subscription OnCreateAbility {
+    onCreateAbility {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAbility = /* GraphQL */ `
+  subscription OnUpdateAbility {
+    onUpdateAbility {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAbility = /* GraphQL */ `
+  subscription OnDeleteAbility {
+    onDeleteAbility {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAbilityScore = /* GraphQL */ `
+  subscription OnCreateAbilityScore {
+    onCreateAbilityScore {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAbilityScore = /* GraphQL */ `
+  subscription OnUpdateAbilityScore {
+    onUpdateAbilityScore {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAbilityScore = /* GraphQL */ `
+  subscription OnDeleteAbilityScore {
+    onDeleteAbilityScore {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

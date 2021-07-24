@@ -40,7 +40,6 @@ export const createGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -94,7 +93,6 @@ export const updateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -148,7 +146,6 @@ export const deleteGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -196,7 +193,6 @@ export const createUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -205,7 +201,17 @@ export const createUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -258,7 +264,6 @@ export const updateUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -267,7 +272,17 @@ export const updateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -320,7 +335,6 @@ export const deleteUser = /* GraphQL */ `
       characters {
         items {
           id
-          name
           content
           createdAt
           updatedAt
@@ -329,7 +343,17 @@ export const deleteUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        name
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         user {
           id
           userSub
@@ -356,7 +380,71 @@ export const createCharacter = /* GraphQL */ `
   ) {
     createCharacter(input: $input, condition: $condition) {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -375,7 +463,6 @@ export const createCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -397,7 +484,71 @@ export const updateCharacter = /* GraphQL */ `
   ) {
     updateCharacter(input: $input, condition: $condition) {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -416,7 +567,6 @@ export const updateCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -438,7 +588,71 @@ export const deleteCharacter = /* GraphQL */ `
   ) {
     deleteCharacter(input: $input, condition: $condition) {
       id
-      name
+      abilityScores {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      details {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        name
+        createdAt
+        updatedAt
+      }
       user {
         id
         userSub
@@ -457,7 +671,6 @@ export const deleteCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          name
           content
           createdAt
           updatedAt
@@ -467,6 +680,654 @@ export const deleteCharacter = /* GraphQL */ `
         updatedAt
       }
       content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createDetail = /* GraphQL */ `
+  mutation CreateDetail(
+    $input: CreateDetailInput!
+    $condition: ModelDetailConditionInput
+  ) {
+    createDetail(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateDetail = /* GraphQL */ `
+  mutation UpdateDetail(
+    $input: UpdateDetailInput!
+    $condition: ModelDetailConditionInput
+  ) {
+    updateDetail(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteDetail = /* GraphQL */ `
+  mutation DeleteDetail(
+    $input: DeleteDetailInput!
+    $condition: ModelDetailConditionInput
+  ) {
+    deleteDetail(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAbility = /* GraphQL */ `
+  mutation CreateAbility(
+    $input: CreateAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    createAbility(input: $input, condition: $condition) {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAbility = /* GraphQL */ `
+  mutation UpdateAbility(
+    $input: UpdateAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    updateAbility(input: $input, condition: $condition) {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAbility = /* GraphQL */ `
+  mutation DeleteAbility(
+    $input: DeleteAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    deleteAbility(input: $input, condition: $condition) {
+      id
+      abilityScore {
+        id
+        character {
+          id
+          content
+          createdAt
+          updatedAt
+        }
+        strength {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        dexterity {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        constitution {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        intelligence {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        wisdom {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        charisma {
+          id
+          value
+          modifier
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      value
+      modifier
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAbilityScore = /* GraphQL */ `
+  mutation CreateAbilityScore(
+    $input: CreateAbilityScoreInput!
+    $condition: ModelAbilityScoreConditionInput
+  ) {
+    createAbilityScore(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAbilityScore = /* GraphQL */ `
+  mutation UpdateAbilityScore(
+    $input: UpdateAbilityScoreInput!
+    $condition: ModelAbilityScoreConditionInput
+  ) {
+    updateAbilityScore(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAbilityScore = /* GraphQL */ `
+  mutation DeleteAbilityScore(
+    $input: DeleteAbilityScoreInput!
+    $condition: ModelAbilityScoreConditionInput
+  ) {
+    deleteAbilityScore(input: $input, condition: $condition) {
+      id
+      character {
+        id
+        abilityScores {
+          id
+          createdAt
+          updatedAt
+        }
+        details {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        user {
+          id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        content
+        createdAt
+        updatedAt
+      }
+      strength {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      dexterity {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      constitution {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      intelligence {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      wisdom {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
+      charisma {
+        id
+        abilityScore {
+          id
+          createdAt
+          updatedAt
+        }
+        value
+        modifier
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

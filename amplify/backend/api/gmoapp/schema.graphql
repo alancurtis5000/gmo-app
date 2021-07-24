@@ -19,13 +19,6 @@ type User @model {
   isReady: Boolean
 }
 
-type Character @model {
-  id: ID!
-  name: String!
-  user: User! @connection(name: "UserCharacters")
-  content: String
-}
-
 # here is where you add custom subscriptions.
 type Subscription {
   newOnCreateGame: Game @aws_subscribe(mutations: ["createGame"])
@@ -55,3 +48,35 @@ input SelectedCharacter {
 # type Mutation {
 #   # Add all the custom mutations here
 # }
+
+type Character @model {
+  id: ID!
+  abilityScores: AbilityScore!
+  details: Detail!
+  user: User! @connection(name: "UserCharacters")
+  content: String
+}
+
+type Detail @model {
+  id: ID!
+  character: Character! @connection
+  name: String
+}
+
+type Ability @model {
+  id: ID!
+  abilityScore: AbilityScore! @connection
+  value: Int
+  modifier: Int
+}
+
+type AbilityScore @model {
+  id: ID!
+  character: Character! @connection
+  strength: Ability
+  dexterity: Ability
+  constitution: Ability
+  intelligence: Ability
+  wisdom: Ability
+  charisma: Ability
+}

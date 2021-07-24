@@ -6,16 +6,15 @@ import { useSelector } from "react-redux";
 import CreateCharacterAbilities from "../../components/create-character-abilities/create-character-abilities.component";
 import CreateCharacterDetails from "../../components/create-character-details/create-character-details.component";
 
-const initialFormState = { name: "", content: "" };
-
 const CreateCharacter = () => {
-  const [formData, setFormData] = useState(initialFormState);
   const userId = useSelector((state) => state.user.id);
 
   async function createCharacter() {
-    if (!formData.name || !formData.content) return;
-
     try {
+      // first create details
+      // then create ability
+      // then create abilityScore
+      // then plug those into character
       const input = { ...formData, characterUserId: userId };
       await API.graphql({
         query: createCharacterMutation,
