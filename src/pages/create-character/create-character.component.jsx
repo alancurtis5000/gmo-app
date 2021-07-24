@@ -4,6 +4,7 @@ import Button from "../../components/button/button.component";
 import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import CreateCharacterAbilities from "../../components/create-character-abilities/create-character-abilities.component";
+import CreateCharacterDetails from "../../components/create-character-details/create-character-details.component";
 
 const initialFormState = { name: "", content: "" };
 
@@ -29,6 +30,7 @@ const CreateCharacter = () => {
   return (
     <div className="create-character page">
       <h1>Create Character</h1>
+      <CreateCharacterDetails />
       <CreateCharacterAbilities />
 
       <Button text="Create Character" onClick={createCharacter} />

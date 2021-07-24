@@ -2,7 +2,9 @@ import types from "./create-character.types";
 
 export const initialState = {
   data: {
-    name: "",
+    details: {
+      name: "",
+    },
     abilityScores: {
       strength: { value: 0, modifier: 0 },
       dexterity: { value: 0, modifier: 0 },
