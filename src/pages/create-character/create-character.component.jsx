@@ -3,6 +3,7 @@ import { API } from "aws-amplify";
 import Button from "../../components/button/button.component";
 import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
+import CreateCharacterAbilities from "../../components/create-character-abilities/create-character-abilities.component";
 
 const initialFormState = { name: "", content: "" };
 
@@ -28,16 +29,8 @@ const CreateCharacter = () => {
   return (
     <div className="create-character page">
       <h1>Create Character</h1>
-      <input
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        placeholder="Character Name"
-        value={formData.name}
-      />
-      <input
-        onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-        placeholder="Content"
-        value={formData.content}
-      />
+      <CreateCharacterAbilities />
+
       <Button text="Create Character" onClick={createCharacter} />
     </div>
   );
