@@ -109,3 +109,43 @@ export const getUserCharactersByUserId = /* GraphQL */ `
     }
   }
 `;
+
+export const getCharacterById = /* GraphQL */ `
+  query GetCharacterById($id: ID!) {
+    getCharacter(id: $id) {
+      id
+      details {
+        name
+        background
+      }
+      abilityScores {
+        strength {
+          value
+          modifier
+        }
+        dexterity {
+          value
+          modifier
+        }
+        constitution {
+          value
+          modifier
+        }
+        intelligence {
+          value
+          modifier
+        }
+        wisdom {
+          value
+          modifier
+        }
+        charisma {
+          value
+          modifier
+        }
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
