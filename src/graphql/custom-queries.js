@@ -31,14 +31,10 @@ export const getCharactersByUserId = /* GraphQL */ `
     getUser(id: $id) {
       selectedCharacter {
         id
-        content
-        name
       }
       characters {
         items {
           id
-          name
-          content
         }
       }
     }
@@ -51,9 +47,7 @@ export const getGameLobbyById = /* GraphQL */ `
       players {
         items {
           selectedCharacter {
-            content
             id
-            name
           }
           id
           name

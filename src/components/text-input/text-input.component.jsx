@@ -1,6 +1,16 @@
 const TextInput = (props) => {
-  const { label, onChange, className, id, value, disabled, min, max, step } =
-    props;
+  const {
+    label,
+    onChange,
+    className,
+    id,
+    value,
+    disabled,
+    min,
+    max,
+    step,
+    error,
+  } = props;
 
   return (
     <>
@@ -16,6 +26,9 @@ const TextInput = (props) => {
         max={max}
         step={step}
       />
+      <p className="error" htmlFor={id}>
+        {error}
+      </p>
     </>
   );
 };

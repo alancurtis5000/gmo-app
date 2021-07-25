@@ -116,7 +116,6 @@ const GameLobby = (props) => {
       console.log(error);
     }
   };
-  console.log({ props });
 
   return (
     <div className="game-lobby page">

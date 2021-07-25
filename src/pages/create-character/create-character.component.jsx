@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 import Button from "../../components/button/button.component";
-import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
+// import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import CreateCharacterAbilities from "../../components/create-character-abilities/create-character-abilities.component";
 import CreateCharacterDetails from "../../components/create-character-details/create-character-details.component";
@@ -10,6 +9,9 @@ const CreateCharacter = () => {
   const userId = useSelector((state) => state.user.id);
 
   async function createCharacter() {
+    console.log("createCharacter");
+    /*
+
     try {
       // first create details
       // then create ability
@@ -24,6 +26,7 @@ const CreateCharacter = () => {
     } catch (error) {
       console.log(error);
     }
+    */
   }
 
   return (

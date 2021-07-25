@@ -203,6 +203,18 @@ export const createUser = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -274,6 +286,18 @@ export const updateUser = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -345,6 +369,18 @@ export const deleteUser = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -388,48 +424,18 @@ export const createCharacter = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
         createdAt
         updatedAt
       }
@@ -492,48 +498,18 @@ export const updateCharacter = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
         createdAt
         updatedAt
       }
@@ -596,48 +572,18 @@ export const deleteCharacter = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
         createdAt
         updatedAt
       }
@@ -696,6 +642,18 @@ export const createDetail = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -735,6 +693,18 @@ export const updateDetail = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -774,6 +744,18 @@ export const deleteDetail = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -802,207 +784,6 @@ export const deleteDetail = /* GraphQL */ `
     }
   }
 `;
-export const createAbility = /* GraphQL */ `
-  mutation CreateAbility(
-    $input: CreateAbilityInput!
-    $condition: ModelAbilityConditionInput
-  ) {
-    createAbility(input: $input, condition: $condition) {
-      id
-      abilityScore {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      value
-      modifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateAbility = /* GraphQL */ `
-  mutation UpdateAbility(
-    $input: UpdateAbilityInput!
-    $condition: ModelAbilityConditionInput
-  ) {
-    updateAbility(input: $input, condition: $condition) {
-      id
-      abilityScore {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      value
-      modifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAbility = /* GraphQL */ `
-  mutation DeleteAbility(
-    $input: DeleteAbilityInput!
-    $condition: ModelAbilityConditionInput
-  ) {
-    deleteAbility(input: $input, condition: $condition) {
-      id
-      abilityScore {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        dexterity {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        constitution {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        intelligence {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        wisdom {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        charisma {
-          id
-          value
-          modifier
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      value
-      modifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createAbilityScore = /* GraphQL */ `
   mutation CreateAbilityScore(
     $input: CreateAbilityScoreInput!
@@ -1014,6 +795,18 @@ export const createAbilityScore = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -1036,78 +829,18 @@ export const createAbilityScore = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      strength {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      dexterity {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      constitution {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      intelligence {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      wisdom {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      charisma {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
+      strength
+      strengthModifier
+      dexterity
+      dexterityModifier
+      constitution
+      constitutionModifier
+      intelligence
+      intelligenceModifier
+      wisdom
+      wisdomModifier
+      charisma
+      charismaModifier
       createdAt
       updatedAt
     }
@@ -1124,6 +857,18 @@ export const updateAbilityScore = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -1146,78 +891,18 @@ export const updateAbilityScore = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      strength {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      dexterity {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      constitution {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      intelligence {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      wisdom {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      charisma {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
+      strength
+      strengthModifier
+      dexterity
+      dexterityModifier
+      constitution
+      constitutionModifier
+      intelligence
+      intelligenceModifier
+      wisdom
+      wisdomModifier
+      charisma
+      charismaModifier
       createdAt
       updatedAt
     }
@@ -1234,6 +919,18 @@ export const deleteAbilityScore = /* GraphQL */ `
         id
         abilityScores {
           id
+          strength
+          strengthModifier
+          dexterity
+          dexterityModifier
+          constitution
+          constitutionModifier
+          intelligence
+          intelligenceModifier
+          wisdom
+          wisdomModifier
+          charisma
+          charismaModifier
           createdAt
           updatedAt
         }
@@ -1256,78 +953,18 @@ export const deleteAbilityScore = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      strength {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      dexterity {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      constitution {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      intelligence {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      wisdom {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
-      charisma {
-        id
-        abilityScore {
-          id
-          createdAt
-          updatedAt
-        }
-        value
-        modifier
-        createdAt
-        updatedAt
-      }
+      strength
+      strengthModifier
+      dexterity
+      dexterityModifier
+      constitution
+      constitutionModifier
+      intelligence
+      intelligenceModifier
+      wisdom
+      wisdomModifier
+      charisma
+      charismaModifier
       createdAt
       updatedAt
     }

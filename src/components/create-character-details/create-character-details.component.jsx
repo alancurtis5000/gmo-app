@@ -22,6 +22,7 @@ const CreateCharacterDetails = (props) => {
         label="Character Name"
         name="name"
         value={character.details.name}
+        error="don't do it"
         onChange={(e) =>
           handleOnChange({
             name: e.target.value,

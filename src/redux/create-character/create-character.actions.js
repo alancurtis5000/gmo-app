@@ -1,9 +1,8 @@
 import types from "./create-character.types";
-import { API } from "aws-amplify";
+// import { API } from "aws-amplify";
 // import { createCharacter as createCharacterQuery } from "../../graphql/custom-queries";
 
 export const updateCreateCharacter = (update) => (dispatch) => {
-  console.log({ update });
   dispatch({
     type: types.UPDATE_CREATE_CHARACTER,
     payload: update,
