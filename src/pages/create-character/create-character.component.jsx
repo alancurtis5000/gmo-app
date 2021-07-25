@@ -1,32 +1,16 @@
 // import { API } from "aws-amplify";
 import Button from "../../components/button/button.component";
 // import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
-import { useSelector } from "react-redux";
 import CreateCharacterAbilities from "../../components/create-character-abilities/create-character-abilities.component";
 import CreateCharacterDetails from "../../components/create-character-details/create-character-details.component";
+import { connect } from "react-redux";
+import { createCharacter } from "../../redux/create-character/create-character.actions";
 
-const CreateCharacter = () => {
-  const userId = useSelector((state) => state.user.id);
+const CreateCharacter = (props) => {
+  const { createCharacter } = props;
 
-  async function createCharacter() {
-    console.log("createCharacter");
-    /*
-
-    try {
-      // first create details
-      // then create ability
-      // then create abilityScore
-      // then plug those into character
-      const input = { ...formData, characterUserId: userId };
-      await API.graphql({
-        query: createCharacterMutation,
-        variables: { input: input },
-      });
-      setFormData(initialFormState);
-    } catch (error) {
-      console.log(error);
-    }
-    */
+  async function handleCreateCharacter() {
+    createCharacter();
   }
 
   return (
@@ -35,9 +19,17 @@ const CreateCharacter = () => {
       <CreateCharacterDetails />
       <CreateCharacterAbilities />
 
-      <Button text="Create Character" onClick={createCharacter} />
+      <Button text="Create Character" onClick={handleCreateCharacter} />
     </div>
   );
 };
 
-export default CreateCharacter;
+const mapStateToProps = (state) => ({
+  character: state.createCharacter.data,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  createCharacter: () => dispatch(createCharacter()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCharacter);

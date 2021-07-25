@@ -51,19 +51,17 @@ input SelectedCharacter {
 
 type Character @model {
   id: ID!
-  user: User! @connection(name: "UserCharacters")
-  content: String
+  userId: User! @connection(name: "UserCharacters")
+  details: Detail!
+  abilityScores: AbilityScores!
 }
 
-type Detail @model {
-  id: ID!
-  character: Character! @connection
+type Detail {
   name: String
+  background: String
 }
 
-type AbilityScores @model {
-  id: ID!
-  character: Character! @connection
+type AbilityScores {
   strength: Int
   strengthModifier: Int
   dexterity: Int

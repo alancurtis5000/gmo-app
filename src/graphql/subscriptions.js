@@ -37,7 +37,6 @@ export const newOnCreateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -87,7 +86,6 @@ export const newOnDeleteGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -137,7 +135,6 @@ export const newOnUpdateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -181,7 +178,6 @@ export const newOnUpdateUser = /* GraphQL */ `
       characters {
         items {
           id
-          content
           createdAt
           updatedAt
         }
@@ -189,8 +185,20 @@ export const newOnUpdateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -203,25 +211,7 @@ export const newOnUpdateUser = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
         createdAt
         updatedAt
       }
@@ -267,7 +257,6 @@ export const onCreateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -317,7 +306,6 @@ export const onUpdateGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -367,7 +355,6 @@ export const onDeleteGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -411,7 +398,6 @@ export const onCreateUser = /* GraphQL */ `
       characters {
         items {
           id
-          content
           createdAt
           updatedAt
         }
@@ -419,8 +405,20 @@ export const onCreateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -433,25 +431,7 @@ export const onCreateUser = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
         createdAt
         updatedAt
       }
@@ -491,7 +471,6 @@ export const onUpdateUser = /* GraphQL */ `
       characters {
         items {
           id
-          content
           createdAt
           updatedAt
         }
@@ -499,8 +478,20 @@ export const onUpdateUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -513,25 +504,7 @@ export const onUpdateUser = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
         createdAt
         updatedAt
       }
@@ -571,7 +544,6 @@ export const onDeleteUser = /* GraphQL */ `
       characters {
         items {
           id
-          content
           createdAt
           updatedAt
         }
@@ -579,8 +551,20 @@ export const onDeleteUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -593,25 +577,7 @@ export const onDeleteUser = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
         createdAt
         updatedAt
       }
@@ -625,41 +591,6 @@ export const onCreateCharacter = /* GraphQL */ `
   subscription OnCreateCharacter {
     onCreateCharacter {
       id
-      abilityScores {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
-        createdAt
-        updatedAt
-      }
-      details {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        name
-        createdAt
-        updatedAt
-      }
       user {
         id
         userSub
@@ -678,7 +609,6 @@ export const onCreateCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -686,7 +616,24 @@ export const onCreateCharacter = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      content
+      details {
+        name
+        background
+      }
+      abilityScores {
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
+      }
       createdAt
       updatedAt
     }
@@ -696,41 +643,6 @@ export const onUpdateCharacter = /* GraphQL */ `
   subscription OnUpdateCharacter {
     onUpdateCharacter {
       id
-      abilityScores {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
-        createdAt
-        updatedAt
-      }
-      details {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        name
-        createdAt
-        updatedAt
-      }
       user {
         id
         userSub
@@ -749,7 +661,6 @@ export const onUpdateCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -757,7 +668,24 @@ export const onUpdateCharacter = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      content
+      details {
+        name
+        background
+      }
+      abilityScores {
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
+      }
       createdAt
       updatedAt
     }
@@ -767,41 +695,6 @@ export const onDeleteCharacter = /* GraphQL */ `
   subscription OnDeleteCharacter {
     onDeleteCharacter {
       id
-      abilityScores {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
-        createdAt
-        updatedAt
-      }
-      details {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        name
-        createdAt
-        updatedAt
-      }
       user {
         id
         userSub
@@ -820,7 +713,6 @@ export const onDeleteCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -828,328 +720,24 @@ export const onDeleteCharacter = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      content
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateDetail = /* GraphQL */ `
-  subscription OnCreateDetail {
-    onCreateDetail {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
+      details {
+        name
+        background
       }
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateDetail = /* GraphQL */ `
-  subscription OnUpdateDetail {
-    onUpdateDetail {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
+      abilityScores {
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
       }
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteDetail = /* GraphQL */ `
-  subscription OnDeleteDetail {
-    onDeleteDetail {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateAbilityScore = /* GraphQL */ `
-  subscription OnCreateAbilityScore {
-    onCreateAbilityScore {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      strength
-      strengthModifier
-      dexterity
-      dexterityModifier
-      constitution
-      constitutionModifier
-      intelligence
-      intelligenceModifier
-      wisdom
-      wisdomModifier
-      charisma
-      charismaModifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateAbilityScore = /* GraphQL */ `
-  subscription OnUpdateAbilityScore {
-    onUpdateAbilityScore {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      strength
-      strengthModifier
-      dexterity
-      dexterityModifier
-      constitution
-      constitutionModifier
-      intelligence
-      intelligenceModifier
-      wisdom
-      wisdomModifier
-      charisma
-      charismaModifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteAbilityScore = /* GraphQL */ `
-  subscription OnDeleteAbilityScore {
-    onDeleteAbilityScore {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      strength
-      strengthModifier
-      dexterity
-      dexterityModifier
-      constitution
-      constitutionModifier
-      intelligence
-      intelligenceModifier
-      wisdom
-      wisdomModifier
-      charisma
-      charismaModifier
       createdAt
       updatedAt
     }

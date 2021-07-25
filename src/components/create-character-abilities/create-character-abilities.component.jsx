@@ -20,7 +20,6 @@ const CreateCharacterAbilities = (props) => {
       <h2>Abilities</h2>
       {abilities.map((ability) => {
         const abilityScore = character.abilityScores[ability];
-        console.log(abilityScore);
         return (
           <div key={ability}>
             <h3>{ability}</h3>

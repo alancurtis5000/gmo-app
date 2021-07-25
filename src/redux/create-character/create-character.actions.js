@@ -1,6 +1,6 @@
 import types from "./create-character.types";
-// import { API } from "aws-amplify";
-// import { createCharacter as createCharacterQuery } from "../../graphql/custom-queries";
+import { API } from "aws-amplify";
+import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 
 export const updateCreateCharacter = (update) => (dispatch) => {
   dispatch({
@@ -35,18 +35,42 @@ export const createCharacterFailure = (error) => {
   };
 };
 
-// export const createCharacter = (character) => async (dispatch) => {
-//   dispatch(createCharacterStart());
-//   try {
-//     const result = await API.graphql({
-//       query: createCharacterQuery,
-//       variables: {
-//         ...character,
-//       },
-//     });
-//     const game = result.data.createCharacter;
-//     return dispatch(createCharacterSuccess(game));
-//   } catch (error) {
-//     return dispatch(createCharacterFailure(error[0].message));
-//   }
-// };
+export const createCharacter = () => async (dispatch, getState) => {
+  const characterToCreate = getState()?.createCharacter?.data;
+  const userId = getState()?.user?.id;
+  dispatch(createCharacterStart());
+  try {
+    const score = characterToCreate.abilityScores;
+    const abilityScores = {
+      strength: score.strength.value,
+      strengthModifier: score.strength.modifier,
+      dexterity: score.dexterity.value,
+      dexterityModifier: score.dexterity.modifier,
+      constitution: score.constitution.value,
+      constitutionModifier: score.constitution.modifier,
+      intelligence: score.intelligence.value,
+      intelligenceModifier: score.intelligence.modifier,
+      wisdom: score.wisdom.value,
+      wisdomModifier: score.wisdom.modifier,
+      charisma: score.charisma.value,
+      charismaModifier: score.charisma.modifier,
+    };
+
+    // create character with detailsId, abilityScoresId
+    await API.graphql({
+      query: createCharacterMutation,
+      variables: {
+        input: {
+          characterUserId: userId,
+          abilityScores,
+          details: { ...characterToCreate.details },
+        },
+      },
+    });
+
+    return dispatch(createCharacterSuccess());
+  } catch (error) {
+    console.log({ error });
+    return dispatch(createCharacterFailure(error));
+  }
+};

@@ -37,7 +37,6 @@ export const getGame = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -112,7 +111,6 @@ export const getUser = /* GraphQL */ `
       characters {
         items {
           id
-          content
           createdAt
           updatedAt
         }
@@ -120,8 +118,20 @@ export const getUser = /* GraphQL */ `
       }
       selectedCharacter {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -134,25 +144,7 @@ export const getUser = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
         createdAt
         updatedAt
       }
@@ -187,7 +179,6 @@ export const listUsers = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -203,41 +194,6 @@ export const getCharacter = /* GraphQL */ `
   query GetCharacter($id: ID!) {
     getCharacter(id: $id) {
       id
-      abilityScores {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
-        createdAt
-        updatedAt
-      }
-      details {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        name
-        createdAt
-        updatedAt
-      }
       user {
         id
         userSub
@@ -256,7 +212,6 @@ export const getCharacter = /* GraphQL */ `
         }
         selectedCharacter {
           id
-          content
           createdAt
           updatedAt
         }
@@ -264,7 +219,24 @@ export const getCharacter = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      content
+      details {
+        name
+        background
+      }
+      abilityScores {
+        strength
+        strengthModifier
+        dexterity
+        dexterityModifier
+        constitution
+        constitutionModifier
+        intelligence
+        intelligenceModifier
+        wisdom
+        wisdomModifier
+        charisma
+        charismaModifier
+      }
       createdAt
       updatedAt
     }
@@ -279,8 +251,20 @@ export const listCharacters = /* GraphQL */ `
     listCharacters(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        abilityScores {
+        user {
           id
+          userSub
+          name
+          playerName
+          isReady
+          createdAt
+          updatedAt
+        }
+        details {
+          name
+          background
+        }
+        abilityScores {
           strength
           strengthModifier
           dexterity
@@ -293,189 +277,7 @@ export const listCharacters = /* GraphQL */ `
           wisdomModifier
           charisma
           charismaModifier
-          createdAt
-          updatedAt
         }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getDetail = /* GraphQL */ `
-  query GetDetail($id: ID!) {
-    getDetail(id: $id) {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      name
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listDetails = /* GraphQL */ `
-  query ListDetails(
-    $filter: ModelDetailFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listDetails(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        name
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getAbilityScore = /* GraphQL */ `
-  query GetAbilityScore($id: ID!) {
-    getAbilityScore(id: $id) {
-      id
-      character {
-        id
-        abilityScores {
-          id
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-          createdAt
-          updatedAt
-        }
-        details {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          userSub
-          name
-          playerName
-          isReady
-          createdAt
-          updatedAt
-        }
-        content
-        createdAt
-        updatedAt
-      }
-      strength
-      strengthModifier
-      dexterity
-      dexterityModifier
-      constitution
-      constitutionModifier
-      intelligence
-      intelligenceModifier
-      wisdom
-      wisdomModifier
-      charisma
-      charismaModifier
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listAbilityScores = /* GraphQL */ `
-  query ListAbilityScores(
-    $filter: ModelAbilityScoreFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAbilityScores(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        character {
-          id
-          content
-          createdAt
-          updatedAt
-        }
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
         createdAt
         updatedAt
       }

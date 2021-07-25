@@ -27,9 +27,9 @@ const createCharacterReducer = (state = initialState, action) => {
     case types.CREATE_CHARACTER_START:
       return { ...state, isLoaded: false };
     case types.CREATE_CHARACTER_SUCCESS:
-      return { ...state, ...action.payload, isLoaded: true };
+      return { ...initialState, isLoaded: true };
     case types.CREATE_CHARACTER_FAILURE:
-      return { ...state, data: {}, isLoaded: true, ...action.payload };
+      return { ...state, isLoaded: true, ...action.payload };
     default:
       return state;
   }
