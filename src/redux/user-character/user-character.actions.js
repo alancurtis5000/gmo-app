@@ -1,9 +1,12 @@
 import types from "./user-character.types";
 import { API } from "aws-amplify";
 import { getCharacterById as getCharacterByIdQuery } from "../../graphql/custom-queries";
-import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
+import {
+  createCharacter as createCharacterMutation,
+  updateCharacter as updateCharacterMutation,
+} from "../../graphql/mutations";
 
-export const updateUserCharacter = (update) => (dispatch) => {
+export const updateUserCharacterLocal = (update) => (dispatch) => {
   dispatch({
     type: types.UPDATE_USER_CHARACTER,
     payload: update,
@@ -107,5 +110,60 @@ export const createCharacter = () => async (dispatch, getState) => {
   } catch (error) {
     console.log({ error });
     return dispatch(createCharacterFailure(error));
+  }
+};
+
+// update user character //
+
+export const updateUserCharacterStart = () => (dispatch) => {
+  dispatch({
+    type: types.UPDATE_USER_CHARACTER_START,
+  });
+};
+
+export const updateUserCharacterSuccess = (character) => {
+  return {
+    type: types.UPDATE_USER_CHARACTER_SUCCESS,
+    payload: character,
+  };
+};
+
+export const updateUserCharacterFailure = (error) => {
+  return {
+    type: types.UPDATE_USER_CHARACTER_FAILURE,
+    payload: error,
+  };
+};
+
+export const updateUserCharacter = () => async (dispatch, getState) => {
+  const characterToUpdate = getState()?.userCharacter?.data;
+  dispatch(updateUserCharacterStart());
+  try {
+    const score = characterToUpdate.abilityScores;
+    const abilityScores = {
+      strength: score.strength,
+      dexterity: score.dexterity,
+      constitution: score.constitution,
+      intelligence: score.intelligence,
+      wisdom: score.wisdom,
+      charisma: score.charisma,
+    };
+
+    // updateUser character with detailsId, abilityScoresId
+    const updateUserCharacterData = await API.graphql({
+      query: updateCharacterMutation,
+      variables: {
+        input: {
+          id: characterToUpdate.id,
+          abilityScores,
+          details: { ...characterToUpdate.details },
+        },
+      },
+    });
+    const updatedCharacter = updateUserCharacterData.data.updateCharacter;
+    return dispatch(updateUserCharacterSuccess(updatedCharacter));
+  } catch (error) {
+    console.log({ error });
+    return dispatch(updateUserCharacterFailure(error));
   }
 };

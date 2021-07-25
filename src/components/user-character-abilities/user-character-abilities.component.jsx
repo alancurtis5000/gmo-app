@@ -1,10 +1,10 @@
 import NumberInput from "../number-input/number-input.component";
 import abilities from "../../constants/abilities";
 import { connect } from "react-redux";
-import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
+import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 
 const UserCharacterAbilities = (props) => {
-  const { updateUserCharacter, character } = props;
+  const { updateUserCharacterLocal, character } = props;
   const handleOnChange = (abilityScore) => {
     const update = {
       abilityScores: {
@@ -12,7 +12,7 @@ const UserCharacterAbilities = (props) => {
         ...abilityScore,
       },
     };
-    updateUserCharacter(update);
+    updateUserCharacterLocal(update);
   };
 
   return (
@@ -61,7 +61,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUserCharacter: (update) => dispatch(updateUserCharacter(update)),
+  updateUserCharacterLocal: (update) =>
+    dispatch(updateUserCharacterLocal(update)),
 });
 
 export default connect(

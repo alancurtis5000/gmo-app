@@ -8,6 +8,7 @@ import {
   resetUserCharacter,
   getUserCharacter,
   createCharacter,
+  updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
 
 import { connect } from "react-redux";
@@ -28,6 +29,7 @@ const CreateCharacter = () => {
 
   const handleSave = () => {
     console.log("handleSave");
+    dispatch(updateUserCharacter());
   };
   const handleCreateCharacter = () => {
     console.log("handleCreateCharacter");

@@ -1,9 +1,9 @@
 import TextInput from "../text-input/text-input.component";
 import { connect } from "react-redux";
-import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
+import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 
 const UserCharacterDetails = (props) => {
-  const { updateUserCharacter, character } = props;
+  const { updateUserCharacterLocal, character } = props;
 
   const handleOnChange = (detail) => {
     const update = {
@@ -12,7 +12,7 @@ const UserCharacterDetails = (props) => {
         ...detail,
       },
     };
-    updateUserCharacter(update);
+    updateUserCharacterLocal(update);
   };
 
   return (
@@ -38,7 +38,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUserCharacter: (update) => dispatch(updateUserCharacter(update)),
+  updateUserCharacterLocal: (update) =>
+    dispatch(updateUserCharacterLocal(update)),
 });
 
 export default connect(
