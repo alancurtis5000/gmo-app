@@ -25,7 +25,6 @@ export const getUserCharactersFailure = (error) => {
 export const getUserCharacters = () => async (dispatch, getState) => {
   const userId = getState()?.user?.id;
   dispatch(getUserCharactersStart());
-  console.log({ userId });
   try {
     // create character with detailsId, abilityScoresId
     const userCharactersData = await API.graphql({

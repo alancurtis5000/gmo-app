@@ -1,8 +1,4 @@
-import Button from "../../components/button/button.component";
-import { useHistory } from "react-router-dom";
-
 const Character = () => {
-  let history = useHistory();
   // can edit, or create new characters
 
   return (

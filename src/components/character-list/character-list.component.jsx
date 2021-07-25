@@ -1,16 +1,34 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import CharacterListCard from "../character-list-card/character-list-card.component";
+import { connect } from "react-redux";
+import { getUserCharacters } from "../../redux/user-characters/user-characters.actions";
 
-import GameLobbyPlayersListCard from "../game-lobby-players-list-card/game-lobby-players-list-card.component";
+const CharacterList = (props) => {
+  const { getUserCharacters, userCharacters, userId } = props;
+  useEffect(() => {
+    getUserCharacters();
+  }, [userId, getUserCharacters]);
 
-const GameLobbyPlayersList = () => {
-  const game = useSelector((state) => state.game);
-
-  const displayPlayers = () => {
-    return game?.players?.items.map((player, i) => {
-      return <GameLobbyPlayersListCard key={player.id} player={player} />;
+  const displayCharacters = () => {
+    return userCharacters.map((character, i) => {
+      return <CharacterListCard key={character.id} character={character} />;
     });
   };
-  return <div>{displayPlayers()}</div>;
+
+  return (
+    <div>
+      <div>List of Characters</div>
+      {displayCharacters()}
+    </div>
+  );
 };
 
-export default GameLobbyPlayersList;
+const mapStateToProps = (state) => ({
+  userCharacters: state.userCharacters.data,
+  userId: state.user.id,
+});
+const mapDispatchToProps = (dispatch) => ({
+  getUserCharacters: () => dispatch(getUserCharacters()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterList);
