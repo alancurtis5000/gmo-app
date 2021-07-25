@@ -59,30 +59,30 @@ export const getUserCharacter = (characterId) => async (dispatch) => {
 
 // create character //
 
-export const createCharacterStart = () => (dispatch) => {
+export const createUserCharacterStart = () => (dispatch) => {
   dispatch({
-    type: types.CREATE_CHARACTER_START,
+    type: types.CREATE_USER_CHARACTER_START,
   });
 };
 
-export const createCharacterSuccess = (game) => {
+export const createUserCharacterSuccess = (game) => {
   return {
-    type: types.CREATE_CHARACTER_SUCCESS,
+    type: types.CREATE_USER_CHARACTER_SUCCESS,
     payload: game,
   };
 };
 
-export const createCharacterFailure = (error) => {
+export const createUserCharacterFailure = (error) => {
   return {
-    type: types.CREATE_CHARACTER_FAILURE,
+    type: types.CREATE_USER_CHARACTER_FAILURE,
     payload: error,
   };
 };
 
-export const createCharacter = () => async (dispatch, getState) => {
+export const createUserCharacter = () => async (dispatch, getState) => {
   const characterToCreate = getState()?.userCharacter?.data;
   const userId = getState()?.user?.id;
-  dispatch(createCharacterStart());
+  dispatch(createUserCharacterStart());
   try {
     const score = characterToCreate.abilityScores;
     const abilityScores = {
@@ -106,10 +106,10 @@ export const createCharacter = () => async (dispatch, getState) => {
       },
     });
 
-    return dispatch(createCharacterSuccess());
+    return dispatch(createUserCharacterSuccess());
   } catch (error) {
     console.log({ error });
-    return dispatch(createCharacterFailure(error));
+    return dispatch(createUserCharacterFailure(error));
   }
 };
 

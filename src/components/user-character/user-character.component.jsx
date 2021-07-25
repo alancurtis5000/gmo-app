@@ -7,11 +7,9 @@ import { useDispatch } from "react-redux";
 import {
   resetUserCharacter,
   getUserCharacter,
-  createCharacter,
+  createUserCharacter,
   updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
-
-import { connect } from "react-redux";
 
 const CreateCharacter = () => {
   const characterId = useRouteMatch().params.id;
@@ -33,7 +31,7 @@ const CreateCharacter = () => {
   };
   const handleCreateCharacter = () => {
     console.log("handleCreateCharacter");
-    dispatch(createCharacter());
+    dispatch(createUserCharacter());
     // TODO: wait till success then push to page
   };
 
@@ -51,8 +49,4 @@ const CreateCharacter = () => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCharacter);
+export default CreateCharacter;

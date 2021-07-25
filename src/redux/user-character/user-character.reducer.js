@@ -32,11 +32,11 @@ const userCharactersReducer = (state = initialState, action) => {
     case types.GET_USER_CHARACTER_FAILURE:
       return { ...state, data: {}, isLoaded: true, error: [...action.payload] };
     // CREATE
-    case types.CREATE_CHARACTER_START:
+    case types.CREATE_USER_CHARACTER_START:
       return { ...state, isLoaded: false };
-    case types.CREATE_CHARACTER_SUCCESS:
+    case types.CREATE_USER_CHARACTER_SUCCESS:
       return { ...initialState, isLoaded: true };
-    case types.CREATE_CHARACTER_FAILURE:
+    case types.CREATE_USER_CHARACTER_FAILURE:
       return { ...state, isLoaded: true, error: [...action.payload] };
     // UPDATE
     case types.UPDATE_USER_CHARACTER_START:
