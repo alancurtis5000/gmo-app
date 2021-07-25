@@ -56,7 +56,7 @@ const SelectCharacter = (props) => {
       <Select
         options={options}
         handleSelect={handleSelect}
-        value={selected?.id}
+        value={selected?.details?.name}
         placeholder="Character"
         disabled={disabled}
       />

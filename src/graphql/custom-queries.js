@@ -31,10 +31,17 @@ export const getCharactersByUserId = /* GraphQL */ `
     getUser(id: $id) {
       selectedCharacter {
         id
+        details {
+          name
+        }
       }
       characters {
         items {
           id
+          details {
+            name
+            background
+          }
         }
       }
     }
