@@ -6,10 +6,12 @@ import { combineReducers } from "redux";
 import createCharacterReducer from "./create-character/create-character.reducer";
 import gameReducer from "./game/game.reducer";
 import userReducer from "./user/user.reducer";
+import userCharactersReducer from "./user-characters/user-characters.reducer";
 
 export default combineReducers({
   //   exampleCounter: exampleCounterReducer,
   createCharacter: createCharacterReducer,
   game: gameReducer,
   user: userReducer,
+  userCharacters: userCharactersReducer,
 });

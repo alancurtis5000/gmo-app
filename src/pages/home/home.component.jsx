@@ -7,6 +7,9 @@ const Home = () => {
   const joinGame = () => {
     history.push("/join");
   };
+  const characters = () => {
+    history.push("/characters");
+  };
   const createCharacter = () => {
     history.push("/create-character");
   };
@@ -18,6 +21,7 @@ const Home = () => {
     <div className="home page">
       <h1>home</h1>
       <Button text="Join" onClick={joinGame} />
+      <Button text="Characters" onClick={characters} />
       <Button text="Create Character" onClick={createCharacter} />
       <Button text="Create Game" onClick={createGame} />
     </div>

@@ -8,6 +8,8 @@ import CreateGame from "../pages/create-game/create-game.component";
 import GameLobby from "../pages/game-lobby/game-lobby.component";
 // import Game from "../pages/game/game.component";
 import Playground from "../pages/playground/playground.component";
+import Characters from "../pages/characters/characters.component";
+import Character from "../pages/character/character.component";
 
 const PreGameRouter = () => {
   return (
@@ -16,6 +18,8 @@ const PreGameRouter = () => {
       <Route exact path="/join" component={JoinGame} />
       <Route exact path="/create-character" component={CreateCharacter} />
       <Route exact path="/create-game" component={CreateGame} />
+      <Route exact path="/characters" component={Characters} />
+      <Route exact path="/character/:id" component={Character} />
       <Route exact path="/playground" component={Playground} />
       <Route exact path="/game-lobby/:id" component={GameLobby} />
     </Switch>

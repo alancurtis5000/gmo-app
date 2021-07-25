@@ -42,18 +42,12 @@ export const createCharacter = () => async (dispatch, getState) => {
   try {
     const score = characterToCreate.abilityScores;
     const abilityScores = {
-      strength: score.strength.value,
-      strengthModifier: score.strength.modifier,
-      dexterity: score.dexterity.value,
-      dexterityModifier: score.dexterity.modifier,
-      constitution: score.constitution.value,
-      constitutionModifier: score.constitution.modifier,
-      intelligence: score.intelligence.value,
-      intelligenceModifier: score.intelligence.modifier,
-      wisdom: score.wisdom.value,
-      wisdomModifier: score.wisdom.modifier,
-      charisma: score.charisma.value,
-      charismaModifier: score.charisma.modifier,
+      strength: score.strength,
+      dexterity: score.dexterity,
+      constitution: score.constitution,
+      intelligence: score.intelligence,
+      wisdom: score.wisdom,
+      charisma: score.charisma,
     };
 
     // create character with detailsId, abilityScoresId

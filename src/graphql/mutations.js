@@ -210,20 +210,6 @@ export const createUser = /* GraphQL */ `
           name
           background
         }
-        abilityScores {
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-        }
         createdAt
         updatedAt
       }
@@ -285,20 +271,6 @@ export const updateUser = /* GraphQL */ `
         details {
           name
           background
-        }
-        abilityScores {
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
         }
         createdAt
         updatedAt
@@ -362,20 +334,6 @@ export const deleteUser = /* GraphQL */ `
           name
           background
         }
-        abilityScores {
-          strength
-          strengthModifier
-          dexterity
-          dexterityModifier
-          constitution
-          constitutionModifier
-          intelligence
-          intelligenceModifier
-          wisdom
-          wisdomModifier
-          charisma
-          charismaModifier
-        }
         createdAt
         updatedAt
       }
@@ -422,18 +380,30 @@ export const createCharacter = /* GraphQL */ `
         background
       }
       abilityScores {
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
+        strength {
+          value
+          modifier
+        }
+        dexterity {
+          value
+          modifier
+        }
+        constitution {
+          value
+          modifier
+        }
+        intelligence {
+          value
+          modifier
+        }
+        wisdom {
+          value
+          modifier
+        }
+        charisma {
+          value
+          modifier
+        }
       }
       createdAt
       updatedAt
@@ -477,18 +447,30 @@ export const updateCharacter = /* GraphQL */ `
         background
       }
       abilityScores {
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
+        strength {
+          value
+          modifier
+        }
+        dexterity {
+          value
+          modifier
+        }
+        constitution {
+          value
+          modifier
+        }
+        intelligence {
+          value
+          modifier
+        }
+        wisdom {
+          value
+          modifier
+        }
+        charisma {
+          value
+          modifier
+        }
       }
       createdAt
       updatedAt
@@ -532,18 +514,30 @@ export const deleteCharacter = /* GraphQL */ `
         background
       }
       abilityScores {
-        strength
-        strengthModifier
-        dexterity
-        dexterityModifier
-        constitution
-        constitutionModifier
-        intelligence
-        intelligenceModifier
-        wisdom
-        wisdomModifier
-        charisma
-        charismaModifier
+        strength {
+          value
+          modifier
+        }
+        dexterity {
+          value
+          modifier
+        }
+        constitution {
+          value
+          modifier
+        }
+        intelligence {
+          value
+          modifier
+        }
+        wisdom {
+          value
+          modifier
+        }
+        charisma {
+          value
+          modifier
+        }
       }
       createdAt
       updatedAt

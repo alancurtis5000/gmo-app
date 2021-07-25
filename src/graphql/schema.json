@@ -760,19 +760,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "strengthModifier",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -782,19 +771,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "dexterityModifier",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -804,19 +782,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "constitutionModifier",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -826,19 +793,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "intelligenceModifier",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -848,19 +804,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "wisdomModifier",
-          "description" : null,
-          "args" : [ ],
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -870,6 +815,26 @@
           "description" : null,
           "args" : [ ],
           "type" : {
+            "kind" : "OBJECT",
+            "name" : "AbilityScore",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        } ],
+        "inputFields" : null,
+        "interfaces" : [ ],
+        "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "OBJECT",
+        "name" : "AbilityScore",
+        "description" : null,
+        "fields" : [ {
+          "name" : "value",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
             "kind" : "SCALAR",
             "name" : "Int",
             "ofType" : null
@@ -877,7 +842,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "charismaModifier",
+          "name" : "modifier",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -2505,17 +2470,8 @@
           "name" : "strength",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "strengthModifier",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2523,17 +2479,8 @@
           "name" : "dexterity",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "dexterityModifier",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2541,17 +2488,8 @@
           "name" : "constitution",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "constitutionModifier",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2559,17 +2497,8 @@
           "name" : "intelligence",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "intelligenceModifier",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2577,17 +2506,8 @@
           "name" : "wisdom",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "wisdomModifier",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Int",
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2595,13 +2515,31 @@
           "name" : "charisma",
           "description" : null,
           "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "AbilityScoreInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        } ],
+        "interfaces" : null,
+        "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "INPUT_OBJECT",
+        "name" : "AbilityScoreInput",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : [ {
+          "name" : "value",
+          "description" : null,
+          "type" : {
             "kind" : "SCALAR",
             "name" : "Int",
             "ofType" : null
           },
           "defaultValue" : null
         }, {
-          "name" : "charismaModifier",
+          "name" : "modifier",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
