@@ -1,57 +1,42 @@
 import types from "./user-characters.types";
-// import { API } from "aws-amplify";
-// import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
+import { API } from "aws-amplify";
+import { getUserCharactersByUserId as getUserCharactersByUserIdQuery } from "../../graphql/custom-queries";
 
 export const getUserCharactersStart = () => (dispatch) => {
   dispatch({
-    type: types.CREATE_CHARACTER_START,
+    type: types.GET_USER_CHARACTERS_START,
   });
 };
 
-export const getUserCharactersSuccess = (game) => {
+export const getUserCharactersSuccess = (userCharactersList) => {
   return {
-    type: types.CREATE_CHARACTER_SUCCESS,
-    payload: game,
+    type: types.GET_USER_CHARACTERS_SUCCESS,
+    payload: userCharactersList,
   };
 };
 
 export const getUserCharactersFailure = (error) => {
   return {
-    type: types.CREATE_CHARACTER_FAILURE,
+    type: types.GET_USER_CHARACTERS_FAILURE,
     payload: error,
   };
 };
 
 export const getUserCharacters = () => async (dispatch, getState) => {
-  const characterToCreate = getState()?.createCharacter?.data;
   const userId = getState()?.user?.id;
   dispatch(getUserCharactersStart());
-  // try {
-  //   const score = characterToCreate.abilityScores;
-  //   const abilityScores = {
-  //     strength: score.strength,
-  //     dexterity: score.dexterity,
-  //     constitution: score.constitution,
-  //     intelligence: score.intelligence,
-  //     wisdom: score.wisdom,
-  //     charisma: score.charisma,
-  //   };
-
-  //   // create character with detailsId, abilityScoresId
-  //   await API.graphql({
-  //     query: createCharacterMutation,
-  //     variables: {
-  //       input: {
-  //         characterUserId: userId,
-  //         abilityScores,
-  //         details: { ...characterToCreate.details },
-  //       },
-  //     },
-  //   });
-
-  //   return dispatch(getUserCharactersSuccess());
-  // } catch (error) {
-  //   console.log({ error });
-  //   return dispatch(getUserCharactersFailure(error));
-  // }
+  console.log({ userId });
+  try {
+    // create character with detailsId, abilityScoresId
+    const userCharactersData = await API.graphql({
+      query: getUserCharactersByUserIdQuery,
+      variables: {
+        id: userId,
+      },
+    });
+    const userCharactersList = userCharactersData.data.getUser.characters.items;
+    return dispatch(getUserCharactersSuccess(userCharactersList));
+  } catch (error) {
+    return dispatch(getUserCharactersFailure(error));
+  }
 };

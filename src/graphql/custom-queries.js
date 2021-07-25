@@ -67,3 +67,45 @@ export const getGameLobbyById = /* GraphQL */ `
     }
   }
 `;
+
+export const getUserCharactersByUserId = /* GraphQL */ `
+  query GetUserCharactersByUserId($id: ID!) {
+    getUser(id: $id) {
+      characters {
+        items {
+          id
+          details {
+            name
+            background
+          }
+          abilityScores {
+            strength {
+              value
+              modifier
+            }
+            dexterity {
+              value
+              modifier
+            }
+            constitution {
+              value
+              modifier
+            }
+            intelligence {
+              value
+              modifier
+            }
+            wisdom {
+              value
+              modifier
+            }
+            charisma {
+              value
+              modifier
+            }
+          }
+        }
+      }
+    }
+  }
+`;
