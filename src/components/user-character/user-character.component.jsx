@@ -3,11 +3,14 @@ import Button from "../../components/button/button.component";
 import Checkbox from "../checkbox/checkbox.component";
 import UserCharacterDetails from "../user-character-details/user-character-details.component";
 import UserCharacterAbilities from "../user-character-abilities/user-character-abilities.component";
+import { useRouteMatch } from "react-router";
 
 import { connect } from "react-redux";
 
-const CreateCharacter = (props) => {
-  const { isCreateCharacter } = props;
+const CreateCharacter = () => {
+  const characterId = useRouteMatch().params.id;
+  const isCreateCharacter = !characterId;
+  console.log({ characterId, isCreateCharacter });
   const [isEdit, setIsEdit] = useState(false);
 
   return (

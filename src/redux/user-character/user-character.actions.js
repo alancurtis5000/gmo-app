@@ -2,6 +2,19 @@ import types from "./user-character.types";
 import { API } from "aws-amplify";
 import { getCharacterById as getCharacterByIdQuery } from "../../graphql/custom-queries";
 
+export const updateUserCharacter = (update) => (dispatch) => {
+  dispatch({
+    type: types.UPDATE_USER_CHARACTER,
+    payload: update,
+  });
+};
+
+export const resetUserCharacter = () => (dispatch) => {
+  dispatch({
+    type: types.RESET_USER_CHARACTER,
+  });
+};
+
 // get user characters list  //
 export const getUserCharacterStart = () => (dispatch) => {
   dispatch({
