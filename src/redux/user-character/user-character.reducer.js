@@ -24,12 +24,20 @@ const userCharactersReducer = (state = initialState, action) => {
       return { ...state, data: { ...state.data, ...action.payload } };
     case types.RESET_USER_CHARACTER:
       return { ...initialState };
+    // GET
     case types.GET_USER_CHARACTER_START:
       return { ...state, isLoaded: false };
     case types.GET_USER_CHARACTER_SUCCESS:
       return { ...state, data: { ...action.payload }, isLoaded: true };
     case types.GET_USER_CHARACTER_FAILURE:
       return { ...state, data: {}, isLoaded: true, error: action.payload };
+    // CREATE
+    case types.CREATE_CHARACTER_START:
+      return { ...state, isLoaded: false };
+    case types.CREATE_CHARACTER_SUCCESS:
+      return { ...initialState, isLoaded: true };
+    case types.CREATE_CHARACTER_FAILURE:
+      return { ...state, isLoaded: true, ...action.payload };
     default:
       return state;
   }
