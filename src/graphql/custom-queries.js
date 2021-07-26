@@ -55,6 +55,9 @@ export const getGameLobbyById = /* GraphQL */ `
         items {
           selectedCharacter {
             id
+            details {
+              name
+            }
           }
           id
           name

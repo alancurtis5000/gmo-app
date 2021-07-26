@@ -29,7 +29,7 @@ const GameLobbyPlayersListCard = (props) => {
       {player.id !== userId ? (
         <>
           <div>"Character"</div>
-          <div>{player?.selectedCharacter?.name}</div>
+          <div>{player?.selectedCharacter?.details?.name}</div>
           <div>"Description"</div>
           <div>{player?.selectedCharacter?.content}</div>
         </>
