@@ -1,5 +1,5 @@
 import types from "./user-character.types";
-import { initialState } from "./user-character-initial-state";
+import { initialState } from "./user-character-initial-state-dummy";
 
 const userCharactersReducer = (state = initialState, action) => {
   switch (action.type) {
