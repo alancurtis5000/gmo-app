@@ -1,5 +1,5 @@
 const PlayerLandingPage = () => {
-  return <div>Player Landing Page</div>;
+  return <div className="page">Player Landing Page</div>;
 };
 
 export default PlayerLandingPage;
