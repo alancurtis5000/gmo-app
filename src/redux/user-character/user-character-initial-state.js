@@ -73,9 +73,15 @@ export const initialState = {
         damageType: "slashing",
         isEquipt: true,
         isMagic: false,
-        range: "melee",
+        range: {
+          type: "melee", // melee, touch, ranged, melee/ranged
+          distance: {
+            base: { min: 0, max: 5 },
+          },
+        },
         value: 100,
         description: ["Battle axe bought from Store"],
+        weight: 3,
       },
       {
         type: "weapon",
@@ -96,6 +102,7 @@ export const initialState = {
         },
         value: 100,
         description: ["Battle axe bought from Store"],
+        weight: 1,
       },
       {
         type: "weapon",
@@ -116,6 +123,7 @@ export const initialState = {
         },
         value: 100,
         description: ["Battle axe bought from Store"],
+        weight: 1,
       },
       {
         type: "armor",
@@ -128,6 +136,7 @@ export const initialState = {
         isMagic: false,
         value: 200,
         description: ["Basic Chain Mail from guard"],
+        weight: 10,
       },
       {
         type: "item",
@@ -137,14 +146,29 @@ export const initialState = {
         isEquipt: true,
         description: ["+2 to Armor Class", "found on skeleton"],
         isMagic: true,
+        weight: 0.1,
       },
       {
         type: "item",
         title: "Backpack",
         code: "backpack",
         description: ["Basic Backpack"],
+        isMagic: false,
+        weight: 0.5,
+      },
+      {
+        type: "ammunition",
+        title: "Arrows",
+        code: "arrows",
+        description: ["Silver tipped arrows"],
+        isMagic: false,
+        quantity: 30,
+        weight: 0.1,
+        damageDice: "1d8",
+        damageType: "piercing",
       },
     ],
+    // todo spells
   },
   isLoaded: false,
   error: "",
