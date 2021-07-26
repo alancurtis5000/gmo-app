@@ -1,28 +1,28 @@
-import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Select from "../select/select.component";
 import alignments from "../../constants/alignments";
+import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 
 const SelectAlignment = (props) => {
   const { disabled } = props;
-  const [selected, setSelected] = useState();
   const options = alignments;
+  const dispatch = useDispatch();
+  const alignment = useSelector(
+    (state) => state.userCharacter.data.details.alignment
+  );
+  const characterDetails = useSelector(
+    (state) => state.userCharacter.data.details
+  );
 
-  // Left off here: todo // finish alignment drop down !!!!
-
-  // const alignment = useSelector(
-  //   (state) => state.userCharacter.data.details.alignment
-  // );
-
-  const handleSelect = (alignment) => {
-    console.log(alignment);
-    // setSelected(alignment);
+  const handleSelect = (selectedAlignment) => {
+    const update = {
+      details: {
+        ...characterDetails,
+        alignment: selectedAlignment.title,
+      },
+    };
+    dispatch(updateUserCharacterLocal(update));
   };
-
-  useEffect(() => {
-    // getCharacters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className="select-character">
@@ -30,7 +30,7 @@ const SelectAlignment = (props) => {
         label="Alignment"
         options={options}
         handleSelect={handleSelect}
-        value={selected}
+        value={alignment}
         placeholder="Alignment"
         disabled={disabled}
       />
