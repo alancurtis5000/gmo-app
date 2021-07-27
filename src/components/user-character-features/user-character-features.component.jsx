@@ -75,6 +75,24 @@ const UserCharacterFeatures = () => {
     handleOnChange(update);
   };
 
+  const handleDeleteFeature = (featureToDelete) => {
+    const featureType =
+      featureToDelete.type === "limited" ? "limited" : "constants";
+    let update;
+    let updatedFeatures = [...features[featureType]];
+    const index = updatedFeatures.findIndex(
+      (feature) => feature.id === featureToDelete.id
+    );
+    if (index !== -1) {
+      updatedFeatures.splice(index, 1);
+      update = {
+        [featureType]: updatedFeatures,
+      };
+    }
+
+    handleOnChange(update);
+  };
+
   const renderLimitedFeatures = () => {
     return features.limited.map((feature) => (
       <div style={{ display: "flex" }} key={feature.id}>
@@ -113,6 +131,7 @@ const UserCharacterFeatures = () => {
             handleOnChangeFeature({ ...feature, used: e.target.value })
           }
         />
+        <Button text="Remove" onClick={() => handleDeleteFeature(feature)} />
       </div>
     ));
   };
@@ -134,6 +153,7 @@ const UserCharacterFeatures = () => {
             handleOnChangeFeature({ ...feature, description: e.target.value })
           }
         />
+        <Button text="Remove" onClick={() => handleDeleteFeature(feature)} />
       </div>
     ));
   };

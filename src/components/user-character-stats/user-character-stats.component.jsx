@@ -51,6 +51,19 @@ const UserCharacterStats = () => {
     handleOnChange(update);
   };
 
+  const handleRemoveHitDice = (updatedDie) => {
+    let update;
+    let updatedHitDice = [...hitDice];
+    const index = updatedHitDice.findIndex((die) => die.id === updatedDie.id);
+    if (index !== -1) {
+      updatedHitDice.splice(index, 1);
+      update = {
+        hitDice: updatedHitDice,
+      };
+    }
+    handleOnChange(update);
+  };
+
   const renderHitDice = () => {
     return hitDice.map((die) => (
       <div style={{ display: "flex" }} key={die.id}>
@@ -75,6 +88,7 @@ const UserCharacterStats = () => {
             handleOnChangeHitDice({ ...die, used: e.target.value })
           }
         />
+        <Button text="-" onClick={() => handleRemoveHitDice(die)} />
       </div>
     ));
   };
