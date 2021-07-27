@@ -109,6 +109,8 @@ export const initialState = {
     features: {
       limited: [
         {
+          id: 0,
+          type: "limited",
           title: "Rage",
           max: 3,
           recovery: "long rest",
@@ -116,6 +118,8 @@ export const initialState = {
           description: "+ 2 to melee Damage for 3 rounds",
         },
         {
+          id: 1,
+          type: "limited",
           title: "Relentless Endurance",
           max: 1,
           recovery: "short rest",
@@ -125,6 +129,8 @@ export const initialState = {
       ],
       constants: [
         {
+          id: 0,
+          type: "constant",
           title: "Danger Sense",
           description:
             "Advantage on dexterity saves against seen effects (not blinded / defened / or incapacitated)",
