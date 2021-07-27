@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import UserCharacterDetailsClass from "../user-character-details-class/user-character-details-class.component";
 import Button from "../button/button.component";
-
+import UserCharacterDetailsDescription from "../user-character-details-description/user-character-details-description.component";
 const UserCharacterDetails = (props) => {
   const { updateUserCharacterLocal, character } = props;
 
@@ -83,10 +83,14 @@ const UserCharacterDetails = (props) => {
           })
         }
       />
-      <div>Classes</div>
+      <h3>Classes</h3>
       <Button text="+" onClick={handleAddClass} />
-      <div>{renderClasses()}</div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {renderClasses()}
+      </div>
       <SelectAlignment />
+      <h3>Description</h3>
+      <UserCharacterDetailsDescription />
     </div>
   );
 };
