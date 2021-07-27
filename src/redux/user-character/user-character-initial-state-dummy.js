@@ -84,7 +84,14 @@ export const initialState = {
         { code: "survival", title: "Survival", value: 3, type: "wisdom" },
         { code: "tool", title: "Tool", value: 4, type: "none" },
       ],
-      resistances: ["all Physical(rage)", "fire"],
+      resistances: [
+        {
+          id: 0,
+          title: "all Physical(rage)",
+          details: "I ingore all physical damaged while in rage",
+        },
+        { id: 1, title: "fire", details: "all fire damage is reduced by half" },
+      ],
     },
     stats: {
       hitPoints: { max: 34, current: 15, temporary: 0 },

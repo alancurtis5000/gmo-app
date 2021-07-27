@@ -1,11 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
+import TextInput from "../text-input/text-input.component";
+import Button from "../button/button.component";
+import TextAreaInput from "../text-area-input/text-area-input.component";
 
 const UserCharacterDetailsSavingThrows = () => {
   const savingThrows = useSelector(
     (state) => state.userCharacter.data.savingThrows
   );
+  const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
 
   const handleOnChange = (section, updatedSavingThrow) => {
@@ -21,10 +25,11 @@ const UserCharacterDetailsSavingThrows = () => {
           savingThrows: {
             base: [...updatedBase],
             skills: [...savingThrows.skills],
+            resistances: [...savingThrows.resistances],
           },
         };
       }
-    } else {
+    } else if (section === "skill") {
       let updatedSkills = [...savingThrows.skills];
       const index = updatedSkills.findIndex(
         (skill) => skill.code === updatedSavingThrow.code
@@ -35,6 +40,22 @@ const UserCharacterDetailsSavingThrows = () => {
           savingThrows: {
             base: [...savingThrows.base],
             skills: [...updatedSkills],
+            resistances: [...savingThrows.resistances],
+          },
+        };
+      }
+    } else {
+      let updatedSkills = [...savingThrows.resistances];
+      const index = updatedSkills.findIndex(
+        (resistance) => resistance.id === updatedSavingThrow.id
+      );
+      if (index !== -1) {
+        updatedSkills.splice(index, 1, updatedSavingThrow);
+        update = {
+          savingThrows: {
+            base: [...savingThrows.base],
+            skills: [...savingThrows.skills],
+            resistances: [...updatedSkills],
           },
         };
       }
@@ -70,12 +91,79 @@ const UserCharacterDetailsSavingThrows = () => {
     ));
   };
 
+  const handleAddResistance = () => {
+    let updateResistances = [...character.savingThrows.resistances];
+    updateResistances.push({
+      id: updateResistances.length + 1,
+      title: "",
+      details: "",
+    });
+    const update = {
+      savingThrows: {
+        ...character.savingThrows,
+        ...{ resistances: updateResistances },
+      },
+    };
+    dispatch(updateUserCharacterLocal(update));
+  };
+
+  const handleDeleteResistance = (resistanceId) => {
+    let updatedResistances = [...character.savingThrows.resistances];
+    const index = updatedResistances.findIndex(
+      (resistance) => resistance.id === resistanceId
+    );
+    if (index !== -1) {
+      updatedResistances.splice(index, 1);
+      const update = {
+        savingThrows: {
+          ...character.savingThrows,
+          ...{ resistances: updatedResistances },
+        },
+      };
+      dispatch(updateUserCharacterLocal(update));
+    }
+  };
+
+  const renderResistances = () => {
+    return savingThrows?.resistances.map((resistance, i) => (
+      <div key={i}>
+        <TextInput
+          label={"Title"}
+          value={resistance.title}
+          onChange={(e) =>
+            handleOnChange("resistance", {
+              ...resistance,
+              title: e.target.value,
+            })
+          }
+        />
+        <TextAreaInput
+          label={"Details"}
+          value={resistance.details}
+          onChange={(e) =>
+            handleOnChange("resistance", {
+              ...resistance,
+              details: e.target.value,
+            })
+          }
+        />
+        <Button
+          text="-"
+          onClick={() => handleDeleteResistance(resistance.id)}
+        />
+      </div>
+    ));
+  };
+
   return (
     <>
       <h3>Base</h3>
       {renderBase()}
       <h3>Skills</h3>
       {renderSkills()}
+      <h3>Resistances</h3>
+      <Button text="+" onClick={handleAddResistance} />
+      {renderResistances()}
     </>
   );
 };
