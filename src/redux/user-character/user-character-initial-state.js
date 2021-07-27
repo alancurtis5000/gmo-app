@@ -8,7 +8,7 @@ export const initialState = {
       alignment: "",
       experience: 0,
       race: "",
-      class: [{ level: 0, type: "" }],
+      classes: [{ id: 0, level: 0, type: "" }],
     },
     abilityScores: {
       strength: { value: 0, modifier: 0 },

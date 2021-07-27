@@ -15,7 +15,7 @@ export const initialState = {
       alignment: "Chaotic Good",
       experience: 2500,
       race: "Half Elf",
-      class: [{ level: 2, type: "Fighter" }],
+      classes: [{ id: 0, level: 2, type: "Fighter" }],
     },
     abilityScores: {
       strength: { value: 17, modifier: 3 },
