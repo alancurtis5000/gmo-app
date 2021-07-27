@@ -94,16 +94,17 @@ export const initialState = {
       ],
     },
     stats: {
-      hitPoints: { max: 34, current: 15, temporary: 0 },
-      armorClass: 13, // should be calcutated from equipt items with attribute armorClassContribution
-      proficiency: 2,
-      initiative: 3,
+      hitPoints: { title: "Hit Points", max: 34, current: 13, temporary: 0 },
+      armorClass: { title: "Armor Class", value: 13, temporary: 0 }, // should be calcutated from equipt items with attribute armorClassContribution
+      proficiency: { title: "Profienciency", value: 2 },
+      initiative: { title: "Initiative", value: 3 },
       deathSaves: {
-        successes: [],
-        failures: [],
+        title: "Death Saves",
+        successes: 0,
+        failures: 0,
       },
-      hitDice: [{ level: 4, dice: "d12+4", used: 0 }],
-      speed: { base: 30, encombered: 20 },
+      hitDice: [{ id: 0, level: 4, die: "d12+4", used: 0 }],
+      speed: { title: "Speed", base: 10, encombered: 4 },
     },
     features: {
       limited: [

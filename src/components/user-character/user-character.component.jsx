@@ -10,6 +10,7 @@ import {
   createUserCharacter,
   updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
+import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 
 const CreateCharacter = () => {
   const characterId = useRouteMatch().params.id;
@@ -40,6 +41,8 @@ const CreateCharacter = () => {
       <div>User Character Comp {isCreateCharacter ? "create mode" : ""}</div>
       <UserCharacterDetails />
       <UserCharacterAbilities />
+      <UserCharacterStats />
+
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />
       ) : (
