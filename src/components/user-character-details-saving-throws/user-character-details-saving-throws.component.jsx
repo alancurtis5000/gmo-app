@@ -11,58 +11,63 @@ const UserCharacterDetailsSavingThrows = () => {
   const handleOnChange = (section, updatedSavingThrow) => {
     let update;
     if (section === "base") {
-      update = {
-        savingThrows: {
-          base: { ...savingThrows.base, ...updatedSavingThrow },
-          skills: { ...savingThrows.skills },
-        },
-      };
+      let updatedBase = [...savingThrows.base];
+      const index = updatedBase.findIndex(
+        (base) => base.code === updatedSavingThrow.code
+      );
+      if (index !== -1) {
+        updatedBase.splice(index, 1, updatedSavingThrow);
+        update = {
+          savingThrows: {
+            base: [...updatedBase],
+            skills: [...savingThrows.skills],
+          },
+        };
+      }
     } else {
-      update = {
-        savingThrows: {
-          base: { ...savingThrows.base },
-          skills: { ...savingThrows.skills, ...updatedSavingThrow },
-        },
-      };
+      let updatedSkills = [...savingThrows.skills];
+      const index = updatedSkills.findIndex(
+        (skill) => skill.code === updatedSavingThrow.code
+      );
+      if (index !== -1) {
+        updatedSkills.splice(index, 1, updatedSavingThrow);
+        update = {
+          savingThrows: {
+            base: [...savingThrows.base],
+            skills: [...updatedSkills],
+          },
+        };
+      }
     }
     dispatch(updateUserCharacterLocal(update));
   };
 
   const renderBase = () => {
-    let base = [];
-    for (const [key, value] of Object.entries(savingThrows?.base)) {
-      base.push(
-        <NumberInput
-          key={key}
-          label={key}
-          value={value}
-          onChange={(e) => handleOnChange("base", { [key]: e.target.value })}
-        />
-      );
-    }
-    return base;
+    return savingThrows?.base.map((base) => (
+      <NumberInput
+        key={base.code}
+        label={base.title}
+        value={base.value}
+        onChange={(e) =>
+          handleOnChange("base", { ...base, value: e.target.value })
+        }
+      />
+    ));
   };
 
   const renderSkills = () => {
-    let skills = [];
-    for (const [key, value] of Object.entries(savingThrows?.skills)) {
-      console.log(`${key}: ${value.value}`);
-      skills.push(
-        <div key={key}>
-          <NumberInput
-            label={key}
-            value={value.value}
-            onChange={(e) =>
-              handleOnChange("skills", {
-                [key]: { value: e.target.value, type: value.type },
-              })
-            }
-          />
-          <div>{`(${value.type})`}</div>
-        </div>
-      );
-    }
-    return skills;
+    return savingThrows?.skills.map((skill) => (
+      <div key={skill.code}>
+        <NumberInput
+          label={skill.title}
+          value={skill.value}
+          onChange={(e) =>
+            handleOnChange("skill", { ...skill, value: e.target.value })
+          }
+        />
+        <div>{`(${skill.type})`}</div>
+      </div>
+    ));
   };
 
   return (
