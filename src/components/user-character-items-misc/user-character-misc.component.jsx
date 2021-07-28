@@ -24,9 +24,15 @@ const UserCharacterItemsMisc = () => {
     let updateItems = [...items];
     updateItems.push({
       id: updateItems.length + 1,
+      isEquipt: false,
+      type: "misc",
       title: "",
       description: "",
-      type: "misc",
+      isMagic: false,
+      value: 0,
+      weight: 0,
+      quantity: 0,
+      armorClassContribution: 0,
     });
     handleOnChange(updateItems);
   };

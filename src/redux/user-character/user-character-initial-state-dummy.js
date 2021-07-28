@@ -279,7 +279,6 @@ export const initialState = {
         damageDice: "1d8",
         damageType: "piercing",
         value: 1,
-        armorClassContribution: 0,
       },
     ],
     money: {
