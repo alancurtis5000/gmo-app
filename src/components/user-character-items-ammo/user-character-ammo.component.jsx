@@ -24,9 +24,16 @@ const UserCharacterItemsAmmo = () => {
     let updateItems = [...items];
     updateItems.push({
       id: updateItems.length + 1,
+      type: "ammo",
+      isEquipt: false,
       title: "",
       description: "",
-      type: "ammo",
+      isMagic: false,
+      quantity: 0,
+      weight: 0,
+      damageDice: "",
+      damageType: "",
+      value: 0,
     });
     handleOnChange(updateItems);
   };
@@ -98,13 +105,6 @@ const UserCharacterItemsAmmo = () => {
             checked={item.isMagic}
             onChange={(e) =>
               handleOnChangeItem({ ...item, isMagic: !item.isMagic })
-            }
-          />
-          <CheckBox
-            label="Is Two Handed"
-            checked={item.istwoHanded}
-            onChange={(e) =>
-              handleOnChangeItem({ ...item, istwoHanded: !item.istwoHanded })
             }
           />
           <NumberInput
