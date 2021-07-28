@@ -12,6 +12,7 @@ import {
 } from "../../redux/user-character/user-character.actions";
 import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 import UserCharacterFeatures from "../user-character-features/user-character-features.component";
+import UserCharacterItems from "../user-character-items/user-character-items.component";
 
 const CreateCharacter = () => {
   const characterId = useRouteMatch().params.id;
@@ -44,6 +45,7 @@ const CreateCharacter = () => {
       <UserCharacterAbilities />
       <UserCharacterStats />
       <UserCharacterFeatures />
+      <UserCharacterItems />
 
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />
