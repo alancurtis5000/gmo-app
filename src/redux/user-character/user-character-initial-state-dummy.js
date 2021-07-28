@@ -283,7 +283,9 @@ export const initialState = {
       },
     ],
     money: {
+      platinum: 0,
       gold: 0,
+      electrum: 0,
       silver: 0,
       copper: 0,
     },

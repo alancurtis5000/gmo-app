@@ -13,6 +13,7 @@ import {
 import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 import UserCharacterFeatures from "../user-character-features/user-character-features.component";
 import UserCharacterItems from "../user-character-items/user-character-items.component";
+import UserCharacterMoney from "../user-character-money/user-character-money.component";
 
 const CreateCharacter = () => {
   const characterId = useRouteMatch().params.id;
@@ -46,6 +47,7 @@ const CreateCharacter = () => {
       <UserCharacterStats />
       <UserCharacterFeatures />
       <UserCharacterItems />
+      <UserCharacterMoney />
 
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />
