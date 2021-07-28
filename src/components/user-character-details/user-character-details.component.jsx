@@ -48,7 +48,7 @@ const UserCharacterDetails = (props) => {
         }
       />
       <TextAreaInput
-        label="BackGround"
+        label="Background"
         value={character?.details?.background}
         // error="don't do it"
         onChange={(e) =>
