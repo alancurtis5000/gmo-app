@@ -21,7 +21,7 @@ const UserCharacterItemsArmor = () => {
   };
 
   const handleAddItem = () => {
-    let updateItems = [...items.filter((item) => item.type === "armor")];
+    let updateItems = [...items];
     updateItems.push({
       id: updateItems.length + 1,
       quantity: 0,
@@ -38,7 +38,7 @@ const UserCharacterItemsArmor = () => {
   };
 
   const handleOnChangeItem = (updatedItem) => {
-    let updatedItems = [...items.filter((item) => item.type === "armor")];
+    let updatedItems = [...items];
     const index = updatedItems.findIndex((item) => item.id === updatedItem.id);
     if (index !== -1) {
       updatedItems.splice(index, 1, updatedItem);

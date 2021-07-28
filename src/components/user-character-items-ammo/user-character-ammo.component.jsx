@@ -21,7 +21,7 @@ const UserCharacterItemsAmmo = () => {
   };
 
   const handleAddItem = () => {
-    let updateItems = [...items.filter((item) => item.type === "ammo")];
+    let updateItems = [...items];
     updateItems.push({
       id: updateItems.length + 1,
       type: "ammo",

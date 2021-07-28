@@ -254,7 +254,7 @@ export const initialState = {
         armorClassContribution: 0,
       },
       {
-        id: 9,
+        id: 8,
         quantity: 1,
         isEquipt: true,
         type: "misc",
@@ -267,7 +267,7 @@ export const initialState = {
         armorClassContribution: 0,
       },
       {
-        id: 8,
+        id: 9,
         type: "ammo",
         isEquipt: true,
         title: "Arrows",
