@@ -72,6 +72,20 @@ const UserCharacterItemsAmmo = () => {
               handleOnChangeItem({ ...item, quantity: e.target.value })
             }
           />
+          <TextInput
+            label="Damage Dice"
+            value={item.damageDice}
+            onChange={(e) =>
+              handleOnChangeItem({ ...item, damageDice: e.target.value })
+            }
+          />
+          <TextInput
+            label="Damage Type"
+            value={item.damageType}
+            onChange={(e) =>
+              handleOnChangeItem({ ...item, damageType: e.target.value })
+            }
+          />
           <CheckBox
             label="Equipt"
             checked={item.isEquipt}

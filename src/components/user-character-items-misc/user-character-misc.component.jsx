@@ -96,13 +96,6 @@ const UserCharacterItemsMisc = () => {
               handleOnChangeItem({ ...item, isMagic: !item.isMagic })
             }
           />
-          <CheckBox
-            label="Is Two Handed"
-            checked={item.istwoHanded}
-            onChange={(e) =>
-              handleOnChangeItem({ ...item, istwoHanded: !item.istwoHanded })
-            }
-          />
           <NumberInput
             label="Value"
             value={item.value}

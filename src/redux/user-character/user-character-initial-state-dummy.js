@@ -153,7 +153,7 @@ export const initialState = {
         istwoHanded: true,
         range: {
           type: "melee", // melee, touch, ranged, melee/ranged
-          distance: { min: 0, max: 5 },
+          distance: { min: 0, max: 5, disadvantage: 0 },
         },
         value: 100,
         description: "Battle axe bought from Store",
@@ -230,6 +230,7 @@ export const initialState = {
       {
         id: 6,
         quantity: 1,
+        isEquipt: true,
         type: "misc",
         title: "Backpack",
         code: "backpack",
@@ -242,6 +243,7 @@ export const initialState = {
       {
         id: 7,
         quantity: 1,
+        isEquipt: true,
         type: "misc",
         title: "Quiver",
         code: "quiver",
@@ -254,6 +256,7 @@ export const initialState = {
       {
         id: 9,
         quantity: 1,
+        isEquipt: true,
         type: "misc",
         title: "Gem",
         code: "gem",
@@ -266,6 +269,7 @@ export const initialState = {
       {
         id: 8,
         type: "ammo",
+        isEquipt: true,
         title: "Arrows",
         code: "arrows",
         description: "Silver tipped arrows",
