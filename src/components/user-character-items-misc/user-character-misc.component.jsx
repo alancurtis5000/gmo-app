@@ -21,7 +21,7 @@ const UserCharacterItemsMisc = () => {
   };
 
   const handleAddItem = () => {
-    let updateItems = [...items];
+    let updateItems = [...items.filter((item) => item.type === "misc")];
     updateItems.push({
       id: updateItems.length + 1,
       isEquipt: false,

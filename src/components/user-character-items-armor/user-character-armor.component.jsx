@@ -21,18 +21,24 @@ const UserCharacterItemsArmor = () => {
   };
 
   const handleAddItem = () => {
-    let updateItems = [...items];
+    let updateItems = [...items.filter((item) => item.type === "armor")];
     updateItems.push({
       id: updateItems.length + 1,
-      title: "",
-      description: "",
+      quantity: 0,
       type: "armor",
+      title: "",
+      armorClassContribution: 0,
+      isEquipt: false,
+      isMagic: false,
+      value: 0,
+      description: "",
+      weight: 0,
     });
     handleOnChange(updateItems);
   };
 
   const handleOnChangeItem = (updatedItem) => {
-    let updatedItems = [...items];
+    let updatedItems = [...items.filter((item) => item.type === "armor")];
     const index = updatedItems.findIndex((item) => item.id === updatedItem.id);
     if (index !== -1) {
       updatedItems.splice(index, 1, updatedItem);

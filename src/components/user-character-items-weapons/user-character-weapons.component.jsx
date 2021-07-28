@@ -21,12 +21,25 @@ const UserCharacterItemsWeapons = () => {
   };
 
   const handleAddItem = () => {
-    let updateItems = [...items];
+    let updateItems = [...items.filter((item) => item.type === "weapon")];
     updateItems.push({
       id: updateItems.length + 1,
-      title: "",
-      description: "",
+      quantity: 1,
       type: "weapon",
+      damageDice: "",
+      title: "",
+      advantageToHit: 0,
+      damageType: "",
+      isEquipt: false,
+      isMagic: false,
+      istwoHanded: false,
+      range: {
+        type: "",
+        distance: { min: 0, max: 0, disadvantage: 0 },
+      },
+      value: 0,
+      description: "",
+      weight: 0,
     });
     handleOnChange(updateItems);
   };
