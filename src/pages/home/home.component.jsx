@@ -1,5 +1,6 @@
 import Button from "../../components/button/button.component";
 import { useHistory } from "react-router-dom";
+import Header from "../../components/header/header.component";
 
 const Home = () => {
   let history = useHistory();
@@ -16,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home page">
-      <h1>home</h1>
+      <Header title="Home" />
       <Button text="Join" onClick={joinGame} />
       <Button text="Characters" onClick={characters} />
       <Button text="Create Game" onClick={createGame} />

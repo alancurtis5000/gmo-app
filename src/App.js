@@ -97,11 +97,11 @@ const App = () => {
   return (
     <div className="App">
       {/* user name here for debuging remove later */}
-      <div className="user">
+      {/* <div className="user">
         <div>{userRedux.name}</div>
         <button onClick={() => console.log(userRedux)}>logProps</button>
         <button onClick={signOut}>Sign Out</button>
-      </div>
+      </div> */}
       <AppRouter />
     </div>
   );

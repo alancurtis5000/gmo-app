@@ -1,7 +1,7 @@
 import CharacterList from "../../components/character-list/character-list.component";
 import Button from "../../components/button/button.component";
 import { useHistory } from "react-router";
-
+import Header from "../../components/header/header.component";
 const Characters = () => {
   const history = useHistory();
   const handleGoToCreateCharacter = () => {
@@ -9,7 +9,7 @@ const Characters = () => {
   };
   return (
     <div className="characters page">
-      <h1>Characters</h1>
+      <Header title="Characters" />
       <Button text="Create Character" onClick={handleGoToCreateCharacter} />
       <CharacterList />
     </div>

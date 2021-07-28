@@ -13,6 +13,7 @@ import {
 import { listGames as listGamesQuery } from "../../graphql/queries";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Header from "../../components/header/header.component";
 
 const initialFormState = {
   name: "",
@@ -148,7 +149,7 @@ const CreateGame = () => {
 
   return (
     <div className="create-game page">
-      <h1>Create Game</h1>
+      <Header title="Create Game" />
       <input
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         placeholder="Note name"

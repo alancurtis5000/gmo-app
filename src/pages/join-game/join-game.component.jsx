@@ -5,6 +5,7 @@ import Button from "../../components/button/button.component";
 import { updateUser as updateUserMutation } from "../../graphql/mutations";
 import { getGame as getGameQuery } from "../../graphql/queries";
 import { useHistory } from "react-router-dom";
+import Header from "../../components/header/header.component";
 
 const initialFormState = { playerName: "", gameCode: "" };
 
@@ -48,7 +49,7 @@ const JoinGame = () => {
 
   return (
     <div className="join-game page">
-      <h1>Join Game</h1>
+      <Header title="Join Game" />
       <input
         onChange={(e) =>
           setFormData({ ...formData, playerName: e.target.value })
