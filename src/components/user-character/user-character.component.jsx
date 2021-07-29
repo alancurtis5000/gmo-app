@@ -41,13 +41,12 @@ const CreateCharacter = () => {
 
   return (
     <div className="user-character page">
-      <div>User Character Comp {isCreateCharacter ? "create mode" : ""}</div>
       <UserCharacterDetails />
-      <UserCharacterAbilities />
+      {/* <UserCharacterAbilities />
       <UserCharacterStats />
       <UserCharacterFeatures />
       <UserCharacterItems />
-      <UserCharacterMoney />
+      <UserCharacterMoney /> */}
 
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />

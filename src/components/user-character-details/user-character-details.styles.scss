@@ -1,0 +1,20 @@
+.user-character-details {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  .text-input,
+  .text-area {
+    max-width: 200px;
+  }
+  .number-input {
+    max-width: 40px;
+  }
+  .button {
+    max-width: 40px;
+  }
+  .select-wrapper {
+    max-width: 200px;
+  }
+}

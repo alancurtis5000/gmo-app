@@ -35,7 +35,7 @@ const UserCharacterDetails = (props) => {
   };
 
   return (
-    <div className="create-character-abilities page">
+    <div className="user-character-details">
       <h2>Details</h2>
       <TextInput
         label="Character Name"
@@ -75,6 +75,7 @@ const UserCharacterDetails = (props) => {
           })
         }
       />
+
       <TextInput
         label="Race"
         value={character?.details?.race}
