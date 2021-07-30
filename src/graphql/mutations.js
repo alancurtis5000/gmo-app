@@ -488,6 +488,23 @@ export const createCharacter = /* GraphQL */ `
           encombered
         }
       }
+      features {
+        limited {
+          id
+          type
+          title
+          max
+          recovery
+          used
+          description
+        }
+        constants {
+          id
+          type
+          title
+          description
+        }
+      }
       createdAt
       updatedAt
     }
@@ -626,6 +643,23 @@ export const updateCharacter = /* GraphQL */ `
           encombered
         }
       }
+      features {
+        limited {
+          id
+          type
+          title
+          max
+          recovery
+          used
+          description
+        }
+        constants {
+          id
+          type
+          title
+          description
+        }
+      }
       createdAt
       updatedAt
     }
@@ -762,6 +796,23 @@ export const deleteCharacter = /* GraphQL */ `
           title
           base
           encombered
+        }
+      }
+      features {
+        limited {
+          id
+          type
+          title
+          max
+          recovery
+          used
+          description
+        }
+        constants {
+          id
+          type
+          title
+          description
         }
       }
       createdAt

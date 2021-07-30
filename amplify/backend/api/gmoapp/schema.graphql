@@ -56,6 +56,28 @@ type Character @model {
   abilityScores: AbilityScores!
   savingThrows: SavingThrow
   stats: Stats
+  features: Features
+}
+
+type Features {
+  limited: [Limited]
+  constants: [Constants]
+}
+
+type Limited {
+  id: ID!
+  type: String
+  title: String
+  max: Int
+  recovery: String
+  used: Int
+  description: String
+}
+type Constants {
+  id: ID!
+  type: String
+  title: String
+  description: String
 }
 
 type Stats {

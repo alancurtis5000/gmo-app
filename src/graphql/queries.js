@@ -310,6 +310,23 @@ export const getCharacter = /* GraphQL */ `
           encombered
         }
       }
+      features {
+        limited {
+          id
+          type
+          title
+          max
+          recovery
+          used
+          description
+        }
+        constants {
+          id
+          type
+          title
+          description
+        }
+      }
       createdAt
       updatedAt
     }

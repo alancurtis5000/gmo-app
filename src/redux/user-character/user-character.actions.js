@@ -94,6 +94,7 @@ export const createUserCharacter = () => async (dispatch, getState) => {
           details: characterToCreate.details,
           savingThrows: characterToCreate.savingThrows,
           stats: characterToCreate.stats,
+          features: characterToCreate.features,
         },
       },
     });
@@ -141,6 +142,7 @@ export const updateUserCharacter = () => async (dispatch, getState) => {
           details: characterToUpdate.details,
           savingThrows: characterToUpdate.savingThrows,
           stats: characterToUpdate.stats,
+          features: characterToUpdate.features,
         },
       },
     });

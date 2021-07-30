@@ -94,8 +94,12 @@ const UserCharacterFeatures = () => {
   };
 
   const renderLimitedFeatures = () => {
-    return features.limited.map((feature) => (
-      <div style={{ display: "flex" }} key={feature.id}>
+    return features.limited.map((feature, i) => (
+      <div
+        style={{ display: "flex", flexDirection: "column" }}
+        key={feature.id}
+      >
+        <h3>{`${i + 1}. ${feature.title}`}</h3>
         <TextInput
           label="Title"
           value={feature.title}
@@ -137,8 +141,12 @@ const UserCharacterFeatures = () => {
   };
 
   const renderConstantFeatures = () => {
-    return features.constants.map((feature) => (
-      <div style={{ display: "flex" }} key={feature.id}>
+    return features.constants.map((feature, i) => (
+      <div
+        style={{ display: "flex", flexDirection: "column" }}
+        key={feature.id}
+      >
+        <h3>{`${i + 1}. ${feature.title}`}</h3>
         <TextInput
           label="Title"
           value={feature.title}
@@ -159,7 +167,7 @@ const UserCharacterFeatures = () => {
   };
 
   return (
-    <div className="create-character-abilities page">
+    <div className="user-character-features">
       <h2>Features</h2>
       <h3>Limited</h3>
       <Button text="+" onClick={handleAddLimitedFeature} />
