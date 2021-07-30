@@ -209,6 +209,10 @@ export const createUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -271,6 +275,10 @@ export const updateUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -333,6 +341,10 @@ export const deleteUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -378,6 +390,22 @@ export const createCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {
@@ -445,6 +473,22 @@ export const updateCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {
@@ -512,6 +556,22 @@ export const deleteCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {

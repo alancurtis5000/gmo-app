@@ -126,7 +126,23 @@ export const getCharacterById = /* GraphQL */ `
       id
       details {
         name
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
         background
+        level
+        alignment
+        experience
+        race
+        classes {
+          id
+          level
+          type
+        }
       }
       abilityScores {
         strength {

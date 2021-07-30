@@ -101,7 +101,7 @@ export const createUserCharacter = () => async (dispatch, getState) => {
         input: {
           characterUserId: userId,
           abilityScores,
-          details: { name: characterToCreate.details.name },
+          details: characterToCreate.details,
         },
       },
     });

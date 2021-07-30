@@ -130,6 +130,10 @@ export const getUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -208,6 +212,22 @@ export const getCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {
@@ -261,6 +281,10 @@ export const listCharacters = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt

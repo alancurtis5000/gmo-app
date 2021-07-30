@@ -5,9 +5,9 @@ import NumberInput from "../number-input/number-input.component";
 
 const UserCharacterDetailsDescription = () => {
   const description = useSelector(
-    (state) => state.userCharacter.data.details.description
+    (state) => state?.userCharacter?.data?.details?.description
   );
-  const details = useSelector((state) => state.userCharacter.data.details);
+  const details = useSelector((state) => state?.userCharacter?.data?.details);
   const dispatch = useDispatch();
 
   const handleOnChange = (updatedDescription) => {
@@ -27,27 +27,27 @@ const UserCharacterDetailsDescription = () => {
     <>
       <TextInput
         label="Eyes"
-        value={description.eyes}
+        value={description?.eyes}
         onChange={(e) => handleOnChange({ eyes: e.target.value })}
       />
       <TextInput
         label="Hair"
-        value={description.hair}
+        value={description?.hair}
         onChange={(e) => handleOnChange({ hair: e.target.value })}
       />
       <TextInput
         label="Skin"
-        value={description.skin}
+        value={description?.skin}
         onChange={(e) => handleOnChange({ skin: e.target.value })}
       />
       <TextInput
         label="Size"
-        value={description.size}
+        value={description?.size}
         onChange={(e) => handleOnChange({ size: e.target.value })}
       />
       <NumberInput
         label="Age"
-        value={description.age}
+        value={description?.age}
         onChange={(e) => handleOnChange({ age: e.target.value })}
       />
     </>

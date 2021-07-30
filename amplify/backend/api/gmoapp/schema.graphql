@@ -59,6 +59,26 @@ type Character @model {
 type Detail {
   name: String
   background: String
+  description: Description
+  level: Int
+  alignment: String
+  race: String
+  classes: [Class]
+  experience: Int
+}
+
+type Class {
+  id: ID!
+  level: Int
+  type: String
+}
+
+type Description {
+  eyes: String
+  hair: String
+  skin: String
+  size: String
+  age: Int
 }
 
 type AbilityScore {

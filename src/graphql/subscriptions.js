@@ -197,6 +197,10 @@ export const newOnUpdateUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -403,6 +407,10 @@ export const onCreateUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -462,6 +470,10 @@ export const onUpdateUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -521,6 +533,10 @@ export const onDeleteUser = /* GraphQL */ `
         details {
           name
           background
+          level
+          alignment
+          race
+          experience
         }
         createdAt
         updatedAt
@@ -563,6 +579,22 @@ export const onCreateCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {
@@ -627,6 +659,22 @@ export const onUpdateCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {
@@ -691,6 +739,22 @@ export const onDeleteCharacter = /* GraphQL */ `
       details {
         name
         background
+        description {
+          eyes
+          hair
+          skin
+          size
+          age
+        }
+        level
+        alignment
+        race
+        classes {
+          id
+          level
+          type
+        }
+        experience
       }
       abilityScores {
         strength {

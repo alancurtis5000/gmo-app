@@ -91,7 +91,7 @@ const UserCharacterDetails = (props) => {
       <div style={{ display: "flex", flexDirection: "column" }}>
         {renderClasses()}
       </div>
-      <SelectAlignment />
+      {/* <SelectAlignment /> */}
       <h3>Description</h3>
       <UserCharacterDetailsDescription />
       <h3>Saving Throws</h3>
