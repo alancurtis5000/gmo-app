@@ -47,7 +47,7 @@ const CreateCharacter = () => {
       <UserCharacterSavingThrows />
       <UserCharacterStats />
       <UserCharacterFeatures />
-      {/* <UserCharacterItems /> */}
+      <UserCharacterItems />
       <UserCharacterMoney />
 
       {isCreateCharacter ? (

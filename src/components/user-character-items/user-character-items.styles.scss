@@ -1,0 +1,15 @@
+.user-character-items {
+  background-color: rgb(230, 173, 187);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  .number-input {
+    max-width: 40px;
+    margin-left: 10px;
+  }
+  label {
+    margin-left: 10px;
+  }
+}

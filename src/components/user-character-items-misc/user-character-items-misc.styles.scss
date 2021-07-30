@@ -1,0 +1,15 @@
+.user-character-items-misc {
+  background-color: rgb(219, 173, 230);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .misc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .button {
+      margin: 10px 0;
+      width: 100%;
+    }
+  }
+}

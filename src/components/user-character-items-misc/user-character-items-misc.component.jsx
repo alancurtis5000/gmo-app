@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import CheckBox from "../checkbox/checkbox.component";
 
-const UserCharacterItemsAmmo = () => {
+const UserCharacterItemsMisc = () => {
   const character = useSelector((state) => state.userCharacter.data);
   const { items } = character;
 
@@ -24,16 +24,15 @@ const UserCharacterItemsAmmo = () => {
     let updateItems = [...items];
     updateItems.push({
       id: updateItems.length + 1,
-      type: "ammo",
       isEquipt: false,
+      type: "misc",
       title: "",
       description: "",
       isMagic: false,
-      quantity: 0,
-      weight: 0,
-      damageDice: "",
-      damageType: "",
       value: 0,
+      weight: 0,
+      quantity: 0,
+      armorClassContribution: 0,
     });
     handleOnChange(updateItems);
   };
@@ -59,11 +58,11 @@ const UserCharacterItemsAmmo = () => {
   };
 
   const renderItems = () => {
-    const filtered = items.filter((item) => item.type === "ammo");
+    const filtered = items.filter((item) => item.type === "misc");
 
     return filtered.map((item) => {
       return (
-        <div key={item.id}>
+        <div className="misc-card" key={item.id}>
           <h3>{item.title}</h3>
           <TextInput
             label="Title"
@@ -79,18 +78,14 @@ const UserCharacterItemsAmmo = () => {
               handleOnChangeItem({ ...item, quantity: e.target.value })
             }
           />
-          <TextInput
-            label="Damage Dice"
-            value={item.damageDice}
+          <NumberInput
+            label="Armor Class Contribution"
+            value={item.armorClassContribution}
             onChange={(e) =>
-              handleOnChangeItem({ ...item, damageDice: e.target.value })
-            }
-          />
-          <TextInput
-            label="Damage Type"
-            value={item.damageType}
-            onChange={(e) =>
-              handleOnChangeItem({ ...item, damageType: e.target.value })
+              handleOnChangeItem({
+                ...item,
+                armorClassContribution: e.target.value,
+              })
             }
           />
           <CheckBox
@@ -137,12 +132,12 @@ const UserCharacterItemsAmmo = () => {
   };
 
   return (
-    <div className="create-character-abilities page">
-      <h2>Ammo</h2>
+    <div className="user-character-items-misc">
+      <h2>Misc</h2>
       <Button text="+" onClick={handleAddItem} />
       {renderItems()}
     </div>
   );
 };
 
-export default UserCharacterItemsAmmo;
+export default UserCharacterItemsMisc;

@@ -69,7 +69,7 @@ const UserCharacterItemsWeapons = () => {
 
     return filtered.map((item) => {
       return (
-        <div key={item.id}>
+        <div className="weapon-card" key={item.id}>
           <h3>{item.title}</h3>
           <TextInput
             label="Title"
@@ -211,7 +211,7 @@ const UserCharacterItemsWeapons = () => {
   };
 
   return (
-    <div className="create-character-abilities page">
+    <div className="user-character-items-weapons">
       <h2>Weapons</h2>
       <Button text="+" onClick={handleAddItem} />
       {renderItems()}
