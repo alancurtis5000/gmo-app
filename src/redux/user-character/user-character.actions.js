@@ -1,10 +1,8 @@
 import types from "./user-character.types";
 import { API } from "aws-amplify";
-import { getCharacter as getCharacterQuery } from "../../graphql/queries";
-import {
-  createCharacter as createCharacterMutation,
-  updateCharacter as updateCharacterMutation,
-} from "../../graphql/mutations";
+import { getCharacterById as getCharacterByIdQuery } from "../../graphql/custom-queries";
+import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
+import { updateCharacter as updateCharacterMutation } from "../../graphql/custom-mutations";
 
 export const updateUserCharacterLocal = (update) => (dispatch) => {
   dispatch({
@@ -44,7 +42,7 @@ export const getUserCharacter = (characterId) => async (dispatch) => {
   dispatch(getUserCharacterStart());
   try {
     const userCharacterData = await API.graphql({
-      query: getCharacterQuery,
+      query: getCharacterByIdQuery,
       variables: {
         id: characterId,
       },
@@ -96,6 +94,7 @@ export const createUserCharacter = () => async (dispatch, getState) => {
           stats: characterToCreate.stats,
           features: characterToCreate.features,
           money: characterToCreate.money,
+          items: characterToCreate.items,
         },
       },
     });
@@ -145,6 +144,7 @@ export const updateUserCharacter = () => async (dispatch, getState) => {
           stats: characterToUpdate.stats,
           features: characterToUpdate.features,
           money: characterToUpdate.money,
+          items: characterToUpdate.items,
         },
       },
     });

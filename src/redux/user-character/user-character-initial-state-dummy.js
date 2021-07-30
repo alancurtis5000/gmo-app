@@ -150,7 +150,7 @@ export const initialState = {
         damageType: "slashing",
         isEquipt: true,
         isMagic: false,
-        istwoHanded: true,
+        isTwoHanded: true,
         range: {
           type: "melee", // melee, touch, ranged, melee/ranged
           distance: { min: 0, max: 5, disadvantage: 0 },
@@ -169,7 +169,7 @@ export const initialState = {
         advantageToHit: 2,
         damageModifier: 3,
         damageType: "piercing",
-        istwoHanded: false,
+        isTwoHanded: false,
         isEquipt: false,
         isMagic: false,
         range: {
@@ -192,7 +192,7 @@ export const initialState = {
         damageType: "slashing",
         isEquipt: false,
         isMagic: false,
-        istwoHanded: false,
+        isTwoHanded: false,
         range: {
           type: "ranged",
           distance: { min: 10, max: 20, disadvantage: 50 },
@@ -224,7 +224,7 @@ export const initialState = {
         isEquipt: true,
         description: "+2 to Armor Class",
         isMagic: true,
-        weight: 0.1,
+        weight: 1,
         value: 1,
       },
       {
@@ -236,7 +236,7 @@ export const initialState = {
         code: "backpack",
         description: "Basic Backpack",
         isMagic: false,
-        weight: 0.5,
+        weight: 5,
         value: 1,
         armorClassContribution: 0,
       },
@@ -250,7 +250,7 @@ export const initialState = {
         description: "Basic Quiver",
         isMagic: false,
         value: 1,
-        weight: 0.1,
+        weight: 1,
         armorClassContribution: 0,
       },
       {
@@ -262,7 +262,7 @@ export const initialState = {
         code: "gem",
         description: "hamberger shaped gem",
         isMagic: false,
-        weight: 0.1,
+        weight: 1,
         value: 1,
         armorClassContribution: 0,
       },
@@ -275,7 +275,7 @@ export const initialState = {
         description: "Silver tipped arrows",
         isMagic: false,
         quantity: 30,
-        weight: 0.1,
+        weight: 1,
         damageDice: "1d8",
         damageType: "piercing",
         value: 1,

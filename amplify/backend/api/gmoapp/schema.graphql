@@ -58,6 +58,38 @@ type Character @model {
   stats: Stats
   features: Features
   money: Money
+  items: [Items]
+}
+
+type Items {
+  id: ID!
+  quantity: Int
+  type: String
+  damageDice: String
+  title: String
+  code: String
+  advantageToHit: Int
+  damageModifier: Int
+  damageType: String
+  isTwoHanded: Boolean
+  isEquipt: Boolean
+  isMagic: Boolean
+  range: Range
+  value: Int
+  description: String
+  weight: Int
+  armorClassContribution: Int
+}
+
+type Range {
+  type: String #  melee, touch, ranged, melee/ranged
+  distance: Distance
+}
+
+type Distance {
+  min: Int
+  max: Int
+  disadvantage: Int
 }
 
 type Money {

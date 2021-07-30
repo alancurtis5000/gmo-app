@@ -32,7 +32,7 @@ const UserCharacterItemsWeapons = () => {
       damageType: "",
       isEquipt: false,
       isMagic: false,
-      istwoHanded: false,
+      isTwoHanded: false,
       range: {
         type: "",
         distance: { min: 0, max: 0, disadvantage: 0 },
@@ -122,9 +122,9 @@ const UserCharacterItemsWeapons = () => {
           />
           <CheckBox
             label="Is Two Handed"
-            checked={item.istwoHanded}
+            checked={item.isTwoHanded}
             onChange={(e) =>
-              handleOnChangeItem({ ...item, istwoHanded: !item.istwoHanded })
+              handleOnChangeItem({ ...item, isTwoHanded: !item.isTwoHanded })
             }
           />
           <NumberInput

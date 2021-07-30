@@ -66,7 +66,7 @@ const UserCharacterStats = () => {
 
   const renderHitDice = () => {
     return hitDice.map((die) => (
-      <div style={{ display: "flex" }} key={die.id}>
+      <div className="hit-dice" key={die.id}>
         <NumberInput
           label="Level"
           value={die.level}

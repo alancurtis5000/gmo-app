@@ -121,11 +121,37 @@ export const getUserCharactersByUserId = /* GraphQL */ `
 `;
 
 export const getCharacterById = /* GraphQL */ `
-  query GetCharacterById($id: ID!) {
+  query GetCharacter($id: ID!) {
     getCharacter(id: $id) {
       id
+      user {
+        id
+        userSub
+        name
+        game {
+          id
+          name
+          description
+          hasStarted
+          createdAt
+          updatedAt
+        }
+        playerName
+        characters {
+          nextToken
+        }
+        selectedCharacter {
+          id
+          createdAt
+          updatedAt
+        }
+        isReady
+        createdAt
+        updatedAt
+      }
       details {
         name
+        background
         description {
           eyes
           hair
@@ -133,16 +159,15 @@ export const getCharacterById = /* GraphQL */ `
           size
           age
         }
-        background
         level
         alignment
-        experience
         race
         classes {
           id
           level
           type
         }
+        experience
       }
       abilityScores {
         strength {
@@ -187,6 +212,93 @@ export const getCharacterById = /* GraphQL */ `
           title
           details
         }
+      }
+      stats {
+        hitPoints {
+          title
+          max
+          current
+          temporary
+        }
+        armorClass {
+          title
+          value
+          temporary
+        }
+        proficiency {
+          title
+          value
+        }
+        initiative {
+          title
+          value
+        }
+        deathSaves {
+          title
+          successes
+          failures
+        }
+        hitDice {
+          id
+          level
+          die
+          used
+        }
+        speed {
+          title
+          base
+          encombered
+        }
+      }
+      features {
+        limited {
+          id
+          type
+          title
+          max
+          recovery
+          used
+          description
+        }
+        constants {
+          id
+          type
+          title
+          description
+        }
+      }
+      money {
+        platinum
+        gold
+        electrum
+        silver
+        copper
+      }
+      items {
+        id
+        quantity
+        type
+        damageDice
+        title
+        code
+        advantageToHit
+        damageModifier
+        damageType
+        isTwoHanded
+        isEquipt
+        isMagic
+        range {
+          type
+          distance {
+            min
+            max
+            disadvantage
+          }
+        }
+        value
+        description
+        weight
+        armorClassContribution
       }
       createdAt
       updatedAt

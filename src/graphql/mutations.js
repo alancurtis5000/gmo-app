@@ -221,6 +221,24 @@ export const createUser = /* GraphQL */ `
           silver
           copper
         }
+        items {
+          id
+          quantity
+          type
+          damageDice
+          title
+          code
+          advantageToHit
+          damageModifier
+          damageType
+          isTwoHanded
+          isEquipt
+          isMagic
+          value
+          description
+          weight
+          armorClassContribution
+        }
         createdAt
         updatedAt
       }
@@ -294,6 +312,24 @@ export const updateUser = /* GraphQL */ `
           silver
           copper
         }
+        items {
+          id
+          quantity
+          type
+          damageDice
+          title
+          code
+          advantageToHit
+          damageModifier
+          damageType
+          isTwoHanded
+          isEquipt
+          isMagic
+          value
+          description
+          weight
+          armorClassContribution
+        }
         createdAt
         updatedAt
       }
@@ -366,6 +402,24 @@ export const deleteUser = /* GraphQL */ `
           electrum
           silver
           copper
+        }
+        items {
+          id
+          quantity
+          type
+          damageDice
+          title
+          code
+          advantageToHit
+          damageModifier
+          damageType
+          isTwoHanded
+          isEquipt
+          isMagic
+          value
+          description
+          weight
+          armorClassContribution
         }
         createdAt
         updatedAt
@@ -533,6 +587,27 @@ export const createCharacter = /* GraphQL */ `
         silver
         copper
       }
+      items {
+        id
+        quantity
+        type
+        damageDice
+        title
+        code
+        advantageToHit
+        damageModifier
+        damageType
+        isTwoHanded
+        isEquipt
+        isMagic
+        range {
+          type
+        }
+        value
+        description
+        weight
+        armorClassContribution
+      }
       createdAt
       updatedAt
     }
@@ -695,6 +770,27 @@ export const updateCharacter = /* GraphQL */ `
         silver
         copper
       }
+      items {
+        id
+        quantity
+        type
+        damageDice
+        title
+        code
+        advantageToHit
+        damageModifier
+        damageType
+        isTwoHanded
+        isEquipt
+        isMagic
+        range {
+          type
+        }
+        value
+        description
+        weight
+        armorClassContribution
+      }
       createdAt
       updatedAt
     }
@@ -856,6 +952,27 @@ export const deleteCharacter = /* GraphQL */ `
         electrum
         silver
         copper
+      }
+      items {
+        id
+        quantity
+        type
+        damageDice
+        title
+        code
+        advantageToHit
+        damageModifier
+        damageType
+        isTwoHanded
+        isEquipt
+        isMagic
+        range {
+          type
+        }
+        value
+        description
+        weight
+        armorClassContribution
       }
       createdAt
       updatedAt

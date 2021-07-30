@@ -142,6 +142,24 @@ export const getUser = /* GraphQL */ `
           silver
           copper
         }
+        items {
+          id
+          quantity
+          type
+          damageDice
+          title
+          code
+          advantageToHit
+          damageModifier
+          damageType
+          isTwoHanded
+          isEquipt
+          isMagic
+          value
+          description
+          weight
+          armorClassContribution
+        }
         createdAt
         updatedAt
       }
@@ -341,6 +359,32 @@ export const getCharacter = /* GraphQL */ `
         silver
         copper
       }
+      items {
+        id
+        quantity
+        type
+        damageDice
+        title
+        code
+        advantageToHit
+        damageModifier
+        damageType
+        isTwoHanded
+        isEquipt
+        isMagic
+        range {
+          type
+          distance {
+            min
+            max
+            disadvantage
+          }
+        }
+        value
+        description
+        weight
+        armorClassContribution
+      }
       createdAt
       updatedAt
     }
@@ -378,6 +422,24 @@ export const listCharacters = /* GraphQL */ `
           electrum
           silver
           copper
+        }
+        items {
+          id
+          quantity
+          type
+          damageDice
+          title
+          code
+          advantageToHit
+          damageModifier
+          damageType
+          isTwoHanded
+          isEquipt
+          isMagic
+          value
+          description
+          weight
+          armorClassContribution
         }
         createdAt
         updatedAt
