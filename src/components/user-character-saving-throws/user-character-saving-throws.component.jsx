@@ -5,7 +5,7 @@ import TextInput from "../text-input/text-input.component";
 import Button from "../button/button.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 
-const UserCharacterDetailsSavingThrows = () => {
+const UserCharacterSavingThrows = () => {
   const savingThrows = useSelector(
     (state) => state.userCharacter.data.savingThrows
   );
@@ -156,7 +156,8 @@ const UserCharacterDetailsSavingThrows = () => {
   };
 
   return (
-    <>
+    <div className="user-character-saving-throws">
+      <h2>Saving Throws</h2>
       <h3>Base</h3>
       {renderBase()}
       <h3>Skills</h3>
@@ -164,8 +165,8 @@ const UserCharacterDetailsSavingThrows = () => {
       <h3>Resistances</h3>
       <Button text="+" onClick={handleAddResistance} />
       {renderResistances()}
-    </>
+    </div>
   );
 };
 
-export default UserCharacterDetailsSavingThrows;
+export default UserCharacterSavingThrows;

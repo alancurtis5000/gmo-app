@@ -7,7 +7,6 @@ import { updateUserCharacterLocal } from "../../redux/user-character/user-charac
 import UserCharacterDetailsClass from "../user-character-details-class/user-character-details-class.component";
 import Button from "../button/button.component";
 import UserCharacterDetailsDescription from "../user-character-details-description/user-character-details-description.component";
-import UserCharacterDetailsSavingThrows from "../user-character-details-saving-throws/user-character-details-saving-throws.component";
 
 const UserCharacterDetails = (props) => {
   const { updateUserCharacterLocal, character } = props;
@@ -94,8 +93,6 @@ const UserCharacterDetails = (props) => {
       <SelectAlignment />
       <h3>Description</h3>
       <UserCharacterDetailsDescription />
-      <h3>Saving Throws</h3>
-      <UserCharacterDetailsSavingThrows />
     </div>
   );
 };

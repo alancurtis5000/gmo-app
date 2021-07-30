@@ -16,7 +16,7 @@ const UserCharacterAbilities = (props) => {
   };
 
   return (
-    <div className="create-character-abilities page">
+    <div className="user-character-abilities">
       <h2>Abilities</h2>
       {abilities.map((ability) => {
         const abilityScore = character.abilityScores[ability];

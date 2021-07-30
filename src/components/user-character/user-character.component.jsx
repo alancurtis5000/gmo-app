@@ -10,6 +10,7 @@ import {
   createUserCharacter,
   updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
+import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 import UserCharacterFeatures from "../user-character-features/user-character-features.component";
 import UserCharacterItems from "../user-character-items/user-character-items.component";
@@ -42,11 +43,12 @@ const CreateCharacter = () => {
   return (
     <div className="user-character page">
       <UserCharacterDetails />
-      {/* <UserCharacterAbilities />
-      <UserCharacterStats />
-      <UserCharacterFeatures />
-      <UserCharacterItems />
-      <UserCharacterMoney /> */}
+      <UserCharacterAbilities />
+      <UserCharacterSavingThrows />
+      {/* <UserCharacterStats /> */}
+      {/* <UserCharacterFeatures /> */}
+      {/* <UserCharacterItems /> */}
+      {/* <UserCharacterMoney /> */}
 
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />
