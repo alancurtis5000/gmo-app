@@ -7,6 +7,13 @@ type Game @model {
   hasStarted: Boolean
 }
 
+# type test
+#   @model
+#   @key(fields: ["code"]) { # this enforces code field to be unique
+#   code: String!
+#   title: String
+# }
+
 # Todo: Users and Character relationship and storing userSub
 type User @model {
   id: ID!
