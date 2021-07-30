@@ -156,7 +156,7 @@ export const updateUserCharacter = () => async (dispatch, getState) => {
         input: {
           id: characterToUpdate.id,
           abilityScores,
-          details: { ...characterToUpdate.details },
+          details: characterToUpdate.details,
         },
       },
     });
