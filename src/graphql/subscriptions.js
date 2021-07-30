@@ -202,6 +202,13 @@ export const newOnUpdateUser = /* GraphQL */ `
           race
           experience
         }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
+        }
         createdAt
         updatedAt
       }
@@ -412,6 +419,13 @@ export const onCreateUser = /* GraphQL */ `
           race
           experience
         }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
+        }
         createdAt
         updatedAt
       }
@@ -475,6 +489,13 @@ export const onUpdateUser = /* GraphQL */ `
           race
           experience
         }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
+        }
         createdAt
         updatedAt
       }
@@ -537,6 +558,13 @@ export const onDeleteUser = /* GraphQL */ `
           alignment
           race
           experience
+        }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
         }
         createdAt
         updatedAt
@@ -694,6 +722,13 @@ export const onCreateCharacter = /* GraphQL */ `
           description
         }
       }
+      money {
+        platinum
+        gold
+        electrum
+        silver
+        copper
+      }
       createdAt
       updatedAt
     }
@@ -846,6 +881,13 @@ export const onUpdateCharacter = /* GraphQL */ `
           description
         }
       }
+      money {
+        platinum
+        gold
+        electrum
+        silver
+        copper
+      }
       createdAt
       updatedAt
     }
@@ -997,6 +1039,13 @@ export const onDeleteCharacter = /* GraphQL */ `
           title
           description
         }
+      }
+      money {
+        platinum
+        gold
+        electrum
+        silver
+        copper
       }
       createdAt
       updatedAt

@@ -135,6 +135,13 @@ export const getUser = /* GraphQL */ `
           race
           experience
         }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
+        }
         createdAt
         updatedAt
       }
@@ -327,6 +334,13 @@ export const getCharacter = /* GraphQL */ `
           description
         }
       }
+      money {
+        platinum
+        gold
+        electrum
+        silver
+        copper
+      }
       createdAt
       updatedAt
     }
@@ -357,6 +371,13 @@ export const listCharacters = /* GraphQL */ `
           alignment
           race
           experience
+        }
+        money {
+          platinum
+          gold
+          electrum
+          silver
+          copper
         }
         createdAt
         updatedAt

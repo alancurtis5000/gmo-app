@@ -33,7 +33,7 @@ const UserCharacterMoney = () => {
   };
 
   return (
-    <div>
+    <div className="user-character-money">
       <h2>Money</h2>
       {renderMoney()}
     </div>

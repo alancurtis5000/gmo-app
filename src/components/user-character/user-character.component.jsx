@@ -48,7 +48,7 @@ const CreateCharacter = () => {
       <UserCharacterStats />
       <UserCharacterFeatures />
       {/* <UserCharacterItems /> */}
-      {/* <UserCharacterMoney /> */}
+      <UserCharacterMoney />
 
       {isCreateCharacter ? (
         <Button text="Create" onClick={handleCreateCharacter} />
