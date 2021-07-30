@@ -54,6 +54,32 @@ type Character @model {
   user: User! @connection(name: "UserCharacters")
   details: Detail!
   abilityScores: AbilityScores!
+  savingThrows: SavingThrow
+}
+
+type SavingThrow {
+  base: [BaseSavingThrow]
+  skills: [SkillSavingThrow]
+  resistances: [ResistanceSavingThrow]
+}
+
+type BaseSavingThrow {
+  code: String
+  title: String
+  value: Int
+}
+
+type SkillSavingThrow {
+  code: String
+  title: String
+  value: Int
+  type: String
+}
+
+type ResistanceSavingThrow {
+  id: ID!
+  title: String
+  details: String
 }
 
 type Detail {

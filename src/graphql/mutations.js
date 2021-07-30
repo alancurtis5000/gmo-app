@@ -433,6 +433,24 @@ export const createCharacter = /* GraphQL */ `
           modifier
         }
       }
+      savingThrows {
+        base {
+          code
+          title
+          value
+        }
+        skills {
+          code
+          title
+          value
+          type
+        }
+        resistances {
+          id
+          title
+          details
+        }
+      }
       createdAt
       updatedAt
     }
@@ -516,6 +534,24 @@ export const updateCharacter = /* GraphQL */ `
           modifier
         }
       }
+      savingThrows {
+        base {
+          code
+          title
+          value
+        }
+        skills {
+          code
+          title
+          value
+          type
+        }
+        resistances {
+          id
+          title
+          details
+        }
+      }
       createdAt
       updatedAt
     }
@@ -597,6 +633,24 @@ export const deleteCharacter = /* GraphQL */ `
         charisma {
           value
           modifier
+        }
+      }
+      savingThrows {
+        base {
+          code
+          title
+          value
+        }
+        skills {
+          code
+          title
+          value
+          type
+        }
+        resistances {
+          id
+          title
+          details
         }
       }
       createdAt

@@ -170,6 +170,24 @@ export const getCharacterById = /* GraphQL */ `
           modifier
         }
       }
+      savingThrows {
+        base {
+          code
+          title
+          value
+        }
+        skills {
+          code
+          title
+          value
+          type
+        }
+        resistances {
+          id
+          title
+          details
+        }
+      }
       createdAt
       updatedAt
     }
