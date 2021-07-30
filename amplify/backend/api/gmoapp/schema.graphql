@@ -55,6 +55,59 @@ type Character @model {
   details: Detail!
   abilityScores: AbilityScores!
   savingThrows: SavingThrow
+  stats: Stats
+}
+
+type Stats {
+  hitPoints: HitPoints
+  armorClass: ArmorClass
+  proficiency: Proficiency
+  initiative: Initiative
+  deathSaves: DeathSaves
+  hitDice: [HitDice]
+  speed: Speed
+}
+
+type Speed {
+  title: String
+  base: Int
+  encombered: Int
+}
+
+type HitDice {
+  id: ID!
+  level: Int
+  die: String
+  used: Int
+}
+
+type DeathSaves {
+  title: String
+  successes: Int
+  failures: Int
+}
+
+type Initiative {
+  title: String
+  value: Int
+}
+
+type Proficiency {
+  title: String
+  value: Int
+}
+
+type ArmorClass {
+  title: String
+  value: Int
+  temporary: Int
+}
+
+type HitPoints {
+  title: String
+  max: Int
+  current: Int
+  temporary: Int
 }
 
 type SavingThrow {

@@ -84,25 +84,16 @@ export const createUserCharacter = () => async (dispatch, getState) => {
   const userId = getState()?.user?.id;
   dispatch(createUserCharacterStart());
   try {
-    const score = characterToCreate.abilityScores;
-    const abilityScores = {
-      strength: score.strength,
-      dexterity: score.dexterity,
-      constitution: score.constitution,
-      intelligence: score.intelligence,
-      wisdom: score.wisdom,
-      charisma: score.charisma,
-    };
-
     // create character with detailsId, abilityScoresId
     await API.graphql({
       query: createCharacterMutation,
       variables: {
         input: {
           characterUserId: userId,
-          abilityScores,
+          abilityScores: characterToCreate.abilityScores,
           details: characterToCreate.details,
           savingThrows: characterToCreate.savingThrows,
+          stats: characterToCreate.stats,
         },
       },
     });
@@ -140,25 +131,16 @@ export const updateUserCharacter = () => async (dispatch, getState) => {
   const characterToUpdate = getState()?.userCharacter?.data;
   dispatch(updateUserCharacterStart());
   try {
-    const score = characterToUpdate.abilityScores;
-    const abilityScores = {
-      strength: score.strength,
-      dexterity: score.dexterity,
-      constitution: score.constitution,
-      intelligence: score.intelligence,
-      wisdom: score.wisdom,
-      charisma: score.charisma,
-    };
-
     // updateUser character with detailsId, abilityScoresId
     const updateUserCharacterData = await API.graphql({
       query: updateCharacterMutation,
       variables: {
         input: {
           id: characterToUpdate.id,
-          abilityScores,
+          abilityScores: characterToUpdate.abilityScores,
           details: characterToUpdate.details,
           savingThrows: characterToUpdate.savingThrows,
+          stats: characterToUpdate.stats,
         },
       },
     });

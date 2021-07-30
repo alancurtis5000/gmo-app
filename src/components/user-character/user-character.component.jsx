@@ -45,7 +45,7 @@ const CreateCharacter = () => {
       <UserCharacterDetails />
       <UserCharacterAbilities />
       <UserCharacterSavingThrows />
-      {/* <UserCharacterStats /> */}
+      <UserCharacterStats />
       {/* <UserCharacterFeatures /> */}
       {/* <UserCharacterItems /> */}
       {/* <UserCharacterMoney /> */}

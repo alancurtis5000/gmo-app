@@ -451,6 +451,43 @@ export const createCharacter = /* GraphQL */ `
           details
         }
       }
+      stats {
+        hitPoints {
+          title
+          max
+          current
+          temporary
+        }
+        armorClass {
+          title
+          value
+          temporary
+        }
+        proficiency {
+          title
+          value
+        }
+        initiative {
+          title
+          value
+        }
+        deathSaves {
+          title
+          successes
+          failures
+        }
+        hitDice {
+          id
+          level
+          die
+          used
+        }
+        speed {
+          title
+          base
+          encombered
+        }
+      }
       createdAt
       updatedAt
     }
@@ -552,6 +589,43 @@ export const updateCharacter = /* GraphQL */ `
           details
         }
       }
+      stats {
+        hitPoints {
+          title
+          max
+          current
+          temporary
+        }
+        armorClass {
+          title
+          value
+          temporary
+        }
+        proficiency {
+          title
+          value
+        }
+        initiative {
+          title
+          value
+        }
+        deathSaves {
+          title
+          successes
+          failures
+        }
+        hitDice {
+          id
+          level
+          die
+          used
+        }
+        speed {
+          title
+          base
+          encombered
+        }
+      }
       createdAt
       updatedAt
     }
@@ -651,6 +725,43 @@ export const deleteCharacter = /* GraphQL */ `
           id
           title
           details
+        }
+      }
+      stats {
+        hitPoints {
+          title
+          max
+          current
+          temporary
+        }
+        armorClass {
+          title
+          value
+          temporary
+        }
+        proficiency {
+          title
+          value
+        }
+        initiative {
+          title
+          value
+        }
+        deathSaves {
+          title
+          successes
+          failures
+        }
+        hitDice {
+          id
+          level
+          die
+          used
+        }
+        speed {
+          title
+          base
+          encombered
         }
       }
       createdAt

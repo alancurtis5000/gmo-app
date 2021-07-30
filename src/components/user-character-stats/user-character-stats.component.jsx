@@ -94,7 +94,7 @@ const UserCharacterStats = () => {
   };
 
   return (
-    <div className="create-character-abilities page">
+    <div className="user-character-stats">
       <h2>Stats</h2>
       <h3>Hit Points</h3>
       <NumberInput

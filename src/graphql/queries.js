@@ -273,6 +273,43 @@ export const getCharacter = /* GraphQL */ `
           details
         }
       }
+      stats {
+        hitPoints {
+          title
+          max
+          current
+          temporary
+        }
+        armorClass {
+          title
+          value
+          temporary
+        }
+        proficiency {
+          title
+          value
+        }
+        initiative {
+          title
+          value
+        }
+        deathSaves {
+          title
+          successes
+          failures
+        }
+        hitDice {
+          id
+          level
+          die
+          used
+        }
+        speed {
+          title
+          base
+          encombered
+        }
+      }
       createdAt
       updatedAt
     }
