@@ -4,7 +4,7 @@ export const initialState = {
   data: {
     id: "",
     name: "",
-    players: [],
+    players: { items: [] },
     master: {},
     hasStarted: false,
   },
