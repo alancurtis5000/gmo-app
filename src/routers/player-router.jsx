@@ -1,20 +1,12 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import PlayerLandingPage from "../pages/player-landing/player-landing.component";
 import PlayerCharacterPage from "../pages/player-character/player-character.component";
-
-const PlayerRouter = (props) => {
-  const { match } = props;
+const PlayerRouter = () => {
+  const match = useRouteMatch();
   return (
     <Switch>
-      <Route
-        path={`${match.url}/:id`}
-        exact={true}
-        component={PlayerLandingPage}
-      />
-      <Route
-        path={`${match.url}/:id/character`}
-        component={PlayerCharacterPage}
-      />
+      <Route path={`${match.url}`} exact={true} component={PlayerLandingPage} />
+      <Route path={`${match.url}/character`} component={PlayerCharacterPage} />
     </Switch>
   );
 };

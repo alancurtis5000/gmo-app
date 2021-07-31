@@ -17,7 +17,7 @@ const userReducer = (state = initialState, action) => {
     case types.GET_GAME_START:
       return { ...state, isLoaded: false };
     case types.GET_GAME_SUCCESS:
-      return { ...state, ...action.payload, isLoaded: true };
+      return { ...state, data: { ...action.payload }, isLoaded: true };
     case types.GET_GAME_FAILURE:
       return { ...state, data: {}, isLoaded: true, ...action.payload };
     default:
