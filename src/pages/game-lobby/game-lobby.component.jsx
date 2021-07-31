@@ -8,6 +8,7 @@ import {
 import {
   updateGame as updateGameMutation,
   deleteGame as deleteGameMutation,
+  updateUser as updateUserMutation,
 } from "../../graphql/mutations";
 import { useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router-dom";
@@ -63,8 +64,24 @@ const GameLobby = (props) => {
     });
   };
 
+  const setIsReadyToFalse = async () => {
+    try {
+      const input = {
+        id: userId,
+        isReady: false,
+      };
+      await API.graphql({
+        query: updateUserMutation,
+        variables: { input: input },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     setupSubscriptions();
+    setIsReadyToFalse();
     getGame();
     return () => {
       subscriptionOnUpdateUser.unsubscribe();
