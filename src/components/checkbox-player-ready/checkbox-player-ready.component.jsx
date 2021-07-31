@@ -11,7 +11,7 @@ const CheckboxPlayerReady = () => {
   const disabled = player?.id !== userId;
 
   const handleIsReady = async () => {
-    if (!player.selectedCharacter) {
+    if (!player.selectedCharacter && !player.isReady) {
       alert("You need to select a character first.");
       return;
     }
