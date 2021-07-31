@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const CheckboxPlayerReady = () => {
   const userId = useSelector((state) => state.user.id);
-  const game = useSelector((state) => state.game);
+  const game = useSelector((state) => state.game.data);
   const player = game?.players?.items.find((player) => player.id === userId);
   const isChecked = !!player?.isReady;
   const disabled = player?.id !== userId;

@@ -5,7 +5,7 @@ import CheckboxPlayerReady from "../checkbox-player-ready/checkbox-player-ready.
 
 const GameLobbyPlayersListCard = (props) => {
   const { player } = props;
-  const game = useSelector((state) => state.game);
+  const game = useSelector((state) => state?.game?.data);
   const userId = useSelector((state) => state.user.id);
   const isGameMaster = userId === game?.master?.id;
 
