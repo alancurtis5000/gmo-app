@@ -1,6 +1,9 @@
 import types from "./game.types";
 import { API } from "aws-amplify";
-import { getGameLobbyById as getGameLobbyByIdQuery } from "../../graphql/custom-queries";
+import {
+  getGameLobbyById as getGameLobbyByIdQuery,
+  getGameByIdForMaster as getGameByIdForMasterQuery,
+} from "../../graphql/custom-queries";
 
 export const getGameStart = () => (dispatch) => {
   dispatch({
@@ -49,3 +52,23 @@ export const getGame = (id) => async (dispatch) => {
 //       dispatch(getGameFailure(error.message));
 //     });
 // };
+
+// get gameMaster version of game
+
+export const getGameForMaster = (id) => async (dispatch) => {
+  dispatch(getGameStart());
+  console.log({ id });
+  try {
+    const result = await API.graphql({
+      query: getGameByIdForMasterQuery,
+      variables: {
+        id: id,
+      },
+    });
+    console.log({ result });
+    const game = result.data.getGame;
+    return dispatch(getGameSuccess(game));
+  } catch (error) {
+    return dispatch(getGameFailure(error));
+  }
+};

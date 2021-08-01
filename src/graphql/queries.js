@@ -374,11 +374,6 @@ export const getCharacter = /* GraphQL */ `
         isMagic
         range {
           type
-          distance {
-            min
-            max
-            disadvantage
-          }
         }
         value
         description

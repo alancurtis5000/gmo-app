@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getSelectedCharacterByUserId as getSelectedCharacterByUserIdQuery } from "../../graphql/custom-queries";
-import { API } from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
+import { newOnUpdateCharacter } from "../../graphql/subscriptions";
+import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
+
+// on mount get game Id fetch relative user and selected characters in game
 
 const PlayerLandingPage = () => {
   const userId = useSelector((state) => state.user.id);
+  // todo: connect to redux instead of local state!
+  const dispatch = useDispatch();
   const [character, setCharacter] = useState({});
+  let subscriptionOnUpdateCharacter;
+
   const getSelectedCharacter = async () => {
     try {
       const result = await API.graphql({
@@ -20,9 +28,27 @@ const PlayerLandingPage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    getSelectedCharacter();
-  }, []);
+    setupSubscriptions();
+    if (userId) {
+      getSelectedCharacter();
+    }
+    return () => {
+      subscriptionOnUpdateCharacter.unsubscribe();
+    };
+  }, [userId]);
+
+  const setupSubscriptions = () => {
+    subscriptionOnUpdateCharacter = API.graphql(
+      graphqlOperation(newOnUpdateCharacter)
+    ).subscribe({
+      next: (result) => {
+        console.log({ result });
+        setCharacter(result.value.data.newOnUpdateCharacter);
+      },
+    });
+  };
 
   return (
     <div className="page">

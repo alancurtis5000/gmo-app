@@ -6,7 +6,6 @@ import JoinGame from "../pages/join-game/join-game.component";
 import CreateCharacter from "../pages/create-character/create-character.component";
 import CreateGame from "../pages/create-game/create-game.component";
 import GameLobby from "../pages/game-lobby/game-lobby.component";
-// import Game from "../pages/game/game.component";
 import Playground from "../pages/playground/playground.component";
 import Characters from "../pages/characters/characters.component";
 import Character from "../pages/character/character.component";
