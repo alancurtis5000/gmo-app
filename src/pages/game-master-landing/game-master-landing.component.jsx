@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../../components/text-input/text-input.component";
+import NumberInput from "../../components/number-input/number-input.component";
 import {
   getGameForMaster,
   updateGameCharacter,
@@ -29,6 +30,20 @@ const GameMasterLandingPage = () => {
         ...selectedCharacter.details,
         ...characterUpdate.detail,
       },
+    };
+    dispatch(updateGameCharacter(updatedSelectedCharacter));
+  };
+
+  const handleOnHpChange = (characterUpdate) => {
+    const findPlayer = game.data.players.items.find(
+      (xCharacter) => (xCharacter.id = characterUpdate.id)
+    );
+
+    const selectedCharacter = findPlayer?.selectedCharacter;
+    console.log({ characterUpdate, selectedCharacter });
+    const updatedSelectedCharacter = {
+      ...selectedCharacter,
+      stats: characterUpdate.stats,
     };
     dispatch(updateGameCharacter(updatedSelectedCharacter));
   };
@@ -80,6 +95,24 @@ const GameMasterLandingPage = () => {
               handleOnChange({
                 id: character.id,
                 detail: { name: e.target.value },
+              })
+            }
+          />
+          <div>hp</div>
+          <div>{character?.stats?.hitPoints?.current}</div>
+          <NumberInput
+            label="Hit Points Current"
+            value={character?.stats?.hitPoints?.current}
+            onChange={(e) =>
+              handleOnHpChange({
+                id: character.id,
+                stats: {
+                  ...character.stats,
+                  hitPoints: {
+                    ...character.stats.hitPoints,
+                    current: e.target.value,
+                  },
+                },
               })
             }
           />
