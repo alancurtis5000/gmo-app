@@ -15,6 +15,7 @@ import Button from "../../components/button/button.component";
 
 const PlayerLandingPage = () => {
   const userId = useSelector((state) => state.user.id);
+  const userName = useSelector((state) => state.user.name);
   const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
   let subscriptionOnUpdateCharacter;
@@ -64,6 +65,7 @@ const PlayerLandingPage = () => {
   return (
     <div className="page">
       Player Landing Page
+      <div>{`user: ${userName}`}</div>
       <div>Name</div>
       <div>{character?.details?.name}</div>
       <TextInput
