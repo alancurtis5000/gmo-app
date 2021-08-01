@@ -4,6 +4,7 @@ import {
   getGameLobbyById as getGameLobbyByIdQuery,
   getGameByIdForMaster as getGameByIdForMasterQuery,
 } from "../../graphql/custom-queries";
+import { updateCharacter as updateCharacterMutation } from "../../graphql/custom-mutations";
 
 export const getGameStart = () => (dispatch) => {
   dispatch({
@@ -57,7 +58,6 @@ export const getGame = (id) => async (dispatch) => {
 
 export const getGameForMaster = (id) => async (dispatch) => {
   dispatch(getGameStart());
-  console.log({ id });
   try {
     const result = await API.graphql({
       query: getGameByIdForMasterQuery,
@@ -65,10 +65,36 @@ export const getGameForMaster = (id) => async (dispatch) => {
         id: id,
       },
     });
-    console.log({ result });
     const game = result.data.getGame;
     return dispatch(getGameSuccess(game));
   } catch (error) {
     return dispatch(getGameFailure(error));
   }
 };
+
+export const updateGameCharacter =
+  (character) => async (dispatch, getState) => {
+    const gameId = getState().game.data.id;
+    dispatch(getGameForMaster(gameId));
+    try {
+      await API.graphql({
+        query: updateCharacterMutation,
+        variables: {
+          input: {
+            id: character.id,
+            abilityScores: character.abilityScores,
+            details: character.details,
+            savingThrows: character.savingThrows,
+            stats: character.stats,
+            features: character.features,
+            money: character.money,
+            items: character.items,
+          },
+        },
+      });
+      return dispatch(getGameForMaster(gameId));
+    } catch (error) {
+      console.log({ error });
+      return dispatch(getGameFailure(error));
+    }
+  };

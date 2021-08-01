@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../../components/text-input/text-input.component";
-import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
-import { getGameForMaster } from "../../redux/game/game.actions";
+import {
+  getGameForMaster,
+  updateGameCharacter,
+} from "../../redux/game/game.actions";
 import { useEffect } from "react";
 import {
   newOnUpdateCharacter,
@@ -28,7 +30,7 @@ const GameMasterLandingPage = () => {
         ...characterUpdate.detail,
       },
     };
-    dispatch(updateUserCharacter(updatedSelectedCharacter));
+    dispatch(updateGameCharacter(updatedSelectedCharacter));
   };
 
   const setupSubscriptions = () => {
