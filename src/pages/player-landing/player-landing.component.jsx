@@ -39,7 +39,9 @@ const PlayerLandingPage = () => {
     ).subscribe({
       next: (result) => {
         const updatedCharacter = result.value.data.newOnUpdateCharacter;
-        dispatch(setUserCharacter(updatedCharacter));
+        if (updatedCharacter.user.id === userId) {
+          dispatch(setUserCharacter(updatedCharacter));
+        }
       },
     });
   };

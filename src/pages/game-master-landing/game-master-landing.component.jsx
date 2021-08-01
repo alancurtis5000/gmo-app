@@ -26,6 +26,7 @@ const GameMasterLandingPage = () => {
     const selectedCharacter = findPlayer?.selectedCharacter;
     const updatedSelectedCharacter = {
       ...selectedCharacter,
+      id: characterUpdate.id,
       details: {
         ...selectedCharacter.details,
         ...characterUpdate.detail,
@@ -43,6 +44,7 @@ const GameMasterLandingPage = () => {
     console.log({ characterUpdate, selectedCharacter });
     const updatedSelectedCharacter = {
       ...selectedCharacter,
+      id: characterUpdate.id,
       stats: characterUpdate.stats,
     };
     dispatch(updateGameCharacter(updatedSelectedCharacter));
@@ -85,6 +87,7 @@ const GameMasterLandingPage = () => {
       let character = player.selectedCharacter;
       return (
         <div key={i}>
+          <div>id: {character.id}</div>
           <div>Name</div>
           <div>{character?.details?.name}</div>
           <TextInput
