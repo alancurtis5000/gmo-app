@@ -1,38 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getSelectedCharacterByUserId as getSelectedCharacterByUserIdQuery } from "../../graphql/custom-queries";
 import { API, graphqlOperation } from "aws-amplify";
 import { newOnUpdateCharacter } from "../../graphql/subscriptions";
-import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
+import {
+  setUserCharacter,
+  getUserCharacterFromGame,
+} from "../../redux/user-character/user-character.actions";
+import TextInput from "../../components/text-input/text-input.component";
 
 // on mount get game Id fetch relative user and selected characters in game
 
 const PlayerLandingPage = () => {
   const userId = useSelector((state) => state.user.id);
-  // todo: connect to redux instead of local state!
+  const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
-  const [character, setCharacter] = useState({});
   let subscriptionOnUpdateCharacter;
 
-  const getSelectedCharacter = async () => {
-    try {
-      const result = await API.graphql({
-        query: getSelectedCharacterByUserIdQuery,
-        variables: {
-          id: userId,
-        },
-      });
-      console.log(result.data);
-      setCharacter(result.data.getUser.selectedCharacter);
-    } catch (error) {
-      console.log(error);
-    }
+  const getUserCharacter = () => {
+    dispatch(getUserCharacterFromGame());
   };
 
   useEffect(() => {
     setupSubscriptions();
     if (userId) {
-      getSelectedCharacter();
+      getUserCharacter();
     }
     return () => {
       subscriptionOnUpdateCharacter.unsubscribe();
@@ -44,10 +35,26 @@ const PlayerLandingPage = () => {
       graphqlOperation(newOnUpdateCharacter)
     ).subscribe({
       next: (result) => {
-        console.log({ result });
-        setCharacter(result.value.data.newOnUpdateCharacter);
+        const updatedCharacter = result.value.data.newOnUpdateCharacter;
+        dispatch(setUserCharacter(updatedCharacter));
       },
     });
+  };
+
+  const handleOnChange = (characterUpdate) => {
+    console.log({ characterUpdate });
+    // const findPlayer = game.data.players.items.find(
+    //   (xCharacter) => (xCharacter.id = characterUpdate.id)
+    // );
+    // const selectedCharacter = findPlayer?.selectedCharacter;
+    // const updatedSelectedCharacter = {
+    //   ...selectedCharacter,
+    //   details: {
+    //     ...selectedCharacter.details,
+    //     ...characterUpdate.detail,
+    //   },
+    // };
+    // dispatch(updateUserCharacter(updatedSelectedCharacter));
   };
 
   return (
@@ -55,6 +62,17 @@ const PlayerLandingPage = () => {
       Player Landing Page
       <div>Name</div>
       <div>{character?.details?.name}</div>
+      <TextInput
+        label="Character Name"
+        value={character?.details?.name}
+        // error="don't do it"
+        onChange={(e) =>
+          handleOnChange({
+            id: character.id,
+            detail: { name: e.target.value },
+          })
+        }
+      />
       <div>hp</div>
       <div>{character?.stats?.hitPoints?.current}</div>
     </div>

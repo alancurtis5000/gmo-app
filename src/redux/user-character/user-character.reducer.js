@@ -7,6 +7,13 @@ const userCharactersReducer = (state = initialState, action) => {
       return { ...state, data: { ...state.data, ...action.payload } };
     case types.RESET_USER_CHARACTER:
       return { ...initialState };
+    // SET
+    case types.SET_USER_CHARACTER:
+      return {
+        ...state,
+        data: { ...state.data, ...action.payload },
+        isLoaded: true,
+      };
     // GET
     case types.GET_USER_CHARACTER_START:
       return { ...state, isLoaded: false };
