@@ -5,8 +5,11 @@ import { newOnUpdateCharacter } from "../../graphql/subscriptions";
 import {
   setUserCharacter,
   getUserCharacterFromGame,
+  updateUserCharacter,
+  updateUserCharacterLocal,
 } from "../../redux/user-character/user-character.actions";
 import TextInput from "../../components/text-input/text-input.component";
+import Button from "../../components/button/button.component";
 
 // on mount get game Id fetch relative user and selected characters in game
 
@@ -41,20 +44,19 @@ const PlayerLandingPage = () => {
     });
   };
 
-  const handleOnChange = (characterUpdate) => {
-    console.log({ characterUpdate });
-    // const findPlayer = game.data.players.items.find(
-    //   (xCharacter) => (xCharacter.id = characterUpdate.id)
-    // );
-    // const selectedCharacter = findPlayer?.selectedCharacter;
-    // const updatedSelectedCharacter = {
-    //   ...selectedCharacter,
-    //   details: {
-    //     ...selectedCharacter.details,
-    //     ...characterUpdate.detail,
-    //   },
-    // };
-    // dispatch(updateUserCharacter(updatedSelectedCharacter));
+  const handleOnChange = (detail) => {
+    const update = {
+      details: {
+        ...character.details,
+        ...detail,
+      },
+    };
+    dispatch(updateUserCharacterLocal(update));
+  };
+
+  const handleSave = () => {
+    console.log("handleSave");
+    dispatch(updateUserCharacter());
   };
 
   return (
@@ -68,11 +70,11 @@ const PlayerLandingPage = () => {
         // error="don't do it"
         onChange={(e) =>
           handleOnChange({
-            id: character.id,
-            detail: { name: e.target.value },
+            name: e.target.value,
           })
         }
       />
+      <Button text="Save" onClick={handleSave} />
       <div>hp</div>
       <div>{character?.stats?.hitPoints?.current}</div>
     </div>
