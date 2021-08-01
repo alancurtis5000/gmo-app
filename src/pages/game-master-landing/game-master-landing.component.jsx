@@ -3,10 +3,18 @@ import TextInput from "../../components/text-input/text-input.component";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import { getGameForMaster } from "../../redux/game/game.actions";
 import { useEffect } from "react";
+import {
+  newOnUpdateCharacter,
+  newOnUpdateGame,
+} from "../../graphql/subscriptions";
+import { API, graphqlOperation } from "aws-amplify";
 
 const GameMasterLandingPage = () => {
   const dispatch = useDispatch();
   const game = useSelector((state) => state.game);
+  let subscriptionOnUpdateCharacter;
+  let subscriptionOnUpdateGame;
+  // Todo Updates once but then never again.
 
   const handleOnChange = (characterUpdate) => {
     const findPlayer = game.data.players.items.find(
@@ -23,11 +31,36 @@ const GameMasterLandingPage = () => {
     dispatch(updateUserCharacter(updatedSelectedCharacter));
   };
 
+  const setupSubscriptions = () => {
+    subscriptionOnUpdateCharacter = API.graphql(
+      graphqlOperation(newOnUpdateCharacter)
+    ).subscribe({
+      next: (result) => {
+        console.log({ result });
+        dispatch(getGameForMaster(game.data.id));
+        // setCharacter(result.value.data.newOnUpdateCharacter);
+      },
+    });
+    subscriptionOnUpdateGame = API.graphql(
+      graphqlOperation(newOnUpdateGame)
+    ).subscribe({
+      next: (result) => {
+        console.log("GameUpdated: ", { result });
+        // dispatch(getGameForMaster(game.data.id));
+        // setCharacter(result.value.data.newOnUpdateCharacter);
+      },
+    });
+  };
+
   useEffect(() => {
-    console.log({ gmi: game.data.id });
+    setupSubscriptions();
     if (game.data.id) {
       dispatch(getGameForMaster(game.data.id));
     }
+    return () => {
+      subscriptionOnUpdateCharacter.unsubscribe();
+      subscriptionOnUpdateGame.unsubscribe();
+    };
   }, [dispatch, game.id]);
 
   const renderCharacters = () => {
