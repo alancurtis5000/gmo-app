@@ -10,6 +10,7 @@ import {
 } from "../../redux/user-character/user-character.actions";
 import TextInput from "../../components/text-input/text-input.component";
 import Button from "../../components/button/button.component";
+import PlayerNavbar from "../../components/player-navbar/player-navbar.component";
 
 // on mount get game Id fetch relative user and selected characters in game
 
