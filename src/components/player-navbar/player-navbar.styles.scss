@@ -2,14 +2,14 @@
   display: flex;
   width: 100%;
   background-color: red;
-  flex-basis: 50px;
   position: fixed;
   bottom: 0px;
+  .button {
+    height: 50px;
+  }
 
   @include media("<=tablet") {
     .button {
-      height: 50px;
-      min-width: 50px;
       .text {
         display: none;
       }

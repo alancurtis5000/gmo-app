@@ -13,9 +13,9 @@ const PlayerNavbar = () => {
   const history = useHistory();
   const match = useRouteMatch();
   const routes = [
-    { path: "/", title: "Home", icon: <HomeIcon /> },
+    { path: "", title: "Home", icon: <HomeIcon /> },
     { path: "/stats", title: "Stats", icon: <AccessibilityIcon /> },
-    { path: "/savingThrows", title: "Saving Throws", icon: <CasinoIcon /> },
+    { path: "/saving-throws", title: "Saving Throws", icon: <CasinoIcon /> },
     { path: "/items", title: "Items", icon: <ListAltIcon /> },
     { path: "/weapons", title: "Weapons", icon: <BuildIcon /> },
     { path: "/spells", title: "Spells", icon: <AcUnitIcon /> },
