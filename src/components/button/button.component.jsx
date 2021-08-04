@@ -3,7 +3,7 @@ const Button = (props) => {
 
   return (
     <button className={`button ${className} main`} onClick={onClick}>
-      <h3>{text}</h3>
+      <h3 className="text">{text}</h3>
       <div className="icon">{icon}</div>
     </button>
   );

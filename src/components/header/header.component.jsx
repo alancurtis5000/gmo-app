@@ -34,6 +34,7 @@ const Header = (props) => {
     try {
       await Auth.signOut({ global: true });
       await handleLeaveGame();
+      history.push("/");
       window.location.href("/");
     } catch (error) {
       console.log("error signing out: ", error);

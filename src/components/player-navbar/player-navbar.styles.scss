@@ -1,3 +1,26 @@
 .player-navbar {
   display: flex;
+  width: 100%;
+  background-color: red;
+  flex-basis: 50px;
+  position: fixed;
+  bottom: 0px;
+
+  @include media("<=tablet") {
+    .button {
+      height: 50px;
+      min-width: 50px;
+      .text {
+        display: none;
+      }
+    }
+  }
+
+  @include media(">tablet", "<desktop") {
+    background-color: #fed;
+  }
+
+  @include media(">=desktop") {
+    background-color: #fab;
+  }
 }

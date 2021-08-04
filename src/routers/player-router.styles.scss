@@ -1,0 +1,17 @@
+.player-router {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include media("<=tablet") {
+    background-color: rgb(112, 162, 212);
+  }
+
+  @include media(">tablet", "<desktop") {
+    background-color: #fed;
+  }
+
+  @include media(">=desktop") {
+    background-color: #fab;
+  }
+}

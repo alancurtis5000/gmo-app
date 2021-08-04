@@ -6,7 +6,7 @@ import PlayerNavbar from "../components/player-navbar/player-navbar.component";
 const PlayerRouter = () => {
   const match = useRouteMatch();
   return (
-    <>
+    <div className="player-router">
       <Switch>
         <Route
           path={`${match.url}`}
@@ -19,7 +19,7 @@ const PlayerRouter = () => {
         />
       </Switch>
       <PlayerNavbar />
-    </>
+    </div>
   );
 };
 

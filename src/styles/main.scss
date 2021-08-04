@@ -1,9 +1,13 @@
 // base
 @import "~normalize.css/normalize.css";
+@import "./base/media-breakpoints.scss";
 @import "./base/palette";
 @import "./base/mixins";
 @import "./base/globals";
 @import "../App.styles";
+
+// routers
+@import "../routers/player-router.styles.scss";
 
 // pages
 // @import "../pages/not-found/not-found.styles";
