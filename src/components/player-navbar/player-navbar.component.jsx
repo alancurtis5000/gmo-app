@@ -5,12 +5,10 @@ import BuildIcon from "@material-ui/icons/Build";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import CreateIcon from "@material-ui/icons/Create";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
-
-import Button from "../button/button.component";
-import { useHistory, useRouteMatch } from "react-router";
+import { useRouteMatch } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const PlayerNavbar = () => {
-  const history = useHistory();
   const match = useRouteMatch();
   const routes = [
     { path: "", title: "Home", icon: <HomeIcon /> },
@@ -22,17 +20,19 @@ const PlayerNavbar = () => {
     { path: "/details", title: "Details", icon: <CreateIcon /> },
   ];
 
-  console.log({ match });
   const renderButtons = () => {
     return routes.map((route, i) => {
       return (
-        <div key={i}>
-          <Button
-            text={route.title}
-            onClick={() => history.push(`${match.url}${route.path}`)}
-            icon={route.icon}
-          />
-        </div>
+        <NavLink
+          className="nav-link"
+          to={`${match.url}${route.path}`}
+          key={i}
+          activeClassName="selected"
+          exact
+        >
+          <div className="text">{route.title}</div>
+          <div className="icon">{route.icon}</div>
+        </NavLink>
       );
     });
   };
