@@ -234,6 +234,7 @@ type Description {
 type AbilityScore {
   value: Int
   modifier: Int
+  save: Int
 }
 
 type AbilityScores {

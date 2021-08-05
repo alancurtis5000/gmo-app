@@ -289,26 +289,32 @@ export const newOnUpdateCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
@@ -880,26 +886,32 @@ export const onCreateCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
@@ -1060,26 +1072,32 @@ export const onUpdateCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
@@ -1240,26 +1258,32 @@ export const onDeleteCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {

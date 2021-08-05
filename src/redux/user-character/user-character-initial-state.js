@@ -17,12 +17,12 @@ export const initialState = {
       classes: [],
     },
     abilityScores: {
-      strength: { value: 0, modifier: 0 },
-      dexterity: { value: 0, modifier: 0 },
-      constitution: { value: 0, modifier: 0 },
-      intelligence: { value: 0, modifier: 0 },
-      wisdom: { value: 0, modifier: 0 },
-      charisma: { value: 0, modifier: 0 },
+      strength: { value: 0, modifier: 0, save: 0 },
+      dexterity: { value: 0, modifier: 0, save: 0 },
+      constitution: { value: 0, modifier: 0, save: 0 },
+      intelligence: { value: 0, modifier: 0, save: 0 },
+      wisdom: { value: 0, modifier: 0, save: 0 },
+      charisma: { value: 0, modifier: 0, save: 0 },
     },
     savingThrows: {
       base: [

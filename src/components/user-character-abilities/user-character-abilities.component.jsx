@@ -5,6 +5,7 @@ import { updateUserCharacterLocal } from "../../redux/user-character/user-charac
 
 const UserCharacterAbilities = (props) => {
   const { updateUserCharacterLocal, character } = props;
+
   const handleOnChange = (abilityScore) => {
     const update = {
       abilityScores: {
@@ -31,7 +32,7 @@ const UserCharacterAbilities = (props) => {
                 handleOnChange({
                   [ability]: {
                     value: e.target.value * 1,
-                    modifier: abilityScore.modifier,
+                    ...abilityScore,
                   },
                 })
               }
@@ -43,8 +44,21 @@ const UserCharacterAbilities = (props) => {
               onChange={(e) =>
                 handleOnChange({
                   [ability]: {
-                    value: abilityScore.value,
+                    ...abilityScore,
                     modifier: e.target.value * 1,
+                  },
+                })
+              }
+            />
+            <NumberInput
+              label="Save"
+              name={ability}
+              value={abilityScore.save}
+              onChange={(e) =>
+                handleOnChange({
+                  [ability]: {
+                    ...abilityScore,
+                    save: e.target.value * 1,
                   },
                 })
               }

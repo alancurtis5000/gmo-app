@@ -18,12 +18,12 @@ export const initialState = {
       classes: [{ id: 0, level: 2, type: "Fighter" }],
     },
     abilityScores: {
-      strength: { value: 17, modifier: 3 },
-      dexterity: { value: 12, modifier: 1 },
-      constitution: { value: 16, modifier: 2 },
-      intelligence: { value: 7, modifier: -1 },
-      wisdom: { value: 8, modifier: -1 },
-      charisma: { value: 20, modifier: 5 },
+      strength: { value: 17, modifier: 3, save: 0 },
+      dexterity: { value: 12, modifier: 1, save: 0 },
+      constitution: { value: 16, modifier: 2, save: 0 },
+      intelligence: { value: 7, modifier: -1, save: 0 },
+      wisdom: { value: 8, modifier: -1, save: 0 },
+      charisma: { value: 20, modifier: 5, save: 0 },
     },
     savingThrows: {
       base: [

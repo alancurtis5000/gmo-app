@@ -486,26 +486,32 @@ export const createCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
@@ -669,26 +675,32 @@ export const updateCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
@@ -852,26 +864,32 @@ export const deleteCharacter = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {

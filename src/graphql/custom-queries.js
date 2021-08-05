@@ -134,26 +134,32 @@ export const getGameByIdForMaster = /* GraphQL */ `
               strength {
                 value
                 modifier
+                save
               }
               dexterity {
                 value
                 modifier
+                save
               }
               constitution {
                 value
                 modifier
+                save
               }
               intelligence {
                 value
                 modifier
+                save
               }
               wisdom {
                 value
                 modifier
+                save
               }
               charisma {
                 value
                 modifier
+                save
               }
             }
             savingThrows {
@@ -297,26 +303,32 @@ export const getUserCharactersByUserId = /* GraphQL */ `
             strength {
               value
               modifier
+              save
             }
             dexterity {
               value
               modifier
+              save
             }
             constitution {
               value
               modifier
+              save
             }
             intelligence {
               value
               modifier
+              save
             }
             wisdom {
               value
               modifier
+              save
             }
             charisma {
               value
               modifier
+              save
             }
           }
         }
@@ -379,26 +391,32 @@ export const getSelectedCharacterByUserId = /* GraphQL */ `
           strength {
             value
             modifier
+            save
           }
           dexterity {
             value
             modifier
+            save
           }
           constitution {
             value
             modifier
+            save
           }
           intelligence {
             value
             modifier
+            save
           }
           wisdom {
             value
             modifier
+            save
           }
           charisma {
             value
             modifier
+            save
           }
         }
         savingThrows {
@@ -566,26 +584,32 @@ export const getCharacterById = /* GraphQL */ `
         strength {
           value
           modifier
+          save
         }
         dexterity {
           value
           modifier
+          save
         }
         constitution {
           value
           modifier
+          save
         }
         intelligence {
           value
           modifier
+          save
         }
         wisdom {
           value
           modifier
+          save
         }
         charisma {
           value
           modifier
+          save
         }
       }
       savingThrows {
