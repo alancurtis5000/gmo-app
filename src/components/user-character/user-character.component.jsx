@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Button from "../../components/button/button.component";
 import UserCharacterDetails from "../user-character-details/user-character-details.component";
 import UserCharacterAbilities from "../user-character-abilities/user-character-abilities.component";
-import { useRouteMatch } from "react-router";
+import { useRouteMatch, useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import {
   resetUserCharacter,
@@ -18,6 +18,7 @@ import UserCharacterMoney from "../user-character-money/user-character-money.com
 
 const CreateCharacter = () => {
   const characterId = useRouteMatch().params.id;
+  const history = useHistory();
   const isCreateCharacter = !characterId;
   const dispatch = useDispatch();
 
@@ -33,10 +34,12 @@ const CreateCharacter = () => {
   const handleSave = () => {
     console.log("handleSave");
     dispatch(updateUserCharacter());
+    history.goBack();
   };
   const handleCreateCharacter = () => {
     console.log("handleCreateCharacter");
     dispatch(createUserCharacter());
+    history.goBack();
     // TODO: wait till success then push to page
   };
 
