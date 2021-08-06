@@ -51,6 +51,7 @@ const GameMasterLandingPage = () => {
       subscriptionOnUpdateCharacter.unsubscribe();
       subscriptionOnUpdateGame.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, game.id]);
 
   const renderCharacters = () => {

@@ -24,6 +24,7 @@ const PlayerLandingPage = () => {
     dispatch(getUserCharacterFromGame());
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceApiCall = useCallback(
     debounce((updatedSelectedCharacter) => {
       dispatch(updateUserCharacter(updatedSelectedCharacter));
@@ -39,6 +40,7 @@ const PlayerLandingPage = () => {
     return () => {
       subscriptionOnUpdateCharacter.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   const setupSubscriptions = () => {
