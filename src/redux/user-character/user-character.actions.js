@@ -1,5 +1,6 @@
 import types from "./user-character.types";
 import { API } from "aws-amplify";
+import debounce from "lodash/debounce";
 import { getCharacterById as getCharacterByIdQuery } from "../../graphql/custom-queries";
 import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 import { updateCharacter as updateCharacterMutation } from "../../graphql/custom-mutations";
@@ -129,7 +130,12 @@ export const updateUserCharacterFailure = (error) => {
   };
 };
 
-export const updateUserCharacter = () => async (dispatch, getState) => {
+export const updateUserCharacter = (character) => (dispatch) => {
+  dispatch(updateUserCharacterLocal(character));
+  debounceApi(character, dispatch);
+};
+
+export const updateUserCharacterApiCall = () => async (dispatch, getState) => {
   let characterToUpdate = getState()?.userCharacter?.data;
   dispatch(updateUserCharacterStart());
   try {
@@ -156,6 +162,11 @@ export const updateUserCharacter = () => async (dispatch, getState) => {
     return dispatch(updateUserCharacterFailure(error));
   }
 };
+
+const debounceApi = debounce(
+  (character, dispatch) => dispatch(updateUserCharacterApiCall(character)),
+  600
+);
 
 // get user character from game  //
 export const getUserCharacterFromGameStart = () => (dispatch) => {

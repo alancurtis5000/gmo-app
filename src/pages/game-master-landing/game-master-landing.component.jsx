@@ -74,7 +74,6 @@ const GameMasterLandingPage = () => {
             }
           />
           <div>hp</div>
-          <div>{character?.stats?.hitPoints?.current}</div>
           <NumberInput
             label="Hit Points Current"
             value={character?.stats?.hitPoints?.current || 0}

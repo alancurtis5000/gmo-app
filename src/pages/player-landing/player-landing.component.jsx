@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { API, graphqlOperation } from "aws-amplify";
 import { newOnUpdateCharacter } from "../../graphql/subscriptions";
@@ -6,11 +6,9 @@ import {
   setUserCharacter,
   getUserCharacterFromGame,
   updateUserCharacter,
-  updateUserCharacterLocal,
 } from "../../redux/user-character/user-character.actions";
 import TextInput from "../../components/text-input/text-input.component";
-import Button from "../../components/button/button.component";
-import debounce from "lodash/debounce";
+import NumberInput from "../../components/number-input/number-input.component";
 // on mount get game Id fetch relative user and selected characters in game
 
 const PlayerLandingPage = () => {
@@ -25,12 +23,6 @@ const PlayerLandingPage = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debounceApiCall = useCallback(
-    debounce((updatedSelectedCharacter) => {
-      dispatch(updateUserCharacter(updatedSelectedCharacter));
-    }, 600),
-    []
-  );
 
   useEffect(() => {
     setupSubscriptions();
@@ -56,20 +48,8 @@ const PlayerLandingPage = () => {
     });
   };
 
-  const handleOnChange = (detail) => {
-    const update = {
-      details: {
-        ...character.details,
-        ...detail,
-      },
-    };
-    dispatch(updateUserCharacterLocal(update));
-    debounceApiCall(update);
-  };
-
-  const handleSave = () => {
-    console.log("handleSave");
-    dispatch(updateUserCharacter());
+  const handleOnChange = (updatedcharacter) => {
+    dispatch(updateUserCharacter(updatedcharacter));
   };
 
   return (
@@ -84,13 +64,28 @@ const PlayerLandingPage = () => {
         // error="don't do it"
         onChange={(e) =>
           handleOnChange({
-            name: e.target.value,
+            ...character,
+            details: { name: e.target.value },
           })
         }
       />
-      <Button text="Save" onClick={handleSave} />
       <div>hp</div>
-      <div>{character?.stats?.hitPoints?.current}</div>
+      <NumberInput
+        label="Hit Points Current"
+        value={character?.stats?.hitPoints?.current || 0}
+        onChange={(e) =>
+          handleOnChange({
+            ...character,
+            stats: {
+              ...character.stats,
+              hitPoints: {
+                ...character.stats.hitPoints,
+                current: e.target.value * 1,
+              },
+            },
+          })
+        }
+      />
     </div>
   );
 };
