@@ -19,37 +19,8 @@ const GameMasterLandingPage = () => {
   let subscriptionOnUpdateGame;
 
   const handleOnChange = (characterUpdate) => {
-    const findPlayer = game.data.players.items.find(
-      (xCharacter) => (xCharacter.id = characterUpdate.id)
-    );
-    const selectedCharacter = findPlayer?.selectedCharacter;
-    const updatedSelectedCharacter = {
-      ...selectedCharacter,
-      id: characterUpdate.id,
-      details: {
-        ...selectedCharacter.details,
-        ...characterUpdate.detail,
-      },
-    };
-    dispatch(updateGameCharacter(updatedSelectedCharacter));
+    dispatch(updateGameCharacter(characterUpdate));
   };
-
-  /*
-  const handleOnHpChange = (characterUpdate) => {
-    const findPlayer = game.data.players.items.find(
-      (xCharacter) => (xCharacter.id = characterUpdate.id)
-    );
-
-    const selectedCharacter = findPlayer?.selectedCharacter;
-    console.log({ characterUpdate, selectedCharacter });
-    const updatedSelectedCharacter = {
-      ...selectedCharacter,
-      id: characterUpdate.id,
-      stats: characterUpdate.stats,
-    };
-    // dispatch(updateGameCharacter(updatedSelectedCharacter));
-  };
-  */
 
   const setupSubscriptions = () => {
     subscriptionOnUpdateCharacter = API.graphql(
@@ -84,7 +55,7 @@ const GameMasterLandingPage = () => {
 
   const renderCharacters = () => {
     return game?.data?.players?.items.map((player, i) => {
-      let character = player.selectedCharacter;
+      const character = player.selectedCharacter;
       return (
         <div key={i}>
           <div>id: {character.id}</div>
@@ -96,29 +67,29 @@ const GameMasterLandingPage = () => {
             // error="don't do it"
             onChange={(e) =>
               handleOnChange({
-                id: character.id,
-                detail: { name: e.target.value },
+                ...character,
+                details: { name: e.target.value },
               })
             }
           />
           <div>hp</div>
           <div>{character?.stats?.hitPoints?.current}</div>
-          {/* <NumberInput
+          <NumberInput
             label="Hit Points Current"
-            value={character?.stats?.hitPoints?.current}
+            value={character?.stats?.hitPoints?.current || 0}
             onChange={(e) =>
-              handleOnHpChange({
-                id: character.id,
+              handleOnChange({
+                ...character,
                 stats: {
                   ...character.stats,
                   hitPoints: {
                     ...character.stats.hitPoints,
-                    current: e.target.value,
+                    current: e.target.value * 1,
                   },
                 },
               })
             }
-          /> */}
+          />
         </div>
       );
     });
