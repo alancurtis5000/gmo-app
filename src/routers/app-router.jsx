@@ -1,9 +1,10 @@
-import { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import NotFoundPage from "../pages/not-found/not-found.component";
 // import Examples from "../pages/examples/examples.component";
 import PreGameRouter from "./pre-game-router";
 import SplitRouter from "./split-router";
+import TestGameCharacterPage from "../pages/test-game-character/test-game-character.component";
+import TestGameMasterPage from "../pages/test-game-master/test-game-master.component";
 
 const AppRouter = () => {
   return (
@@ -11,6 +12,9 @@ const AppRouter = () => {
       <Switch>
         <Route path="/game/:gameId" component={SplitRouter} />
         <Route path="/" component={PreGameRouter} />
+        {/* test-game-character used for testing look of character without logging into game */}
+        <Route path="/test-game-character" component={TestGameCharacterPage} />
+        <Route path="/test-game-master" component={TestGameMasterPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
