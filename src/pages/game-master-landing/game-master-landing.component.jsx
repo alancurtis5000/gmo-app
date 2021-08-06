@@ -1,9 +1,12 @@
+import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../../components/text-input/text-input.component";
 import NumberInput from "../../components/number-input/number-input.component";
+import debounce from "lodash/debounce";
 import {
   getGameForMaster,
   updateGameCharacter,
+  updateGameCharacterLocal,
 } from "../../redux/game/game.actions";
 import { useEffect } from "react";
 import {
@@ -19,6 +22,13 @@ const GameMasterLandingPage = () => {
   let subscriptionOnUpdateGame;
   // Todo Updates once but then never again.
 
+  const debounceApiCall = useCallback(
+    debounce((updatedSelectedCharacter) => {
+      dispatch(updateGameCharacter(updatedSelectedCharacter));
+    }, 600),
+    []
+  );
+
   const handleOnChange = (characterUpdate) => {
     const findPlayer = game.data.players.items.find(
       (xCharacter) => (xCharacter.id = characterUpdate.id)
@@ -32,7 +42,9 @@ const GameMasterLandingPage = () => {
         ...characterUpdate.detail,
       },
     };
-    dispatch(updateGameCharacter(updatedSelectedCharacter));
+    // dispatch(updateGameCharacter(updatedSelectedCharacter));
+    dispatch(updateGameCharacterLocal(updatedSelectedCharacter));
+    debounceApiCall(updatedSelectedCharacter);
   };
 
   const handleOnHpChange = (characterUpdate) => {

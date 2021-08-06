@@ -1,4 +1,5 @@
 import types from "./game.types";
+import cloneDeep from "lodash/cloneDeep";
 import { API } from "aws-amplify";
 import {
   getGameLobbyById as getGameLobbyByIdQuery,
@@ -75,7 +76,6 @@ export const getGameForMaster = (id) => async (dispatch) => {
 export const updateGameCharacter =
   (character) => async (dispatch, getState) => {
     const gameId = getState().game.data.id;
-    dispatch(getGameForMaster(gameId));
     try {
       await API.graphql({
         query: updateCharacterMutation,
@@ -97,4 +97,33 @@ export const updateGameCharacter =
       console.log({ error });
       return dispatch(getGameFailure(error));
     }
+  };
+
+export const updateGameCharacterLocal =
+  (character) => async (dispatch, getState) => {
+    let players = cloneDeep(getState().game.data.players.items);
+    let playerToUpdateIndex = players.findIndex(
+      (player) => player.selectedCharacter.id === character.id
+    );
+    let playerReplace = cloneDeep(players[playerToUpdateIndex]);
+    let input = {
+      id: character.id,
+      abilityScores: character.abilityScores,
+      details: character.details,
+      savingThrows: character.savingThrows,
+      stats: character.stats,
+      features: character.features,
+      money: character.money,
+      items: character.items,
+    };
+    playerReplace.selectedCharacter = {
+      ...playerReplace.selectedCharacter,
+      ...input,
+    };
+
+    players.splice(playerToUpdateIndex, 1, playerReplace);
+    dispatch({
+      type: types.UPDATE_GAME_CHARACTER,
+      payload: players,
+    });
   };
