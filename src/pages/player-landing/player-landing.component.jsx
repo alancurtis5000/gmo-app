@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { API, graphqlOperation } from "aws-amplify";
 import { newOnUpdateCharacter } from "../../graphql/subscriptions";
@@ -10,8 +10,7 @@ import {
 } from "../../redux/user-character/user-character.actions";
 import TextInput from "../../components/text-input/text-input.component";
 import Button from "../../components/button/button.component";
-import PlayerNavbar from "../../components/player-navbar/player-navbar.component";
-
+import debounce from "lodash/debounce";
 // on mount get game Id fetch relative user and selected characters in game
 
 const PlayerLandingPage = () => {
@@ -24,6 +23,13 @@ const PlayerLandingPage = () => {
   const getUserCharacter = () => {
     dispatch(getUserCharacterFromGame());
   };
+
+  const debounceApiCall = useCallback(
+    debounce((updatedSelectedCharacter) => {
+      dispatch(updateUserCharacter(updatedSelectedCharacter));
+    }, 600),
+    []
+  );
 
   useEffect(() => {
     setupSubscriptions();
@@ -56,6 +62,7 @@ const PlayerLandingPage = () => {
       },
     };
     dispatch(updateUserCharacterLocal(update));
+    debounceApiCall(update);
   };
 
   const handleSave = () => {
