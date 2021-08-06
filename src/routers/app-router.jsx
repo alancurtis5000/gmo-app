@@ -11,10 +11,12 @@ const AppRouter = () => {
     <div className="app-content">
       <Switch>
         <Route path="/game/:gameId" component={SplitRouter} />
-        <Route path="/" component={PreGameRouter} />
-        {/* test-game-character used for testing look of character without logging into game */}
+        {/* Start: test-game-character Start used for testing look of character without logging into game */}
         <Route path="/test-game-character" component={TestGameCharacterPage} />
         <Route path="/test-game-master" component={TestGameMasterPage} />
+        {/* End : test-game-character used for testing look of character without logging into game */}
+        <Route path="/" component={PreGameRouter} />
+
         <Route component={NotFoundPage} />
       </Switch>
     </div>

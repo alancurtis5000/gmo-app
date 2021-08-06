@@ -1,16 +1,5 @@
 import types from "./game.types";
-
-export const initialState = {
-  data: {
-    id: "",
-    name: "",
-    players: { items: [] },
-    master: {},
-    hasStarted: false,
-  },
-  isLoaded: false,
-  error: "",
-};
+import { initialState } from "./game-initial-state-dummy";
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {

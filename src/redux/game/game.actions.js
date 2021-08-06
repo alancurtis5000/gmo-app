@@ -70,26 +70,28 @@ export const updateGameCharacter = (character) => (dispatch) => {
 export const updateGameCharacterApiCall =
   (character) => async (dispatch, getState) => {
     const gameId = getState().game.data.id;
-    try {
-      await API.graphql({
-        query: updateCharacterMutation,
-        variables: {
-          input: {
-            id: character.id,
-            abilityScores: character.abilityScores,
-            details: character.details,
-            savingThrows: character.savingThrows,
-            stats: character.stats,
-            features: character.features,
-            money: character.money,
-            items: character.items,
+    if (gameId) {
+      try {
+        await API.graphql({
+          query: updateCharacterMutation,
+          variables: {
+            input: {
+              id: character.id,
+              abilityScores: character.abilityScores,
+              details: character.details,
+              savingThrows: character.savingThrows,
+              stats: character.stats,
+              features: character.features,
+              money: character.money,
+              items: character.items,
+            },
           },
-        },
-      });
-      return dispatch(getGameForMaster(gameId));
-    } catch (error) {
-      console.log({ error });
-      return dispatch(getGameFailure(error));
+        });
+        return dispatch(getGameForMaster(gameId));
+      } catch (error) {
+        console.log({ error });
+        return dispatch(getGameFailure(error));
+      }
     }
   };
 
