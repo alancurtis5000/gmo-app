@@ -1,12 +1,9 @@
-import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../../components/text-input/text-input.component";
 import NumberInput from "../../components/number-input/number-input.component";
-import debounce from "lodash/debounce";
 import {
   getGameForMaster,
   updateGameCharacter,
-  updateGameCharacterLocal,
 } from "../../redux/game/game.actions";
 import { useEffect } from "react";
 import {
@@ -20,14 +17,6 @@ const GameMasterLandingPage = () => {
   const game = useSelector((state) => state.game);
   let subscriptionOnUpdateCharacter;
   let subscriptionOnUpdateGame;
-  // Todo Updates once but then never again.
-
-  const debounceApiCall = useCallback(
-    debounce((updatedSelectedCharacter) => {
-      dispatch(updateGameCharacter(updatedSelectedCharacter));
-    }, 600),
-    []
-  );
 
   const handleOnChange = (characterUpdate) => {
     const findPlayer = game.data.players.items.find(
@@ -42,11 +31,10 @@ const GameMasterLandingPage = () => {
         ...characterUpdate.detail,
       },
     };
-    // dispatch(updateGameCharacter(updatedSelectedCharacter));
-    dispatch(updateGameCharacterLocal(updatedSelectedCharacter));
-    debounceApiCall(updatedSelectedCharacter);
+    dispatch(updateGameCharacter(updatedSelectedCharacter));
   };
 
+  /*
   const handleOnHpChange = (characterUpdate) => {
     const findPlayer = game.data.players.items.find(
       (xCharacter) => (xCharacter.id = characterUpdate.id)
@@ -59,15 +47,15 @@ const GameMasterLandingPage = () => {
       id: characterUpdate.id,
       stats: characterUpdate.stats,
     };
-    dispatch(updateGameCharacter(updatedSelectedCharacter));
+    // dispatch(updateGameCharacter(updatedSelectedCharacter));
   };
+  */
 
   const setupSubscriptions = () => {
     subscriptionOnUpdateCharacter = API.graphql(
       graphqlOperation(newOnUpdateCharacter)
     ).subscribe({
       next: (result) => {
-        console.log({ result });
         dispatch(getGameForMaster(game.data.id));
         // setCharacter(result.value.data.newOnUpdateCharacter);
       },
@@ -115,7 +103,7 @@ const GameMasterLandingPage = () => {
           />
           <div>hp</div>
           <div>{character?.stats?.hitPoints?.current}</div>
-          <NumberInput
+          {/* <NumberInput
             label="Hit Points Current"
             value={character?.stats?.hitPoints?.current}
             onChange={(e) =>
@@ -130,7 +118,7 @@ const GameMasterLandingPage = () => {
                 },
               })
             }
-          />
+          /> */}
         </div>
       );
     });

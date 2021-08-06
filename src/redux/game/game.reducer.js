@@ -20,9 +20,7 @@ const userReducer = (state = initialState, action) => {
       return { ...state, data: { ...action.payload }, isLoaded: true };
     case types.GET_GAME_FAILURE:
       return { ...state, data: {}, isLoaded: true, ...action.payload };
-
     case types.UPDATE_GAME_CHARACTER:
-      console.log({ action });
       return {
         ...state,
         data: { ...state.data, players: { items: action.payload } },

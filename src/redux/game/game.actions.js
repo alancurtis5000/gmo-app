@@ -1,5 +1,6 @@
 import types from "./game.types";
 import cloneDeep from "lodash/cloneDeep";
+import debounce from "lodash/debounce";
 import { API } from "aws-amplify";
 import {
   getGameLobbyById as getGameLobbyByIdQuery,
@@ -43,18 +44,6 @@ export const getGame = (id) => async (dispatch) => {
   }
 };
 
-// export const getGame = (id) => (dispatch) => {
-//   dispatch(getGameStart());
-//   // API  call graphql.
-//   return getQuote()
-//     .then((response) => {
-//       dispatch(getGameSuccess(response.data.quotes[0]));
-//     })
-//     .catch((error) => {
-//       dispatch(getGameFailure(error.message));
-//     });
-// };
-
 // get gameMaster version of game
 
 export const getGameForMaster = (id) => async (dispatch) => {
@@ -73,7 +62,12 @@ export const getGameForMaster = (id) => async (dispatch) => {
   }
 };
 
-export const updateGameCharacter =
+export const updateGameCharacter = (character) => (dispatch) => {
+  dispatch(updateGameCharacterLocal(character));
+  debounceApi(character, dispatch);
+};
+
+export const updateGameCharacterApiCall =
   (character) => async (dispatch, getState) => {
     const gameId = getState().game.data.id;
     try {
@@ -98,6 +92,11 @@ export const updateGameCharacter =
       return dispatch(getGameFailure(error));
     }
   };
+
+const debounceApi = debounce(
+  (character, dispatch) => dispatch(updateGameCharacterApiCall(character)),
+  600
+);
 
 export const updateGameCharacterLocal =
   (character) => async (dispatch, getState) => {
