@@ -1,18 +1,8 @@
-import { useEffect } from "react";
 import CharacterListCard from "../character-list-card/character-list-card.component";
-import { getUserCharacters } from "../../redux/user-characters/user-characters.actions";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
-const CharacterList = () => {
-  const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.id);
-  const userCharacters = useSelector((state) => state.userCharacters.data);
-
-  useEffect(() => {
-    if (userId) {
-      dispatch(getUserCharacters());
-    }
-  }, [dispatch, userId]);
+const CharacterList = (props) => {
+  const { userCharacters } = props;
 
   const displayCharacters = () => {
     return userCharacters.map((character, i) => {
@@ -28,4 +18,8 @@ const CharacterList = () => {
   );
 };
 
-export default CharacterList;
+const mapStateToProps = (state) => ({
+  userCharacters: state.userCharacters.data,
+});
+
+export default connect(mapStateToProps)(CharacterList);
