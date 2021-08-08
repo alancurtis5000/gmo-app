@@ -20,7 +20,7 @@ const AddIcon = (props) => {
 
 AddIcon.defaultProps = {
   fill1: "#000000",
-  height: "50px",
+  height: "25px",
   width: undefined,
   className: undefined,
 };
