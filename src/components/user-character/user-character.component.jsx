@@ -5,10 +5,9 @@ import UserCharacterAbilities from "../user-character-abilities/user-character-a
 import { useRouteMatch, useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import {
-  resetUserCharacter,
   getUserCharacter,
   createUserCharacter,
-  updateUserCharacter,
+  saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
 import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 import UserCharacterStats from "../user-character-stats/user-character-stats.component";
@@ -26,21 +25,11 @@ const CreateCharacter = () => {
     if (characterId) {
       dispatch(getUserCharacter(characterId));
     }
-    return () => {
-      dispatch(resetUserCharacter());
-    };
   }, [characterId, dispatch]);
 
-  const handleSave = () => {
-    console.log("handleSave");
-    dispatch(updateUserCharacter());
+  const handleSaveOrCreate = () => {
+    dispatch(saveUserCharacterApiCall());
     history.goBack();
-  };
-  const handleCreateCharacter = () => {
-    console.log("handleCreateCharacter");
-    dispatch(createUserCharacter());
-    history.goBack();
-    // TODO: wait till success then push to page
   };
 
   return (
@@ -53,11 +42,10 @@ const CreateCharacter = () => {
       <UserCharacterItems />
       <UserCharacterMoney />
 
-      {isCreateCharacter ? (
-        <Button text="Create" onClick={handleCreateCharacter} />
-      ) : (
-        <Button text="Save" onClick={handleSave} />
-      )}
+      <Button
+        text={isCreateCharacter ? "Create" : "Save"}
+        onClick={handleSaveOrCreate}
+      />
     </div>
   );
 };

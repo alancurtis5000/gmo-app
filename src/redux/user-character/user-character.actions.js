@@ -5,6 +5,7 @@ import { getCharacterById as getCharacterByIdQuery } from "../../graphql/custom-
 import { createCharacter as createCharacterMutation } from "../../graphql/mutations";
 import { updateCharacter as updateCharacterMutation } from "../../graphql/custom-mutations";
 import { getSelectedCharacterByUserId as getSelectedCharacterByUserIdQuery } from "../../graphql/custom-queries";
+import { getUserCharacters } from "../user-characters/user-characters.actions";
 
 export const updateUserCharacterLocal = (update) => (dispatch) => {
   dispatch({
@@ -135,33 +136,36 @@ export const updateUserCharacter = (character) => (dispatch) => {
   debounceApi(character, dispatch);
 };
 
-export const updateUserCharacterApiCall = () => async (dispatch, getState) => {
-  let characterToUpdate = getState()?.userCharacter?.data;
-  dispatch(updateUserCharacterStart());
-  try {
-    // updateUser character with detailsId, abilityScoresId
-    const updateUserCharacterData = await API.graphql({
-      query: updateCharacterMutation,
-      variables: {
-        input: {
-          id: characterToUpdate.id,
-          abilityScores: characterToUpdate.abilityScores,
-          details: characterToUpdate.details,
-          savingThrows: characterToUpdate.savingThrows,
-          stats: characterToUpdate.stats,
-          features: characterToUpdate.features,
-          money: characterToUpdate.money,
-          items: characterToUpdate.items,
+export const updateUserCharacterApiCall =
+  (character) => async (dispatch, getState) => {
+    let characterToUpdate = character
+      ? character
+      : getState()?.userCharacter?.data;
+    dispatch(updateUserCharacterStart());
+    try {
+      // updateUser character with detailsId, abilityScoresId
+      const updateUserCharacterData = await API.graphql({
+        query: updateCharacterMutation,
+        variables: {
+          input: {
+            id: characterToUpdate.id,
+            abilityScores: characterToUpdate.abilityScores,
+            details: characterToUpdate.details,
+            savingThrows: characterToUpdate.savingThrows,
+            stats: characterToUpdate.stats,
+            features: characterToUpdate.features,
+            money: characterToUpdate.money,
+            items: characterToUpdate.items,
+          },
         },
-      },
-    });
-    const updatedCharacter = updateUserCharacterData.data.updateCharacter;
-    return dispatch(updateUserCharacterSuccess(updatedCharacter));
-  } catch (error) {
-    console.log({ error });
-    return dispatch(updateUserCharacterFailure(error));
-  }
-};
+      });
+      const updatedCharacter = updateUserCharacterData.data.updateCharacter;
+      return dispatch(updateUserCharacterSuccess(updatedCharacter));
+    } catch (error) {
+      console.log({ error });
+      return dispatch(updateUserCharacterFailure(error));
+    }
+  };
 
 const debounceApi = debounce(
   (character, dispatch) => dispatch(updateUserCharacterApiCall(character)),
@@ -214,4 +218,62 @@ export const setUserCharacter = (character) => {
     type: types.SET_USER_CHARACTER,
     payload: character,
   };
+};
+
+// save or create new character
+// this is used when creating a new character of saving one from user characters
+export const saveUserCharacterApiCall = () => async (dispatch, getState) => {
+  const userId = getState()?.user?.id;
+  const characterToUpdate = getState()?.userCharacter?.data;
+  dispatch(updateUserCharacterStart());
+  if (!characterToUpdate.id) {
+    try {
+      // create character with detailsId, abilityScoresId
+      await API.graphql({
+        query: createCharacterMutation,
+        variables: {
+          input: {
+            characterUserId: userId,
+            abilityScores: characterToUpdate.abilityScores,
+            details: characterToUpdate.details,
+            savingThrows: characterToUpdate.savingThrows,
+            stats: characterToUpdate.stats,
+            features: characterToUpdate.features,
+            money: characterToUpdate.money,
+            items: characterToUpdate.items,
+          },
+        },
+      });
+
+      return dispatch(createUserCharacterSuccess());
+    } catch (error) {
+      console.log({ error });
+      return dispatch(createUserCharacterFailure(error));
+    }
+  } else {
+    try {
+      // updateUser character with detailsId, abilityScoresId
+      const updateUserCharacterData = await API.graphql({
+        query: updateCharacterMutation,
+        variables: {
+          input: {
+            id: characterToUpdate.id,
+            abilityScores: characterToUpdate.abilityScores,
+            details: characterToUpdate.details,
+            savingThrows: characterToUpdate.savingThrows,
+            stats: characterToUpdate.stats,
+            features: characterToUpdate.features,
+            money: characterToUpdate.money,
+            items: characterToUpdate.items,
+          },
+        },
+      });
+      const updatedCharacter = updateUserCharacterData.data.updateCharacter;
+      dispatch(getUserCharacters());
+      return dispatch(updateUserCharacterSuccess(updatedCharacter));
+    } catch (error) {
+      console.log({ error });
+      return dispatch(updateUserCharacterFailure(error));
+    }
+  }
 };

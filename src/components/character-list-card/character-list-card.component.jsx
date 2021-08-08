@@ -20,9 +20,15 @@ const CharacterListCard = (props) => {
   return (
     <div style={{ display: "flex" }} onClick={handleSelectCharacter}>
       <div>CharacterListCard</div>
-      <div>{character?.details?.name}</div>
-      <div>{character?.abilityScores?.strength?.value}</div>
-      <Button text="X" onClick={handleDeleteCharacter} />
+      <div style={{ marginLeft: "10px" }}>{character?.details?.name}</div>
+      <div style={{ margin: "0 10px" }}>
+        {character?.abilityScores?.strength?.value}
+      </div>
+      <Button
+        style={{ marginLeft: "10px" }}
+        text="X"
+        onClick={handleDeleteCharacter}
+      />
     </div>
   );
 };
