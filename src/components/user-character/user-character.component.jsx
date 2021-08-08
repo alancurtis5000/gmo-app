@@ -6,7 +6,6 @@ import { useRouteMatch, useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import {
   getUserCharacter,
-  createUserCharacter,
   saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
 import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";

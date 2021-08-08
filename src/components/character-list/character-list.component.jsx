@@ -12,7 +12,7 @@ const CharacterList = () => {
     if (userId) {
       dispatch(getUserCharacters());
     }
-  }, [userId]);
+  }, [dispatch, userId]);
 
   const displayCharacters = () => {
     return userCharacters.map((character, i) => {
