@@ -66,28 +66,45 @@ const UserCharacterStats = () => {
 
   const renderHitDice = () => {
     return hitDice.map((die) => (
-      <div className="hit-dice" key={die.id}>
-        <NumberInput
-          label="Level"
-          value={die.level}
-          onChange={(e) =>
-            handleOnChangeHitDice({ ...die, level: e.target.value })
-          }
-        />
-        <TextInput
-          label="Die"
-          value={die.die}
-          onChange={(e) =>
-            handleOnChangeHitDice({ ...die, die: e.target.value })
-          }
-        />
-        <NumberInput
-          label="Used"
-          value={die.used}
-          onChange={(e) =>
-            handleOnChangeHitDice({ ...die, used: e.target.value })
-          }
-        />
+      <div
+        className="hit-dice"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+        key={die.id}
+      >
+        <div>
+          <NumberInput
+            label="Level"
+            value={die.level}
+            onChange={(e) =>
+              handleOnChangeHitDice({ ...die, level: e.target.value })
+            }
+          />
+          <TextInput
+            label="Die"
+            value={die.die}
+            onChange={(e) =>
+              handleOnChangeHitDice({ ...die, die: e.target.value })
+            }
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <NumberInput
+            label="Used"
+            value={die.used}
+            onChange={(e) =>
+              handleOnChangeHitDice({ ...die, used: e.target.value })
+            }
+          />
+        </div>
         <Button text="-" onClick={() => handleRemoveHitDice(die)} />
       </div>
     ));
