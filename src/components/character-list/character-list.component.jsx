@@ -6,7 +6,9 @@ import { getUserCharacters } from "../../redux/user-characters/user-characters.a
 const CharacterList = (props) => {
   const { getUserCharacters, userCharacters, userId } = props;
   useEffect(() => {
-    getUserCharacters();
+    if (userId) {
+      getUserCharacters();
+    }
   }, [userId, getUserCharacters]);
 
   const displayCharacters = () => {

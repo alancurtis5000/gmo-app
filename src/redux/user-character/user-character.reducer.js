@@ -1,7 +1,7 @@
 import types from "./user-character.types";
 import { initialState } from "./user-character-initial-state-dummy";
 
-const userCharactersReducer = (state = initialState, action) => {
+const userCharacterReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.UPDATE_USER_CHARACTER:
       return { ...state, data: { ...state.data, ...action.payload } };
@@ -44,4 +44,4 @@ const userCharactersReducer = (state = initialState, action) => {
   }
 };
 
-export default userCharactersReducer;
+export default userCharacterReducer;

@@ -32,15 +32,17 @@ const Select = (props) => {
   };
 
   const renderOptions = () => {
-    return options.map((option) => (
-      <button
-        key={option.id}
-        className="select-list-item"
-        onClick={() => selectItem(option)}
-      >
-        {option.title || option.name || option.details.name}
-      </button>
-    ));
+    return options.map((option) => {
+      return (
+        <button
+          key={option.id}
+          className="select-list-item"
+          onClick={() => selectItem(option)}
+        >
+          {option.title || option.name || option.details.name}
+        </button>
+      );
+    });
   };
 
   return (
