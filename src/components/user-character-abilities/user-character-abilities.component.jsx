@@ -27,7 +27,7 @@ const UserCharacterAbilities = (props) => {
             <NumberInput
               label="Base"
               name={ability}
-              value={abilityScore.value}
+              value={abilityScore.value * 1}
               onChange={(e) =>
                 handleOnChange({
                   [ability]: {
@@ -40,7 +40,7 @@ const UserCharacterAbilities = (props) => {
             <NumberInput
               label="Modifier"
               name={ability}
-              value={abilityScore.modifier}
+              value={abilityScore.modifier * 1}
               onChange={(e) =>
                 handleOnChange({
                   [ability]: {
@@ -53,7 +53,7 @@ const UserCharacterAbilities = (props) => {
             <NumberInput
               label="Save"
               name={ability}
-              value={abilityScore.save}
+              value={abilityScore.save * 1}
               onChange={(e) =>
                 handleOnChange({
                   [ability]: {
