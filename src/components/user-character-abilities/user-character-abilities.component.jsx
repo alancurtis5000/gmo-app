@@ -31,8 +31,8 @@ const UserCharacterAbilities = (props) => {
               onChange={(e) =>
                 handleOnChange({
                   [ability]: {
-                    value: e.target.value * 1,
                     ...abilityScore,
+                    value: e.target.value * 1,
                   },
                 })
               }
