@@ -1,9 +1,8 @@
 .player-router {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: calc(100vh - 50px);
-  overflow: scroll;
+  overflow: auto;
 
   @include media("<=tablet") {
     background-color: rgb(112, 162, 212);

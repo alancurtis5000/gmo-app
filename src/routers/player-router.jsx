@@ -9,11 +9,13 @@ import PlayerSavingThrowsPage from "../pages/player-saving-throws/player-saving-
 import PlayerSpellsPage from "../pages/player-spells/player-spells.component";
 import PlayerStatsPage from "../pages/player-stats/player-stats.component";
 import PlayerWeaponsPage from "../pages/player-weapons/player-weapons.component";
+import Header from "../components/header/header.component";
 
 const PlayerRouter = () => {
   const match = useRouteMatch();
   return (
     <div className="player-router">
+      <Header title="Player" />
       <Switch>
         <Route
           path={`${match.url}`}
