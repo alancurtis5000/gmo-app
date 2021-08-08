@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+import AddIcon from "../../icons/add.icon";
 
 const Select = (props) => {
   const { label, id, options, handleSelect, value, placeholder, disabled } =
@@ -58,7 +57,7 @@ const Select = (props) => {
         ) : (
           <div className="select-title placeholder">{placeholder}</div>
         )}
-        {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+        {isOpen ? <AddIcon /> : <AddIcon />}
       </button>
       {isOpen ? (
         <div role="list" className="select-list">
