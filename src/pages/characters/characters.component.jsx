@@ -22,7 +22,7 @@ const Characters = () => {
     if (userId) {
       dispatch(getUserCharacters());
     }
-  }, [userId]);
+  }, [userId, dispatch]);
 
   return (
     <div className="characters page">

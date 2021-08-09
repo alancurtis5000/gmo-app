@@ -1,8 +1,11 @@
 .player-router {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 50px);
-  overflow: auto;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+
+  .content {
+    overflow: auto;
+  }
 
   @include media("<=tablet") {
     background-color: rgb(112, 162, 212);

@@ -1,19 +1,21 @@
-import { useHistory, useLocation } from "react-router";
+import { useHistory /*useLocation */ } from "react-router";
 import { useSelector } from "react-redux";
-import { Auth, API } from "aws-amplify";
-import { updateUser as updateUserMutation } from "../../graphql/mutations";
+// import { Auth, API } from "aws-amplify";
+// import { updateUser as updateUserMutation } from "../../graphql/mutations";
 const Header = (props) => {
   const { title } = props;
   const user = useSelector((state) => state.user.name);
-  const userRedux = useSelector((state) => state.user);
+  // const userRedux = useSelector((state) => state.user);
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const handleBack = () => {
     history.goBack();
   };
 
   // todo: what happens when gamemaster signs out during game.
   // todo: what happens when game player signs out during game.
+  /*
+
   const handleLeaveGame = async () => {
     try {
       const input = {
@@ -29,7 +31,6 @@ const Header = (props) => {
       console.log(error);
     }
   };
-
   const signOut = async () => {
     try {
       await Auth.signOut({ global: true });
@@ -47,13 +48,14 @@ const Header = (props) => {
     // history.replace("/");
     // window.close();
   };
+  */
 
   return (
     <div className="header">
       <button onClick={handleBack}>{"<"}</button>
       <h3>{title}</h3>
-      <button onClick={signOut}>Sign Out</button>
-      <button onClick={closeApp}>Exit</button>
+      {/* <button onClick={signOut}>Sign Out</button>
+      <button onClick={closeApp}>Exit</button> */}
       <h3>{user}</h3>
     </div>
   );

@@ -16,22 +16,24 @@ const PlayerRouter = () => {
   return (
     <div className="player-router">
       <Header title="Player" />
-      <Switch>
-        <Route
-          path={`${match.url}`}
-          exact={true}
-          component={PlayerLandingPage}
-        />
-        <Route path={`${match.url}/weapons`} component={PlayerWeaponsPage} />
-        <Route path={`${match.url}/spells`} component={PlayerSpellsPage} />
-        <Route
-          path={`${match.url}/saving-throws`}
-          component={PlayerSavingThrowsPage}
-        />
-        <Route path={`${match.url}/items`} component={PlayerItemsPage} />
-        <Route path={`${match.url}/details`} component={PlayerDetailsPage} />
-        <Route path={`${match.url}/stats`} component={PlayerStatsPage} />
-      </Switch>
+      <div className="content">
+        <Switch>
+          <Route
+            path={`${match.url}`}
+            exact={true}
+            component={PlayerLandingPage}
+          />
+          <Route path={`${match.url}/weapons`} component={PlayerWeaponsPage} />
+          <Route path={`${match.url}/spells`} component={PlayerSpellsPage} />
+          <Route
+            path={`${match.url}/saving-throws`}
+            component={PlayerSavingThrowsPage}
+          />
+          <Route path={`${match.url}/items`} component={PlayerItemsPage} />
+          <Route path={`${match.url}/details`} component={PlayerDetailsPage} />
+          <Route path={`${match.url}/stats`} component={PlayerStatsPage} />
+        </Switch>
+      </div>
       <PlayerNavbar />
     </div>
   );
