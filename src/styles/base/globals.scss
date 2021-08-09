@@ -42,3 +42,21 @@ p {
   align-items: center;
   flex-direction: column;
 }
+
+/// start fix styles on Ipad : added this to remove button and input styling coming from browser
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none;
+}
+
+// end fix styles on ipad
