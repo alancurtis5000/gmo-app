@@ -1,2 +1,56 @@
 .player-stats {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(14, 1fr);
+    gap: 8px;
+    padding: 8px;
+    .armor-class {
+      grid-row: 1/4;
+      grid-column: 1/2;
+    }
+    .hit-points {
+      grid-row: 1/5;
+      grid-column: 2/-1;
+    }
+    .hit-dice {
+      grid-row: 5/8;
+      grid-column: 2/-1;
+    }
+    .initiative {
+      grid-row: 4/7;
+      grid-column: 1/2;
+    }
+    .proficiency {
+      grid-row: 7/8;
+      grid-column: 1/2;
+    }
+    .death-saves {
+      grid-row: 8/9;
+      grid-column: 1/-1;
+    }
+    .strength {
+      grid-row: 9/11;
+    }
+    .dexterity {
+      grid-row: 9/11;
+    }
+    .constitution {
+      grid-row: 11/13;
+    }
+    .intelligence {
+      grid-row: 11/13;
+    }
+    .wisdom {
+      grid-row: 13/15;
+    }
+    .charisma {
+      grid-row: 13/15;
+    }
+  }
 }

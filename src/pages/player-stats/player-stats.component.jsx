@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Card from "../../components/card/card.component";
 
 const PlayerStatsPage = () => {
   const stats = useSelector((state) => state.userCharacter.data.stats);
@@ -9,7 +10,28 @@ const PlayerStatsPage = () => {
     stats;
   return (
     <div className="player-stats">
-      <h3>Stats</h3>
+      <div className="grid">
+        <Card className="armor-class" header={<div>Armor Class</div>} />
+        <Card className="hit-points" header={<div>Hit Points</div>} />
+        <Card className="initiative" header={<div>Initiative</div>} />
+        <Card className="hit-dice" header={<div>Hit Dice</div>} />
+        <Card className="proficiency" header={<div>proficiency</div>} />
+        <Card className="death-saves" header={<div>death-saves</div>} />
+        <Card className="strength attribute" header={<div>strength</div>} />
+        <Card className="dexterity attribute" header={<div>dexterity</div>} />
+        <Card
+          className="constitution attribute"
+          header={<div>constitution</div>}
+        />
+        <Card
+          className="intelligence attribute"
+          header={<div>intelligence</div>}
+        />
+        <Card className="wisdom attribute" header={<div>wisdom</div>} />
+        <Card className="charisma attribute" header={<div>charisma</div>} />
+      </div>
+
+      {/*       
       <div>
         <div>hit point</div>
         <div>current</div>
@@ -85,7 +107,7 @@ const PlayerStatsPage = () => {
         <div>{abilityScores.charisma.modifier}</div>
         <div>Save</div>
         <div>{abilityScores.charisma.save}</div>
-      </div>
+      </div> */}
     </div>
   );
 };
