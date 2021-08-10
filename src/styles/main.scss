@@ -1,5 +1,8 @@
 // base
-@import "~normalize.css/normalize.css";
+@import "./base/reset.scss";
+@import "~sanitize.css";
+@import "~sanitize.css/forms.css";
+@import "~sanitize.css/typography.css";
 @import "./base/media-breakpoints.scss";
 @import "./base/palette";
 @import "./base/mixins";

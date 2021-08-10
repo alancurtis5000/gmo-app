@@ -1,5 +1,6 @@
 import { useHistory /*useLocation */ } from "react-router";
 import { useSelector } from "react-redux";
+import Button from "../button/button.component";
 // import { Auth, API } from "aws-amplify";
 // import { updateUser as updateUserMutation } from "../../graphql/mutations";
 const Header = (props) => {
@@ -52,7 +53,7 @@ const Header = (props) => {
 
   return (
     <div className="header">
-      <button onClick={handleBack}>{"<"}</button>
+      <Button text="<" onClick={handleBack} />
       <h3>{title}</h3>
       {/* <button onClick={signOut}>Sign Out</button>
       <button onClick={closeApp}>Exit</button> */}
