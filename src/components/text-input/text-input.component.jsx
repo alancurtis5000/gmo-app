@@ -12,6 +12,13 @@ const TextInput = (props) => {
     error,
   } = props;
 
+  const handleOnKeyPress = (e) => {
+    const key = e.key;
+    if (key === "Enter") {
+      e.target.blur();
+    }
+  };
+
   return (
     <>
       <label htmlFor={id}>{label}</label>
@@ -20,6 +27,7 @@ const TextInput = (props) => {
         className={`text-input ${className}`}
         id={id}
         onChange={onChange}
+        onKeyPress={handleOnKeyPress}
         value={value}
         disabled={disabled}
         min={min}
