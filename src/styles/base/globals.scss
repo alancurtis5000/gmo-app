@@ -53,6 +53,7 @@ textarea {
   -webkit-appearance: none;
   margin: 0px;
   padding: 0px;
+  border-radius: 0px;
   &:focus {
     outline: 4px solid rgb(126, 126, 216);
   }
@@ -66,7 +67,7 @@ button,
 }
 
 button {
-  background-color: rgb(221, 85, 85);
+  background-color: rgb(146, 146, 146);
   border-radius: 0px;
   border: none;
   margin: 0px;
