@@ -22,8 +22,7 @@ const NumberInput = (props) => {
         onClick={handleOnClick}
         onChange={onChange}
         onKeyPress={handleOnKeyPress}
-        // converts to string to remove leading zero's
-        value={value.toString()}
+        value={value}
         disabled={disabled}
         name={name}
       />

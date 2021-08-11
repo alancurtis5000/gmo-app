@@ -80,7 +80,7 @@ const PlayerLandingPage = () => {
               ...character.stats,
               hitPoints: {
                 ...character.stats.hitPoints,
-                current: e.target.value * 1,
+                current: e.target.value,
               },
             },
           })
