@@ -20,11 +20,10 @@ const TextInput = (props) => {
   };
 
   return (
-    <>
+    <div className={`text-input ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
         type="text"
-        className={`text-input ${className}`}
         id={id}
         onChange={onChange}
         onKeyPress={handleOnKeyPress}
@@ -37,7 +36,7 @@ const TextInput = (props) => {
       <p className="error" htmlFor={id}>
         {error}
       </p>
-    </>
+    </div>
   );
 };
 

@@ -13,11 +13,10 @@ const NumberInput = (props) => {
   };
 
   return (
-    <>
+    <div className={`number-input ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
         type="number"
-        className={`number-input ${className}`}
         id={id}
         onClick={handleOnClick}
         onChange={onChange}
@@ -26,7 +25,7 @@ const NumberInput = (props) => {
         disabled={disabled}
         name={name}
       />
-    </>
+    </div>
   );
 };
 
