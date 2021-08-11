@@ -15,7 +15,6 @@ const PlayerStatsPage = () => {
       <div className="grid">
         <PlayerStatsCardArmorClass />
         <PlayerStatsCardHitPoints />
-        {/* <Card className="hit-points" header={<div>Hit Points</div>} /> */}
         <Card className="initiative" header={<div>Initiative</div>} />
         <Card className="hit-dice" header={<div>Hit Dice</div>} />
         <Card className="proficiency" header={<div>proficiency</div>} />
