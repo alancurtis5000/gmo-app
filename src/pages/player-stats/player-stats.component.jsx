@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Card from "../../components/card/card.component";
 import PlayerStatsCardArmorClass from "../../components/player-stats-card-armor-class/player-stats-card-armor-class.component";
+import PlayerStatsCardHitPoints from "../../components/player-stats-card-hit-points/player-stats-card-hit-points.component";
 
 const PlayerStatsPage = () => {
   const stats = useSelector((state) => state.userCharacter.data.stats);
@@ -12,8 +13,9 @@ const PlayerStatsPage = () => {
   return (
     <div className="player-stats">
       <div className="grid">
-        <PlayerStatsCardArmorClass className="armor-class" />
-        <Card className="hit-points" header={<div>Hit Points</div>} />
+        <PlayerStatsCardArmorClass />
+        <PlayerStatsCardHitPoints />
+        {/* <Card className="hit-points" header={<div>Hit Points</div>} /> */}
         <Card className="initiative" header={<div>Initiative</div>} />
         <Card className="hit-dice" header={<div>Hit Dice</div>} />
         <Card className="proficiency" header={<div>proficiency</div>} />
