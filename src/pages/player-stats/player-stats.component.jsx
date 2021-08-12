@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Card from "../../components/card/card.component";
 import PlayerStatsCardArmorClass from "../../components/player-stats-card-armor-class/player-stats-card-armor-class.component";
 import PlayerStatsCardHitPoints from "../../components/player-stats-card-hit-points/player-stats-card-hit-points.component";
+import PlayerStatsCard from "../../components/player-stats-card/player-stats-card.component";
 
 const PlayerStatsPage = () => {
   const stats = useSelector((state) => state.userCharacter.data.stats);
@@ -10,16 +11,25 @@ const PlayerStatsPage = () => {
   );
   const { hitPoints, hitDice, armorClass, proficiency, initiative, speed } =
     stats;
+
+  const character = useSelector((state) => state.userCharacter.data);
+  const renderStats = () => {
+    return character.stats.map((stat) => (
+      <PlayerStatsCard key={stat.code} stat={stat} />
+    ));
+  };
   return (
     <div className="player-stats">
       <div className="grid">
-        <PlayerStatsCardArmorClass />
-        <PlayerStatsCardHitPoints />
-        <Card className="initiative" header={<div>Initiative</div>} />
+        {/* <PlayerStatsCard /> */}
+        {renderStats()}
+        {/* <PlayerStatsCardArmorClass /> */}
+        {/* <PlayerStatsCardHitPoints /> */}
+        {/* <Card className="initiative" header={<div>Initiative</div>} />
         <Card className="hit-dice" header={<div>Hit Dice</div>} />
         <Card className="proficiency" header={<div>proficiency</div>} />
-        <Card className="death-saves" header={<div>death-saves</div>} />
-        <Card className="strength attribute" header={<div>strength</div>} />
+        <Card className="death-saves" header={<div>death-saves</div>} /> */}
+        {/* <Card className="strength attribute" header={<div>strength</div>} />
         <Card className="dexterity attribute" header={<div>dexterity</div>} />
         <Card
           className="constitution attribute"
@@ -30,7 +40,7 @@ const PlayerStatsPage = () => {
           header={<div>intelligence</div>}
         />
         <Card className="wisdom attribute" header={<div>wisdom</div>} />
-        <Card className="charisma attribute" header={<div>charisma</div>} />
+        <Card className="charisma attribute" header={<div>charisma</div>} /> */}
       </div>
 
       {/*       

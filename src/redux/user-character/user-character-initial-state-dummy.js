@@ -93,19 +93,48 @@ export const initialState = {
         { id: 1, title: "fire", details: "all fire damage is reduced by half" },
       ],
     },
-    stats: {
-      hitPoints: { title: "Hit Points", max: 34, current: 13, temporary: 0 },
-      armorClass: { title: "Armor Class", value: 13, temporary: 0 }, // should be calcutated from equipt items with attribute armorClassContribution
-      proficiency: { title: "Profienciency", value: 2 },
-      initiative: { title: "Initiative", value: 3 },
-      deathSaves: {
-        title: "Death Saves",
-        successes: 0,
-        failures: 0,
+    stats: [
+      {
+        code: "hitPoints",
+        title: "Hit Points",
+        max: { title: "Max", value: 34 },
+        current: { title: "Current", value: 13 },
+        temporary: { title: "Temp", value: 0 },
       },
-      hitDice: [{ id: 0, level: 4, die: "d12+4", used: 0 }],
-      speed: { title: "Speed", base: 10, encombered: 4 },
-    },
+      {
+        code: "armorClass",
+        title: "Armor Class",
+        value: { title: "Base", value: 13 },
+        temporary: { title: "Temp", value: 0 },
+      }, // should be calcutated from equipt items with attribute armorClassContribution
+      {
+        code: "proficiency",
+        title: "Profienciency",
+        value: { title: "Base", value: 2 },
+      },
+      {
+        code: "initiative",
+        title: "Initiative",
+        value: { title: "Base", value: 3 },
+      },
+      {
+        code: "deathSaves",
+        title: "Death Saves",
+        successes: { title: "Success", value: 0 },
+        failures: { title: "Failures", value: 0 },
+      },
+      // {
+      //   code: "hitDice",
+      //   title: "Hit Dice",
+      //   items: [{ id: 0, level: 4, die: "d12+4", used: 0 }],
+      // },
+      {
+        code: "speed",
+        title: "Speed",
+        base: { title: "Base", value: 10 },
+        encombered: { title: "Encombered", value: 4 },
+      },
+    ],
     features: {
       limited: [
         {
