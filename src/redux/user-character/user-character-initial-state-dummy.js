@@ -123,11 +123,14 @@ export const initialState = {
         successes: { title: "Success", value: 0 },
         failures: { title: "Failures", value: 0 },
       },
-      // {
-      //   code: "hitDice",
-      //   title: "Hit Dice",
-      //   items: [{ id: 0, level: 4, die: "d12+4", used: 0 }],
-      // },
+      {
+        code: "hitDice",
+        title: "Hit Dice",
+        items: [
+          { id: 0, level: 4, die: "d12+4", used: 0 },
+          { id: 1, level: 5, die: "d4+2", used: 2 },
+        ],
+      },
       {
         code: "speed",
         title: "Speed",

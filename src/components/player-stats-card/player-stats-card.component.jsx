@@ -3,6 +3,7 @@ import AddIcon from "../../icons/add.icon";
 import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
+import Table from "../table/table.component";
 import map from "lodash/map";
 
 const PlayerStatsCard = (props) => {
@@ -37,24 +38,36 @@ const PlayerStatsCard = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
+  const columns = [{ field: "id", title: "ID" }];
+  const rows = [{ value: "id", title: "ID" }];
+
   const renderStatItems = () => {
     return map(stat, (value, key) => {
       if (key === "title" || key === "code") {
         return;
       }
-      return (
-        <NumberInput
-          key={key}
-          label={value.title}
-          value={value.value}
-          onChange={(e) =>
-            handleOnChange({
-              code: stat.code,
-              value: { key, value: e.target.value },
-            })
-          }
-        />
-      );
+      if (key === "items") {
+        console.log({ value, key });
+        return <Table key={key} columns={columns} rows={rows} />;
+        //map(value, (itemValue, itemKey) => {
+        // console.log("insideItem", { itemValue, itemKey });
+        // return ; //<div key={itemKey}>{itemKey}</div>;
+        //});
+      } else {
+        return (
+          <NumberInput
+            key={key}
+            label={value.title}
+            value={value.value}
+            onChange={(e) =>
+              handleOnChange({
+                code: stat.code,
+                value: { key, value: e.target.value },
+              })
+            }
+          />
+        );
+      }
     });
   };
 
