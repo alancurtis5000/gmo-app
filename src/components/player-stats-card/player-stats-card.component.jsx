@@ -38,8 +38,11 @@ const PlayerStatsCard = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
-  const columns = [{ field: "id", title: "ID" }];
-  const rows = [{ value: "id", title: "ID" }];
+  const columns = [
+    { field: "level", label: "Level" },
+    { field: "die", label: "Die" },
+    { field: "used", label: "Used" },
+  ];
 
   const renderStatItems = () => {
     return map(stat, (value, key) => {
@@ -48,7 +51,7 @@ const PlayerStatsCard = (props) => {
       }
       if (key === "items") {
         console.log({ value, key });
-        return <Table key={key} columns={columns} rows={rows} />;
+        return <Table key={key} columns={columns} rows={value} />;
         //map(value, (itemValue, itemKey) => {
         // console.log("insideItem", { itemValue, itemKey });
         // return ; //<div key={itemKey}>{itemKey}</div>;
