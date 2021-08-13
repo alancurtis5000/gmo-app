@@ -17,14 +17,50 @@ export const initialState = {
       race: "Half Elf",
       classes: [{ id: 0, level: 2, type: "Fighter" }],
     },
-    abilityScores: {
-      strength: { value: 17, modifier: 3, save: 0 },
-      dexterity: { value: 12, modifier: 1, save: 0 },
-      constitution: { value: 16, modifier: 2, save: 0 },
-      intelligence: { value: 7, modifier: -1, save: 0 },
-      wisdom: { value: 8, modifier: -1, save: 0 },
-      charisma: { value: 20, modifier: 5, save: 0 },
-    },
+    abilityScores: [
+      {
+        code: "strength",
+        label: "Strength",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+      {
+        code: "dexterity",
+        label: "Dexterity",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+      {
+        code: "constitution",
+        label: "Constitution",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+      {
+        code: "intelligence",
+        label: "Intelligence",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+      {
+        code: "wisdom",
+        label: "Wisdom",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+      {
+        code: "charisma",
+        label: "Charisma",
+        value: { label: "Value", value: 18 },
+        modifier: { label: "Mod", value: 1 },
+        save: { label: "Save", value: 3 },
+      },
+    ],
     savingThrows: {
       base: [
         { code: "strength", title: "Strength", value: 7 },
@@ -96,36 +132,36 @@ export const initialState = {
     stats: [
       {
         code: "hitPoints",
-        title: "Hit Points",
-        max: { title: "Max", value: 34 },
-        current: { title: "Current", value: 13 },
-        temporary: { title: "Temp", value: 0 },
+        label: "Hit Points",
+        max: { label: "Max", value: 34 },
+        current: { label: "Current", value: 13 },
+        temporary: { label: "Temp", value: 0 },
       },
       {
         code: "armorClass",
-        title: "Armor Class",
-        value: { title: "Base", value: 13 },
-        temporary: { title: "Temp", value: 0 },
+        label: "Armor Class",
+        value: { label: "Base", value: 13 },
+        temporary: { label: "Temp", value: 0 },
       }, // should be calcutated from equipt items with attribute armorClassContribution
       {
         code: "proficiency",
-        title: "Profienciency",
-        value: { title: "Base", value: 2 },
+        label: "Profienciency",
+        value: { label: "Base", value: 2 },
       },
       {
         code: "initiative",
-        title: "Initiative",
-        value: { title: "Base", value: 3 },
+        label: "Initiative",
+        value: { label: "Base", value: 3 },
       },
       {
         code: "deathSaves",
-        title: "Death Saves",
-        successes: { title: "Success", value: 0 },
-        failures: { title: "Failures", value: 0 },
+        label: "Death Saves",
+        successes: { label: "Successes", value: 0 },
+        failures: { label: "Failures", value: 0 },
       },
       {
         code: "hitDice",
-        title: "Hit Dice",
+        label: "Hit Dice",
         items: [
           { id: 0, level: 4, die: "d12+4", used: 0 },
           { id: 1, level: 5, die: "d4+2", used: 2 },
@@ -133,9 +169,9 @@ export const initialState = {
       },
       {
         code: "speed",
-        title: "Speed",
-        base: { title: "Base", value: 10 },
-        encombered: { title: "Encombered", value: 4 },
+        label: "Speed",
+        base: { label: "Base", value: 10 },
+        encombered: { label: "Encombered", value: 4 },
       },
     ],
     features: {

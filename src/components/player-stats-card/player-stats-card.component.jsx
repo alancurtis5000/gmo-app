@@ -7,7 +7,7 @@ import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
 
 const PlayerStatsCard = (props) => {
-  const { stat } = props;
+  const { stat, className } = props;
   const dispatch = useDispatch();
   const character = useSelector((state) => state.userCharacter.data);
 
@@ -47,21 +47,17 @@ const PlayerStatsCard = (props) => {
 
   const renderStatItems = () => {
     return map(stat, (value, key) => {
-      if (key === "title" || key === "code") {
+      if (key === "label" || key === "code") {
         return;
       }
       if (key === "items") {
         console.log({ value, key });
         return <HitDiceTable key={key} columns={columns} rows={value} />;
-        //map(value, (itemValue, itemKey) => {
-        // console.log("insideItem", { itemValue, itemKey });
-        // return ; //<div key={itemKey}>{itemKey}</div>;
-        //});
       } else {
         return (
           <NumberInput
             key={key}
-            label={value.title}
+            label={value.label}
             value={value.value}
             onChange={(e) =>
               handleOnChange({
@@ -76,10 +72,10 @@ const PlayerStatsCard = (props) => {
   };
 
   return (
-    <div className="player-stats-card card ">
+    <div className={`player-stats-card card ${className}`}>
       <div className="stat-card-header">
         <AddIcon height={17} />
-        {stat.title}
+        {stat.label}
         <EditIcon height={15} />
       </div>
       <div className="stat-card-content">{renderStatItems()}</div>
