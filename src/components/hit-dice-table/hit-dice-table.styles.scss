@@ -1,4 +1,4 @@
-.table {
+.hit-dice-table {
   display: grid;
   width: 100%;
   padding: 5px;
@@ -13,8 +13,17 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
       justify-items: center;
-      input {
-        text-align: center;
+      .text-input {
+        input {
+          text-align: center;
+
+          width: 50px;
+        }
+      }
+      .number-input {
+        input {
+          width: 40px;
+        }
       }
     }
   }

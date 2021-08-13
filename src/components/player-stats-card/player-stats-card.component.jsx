@@ -3,7 +3,7 @@ import AddIcon from "../../icons/add.icon";
 import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
-import Table from "../table/table.component";
+import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
 
 const PlayerStatsCard = (props) => {
@@ -12,6 +12,7 @@ const PlayerStatsCard = (props) => {
   const character = useSelector((state) => state.userCharacter.data);
 
   const handleOnChange = (statToChange) => {
+    console.log(statToChange);
     const statIndex = character.stats.findIndex(
       (stat) => stat.code === statToChange.code
     );
@@ -51,7 +52,7 @@ const PlayerStatsCard = (props) => {
       }
       if (key === "items") {
         console.log({ value, key });
-        return <Table key={key} columns={columns} rows={value} />;
+        return <HitDiceTable key={key} columns={columns} rows={value} />;
         //map(value, (itemValue, itemKey) => {
         // console.log("insideItem", { itemValue, itemKey });
         // return ; //<div key={itemKey}>{itemKey}</div>;
