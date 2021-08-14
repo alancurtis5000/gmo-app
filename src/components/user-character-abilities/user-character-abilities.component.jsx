@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const UserCharacterAbilities = () => {
   const dispatch = useDispatch();
-  const character = useSelector((state)=>state.userCharacter.data);
+  const character = useSelector((state) => state.userCharacter.data);
 
   const handleOnChange = (abilityScore) => {
     const update = {
@@ -16,8 +16,6 @@ const UserCharacterAbilities = () => {
     };
     dispatch(updateUserCharacterLocal(update));
   };
-
-  const renderAbilityScores
 
   return (
     <div className="user-character-abilities">
@@ -72,6 +70,5 @@ const UserCharacterAbilities = () => {
     </div>
   );
 };
-
 
 export default UserCharacterAbilities;
