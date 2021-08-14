@@ -174,37 +174,34 @@ export const initialState = {
         encombered: { label: "Encombered", value: 4 },
       },
     ],
-    features: {
-      limited: [
-        {
-          id: 0,
-          type: "limited",
-          title: "Rage",
-          max: 3,
-          recovery: "long rest",
-          used: 0,
-          description: "+ 2 to melee Damage for 3 rounds",
-        },
-        {
-          id: 1,
-          type: "limited",
-          title: "Relentless Endurance",
-          max: 1,
-          recovery: "short rest",
-          used: 0,
-          description: "if you go below 0hp you can go back to 1hp",
-        },
-      ],
-      constants: [
-        {
-          id: 0,
-          type: "constant",
-          title: "Danger Sense",
-          description:
-            "Advantage on dexterity saves against seen effects (not blinded / defened / or incapacitated)",
-        },
-      ],
-    },
+    features: [
+      {
+        id: 0,
+        type: "limited",
+        title: "Rage",
+        max: 3,
+        recovery: "long rest",
+        used: 0,
+        description: "+ 2 to melee Damage for 3 rounds",
+      },
+      {
+        id: 1,
+        type: "limited",
+        title: "Relentless Endurance",
+        max: 1,
+        recovery: "short rest",
+        used: 0,
+        description: "if you go below 0hp you can go back to 1hp",
+      },
+      {
+        id: 0,
+        type: "constant",
+        title: "Danger Sense",
+        description:
+          "Advantage on dexterity saves against seen effects (not blinded / defened / or incapacitated)",
+      },
+    ],
+
     racialTraits: [{ title: "", description: "" }],
     items: [
       {
@@ -349,13 +346,13 @@ export const initialState = {
         value: 1,
       },
     ],
-    money: {
-      platinum: 0,
-      gold: 0,
-      electrum: 0,
-      silver: 0,
-      copper: 0,
-    },
+    money: [
+      { code: "platinum", label: "Plantinum", quantity: 0 },
+      { code: "gold", label: "Gold", quantity: 0 },
+      { code: "electrum", label: "Electrum", quantity: 0 },
+      { code: "silver", label: "Silver", quantity: 0 },
+      { code: "copper", label: "Copper", quantity: 0 },
+    ],
     // todo spells
   },
   isLoaded: false,

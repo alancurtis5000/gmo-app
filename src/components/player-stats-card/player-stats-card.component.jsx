@@ -43,6 +43,7 @@ const PlayerStatsCard = (props) => {
     { field: "level", label: "Level" },
     { field: "die", label: "Die" },
     { field: "used", label: "Used" },
+    { field: "delete", label: "X" },
   ];
 
   const renderStatItems = () => {
