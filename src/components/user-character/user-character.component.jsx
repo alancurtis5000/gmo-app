@@ -9,7 +9,7 @@ import {
   saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
 import CharacterDataCard from "../character-data-card/character-data-card.component";
-
+import characterDataKeys from "../../constants/character-data-keys";
 // import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 // import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 // import UserCharacterFeatures from "../user-character-features/user-character-features.component";
@@ -35,33 +35,26 @@ const CreateCharacter = () => {
 
   const character = useSelector((state) => state.userCharacter.data);
 
-  const renderStats = () => {
-    return character.stats.map((dataValue) => (
-      <CharacterDataCard
-        className={dataValue.code}
-        key={dataValue.code}
-        dataKey="stats"
-        dataValue={dataValue}
-      />
-    ));
-  };
-
-  const renderAbilityScores = () => {
-    return character.abilityScores.map((dataValue) => (
-      <CharacterDataCard
-        className={dataValue.code}
-        key={dataValue.code}
-        dataKey="abilityScores"
-        dataValue={dataValue}
-      />
-    ));
+  const renderCharacterData = () => {
+    const mapped = characterDataKeys.map((dataKey) => {
+      return character[dataKey].map((dataValue, i) => (
+        <CharacterDataCard
+          className={dataValue.code}
+          key={dataValue.code || dataValue.id}
+          dataKey={dataKey}
+          dataValue={dataValue}
+        />
+      ));
+    });
+    return mapped;
   };
 
   return (
     <div className="user-character page">
       <UserCharacterDetails />
-      <div className="stats">{renderStats()}</div>
-      <div className="ability-scores">{renderAbilityScores()}</div>
+      {renderCharacterData()}
+      {/* <div className="stats">{renderStats()}</div>
+      <div className="ability-scores">{renderAbilityScores()}</div> */}
       {/* <UserCharacterAbilities /> */}
       {/* <UserCharacterSavingThrows /> */}
       {/* <UserCharacterStats /> */}

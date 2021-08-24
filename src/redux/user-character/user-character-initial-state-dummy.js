@@ -293,7 +293,7 @@ export const initialState = {
         description: "if you go below 0hp you can go back to 1hp",
       },
       {
-        id: 0,
+        id: 2,
         type: "constant",
         title: "Danger Sense",
         description:
