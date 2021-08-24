@@ -277,7 +277,7 @@ export const initialState = {
       {
         id: 0,
         type: "limited",
-        title: "Rage",
+        label: "Rage",
         max: 3,
         recovery: "long rest",
         used: 0,
@@ -286,7 +286,7 @@ export const initialState = {
       {
         id: 1,
         type: "limited",
-        title: "Relentless Endurance",
+        label: "Relentless Endurance",
         max: 1,
         recovery: "short rest",
         used: 0,
@@ -295,7 +295,7 @@ export const initialState = {
       {
         id: 2,
         type: "constant",
-        title: "Danger Sense",
+        label: "Danger Sense",
         description:
           "Advantage on dexterity saves against seen effects (not blinded / defened / or incapacitated)",
       },

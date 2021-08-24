@@ -43,8 +43,6 @@ const PlayerSavingThrowsPage = () => {
     );
   };
 
-  console.log({ sv: character.savingThrows });
-
   return (
     <div className="player-saving-throws">
       <div className="base">{renderBase()}</div>
