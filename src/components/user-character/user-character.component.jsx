@@ -8,7 +8,7 @@ import {
   getUserCharacter,
   saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
-import PlayerStatsCard from "../player-stats-card/player-stats-card.component";
+import CharacterDataCard from "../character-data-card/character-data-card.component";
 
 // import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 // import UserCharacterStats from "../user-character-stats/user-character-stats.component";
@@ -36,17 +36,23 @@ const CreateCharacter = () => {
   const character = useSelector((state) => state.userCharacter.data);
 
   const renderStats = () => {
-    return character.stats.map((stat) => (
-      <PlayerStatsCard className={stat.code} key={stat.code} stat={stat} />
+    return character.stats.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="stats"
+        dataValue={dataValue}
+      />
     ));
   };
 
   const renderAbilityScores = () => {
-    return character.abilityScores.map((abilityScore) => (
-      <PlayerStatsCard
-        className={abilityScore.code}
-        key={abilityScore.code}
-        stat={abilityScore}
+    return character.abilityScores.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="abilityScores"
+        dataValue={dataValue}
       />
     ));
   };
