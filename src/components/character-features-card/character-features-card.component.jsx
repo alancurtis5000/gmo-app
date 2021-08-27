@@ -3,6 +3,7 @@ import { updateUserCharacter } from "../../redux/user-character/user-character.a
 import NumberInput from "../number-input/number-input.component";
 import TextInput from "../text-input/text-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
+import SelectCharacterFeatureType from "../select-character-feature-type/select-character-feature-type.component";
 
 const CharacterFeaturesCard = (props) => {
   const { dataValue, className } = props;
@@ -80,17 +81,7 @@ const CharacterFeaturesCard = (props) => {
     <div className={`character-features-card card ${className}`}>
       <div className="character-features-card-header">{dataValue.label}</div>
       <div className="character-features-card-content">
-        <TextInput
-          label={"Type"}
-          value={dataValue.type}
-          onChange={(e) =>
-            handleOnChange({
-              id: dataValue.id,
-              value: e.target.value,
-              key: "type",
-            })
-          }
-        />
+        <SelectCharacterFeatureType featureId={dataValue.id} />
         <TextInput
           label={"Title"}
           value={dataValue.label}

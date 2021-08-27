@@ -34,11 +34,14 @@ const Select = (props) => {
     return options.map((option) => {
       return (
         <button
-          key={option.id}
+          key={option.id || option.code}
           className="select-list-item"
           onClick={() => selectItem(option)}
         >
-          {option.title || option.name || option.details.name}
+          {option?.title ||
+            option?.name ||
+            option?.details?.name ||
+            option?.label}
         </button>
       );
     });
