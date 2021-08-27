@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "../select/select.component";
-import featureTypes from "../../constants/feature-types";
+import featureRecovery from "../../constants/feature-recovery";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 
-const SelectCharacterFeatureType = (props) => {
+const SelectCharacterFeatureRecovery = (props) => {
   const { disabled, featureId } = props;
-  const [options] = useState(featureTypes);
+  const [options] = useState(featureRecovery);
 
   const currentValue = useSelector(
-    (state) => state.userCharacter.data.features[featureId].type
+    (state) => state.userCharacter.data.features[featureId].recovery
   );
-
   const dispatch = useDispatch();
   const character = useSelector((state) => state.userCharacter.data);
 
-  const handleSelect = (selectedFeatureType) => {
+  const handleSelect = (selectedRecovery) => {
     const featureIndex = character["features"].findIndex(
       (feature) => feature.id === featureId
     );
@@ -25,7 +24,7 @@ const SelectCharacterFeatureType = (props) => {
 
     const updatedFeature = {
       ...currentFeatureValue,
-      type: selectedFeatureType,
+      recovery: selectedRecovery,
     };
 
     let updatedFeatures = character["features"].map((x) => x);
@@ -40,16 +39,16 @@ const SelectCharacterFeatureType = (props) => {
   };
 
   return (
-    <div className="select-character-feature-type">
+    <div className="select-character-feature-recovery">
       <Select
         options={options}
         handleSelect={handleSelect}
         value={currentValue?.label}
-        placeholder="Feature Type"
+        placeholder="Short Rest"
         disabled={disabled}
       />
     </div>
   );
 };
 
-export default SelectCharacterFeatureType;
+export default SelectCharacterFeatureRecovery;

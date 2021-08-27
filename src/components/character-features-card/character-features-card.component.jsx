@@ -4,6 +4,7 @@ import NumberInput from "../number-input/number-input.component";
 import TextInput from "../text-input/text-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import SelectCharacterFeatureType from "../select-character-feature-type/select-character-feature-type.component";
+import SelectCharacterFeatureRecovery from "../select-character-feature-recovery/select-character-feature-recovery.component";
 
 const CharacterFeaturesCard = (props) => {
   const { dataValue, className } = props;
@@ -36,7 +37,7 @@ const CharacterFeaturesCard = (props) => {
   };
 
   const renderLimitedOptions = () => {
-    if (dataValue.type === "limited") {
+    if (dataValue.type.code === "limited") {
       return (
         <>
           <NumberInput
@@ -61,17 +62,7 @@ const CharacterFeaturesCard = (props) => {
               })
             }
           />
-          <TextInput
-            label={"Recovery"}
-            value={dataValue.recovery}
-            onChange={(e) =>
-              handleOnChange({
-                id: dataValue.id,
-                value: e.target.value,
-                key: "recovery",
-              })
-            }
-          />
+          <SelectCharacterFeatureRecovery featureId={dataValue.id} />
         </>
       );
     }

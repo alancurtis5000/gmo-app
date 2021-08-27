@@ -6,7 +6,7 @@ const PlayerFeaturesPage = () => {
 
   const renderConstants = () => {
     const filtered = character.features.filter(
-      (savingThrow) => savingThrow.type === "constant"
+      (savingThrow) => savingThrow.type.code === "constant"
     );
     const mapped = filtered.map((dataValue) => (
       <CharacterFeaturesCard
@@ -25,7 +25,7 @@ const PlayerFeaturesPage = () => {
   };
   const renderLimited = () => {
     const filtered = character.features.filter(
-      (savingThrow) => savingThrow.type === "limited"
+      (savingThrow) => savingThrow.type.code === "limited"
     );
     const mapped = filtered.map((dataValue) => (
       <CharacterFeaturesCard
