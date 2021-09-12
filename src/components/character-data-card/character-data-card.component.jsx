@@ -3,6 +3,7 @@ import AddIcon from "../../icons/add.icon";
 import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
+import TextInput from "../text-input/text-input.component";
 import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
 
@@ -20,11 +21,16 @@ const CharacterDataCard = (props) => {
       (stat) => stat.code === statToChange.code
     );
 
+    let updatedValue = statToChange.value.value;
+    if (currentStatValue.value.type === "number") {
+      updatedValue = updatedValue * 1;
+    }
+
     const updatedStat = {
       ...currentStatValue,
       [statToChange.value.key]: {
         ...currentStatValue[statToChange.value.key],
-        value: statToChange.value.value * 1,
+        value: updatedValue,
       },
     };
 
@@ -46,6 +52,7 @@ const CharacterDataCard = (props) => {
     { field: "delete", label: "X" },
   ];
 
+  // Todo: Alan Clean up how this render happens. maybe switch statement.
   const renderStatItems = () => {
     return map(dataValue, (value, key) => {
       if (
@@ -60,19 +67,36 @@ const CharacterDataCard = (props) => {
         console.log({ value, key });
         return <HitDiceTable key={key} columns={columns} rows={value} />;
       } else {
-        return (
-          <NumberInput
-            key={key}
-            label={value.label}
-            value={value.value}
-            onChange={(e) =>
-              handleOnChange({
-                code: dataValue.code,
-                value: { key, value: e.target.value },
-              })
-            }
-          />
-        );
+        console.log(typeof value.value);
+        if (value.inputType === "number") {
+          return (
+            <NumberInput
+              key={key}
+              label={value.label}
+              value={value.value}
+              onChange={(e) =>
+                handleOnChange({
+                  code: dataValue.code,
+                  value: { key, value: e.target.value },
+                })
+              }
+            />
+          );
+        } else if (value.inputType === "text") {
+          return (
+            <TextInput
+              key={key}
+              label={value.label}
+              value={value.value}
+              onChange={(e) =>
+                handleOnChange({
+                  code: dataValue.code,
+                  value: { key, value: e.target.value },
+                })
+              }
+            />
+          );
+        }
       }
     });
   };
