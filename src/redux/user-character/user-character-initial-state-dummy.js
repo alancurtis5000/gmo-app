@@ -446,11 +446,11 @@ export const initialState = {
       },
     ],
     money: [
-      { code: "platinum", label: "Plantinum", quantity: 0 },
-      { code: "gold", label: "Gold", quantity: 0 },
-      { code: "electrum", label: "Electrum", quantity: 0 },
-      { code: "silver", label: "Silver", quantity: 0 },
-      { code: "copper", label: "Copper", quantity: 0 },
+      { code: "platinum", label: "Plantinum", value: { value: 3 } },
+      { code: "gold", label: "Gold", value: { value: 4 } },
+      { code: "electrum", label: "Electrum", value: { value: 2 } },
+      { code: "silver", label: "Silver", value: { value: 1 } },
+      { code: "copper", label: "Copper", value: { value: 0 } },
     ],
     // todo spells
   },

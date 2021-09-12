@@ -3,13 +3,13 @@ import NumberInput from "../number-input/number-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import SelectAlignment from "../select-alignment/select-alignment.component";
 import { connect } from "react-redux";
-import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
+import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import UserCharacterDetailsClass from "../user-character-details-class/user-character-details-class.component";
 import Button from "../button/button.component";
 import UserCharacterDetailsDescription from "../user-character-details-description/user-character-details-description.component";
 
 const UserCharacterDetails = (props) => {
-  const { updateUserCharacterLocal, character } = props;
+  const { updateUserCharacter, character } = props;
 
   const handleOnChange = (detail) => {
     const update = {
@@ -18,7 +18,7 @@ const UserCharacterDetails = (props) => {
         ...detail,
       },
     };
-    updateUserCharacterLocal(update);
+    updateUserCharacter(update);
   };
 
   const handleAddClass = () => {
@@ -102,8 +102,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUserCharacterLocal: (update) =>
-    dispatch(updateUserCharacterLocal(update)),
+  updateUserCharacter: (update) => dispatch(updateUserCharacter(update)),
 });
 
 export default connect(
