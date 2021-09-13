@@ -4,6 +4,7 @@ import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
 import TextInput from "../text-input/text-input.component";
+import TextArea from "../text-area-input/text-area-input.component";
 import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
 
@@ -22,7 +23,7 @@ const CharacterDataCard = (props) => {
     );
 
     let updatedValue = statToChange.value.value;
-    if (currentStatValue.value.type === "number") {
+    if (currentStatValue.value.inputType === "number") {
       updatedValue = updatedValue * 1;
     }
 
@@ -85,6 +86,20 @@ const CharacterDataCard = (props) => {
         } else if (value.inputType === "text") {
           return (
             <TextInput
+              key={key}
+              label={value.label}
+              value={value.value}
+              onChange={(e) =>
+                handleOnChange({
+                  code: dataValue.code,
+                  value: { key, value: e.target.value },
+                })
+              }
+            />
+          );
+        } else if (value.inputType === "textArea") {
+          return (
+            <TextArea
               key={key}
               label={value.label}
               value={value.value}

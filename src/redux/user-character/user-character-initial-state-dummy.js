@@ -12,23 +12,64 @@ export const initialState = {
         value: { value: "Blurg Wingbat", inputType: "text" },
       },
       {
-        description: {
-          eyes: "Blue",
-          hair: "Bald",
-          skin: "Dark Brown",
-          size: "Medium",
-          age: 32,
+        code: "eyes",
+        label: "Eyes",
+        value: { value: "Blue", inputType: "text" },
+      },
+      {
+        code: "hair",
+        label: "Hair",
+        value: { value: "Silver", inputType: "text" },
+      },
+      {
+        code: "skin",
+        label: "Skin",
+        value: { value: "Tan", inputType: "text" },
+      },
+      {
+        code: "size",
+        label: "Size",
+        value: { value: "Medium", inputType: "text" },
+      },
+      { code: "age", label: "Age", value: { value: 32, inputType: "number" } },
+
+      {
+        code: "background",
+        label: "Background",
+        value: {
+          value:
+            "Village got burnt down by evil man. Looking to for revenge against an unknown evil",
+          inputType: "textArea",
         },
       },
       {
-        background:
-          "Village got burnt down by evil man. Looking to for revenge against an unknown evil",
+        code: "level",
+        label: "Level",
+        value: { value: 3, inputType: "number" },
       },
-      { level: 3 },
-      { alignment: "Chaotic Good" },
-      { experience: 2500 },
-      { race: "Half Elf" },
-      { classes: [{ id: 0, level: 2, type: "Fighter" }] },
+      {
+        code: "alignment",
+        label: "alignment",
+        value: { value: "Chaotic Good", inputType: "text" },
+      },
+      {
+        code: "experience",
+        label: "experience",
+        value: { value: "2500", inputType: "number" },
+      },
+      {
+        code: "race",
+        label: "race",
+        value: { value: "Half Elf", inputType: "text" },
+      },
+      {
+        // todo: alan how to handle classes?
+        // more so how to handle values that = arrays???
+        // another example is HitDice // look into dataCard reusable table comp.
+        code: "classes",
+        label: "Classes",
+        items: [{ id: 0, level: 2, type: "Fighter", inputType: "number" }],
+      },
     ],
     abilityScores: [
       {
