@@ -15,7 +15,7 @@ const TextAreaInput = (props) => {
   } = props;
 
   return (
-    <>
+    <div className={`text-area-input ${className}`}>
       <label htmlFor={id}>{label}</label>
       <textarea
         className={`text-area ${className}`}
@@ -32,7 +32,7 @@ const TextAreaInput = (props) => {
       <p className="error" htmlFor={id}>
         {error}
       </p>
-    </>
+    </div>
   );
 };
 
