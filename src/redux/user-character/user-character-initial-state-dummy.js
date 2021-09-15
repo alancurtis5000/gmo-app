@@ -73,6 +73,7 @@ export const initialState = {
             { code: "id", label: "Id" },
             { code: "level", label: "Level" },
             { code: "type", label: "Type" },
+            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -346,6 +347,7 @@ export const initialState = {
             { code: "level", label: "Level" },
             { code: "used", label: "Used" },
             { code: "die", label: "Die" },
+            { code: "remove", label: "Remove" },
           ],
           rows: [
             [

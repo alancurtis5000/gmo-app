@@ -1,4 +1,3 @@
-import map from "lodash/map";
 import forEach from "lodash/forEach";
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../text-input/text-input.component";
@@ -6,6 +5,8 @@ import NumberInput from "../number-input/number-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import Button from "../button/button.component";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
+import { models } from "../../models/models";
+import TrashIcon from "../../icons/trash.icon";
 
 const CharacterDataTable = (props) => {
   const { className, onClick, columns, rows, dataSection, dataValue } = props;
@@ -62,59 +63,58 @@ const CharacterDataTable = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
-  const handleAddHitDie = () => {
-    console.log("handleAddHitDie");
-
-    const statCode = "hitDice";
-    let currentHitDice = character.stats.find((stat) => stat.code === statCode);
-    console.log({ currentHitDice, l: currentHitDice.items.length });
-    const newHitDie = {
-      id: currentHitDice.items.length + 1,
-      level: 0,
-      die: "",
-      used: 0,
-    };
-    currentHitDice.items.push(newHitDie);
-    const updatedHitDice = { ...currentHitDice };
-
-    const statIndex = character.stats.findIndex(
-      (stat) => stat.code === statCode
+  const handleAddRow = () => {
+    const section = character[dataSection];
+    const subSection = section.find((data) => data.code === dataValue.code);
+    const subSectionIndex = section.findIndex(
+      (data) => data.code === dataValue.code
     );
-    let updatedStats = character.stats.map((x) => x);
-    updatedStats.splice(statIndex, 1, updatedHitDice);
+    const subSectionRows = subSection.table.rows;
 
-    const updatedCharacter = {
-      ...character,
-      stats: updatedStats,
+    let updatedRow = models[dataValue.code];
+
+    let updatedSubSectionRows = [...subSectionRows];
+    updatedSubSectionRows.push(updatedRow);
+
+    let updateSubSection = {
+      ...subSection,
+      table: {
+        columns: subSection.table.columns,
+        rows: updatedSubSectionRows,
+      },
     };
+
+    let updatedCharacter = {
+      ...character,
+    };
+    updatedCharacter[dataSection][subSectionIndex] = updateSubSection;
+
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
-  const handleRemoveHitDie = (rowIndex) => {
-    console.log("handleRemoveHitDie", rowIndex);
-
-    const statCode = "hitDice";
-    let currentHitDiceItems = character.stats.find(
-      (stat) => stat.code === statCode
-    ).items;
-
-    const updatedHitDiceItems = currentHitDiceItems;
-    updatedHitDiceItems.splice(rowIndex, 1);
-
-    let currentHitDice = character.stats.find((stat) => stat.code === statCode);
-
-    const updatedHitDice = { ...currentHitDice, items: updatedHitDiceItems };
-
-    const statIndex = character.stats.findIndex(
-      (stat) => stat.code === statCode
+  const handleRemoveRow = (rowIndex) => {
+    const section = character[dataSection];
+    const subSection = section.find((data) => data.code === dataValue.code);
+    const subSectionIndex = section.findIndex(
+      (data) => data.code === dataValue.code
     );
-    let updatedStats = character.stats.map((x) => x);
-    updatedStats.splice(statIndex, 1, updatedHitDice);
+    const subSectionRows = subSection.table.rows;
 
-    const updatedCharacter = {
-      ...character,
-      stats: updatedStats,
+    let updatedSubSectionRows = [...subSectionRows];
+    updatedSubSectionRows.splice(rowIndex, 1);
+
+    let updateSubSection = {
+      ...subSection,
+      table: {
+        columns: subSection.table.columns,
+        rows: updatedSubSectionRows,
+      },
     };
+
+    let updatedCharacter = {
+      ...character,
+    };
+    updatedCharacter[dataSection][subSectionIndex] = updateSubSection;
 
     dispatch(updateUserCharacter(updatedCharacter));
   };
@@ -175,6 +175,10 @@ const CharacterDataTable = (props) => {
       const rowComp = (
         <div key={rowIndex} className="row" styles={{ display: "flex" }}>
           {createdRow}
+          <Button
+            icon={<TrashIcon height={20} />}
+            onClick={() => handleRemoveRow(rowIndex)}
+          />
         </div>
       );
       rowsMapped.push(rowComp);
@@ -184,7 +188,7 @@ const CharacterDataTable = (props) => {
 
   return (
     <div className={`character-data-table ${className}`} onClick={onClick}>
-      <Button text="Add" onClick={handleAddHitDie} />
+      <Button text="Add" onClick={handleAddRow} />
       <div className="table-header">{renderHeader()}</div>
       <div className="table-rows">{renderRows()}</div>
     </div>

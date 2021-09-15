@@ -2,14 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
   &:hover {
     cursor: pointer;
     background: lightgrey;
   }
   .icon {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
   }
 }
