@@ -4,9 +4,10 @@ import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import NumberInput from "../number-input/number-input.component";
 import TextInput from "../text-input/text-input.component";
-import TextArea from "../text-area-input/text-area-input.component";
-import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
+import TextAreaInput from "../text-area-input/text-area-input.component";
+// import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
+import CharacterDataTable from "../character-data-table/character-data-table.component";
 
 const CharacterDataCard = (props) => {
   const { dataValue, className, dataKey } = props;
@@ -64,11 +65,17 @@ const CharacterDataCard = (props) => {
       ) {
         return;
       }
-      if (key === "items") {
-        console.log({ value, key });
-        return <HitDiceTable key={key} columns={columns} rows={value} />;
+      if (key === "table") {
+        return (
+          <CharacterDataTable
+            dataSection={dataKey}
+            dataValue={dataValue}
+            key={key}
+            columns={value.columns}
+            rows={value.rows}
+          />
+        );
       } else {
-        console.log(typeof value.value);
         if (value.inputType === "number") {
           return (
             <NumberInput
@@ -99,7 +106,7 @@ const CharacterDataCard = (props) => {
           );
         } else if (value.inputType === "textArea") {
           return (
-            <TextArea
+            <TextAreaInput
               key={key}
               label={value.label}
               value={value.value}

@@ -68,7 +68,25 @@ export const initialState = {
         // another example is HitDice // look into dataCard reusable table comp.
         code: "classes",
         label: "Classes",
-        items: [{ id: 0, level: 2, type: "Fighter", inputType: "number" }],
+        table: {
+          columns: [
+            { code: "id", label: "Id" },
+            { code: "level", label: "Level" },
+            { code: "type", label: "Type" },
+          ],
+          rows: [
+            [
+              { code: "id", value: 0, inputType: "number" },
+              { code: "level", value: 0, inputType: "number" },
+              { code: "type", value: "Fighter", inputType: "text" },
+            ],
+            [
+              { code: "id", value: 3, inputType: "number" },
+              { code: "level", value: 3, inputType: "number" },
+              { code: "type", value: "Bard", inputType: "text" },
+            ],
+          ],
+        },
       },
     ],
     abilityScores: [
