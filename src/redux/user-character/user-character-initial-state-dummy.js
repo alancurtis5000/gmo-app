@@ -2,11 +2,6 @@ export const initialState = {
   data: {
     details: [
       {
-        code: "platinum",
-        label: "Plantinum",
-        value: { value: 3, inputType: "number" },
-      },
-      {
         code: "name",
         label: "Name",
         value: { value: "Blurg Wingbat", inputType: "text" },
@@ -63,9 +58,6 @@ export const initialState = {
         value: { value: "Half Elf", inputType: "text" },
       },
       {
-        // todo: alan how to handle classes?
-        // more so how to handle values that = arrays???
-        // another example is HitDice // look into dataCard reusable table comp.
         code: "classes",
         label: "Classes",
         table: {
@@ -337,9 +329,6 @@ export const initialState = {
         failures: { label: "Failures", value: 0, inputType: "number" },
       },
       {
-        // todo: alan how to handle classes?
-        // more so how to handle values that = arrays???
-        // another example is HitDice // look into dataCard reusable table comp.
         code: "hitDice",
         label: "Hit Dice",
         table: {
