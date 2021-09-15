@@ -11,7 +11,31 @@ const hitDice = [
   { code: "die", value: "", inputType: "text" },
 ];
 
+// features
+const limited = [
+  { code: "name", value: "", inputType: "text" },
+  {
+    code: "description",
+    value: "",
+    inputType: "textArea",
+  },
+  { code: "max", value: 0, inputType: "number" },
+  { code: "used", value: 0, inputType: "number" },
+  { code: "recovery", value: "", inputType: "text" },
+];
+
+const constants = [
+  { code: "name", value: "", inputType: "text" },
+  {
+    code: "description",
+    value: "",
+    inputType: "textArea",
+  },
+];
+
 export const models = {
   classes,
   hitDice,
+  limited,
+  constants,
 };

@@ -1,4 +1,5 @@
 import CharacterDataCard from "../../components/character-data-card/character-data-card.component";
+
 import { useSelector } from "react-redux";
 
 const PlayerDetailsPage = () => {
@@ -23,6 +24,17 @@ const PlayerDetailsPage = () => {
       />
     ));
   };
+
+  const renderFeaturesNew = () => {
+    return character.features.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="features"
+        dataValue={dataValue}
+      />
+    ));
+  };
   return (
     <div>
       PlayerDetailsPage
@@ -31,6 +43,8 @@ const PlayerDetailsPage = () => {
         {renderDetials()}
         <div>Resistances</div>
         {renderResistances()}
+        <div>Features New</div>
+        {renderFeaturesNew()}
       </div>
     </div>
   );
