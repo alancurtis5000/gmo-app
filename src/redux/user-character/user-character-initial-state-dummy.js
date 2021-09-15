@@ -336,12 +336,30 @@ export const initialState = {
         failures: { label: "Failures", value: 0, inputType: "number" },
       },
       {
+        // todo: alan how to handle classes?
+        // more so how to handle values that = arrays???
+        // another example is HitDice // look into dataCard reusable table comp.
         code: "hitDice",
         label: "Hit Dice",
-        items: [
-          { id: 0, level: 4, die: "d12+4", used: 0, inputType: "number" },
-          { id: 1, level: 5, die: "d4+2", used: 2, inputType: "number" },
-        ],
+        table: {
+          columns: [
+            { code: "level", label: "Level" },
+            { code: "used", label: "Used" },
+            { code: "die", label: "Die" },
+          ],
+          rows: [
+            [
+              { code: "level", value: 0, inputType: "number" },
+              { code: "used", value: 0, inputType: "number" },
+              { code: "die", value: "1d4+5", inputType: "text" },
+            ],
+            [
+              { code: "level", value: 3, inputType: "number" },
+              { code: "used", value: 3, inputType: "number" },
+              { code: "die", value: "1d8+4", inputType: "text" },
+            ],
+          ],
+        },
       },
       {
         code: "speed",

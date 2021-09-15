@@ -5,7 +5,6 @@ import { updateUserCharacter } from "../../redux/user-character/user-character.a
 import NumberInput from "../number-input/number-input.component";
 import TextInput from "../text-input/text-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
-// import HitDiceTable from "../hit-dice-table/hit-dice-table.component";
 import map from "lodash/map";
 import CharacterDataTable from "../character-data-table/character-data-table.component";
 
