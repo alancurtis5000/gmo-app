@@ -292,11 +292,34 @@ export const initialState = {
     ],
     resistances: [
       {
-        id: 0,
-        title: "all Physical(rage)",
-        details: "I ingore all physical damaged while in rage",
+        code: "resistances",
+        label: "Resistances",
+        table: {
+          columns: [
+            { code: "title", label: "Title" },
+            { code: "details", label: "Details" },
+            { code: "remove", label: "Remove" },
+          ],
+          rows: [
+            [
+              { code: "title", value: "All Physical(rage)", inputType: "text" },
+              {
+                code: "details",
+                value: "I ingore all physical damaged while in rage",
+                inputType: "textArea",
+              },
+            ],
+            [
+              { code: "title", value: "fire", inputType: "text" },
+              {
+                code: "details",
+                value: "all fire damage is reduced by half",
+                inputType: "textArea",
+              },
+            ],
+          ],
+        },
       },
-      { id: 1, title: "fire", details: "all fire damage is reduced by half" },
     ],
     stats: [
       {

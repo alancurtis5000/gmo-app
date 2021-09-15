@@ -13,12 +13,24 @@ const PlayerDetailsPage = () => {
       />
     ));
   };
+  const renderResistances = () => {
+    return character.resistances.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="resistances"
+        dataValue={dataValue}
+      />
+    ));
+  };
   return (
     <div>
       PlayerDetailsPage
       <div>
         <div>Details</div>
         {renderDetials()}
+        <div>Resistances</div>
+        {renderResistances()}
       </div>
     </div>
   );

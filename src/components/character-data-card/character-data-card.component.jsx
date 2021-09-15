@@ -46,13 +46,6 @@ const CharacterDataCard = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
-  const columns = [
-    { field: "level", label: "Level" },
-    { field: "die", label: "Die" },
-    { field: "used", label: "Used" },
-    { field: "delete", label: "X" },
-  ];
-
   // Todo: Alan Clean up how this render happens. maybe switch statement.
   const renderStatItems = () => {
     return map(dataValue, (value, key) => {
