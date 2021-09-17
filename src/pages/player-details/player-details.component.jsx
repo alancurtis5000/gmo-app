@@ -25,12 +25,23 @@ const PlayerDetailsPage = () => {
     ));
   };
 
-  const renderFeaturesNew = () => {
+  const renderFeatures = () => {
     return character.features.map((dataValue) => (
       <CharacterDataCard
         className={dataValue.code}
         key={dataValue.code}
         dataKey="features"
+        dataValue={dataValue}
+      />
+    ));
+  };
+
+  const renderItems = () => {
+    return character.items.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="items"
         dataValue={dataValue}
       />
     ));
@@ -43,8 +54,10 @@ const PlayerDetailsPage = () => {
         {renderDetials()}
         <div>Resistances</div>
         {renderResistances()}
-        <div>Features New</div>
-        {renderFeaturesNew()}
+        <div>Features</div>
+        {renderFeatures()}
+        <div>Items</div>
+        {renderItems()}
       </div>
     </div>
   );
