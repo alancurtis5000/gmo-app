@@ -125,6 +125,20 @@ const ammo = [
   { code: "weight", value: 0, inputType: "number" },
 ];
 
+// traits section
+
+const racial = [
+  { code: "name", value: "", inputType: "text" },
+  {
+    code: "description",
+    value: "",
+    inputType: "textArea",
+  },
+];
+
+const languages = [{ code: "name", value: "", inputType: "text" }];
+const proficiencies = [{ code: "name", value: "", inputType: "text" }];
+
 export const models = {
   classes,
   hitDice,
@@ -134,4 +148,7 @@ export const models = {
   armor,
   misc,
   ammo,
+  racial,
+  languages,
+  proficiencies,
 };
