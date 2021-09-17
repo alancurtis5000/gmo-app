@@ -14,9 +14,15 @@
       grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
       justify-items: center;
       .text-input {
+        width: auto;
         input {
           text-align: center;
-          width: 50px;
+          width: 100%;
+        }
+      }
+      .text-area-input {
+        input {
+          text-align: center;
         }
       }
       .number-input {

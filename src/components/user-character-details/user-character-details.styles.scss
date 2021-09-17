@@ -4,8 +4,10 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  .text-input,
-  .text-area {
+  .text-input {
+    max-width: 200px;
+  }
+  .text-area-input {
     max-width: 200px;
   }
   .number-input {
