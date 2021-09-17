@@ -46,18 +46,67 @@ const PlayerDetailsPage = () => {
       />
     ));
   };
+  const renderAbilityScores = () => {
+    return character.abilityScores.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="abilityScores"
+        dataValue={dataValue}
+      />
+    ));
+  };
+  const renderSavingThrows = () => {
+    return character.savingThrows.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="savingThrows"
+        dataValue={dataValue}
+      />
+    ));
+  };
+  const renderStats = () => {
+    return character.stats.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="stats"
+        dataValue={dataValue}
+      />
+    ));
+  };
+  const renderTraits = () => {
+    return character.traits.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="traits"
+        dataValue={dataValue}
+      />
+    ));
+  };
+
   return (
     <div>
       PlayerDetailsPage
       <div>
         <div>Details</div>
         {renderDetials()}
+        <div>Ability Scores</div>
+        {renderAbilityScores()}
+        <div>Saving Throws</div>
+        {renderSavingThrows()}
         <div>Resistances</div>
         {renderResistances()}
+        <div>Stats</div>
+        {renderStats()}
         <div>Features</div>
         {renderFeatures()}
         <div>Items</div>
         {renderItems()}
+        <div>Traits</div>
+        {renderTraits()}
       </div>
     </div>
   );

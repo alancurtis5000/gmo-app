@@ -449,7 +449,52 @@ export const initialState = {
       },
     ],
 
-    racialTraits: [{ title: "", description: "" }],
+    traits: [
+      {
+        code: "racial",
+        label: "Racial",
+        table: {
+          columns: [
+            { code: "name", label: "Name" },
+            { code: "description", label: "Description" },
+            { code: "remove", label: "Remove" },
+          ],
+          rows: [
+            [
+              { code: "name", value: "Dark Vision", inputType: "text" },
+              {
+                code: "description",
+                value:
+                  "Can see 60 feet in low light as if it were well lite, and 30 feet in no light as if it were poorly lite.",
+                inputType: "textArea",
+              },
+            ],
+          ],
+        },
+      },
+      {
+        code: "languages",
+        label: "Languages",
+        table: {
+          columns: [
+            { code: "name", label: "Name" },
+            { code: "remove", label: "Remove" },
+          ],
+          rows: [[{ code: "name", value: "Orcish", inputType: "text" }]],
+        },
+      },
+      {
+        code: "proficiencies",
+        label: "Proficiencies",
+        table: {
+          columns: [
+            { code: "name", label: "Name" },
+            { code: "remove", label: "Remove" },
+          ],
+          rows: [[{ code: "name", value: "Axes", inputType: "text" }]],
+        },
+      },
+    ],
     items: [
       {
         code: "weapons",
