@@ -86,6 +86,16 @@ const PlayerDetailsPage = () => {
       />
     ));
   };
+  const renderMoney = () => {
+    return character.money.map((dataValue) => (
+      <CharacterDataCard
+        className={dataValue.code}
+        key={dataValue.code}
+        dataKey="money"
+        dataValue={dataValue}
+      />
+    ));
+  };
 
   return (
     <div>
@@ -107,6 +117,8 @@ const PlayerDetailsPage = () => {
         {renderItems()}
         <div>Traits</div>
         {renderTraits()}
+        <div>Money</div>
+        {renderMoney()}
       </div>
     </div>
   );

@@ -2,9 +2,8 @@
 
 // details section
 const classes = [
-  { code: "id", value: 0, inputType: "number" },
-  { code: "level", value: 0, inputType: "number" },
   { code: "type", value: "", inputType: "text" },
+  { code: "level", value: 0, inputType: "number" },
 ];
 
 // stats section

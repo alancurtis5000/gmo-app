@@ -61,22 +61,23 @@ export const initialState = {
         code: "classes",
         label: "Classes",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
-            { code: "id", label: "Id" },
-            { code: "level", label: "Level" },
             { code: "type", label: "Type" },
-            { code: "remove", label: "Remove" },
+
+            { code: "level", label: "Level" },
           ],
           rows: [
             [
-              { code: "id", value: 0, inputType: "number" },
-              { code: "level", value: 0, inputType: "number" },
               { code: "type", value: "Fighter", inputType: "text" },
+              { code: "level", value: 0, inputType: "number" },
             ],
             [
-              { code: "id", value: 3, inputType: "number" },
-              { code: "level", value: 3, inputType: "number" },
               { code: "type", value: "Bard", inputType: "text" },
+              { code: "level", value: 3, inputType: "number" },
             ],
           ],
         },
@@ -128,166 +129,77 @@ export const initialState = {
     ],
     savingThrows: [
       {
-        type: "base",
-        code: "strength",
-        label: "Strength",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "base",
-        code: "dexterity",
-        label: "Dexterity",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "base",
-        code: "constitution",
-        label: "Consitution",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "base",
-        code: "intelligence",
-        label: "Intelligence",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "base",
-        code: "wisdom",
-        label: "Wisdom",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "base",
-        code: "charisma",
-        label: "Charisma",
-        value: { value: 7, inputType: "number" },
-      },
-      {
-        type: "skill",
-        code: "acrobatics",
-        label: "Acrobatics",
-        value: { value: 7, inputType: "number" },
-        ability: "dexterity",
-      },
-      {
-        type: "skill",
-        code: "animalHandling",
-        label: "Animal Handling",
-        value: { value: -7, inputType: "number" },
-        ability: "wisdom",
-      },
-      {
-        type: "skill",
-        code: "arcane",
-        label: "Arcane",
-        value: { value: 7, inputType: "number" },
-        ability: "intelligence",
-      },
-      {
-        type: "skill",
-        code: "athletics",
-        label: "Athletics",
-        value: { value: 7, inputType: "number" },
-        ability: "strength",
-      },
-      {
-        type: "skill",
-        code: "deception",
-        label: "Deception",
-        value: { value: 7, inputType: "number" },
-        ability: "charisma",
-      },
-      {
-        type: "skill",
-        code: "history",
-        label: "History",
-        value: { value: 7, inputType: "number" },
-        ability: "intelligence",
-      },
-      {
-        type: "skill",
-        code: "insight",
-        label: "Insight",
-        value: { value: 7, inputType: "number" },
-        ability: "wisdom",
-      },
-      {
-        type: "skill",
-        code: "intimidation",
-        label: "Intimidation",
-        value: { value: 7, inputType: "number" },
-        ability: "charisma",
-      },
-      {
-        type: "skill",
-        code: "investigation",
-        label: "Investigation",
-        value: { value: -3, inputType: "number" },
-        ability: "intelligence",
-      },
-      {
-        type: "skill",
-        code: "medicine",
-        label: "Medicine",
-        value: { value: 7, inputType: "number" },
-        ability: "wisdom",
-      },
-      {
-        type: "skill",
-        code: "nature",
-        label: "Nature",
-        value: { value: 7, inputType: "number" },
-        ability: "intelligence",
-      },
-      {
-        type: "skill",
-        code: "perception",
-        label: "Perception",
-        value: { value: 7, inputType: "number" },
-        ability: "wisdom",
-      },
-      {
-        type: "skill",
-        code: "performance",
-        label: "Performance",
-        value: { value: 7, inputType: "number" },
-        ability: "charisma",
-      },
-      {
-        type: "skill",
-        code: "persuasion",
-        label: "Persuasion",
-        value: { value: 7, inputType: "number" },
-        ability: "charisma",
-      },
-      {
-        type: "skill",
-        code: "sleightOfHand",
-        label: "Sleight of Hand",
-        value: { value: 7, inputType: "number" },
-        ability: "dexterity",
-      },
-      {
-        type: "skill",
-        code: "stealth",
-        label: "Stealth",
-        value: { value: 7, inputType: "number" },
-        ability: "dexterity",
-      },
-      {
-        type: "skill",
-        code: "survival",
-        label: "Survival",
-        value: { value: 7, inputType: "number" },
-        ability: "wisdom",
-      },
-      {
-        type: "skill",
-        code: "tool",
-        label: "Tool",
-        value: { value: 7, inputType: "number" },
-        ability: "none",
+        code: "base",
+        label: "Base",
+        table: {
+          columns: [
+            { code: "name", label: "Name" },
+            { code: "proficency", label: "Proficency" },
+            { code: "modifier", label: "Mod" },
+          ],
+          rows: [
+            [
+              {
+                code: "name",
+                value: "Strength",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "true", inputType: "text" },
+              { code: "modifier", value: 2, inputType: "number" },
+            ],
+            [
+              {
+                code: "name",
+                value: "Dexterity",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "false", inputType: "text" },
+              { code: "modifier", value: 0, inputType: "number" },
+            ],
+            [
+              {
+                code: "name",
+                value: "Constitution",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "false", inputType: "text" },
+              { code: "modifier", value: 0, inputType: "number" },
+            ],
+            [
+              {
+                code: "name",
+                value: "Intelligence",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "false", inputType: "text" },
+              { code: "modifier", value: 0, inputType: "number" },
+            ],
+            [
+              {
+                code: "name",
+                value: "Wisdom",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "false", inputType: "text" },
+              { code: "modifier", value: 0, inputType: "number" },
+            ],
+            [
+              {
+                code: "name",
+                value: "Charisma",
+                inputType: "text",
+                disabled: true,
+              },
+              { code: "proficency", value: "false", inputType: "text" },
+              { code: "modifier", value: 0, inputType: "number" },
+            ],
+          ],
+        },
       },
     ],
     resistances: [
@@ -295,10 +207,13 @@ export const initialState = {
         code: "resistances",
         label: "Resistances",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "title", label: "Title" },
             { code: "details", label: "Details" },
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -355,11 +270,14 @@ export const initialState = {
         code: "hitDice",
         label: "Hit Dice",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "level", label: "Level" },
             { code: "used", label: "Used" },
             { code: "die", label: "Die" },
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -387,13 +305,16 @@ export const initialState = {
         code: "limited",
         label: "Limited",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
             { code: "max", label: "Max" },
             { code: "used", label: "Used" },
             { code: "recovery", label: "Recovery" },
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -429,10 +350,13 @@ export const initialState = {
         code: "constants",
         label: "Constants",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -454,10 +378,13 @@ export const initialState = {
         code: "racial",
         label: "Racial",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -476,10 +403,11 @@ export const initialState = {
         code: "languages",
         label: "Languages",
         table: {
-          columns: [
-            { code: "name", label: "Name" },
-            { code: "remove", label: "Remove" },
-          ],
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
+          columns: [{ code: "name", label: "Name" }],
           rows: [[{ code: "name", value: "Orcish", inputType: "text" }]],
         },
       },
@@ -487,10 +415,11 @@ export const initialState = {
         code: "proficiencies",
         label: "Proficiencies",
         table: {
-          columns: [
-            { code: "name", label: "Name" },
-            { code: "remove", label: "Remove" },
-          ],
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
+          columns: [{ code: "name", label: "Name" }],
           rows: [[{ code: "name", value: "Axes", inputType: "text" }]],
         },
       },
@@ -500,6 +429,10 @@ export const initialState = {
         code: "weapons",
         label: "Weapons",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
@@ -515,8 +448,6 @@ export const initialState = {
             { code: "distanceDisadvantage", label: "Disadvantage" },
             { code: "value", label: "Value" },
             { code: "weight", label: "Weight" },
-
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -550,6 +481,10 @@ export const initialState = {
         code: "armor",
         label: "Armor",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
@@ -558,8 +493,6 @@ export const initialState = {
             { code: "isMagic", label: "Magical" },
             { code: "value", label: "Value" },
             { code: "weight", label: "Weight" },
-
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -586,6 +519,10 @@ export const initialState = {
         code: "misc",
         label: "Misc",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
@@ -594,8 +531,6 @@ export const initialState = {
             { code: "isMagic", label: "Magical" },
             { code: "value", label: "Value" },
             { code: "weight", label: "Weight" },
-
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [
@@ -622,6 +557,10 @@ export const initialState = {
         code: "ammo",
         label: "Ammo",
         table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
           columns: [
             { code: "name", label: "Name" },
             { code: "description", label: "Description" },
@@ -630,8 +569,6 @@ export const initialState = {
             { code: "isMagic", label: "Magical" },
             { code: "value", label: "Value" },
             { code: "weight", label: "Weight" },
-
-            { code: "remove", label: "Remove" },
           ],
           rows: [
             [

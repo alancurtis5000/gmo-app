@@ -8,17 +8,38 @@ import { updateUserCharacter } from "../../redux/user-character/user-character.a
 import { models } from "../../models/models";
 import TrashIcon from "../../icons/trash.icon";
 
+/// left of here
+/*
+ working on table options.
+ add and remove should be on the table options.
+ need to update all tables.
+ -- started by converting savingThrowsOld to new savingThrows dummy data.
+*/
+
 const CharacterDataTable = (props) => {
   const { className, onClick, columns, rows, dataSection, dataValue } = props;
   const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
+  console.log({ props });
 
   const renderHeader = () => {
-    return columns.map((column, i) => (
+    let mappedColumns = columns.map((column, i) => (
       <div key={i} className={`header-field-${i}`}>
         {column.label}
       </div>
     ));
+    if (dataValue?.table?.options?.canRemoveRows) {
+      const removeColumn = (
+        <div
+          key={mappedColumns.length + 1}
+          className={`header-field-${"remove-column"}`}
+        >
+          Remove
+        </div>
+      );
+      mappedColumns.push(removeColumn);
+    }
+    return mappedColumns;
   };
 
   const handleOnChange = (dataToChange) => {
@@ -50,6 +71,7 @@ const CharacterDataTable = (props) => {
     let updateSubSection = {
       ...subSection,
       table: {
+        options: subSection.table.options,
         columns: subSection.table.columns,
         rows: updatedSubSectionRows,
       },
@@ -79,6 +101,7 @@ const CharacterDataTable = (props) => {
     let updateSubSection = {
       ...subSection,
       table: {
+        options: subSection.table.options,
         columns: subSection.table.columns,
         rows: updatedSubSectionRows,
       },
@@ -106,6 +129,7 @@ const CharacterDataTable = (props) => {
     let updateSubSection = {
       ...subSection,
       table: {
+        options: subSection.table.options,
         columns: subSection.table.columns,
         rows: updatedSubSectionRows,
       },
@@ -139,6 +163,7 @@ const CharacterDataTable = (props) => {
         <TextInput
           key={data.code}
           value={data.value}
+          disabled={data.disabled}
           onChange={(e) =>
             handleOnChange({
               rowIndex,
@@ -169,18 +194,26 @@ const CharacterDataTable = (props) => {
     let rowsMapped = [];
     forEach(rows, (row, rowIndex) => {
       let createdRow = [];
-      forEach(row, (field, x) => {
+      forEach(row, (field) => {
         createdRow.push(getInputType(field, rowIndex));
       });
-      const rowComp = (
+      let rowComp = (
         <div key={rowIndex} className="row" styles={{ display: "flex" }}>
           {createdRow}
-          <Button
-            icon={<TrashIcon height={20} />}
-            onClick={() => handleRemoveRow(rowIndex)}
-          />
         </div>
       );
+      // if you can remove rows add removeRow button
+      if (dataValue?.table?.options?.canRemoveRows) {
+        const removeButton = (
+          <div key={rowIndex} className="row" styles={{ display: "flex" }}>
+            <Button
+              icon={<TrashIcon height={20} />}
+              onClick={() => handleRemoveRow(rowIndex)}
+            />
+          </div>
+        );
+        createdRow.push(removeButton);
+      }
       rowsMapped.push(rowComp);
     });
     return rowsMapped;
@@ -188,7 +221,10 @@ const CharacterDataTable = (props) => {
 
   return (
     <div className={`character-data-table ${className}`} onClick={onClick}>
-      <Button text="Add" onClick={handleAddRow} />
+      {/* // if you can add rows add AddRow button */}
+      {dataValue?.table?.options?.canAddRows ? (
+        <Button text="Add" onClick={handleAddRow} />
+      ) : null}
       <div className="table-header">{renderHeader()}</div>
       <div className="table-rows">{renderRows()}</div>
     </div>
