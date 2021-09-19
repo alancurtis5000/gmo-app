@@ -1,5 +1,5 @@
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
@@ -121,14 +121,14 @@ const UserCharacterFeatures = () => {
             handleOnChangeFeature({ ...feature, description: e.target.value })
           }
         />
-        <NumberInput
+        <InputNumber
           label="Max"
           value={feature.max}
           onChange={(e) =>
             handleOnChangeFeature({ ...feature, max: e.target.value })
           }
         />
-        <NumberInput
+        <InputNumber
           label="Used"
           value={feature.used}
           onChange={(e) =>

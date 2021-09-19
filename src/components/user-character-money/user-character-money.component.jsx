@@ -1,4 +1,4 @@
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -21,7 +21,7 @@ const UserCharacterMoney = () => {
     for (const [key, value] of Object.entries(money)) {
       moneyArray.push(
         <div key={key}>
-          <NumberInput
+          <InputNumber
             label={key}
             value={value}
             onChange={(e) => handleOnChange({ [key]: e.target.value })}

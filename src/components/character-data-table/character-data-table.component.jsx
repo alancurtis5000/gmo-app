@@ -1,7 +1,7 @@
 import forEach from "lodash/forEach";
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import Button from "../button/button.component";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
@@ -146,7 +146,7 @@ const CharacterDataTable = (props) => {
   const getInputType = (data, rowIndex) => {
     if (data.inputType === "number") {
       return (
-        <NumberInput
+        <InputNumber
           key={data.code}
           value={data.value}
           onChange={(e) =>

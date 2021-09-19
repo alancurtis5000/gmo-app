@@ -8,7 +8,7 @@ import {
   updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
 import TextInput from "../../components/text-input/text-input.component";
-import NumberInput from "../../components/number-input/number-input.component";
+import InputNumber from "../../components/input-number/input-number.component";
 // on mount get game Id fetch relative user and selected characters in game
 
 const PlayerLandingPage = () => {
@@ -70,7 +70,7 @@ const PlayerLandingPage = () => {
         }
       />
       <div>hp</div>
-      <NumberInput
+      <InputNumber
         label="Hit Points Current"
         value={character?.stats?.hitPoints?.current}
         onChange={(e) =>

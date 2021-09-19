@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import TextInput from "../text-input/text-input.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 
 const UserCharacterDetailsDescription = () => {
   const description = useSelector(
@@ -45,7 +45,7 @@ const UserCharacterDetailsDescription = () => {
         value={description?.size}
         onChange={(e) => handleOnChange({ size: e.target.value })}
       />
-      <NumberInput
+      <InputNumber
         label="Age"
         value={description?.age}
         onChange={(e) => handleOnChange({ age: e.target.value })}

@@ -1,7 +1,7 @@
 import map from "lodash/map";
 import forEach from "lodash/forEach";
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 
 // component not used but thinking about it.
 const Table = (props) => {
@@ -27,7 +27,7 @@ const Table = (props) => {
         if (shouldDisplay) {
           if (typeof value === "number") {
             return (
-              <NumberInput
+              <InputNumber
                 key={key}
                 className="row-item"
                 value={value}

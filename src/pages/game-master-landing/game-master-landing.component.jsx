@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import TextInput from "../../components/text-input/text-input.component";
-import NumberInput from "../../components/number-input/number-input.component";
+import InputNumber from "../../components/input-number/input-number.component";
 import {
   getGameForMaster,
   updateGameCharacter,
@@ -74,7 +74,7 @@ const GameMasterLandingPage = () => {
             }
           />
           <div>hp</div>
-          <NumberInput
+          <InputNumber
             label="Hit Points Current"
             value={character?.stats?.hitPoints?.current}
             onChange={(e) =>

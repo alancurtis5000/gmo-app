@@ -1,5 +1,5 @@
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
@@ -85,14 +85,14 @@ const UserCharacterItemsWeapons = () => {
               handleOnChangeItem({ ...item, damageDice: e.target.value })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Advantage to hit"
             value={item.advantageToHit}
             onChange={(e) =>
               handleOnChangeItem({ ...item, advantageToHit: e.target.value })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Quantity"
             value={item.quantity}
             onChange={(e) =>
@@ -127,14 +127,14 @@ const UserCharacterItemsWeapons = () => {
               handleOnChangeItem({ ...item, isTwoHanded: !item.isTwoHanded })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Value"
             value={item.value}
             onChange={(e) =>
               handleOnChangeItem({ ...item, value: e.target.value })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Weight"
             value={item.weight}
             onChange={(e) =>
@@ -153,7 +153,7 @@ const UserCharacterItemsWeapons = () => {
                 })
               }
             />
-            <NumberInput
+            <InputNumber
               label="Min"
               value={item.range.distance.min}
               onChange={(e) =>
@@ -166,7 +166,7 @@ const UserCharacterItemsWeapons = () => {
                 })
               }
             />
-            <NumberInput
+            <InputNumber
               label="Max"
               value={item.range.distance.max}
               onChange={(e) =>
@@ -179,7 +179,7 @@ const UserCharacterItemsWeapons = () => {
                 })
               }
             />
-            <NumberInput
+            <InputNumber
               label="Disadvantage"
               value={item.range.distance.disadvantage}
               onChange={(e) =>

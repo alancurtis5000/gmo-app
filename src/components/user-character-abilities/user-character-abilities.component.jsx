@@ -1,4 +1,4 @@
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import abilities from "../../constants/abilities";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,7 +25,7 @@ const UserCharacterAbilities = () => {
         return (
           <div key={ability}>
             <h3>{ability}</h3>
-            <NumberInput
+            <InputNumber
               label="Base"
               name={ability}
               value={abilityScore.value * 1}
@@ -38,7 +38,7 @@ const UserCharacterAbilities = () => {
                 })
               }
             />
-            <NumberInput
+            <InputNumber
               label="Modifier"
               name={ability}
               value={abilityScore.modifier * 1}
@@ -51,7 +51,7 @@ const UserCharacterAbilities = () => {
                 })
               }
             />
-            <NumberInput
+            <InputNumber
               label="Save"
               name={ability}
               value={abilityScore.save * 1}

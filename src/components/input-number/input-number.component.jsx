@@ -1,4 +1,4 @@
-const NumberInput = (props) => {
+const InputNumber = (props) => {
   const { label, onChange, className, id, value, disabled, name } = props;
 
   const handleOnKeyPress = (e) => {
@@ -13,7 +13,7 @@ const NumberInput = (props) => {
   };
 
   return (
-    <div className={`number-input ${className}`}>
+    <div className={`input-number ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
         type="number"
@@ -29,4 +29,4 @@ const NumberInput = (props) => {
   );
 };
 
-export default NumberInput;
+export default InputNumber;

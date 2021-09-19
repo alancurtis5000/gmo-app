@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AddIcon from "../../icons/add.icon";
 import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import TextInput from "../text-input/text-input.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import map from "lodash/map";
@@ -70,7 +70,7 @@ const CharacterDataCard = (props) => {
       } else {
         if (value.inputType === "number") {
           return (
-            <NumberInput
+            <InputNumber
               key={key}
               label={value.label}
               value={value.value}

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import TextInput from "../text-input/text-input.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import Button from "../button/button.component";
 
 const UserCharacterDetailsClass = (props) => {
@@ -53,7 +53,7 @@ const UserCharacterDetailsClass = (props) => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Level"
         value={aClass.level}
         onChange={(e) =>

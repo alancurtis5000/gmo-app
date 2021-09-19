@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import TextInput from "../text-input/text-input.component";
 import Button from "../button/button.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
@@ -65,7 +65,7 @@ const UserCharacterSavingThrows = () => {
 
   const renderBase = () => {
     return savingThrows?.base.map((base) => (
-      <NumberInput
+      <InputNumber
         key={base.code}
         label={base.title}
         value={base.value}
@@ -79,7 +79,7 @@ const UserCharacterSavingThrows = () => {
   const renderSkills = () => {
     return savingThrows?.skills.map((skill) => (
       <div key={skill.code}>
-        <NumberInput
+        <InputNumber
           label={skill.title}
           value={skill.value}
           onChange={(e) =>

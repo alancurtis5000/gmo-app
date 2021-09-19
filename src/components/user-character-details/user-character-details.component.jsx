@@ -1,5 +1,5 @@
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import SelectAlignment from "../select-alignment/select-alignment.component";
 import { connect } from "react-redux";
@@ -56,7 +56,7 @@ const UserCharacterDetails = (props) => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Level"
         value={character?.details?.level}
         onChange={(e) =>
@@ -65,7 +65,7 @@ const UserCharacterDetails = (props) => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Experience"
         value={character?.details?.experience}
         onChange={(e) =>

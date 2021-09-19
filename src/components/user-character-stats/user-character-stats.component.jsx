@@ -1,5 +1,5 @@
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
@@ -76,7 +76,7 @@ const UserCharacterStats = () => {
         key={die.id}
       >
         <div>
-          <NumberInput
+          <InputNumber
             label="Level"
             value={die.level}
             onChange={(e) =>
@@ -97,7 +97,7 @@ const UserCharacterStats = () => {
             flexDirection: "row",
           }}
         >
-          <NumberInput
+          <InputNumber
             label="Used"
             value={die.used}
             onChange={(e) =>
@@ -114,7 +114,7 @@ const UserCharacterStats = () => {
     <div className="user-character-stats">
       <h2>Stats</h2>
       <h3>Hit Points</h3>
-      <NumberInput
+      <InputNumber
         label="Max"
         value={hitPoints.max}
         onChange={(e) =>
@@ -123,7 +123,7 @@ const UserCharacterStats = () => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Current"
         value={hitPoints.current}
         onChange={(e) =>
@@ -132,7 +132,7 @@ const UserCharacterStats = () => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Temporary"
         value={hitPoints.temporary}
         onChange={(e) =>
@@ -142,7 +142,7 @@ const UserCharacterStats = () => {
         }
       />
       <h3>Armor Class</h3>
-      <NumberInput
+      <InputNumber
         label="Current"
         value={armorClass.value}
         onChange={(e) =>
@@ -151,7 +151,7 @@ const UserCharacterStats = () => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Temporary"
         value={armorClass.temporary}
         onChange={(e) =>
@@ -161,7 +161,7 @@ const UserCharacterStats = () => {
         }
       />
       <h3>Proficiency</h3>
-      <NumberInput
+      <InputNumber
         label=""
         value={proficiency.value}
         onChange={(e) =>
@@ -171,7 +171,7 @@ const UserCharacterStats = () => {
         }
       />
       <h3>Initiative</h3>
-      <NumberInput
+      <InputNumber
         label=""
         value={initiative.value}
         onChange={(e) =>
@@ -181,7 +181,7 @@ const UserCharacterStats = () => {
         }
       />
       <h3>Death Saves</h3>
-      <NumberInput
+      <InputNumber
         label=""
         value={deathSaves.successes}
         onChange={(e) =>
@@ -190,7 +190,7 @@ const UserCharacterStats = () => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label=""
         value={deathSaves.failures}
         onChange={(e) =>
@@ -201,7 +201,7 @@ const UserCharacterStats = () => {
       />
 
       <h3>Speed</h3>
-      <NumberInput
+      <InputNumber
         label="Base"
         value={speed.base}
         onChange={(e) =>
@@ -210,7 +210,7 @@ const UserCharacterStats = () => {
           })
         }
       />
-      <NumberInput
+      <InputNumber
         label="Encombered"
         value={speed.encombered}
         onChange={(e) =>

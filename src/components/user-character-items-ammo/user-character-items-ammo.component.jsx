@@ -1,5 +1,5 @@
 import TextInput from "../text-input/text-input.component";
-import NumberInput from "../number-input/number-input.component";
+import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
@@ -72,7 +72,7 @@ const UserCharacterItemsAmmo = () => {
               handleOnChangeItem({ ...item, title: e.target.value })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Quantity"
             value={item.quantity}
             onChange={(e) =>
@@ -107,14 +107,14 @@ const UserCharacterItemsAmmo = () => {
               handleOnChangeItem({ ...item, isMagic: !item.isMagic })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Value"
             value={item.value}
             onChange={(e) =>
               handleOnChangeItem({ ...item, value: e.target.value })
             }
           />
-          <NumberInput
+          <InputNumber
             label="Weight"
             value={item.weight}
             onChange={(e) =>
