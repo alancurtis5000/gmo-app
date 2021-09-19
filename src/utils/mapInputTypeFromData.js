@@ -2,7 +2,7 @@ import InputNumber from "../components/input-number/input-number.component";
 import InputTextArea from "../components/input-text-area/input-text-area.component";
 import InputText from "../components/input-text/input-text.component";
 
-export const mapInputTypeFromData = (data, rowIndex) => {
+export const mapInputTypeFromData = (data, rowIndex, isEdit) => {
   const { inputType, label, value, code, disabled } = data;
 
   const handleOnChange = (updatedValue) => {
@@ -15,6 +15,7 @@ export const mapInputTypeFromData = (data, rowIndex) => {
         key={code}
         label={label}
         value={value}
+        disabled={!isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
@@ -30,7 +31,7 @@ export const mapInputTypeFromData = (data, rowIndex) => {
         key={code}
         label={label}
         value={value}
-        disabled={disabled}
+        disabled={!isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
@@ -46,6 +47,7 @@ export const mapInputTypeFromData = (data, rowIndex) => {
         key={code}
         label={label}
         value={value}
+        disabled={!isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
