@@ -1,4 +1,4 @@
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
@@ -65,7 +65,7 @@ const UserCharacterItemsAmmo = () => {
       return (
         <div className="ammo-card" key={item.id}>
           <h3>{item.title}</h3>
-          <TextInput
+          <InputText
             label="Title"
             value={item.title}
             onChange={(e) =>
@@ -79,14 +79,14 @@ const UserCharacterItemsAmmo = () => {
               handleOnChangeItem({ ...item, quantity: e.target.value })
             }
           />
-          <TextInput
+          <InputText
             label="Damage Dice"
             value={item.damageDice}
             onChange={(e) =>
               handleOnChangeItem({ ...item, damageDice: e.target.value })
             }
           />
-          <TextInput
+          <InputText
             label="Damage Type"
             value={item.damageType}
             onChange={(e) =>

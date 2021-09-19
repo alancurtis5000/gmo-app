@@ -1,6 +1,6 @@
 import forEach from "lodash/forEach";
 import { useSelector, useDispatch } from "react-redux";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import Button from "../button/button.component";
@@ -160,7 +160,7 @@ const CharacterDataTable = (props) => {
       );
     } else if (data.inputType === "text") {
       return (
-        <TextInput
+        <InputText
           key={data.code}
           value={data.value}
           disabled={data.disabled}

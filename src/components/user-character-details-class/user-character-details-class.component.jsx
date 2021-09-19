@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import InputNumber from "../input-number/input-number.component";
 import Button from "../button/button.component";
@@ -43,7 +43,7 @@ const UserCharacterDetailsClass = (props) => {
 
   return (
     <>
-      <TextInput
+      <InputText
         label="Class"
         value={aClass.type}
         onChange={(e) =>

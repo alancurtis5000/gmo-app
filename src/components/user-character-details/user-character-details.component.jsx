@@ -1,4 +1,4 @@
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import SelectAlignment from "../select-alignment/select-alignment.component";
@@ -36,7 +36,7 @@ const UserCharacterDetails = (props) => {
   return (
     <div className="user-character-details">
       <h2>Details</h2>
-      <TextInput
+      <InputText
         label="Character Name"
         value={character?.details?.name}
         // error="don't do it"
@@ -75,7 +75,7 @@ const UserCharacterDetails = (props) => {
         }
       />
 
-      <TextInput
+      <InputText
         label="Race"
         value={character?.details?.race}
         // error="don't do it"

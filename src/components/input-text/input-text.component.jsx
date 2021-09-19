@@ -1,4 +1,4 @@
-const TextInput = (props) => {
+const InputInput = (props) => {
   const {
     label,
     onChange,
@@ -20,7 +20,7 @@ const TextInput = (props) => {
   };
 
   return (
-    <div className={`text-input ${className}`}>
+    <div className={`input-text ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
         type="text"
@@ -40,4 +40,4 @@ const TextInput = (props) => {
   );
 };
 
-export default TextInput;
+export default InputInput;

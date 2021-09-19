@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import InputNumber from "../input-number/input-number.component";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import Button from "../button/button.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 
@@ -127,7 +127,7 @@ const UserCharacterSavingThrows = () => {
   const renderResistances = () => {
     return savingThrows?.resistances.map((resistance, i) => (
       <div key={i}>
-        <TextInput
+        <InputText
           label={"Title"}
           value={resistance.title}
           onChange={(e) =>

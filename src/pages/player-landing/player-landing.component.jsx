@@ -7,7 +7,7 @@ import {
   getUserCharacterFromGame,
   updateUserCharacter,
 } from "../../redux/user-character/user-character.actions";
-import TextInput from "../../components/text-input/text-input.component";
+import InputText from "../../components/input-text/input-text.component";
 import InputNumber from "../../components/input-number/input-number.component";
 // on mount get game Id fetch relative user and selected characters in game
 
@@ -58,7 +58,7 @@ const PlayerLandingPage = () => {
       <div>{`user: ${userName}`}</div>
       <div>Name</div>
       <div>{character?.details?.name}</div>
-      <TextInput
+      <InputText
         label="Character Name"
         value={character?.details?.name}
         // error="don't do it"

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import TextInput from "../../components/text-input/text-input.component";
+import InputText from "../../components/input-text/input-text.component";
 import InputNumber from "../../components/input-number/input-number.component";
 import {
   getGameForMaster,
@@ -62,7 +62,7 @@ const GameMasterLandingPage = () => {
           <div>id: {character.id}</div>
           <div>Name</div>
           <div>{character?.details?.name}</div>
-          <TextInput
+          <InputText
             label="Character Name"
             value={character?.details?.name}
             // error="don't do it"

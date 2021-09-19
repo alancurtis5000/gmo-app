@@ -3,7 +3,7 @@ import AddIcon from "../../icons/add.icon";
 import EditIcon from "../../icons/edit.icon";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import InputNumber from "../input-number/input-number.component";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import TextAreaInput from "../text-area-input/text-area-input.component";
 import map from "lodash/map";
 import CharacterDataTable from "../character-data-table/character-data-table.component";
@@ -84,7 +84,7 @@ const CharacterDataCard = (props) => {
           );
         } else if (value.inputType === "text") {
           return (
-            <TextInput
+            <InputText
               key={key}
               label={value.label}
               value={value.value}

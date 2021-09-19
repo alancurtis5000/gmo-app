@@ -1,4 +1,4 @@
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
@@ -100,14 +100,14 @@ const UserCharacterFeatures = () => {
         key={feature.id}
       >
         <h3>{`${i + 1}. ${feature.title}`}</h3>
-        <TextInput
+        <InputText
           label="Title"
           value={feature.title}
           onChange={(e) =>
             handleOnChangeFeature({ ...feature, title: e.target.value })
           }
         />
-        <TextInput
+        <InputText
           label="Recovery"
           value={feature.recovery}
           onChange={(e) =>
@@ -147,7 +147,7 @@ const UserCharacterFeatures = () => {
         key={feature.id}
       >
         <h3>{`${i + 1}. ${feature.title}`}</h3>
-        <TextInput
+        <InputText
           label="Title"
           value={feature.title}
           onChange={(e) =>

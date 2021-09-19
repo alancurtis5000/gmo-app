@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import InputNumber from "../input-number/input-number.component";
 
@@ -25,22 +25,22 @@ const UserCharacterDetailsDescription = () => {
 
   return (
     <>
-      <TextInput
+      <InputText
         label="Eyes"
         value={description?.eyes}
         onChange={(e) => handleOnChange({ eyes: e.target.value })}
       />
-      <TextInput
+      <InputText
         label="Hair"
         value={description?.hair}
         onChange={(e) => handleOnChange({ hair: e.target.value })}
       />
-      <TextInput
+      <InputText
         label="Skin"
         value={description?.skin}
         onChange={(e) => handleOnChange({ skin: e.target.value })}
       />
-      <TextInput
+      <InputText
         label="Size"
         value={description?.size}
         onChange={(e) => handleOnChange({ size: e.target.value })}

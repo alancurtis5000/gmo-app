@@ -1,6 +1,6 @@
 import map from "lodash/map";
 import forEach from "lodash/forEach";
-import TextInput from "../text-input/text-input.component";
+import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 
 // component not used but thinking about it.
@@ -41,7 +41,7 @@ const Table = (props) => {
             );
           } else {
             return (
-              <TextInput
+              <InputText
                 key={key}
                 className="row-item"
                 value={value}
