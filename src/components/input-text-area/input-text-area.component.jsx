@@ -1,4 +1,4 @@
-const TextAreaInput = (props) => {
+const InputTextArea = (props) => {
   const {
     label,
     onChange,
@@ -15,7 +15,7 @@ const TextAreaInput = (props) => {
   } = props;
 
   return (
-    <div className={`text-area-input ${className}`}>
+    <div className={`input-text-area ${className}`}>
       <label htmlFor={id}>{label}</label>
       <textarea
         className={`text-area ${className}`}
@@ -36,4 +36,4 @@ const TextAreaInput = (props) => {
   );
 };
 
-export default TextAreaInput;
+export default InputTextArea;

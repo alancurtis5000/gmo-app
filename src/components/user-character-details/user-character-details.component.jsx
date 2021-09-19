@@ -1,6 +1,6 @@
 import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
-import TextAreaInput from "../text-area-input/text-area-input.component";
+import InputTextArea from "../input-text-area/input-text-area.component";
 import SelectAlignment from "../select-alignment/select-alignment.component";
 import { connect } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
@@ -46,7 +46,7 @@ const UserCharacterDetails = (props) => {
           })
         }
       />
-      <TextAreaInput
+      <InputTextArea
         label="Background"
         value={character?.details?.background}
         // error="don't do it"

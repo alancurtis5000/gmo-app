@@ -3,7 +3,7 @@ import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
-import TextAreaInput from "../text-area-input/text-area-input.component";
+import InputTextArea from "../input-text-area/input-text-area.component";
 
 const UserCharacterFeatures = () => {
   const character = useSelector((state) => state.userCharacter.data);
@@ -114,7 +114,7 @@ const UserCharacterFeatures = () => {
             handleOnChangeFeature({ ...feature, recovery: e.target.value })
           }
         />
-        <TextAreaInput
+        <InputTextArea
           label="Description"
           value={feature.description}
           onChange={(e) =>
@@ -154,7 +154,7 @@ const UserCharacterFeatures = () => {
             handleOnChangeFeature({ ...feature, title: e.target.value })
           }
         />
-        <TextAreaInput
+        <InputTextArea
           label="Description"
           value={feature.description}
           onChange={(e) =>

@@ -3,7 +3,7 @@ import { updateUserCharacterLocal } from "../../redux/user-character/user-charac
 import InputNumber from "../input-number/input-number.component";
 import InputText from "../input-text/input-text.component";
 import Button from "../button/button.component";
-import TextAreaInput from "../text-area-input/text-area-input.component";
+import InputTextArea from "../input-text-area/input-text-area.component";
 
 const UserCharacterSavingThrows = () => {
   const savingThrows = useSelector(
@@ -137,7 +137,7 @@ const UserCharacterSavingThrows = () => {
             })
           }
         />
-        <TextAreaInput
+        <InputTextArea
           label={"Details"}
           value={resistance.details}
           onChange={(e) =>

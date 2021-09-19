@@ -3,7 +3,7 @@ import InputNumber from "../input-number/input-number.component";
 import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 import Button from "../button/button.component";
 import { useSelector, useDispatch } from "react-redux";
-import TextAreaInput from "../text-area-input/text-area-input.component";
+import InputTextArea from "../input-text-area/input-text-area.component";
 import CheckBox from "../checkbox/checkbox.component";
 
 const UserCharacterItemsWeapons = () => {
@@ -196,7 +196,7 @@ const UserCharacterItemsWeapons = () => {
               }
             />
           </div>
-          <TextAreaInput
+          <InputTextArea
             label="Description"
             value={item.description}
             onChange={(e) =>
