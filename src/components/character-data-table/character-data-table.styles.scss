@@ -21,8 +21,10 @@
         }
       }
       .text-area-input {
-        input {
+        width: auto;
+        textarea {
           text-align: center;
+          width: 100%;
         }
       }
       .number-input {

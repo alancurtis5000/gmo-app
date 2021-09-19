@@ -1,0 +1,10 @@
+.text-area-input {
+  textarea {
+    &:disabled {
+      background-color: lightgray;
+      background: none;
+      border: none;
+      color: black;
+    }
+  }
+}
