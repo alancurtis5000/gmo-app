@@ -1,5 +1,7 @@
 .text-area-input {
+  width: auto;
   textarea {
+    width: 100%;
     &:disabled {
       background-color: lightgray;
       background: none;
