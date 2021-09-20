@@ -83,10 +83,36 @@ export const initialState = {
         },
       },
     ],
+    // playing around with new data layout.
     abilityScores: [
       {
         code: "strength",
         label: "Strength",
+        inputs: [
+          { code: "base", label: "Base", value: 11, inputType: "number" },
+          { code: "modifier", label: "Mod", value: 2, inputType: "number" },
+          { code: "save", label: "Save", value: 4, inputType: "number" },
+        ],
+      },
+      {
+        code: "dexterity",
+        label: "Dexterity",
+        inputs: [
+          { code: "base", label: "Base", value: 13, inputType: "number" },
+          { code: "modifier", label: "Mod", value: 4, inputType: "number" },
+          { code: "save", label: "Save", value: 1, inputType: "number" },
+        ],
+      },
+    ],
+    abilityScoresOld: [
+      {
+        code: "strength",
+        label: "Strength",
+        inputs: [
+          { code: "base", label: "Base", value: 18, inputType: "number" },
+          { code: "modifier", label: "Mod", value: 1, inputType: "number" },
+          { code: "save", label: "Save", value: 3, inputType: "number" },
+        ],
         value: { label: "Value", value: 18, inputType: "number" },
         modifier: { label: "Mod", value: 1, inputType: "number" },
         save: { label: "Save", value: 3, inputType: "number" },

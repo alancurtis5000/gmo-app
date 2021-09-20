@@ -2,12 +2,13 @@ import InputNumber from "../components/input-number/input-number.component";
 import InputTextArea from "../components/input-text-area/input-text-area.component";
 import InputText from "../components/input-text/input-text.component";
 
-export const mapInputTypeFromData = (data, rowIndex, isEdit) => {
+export const mapInputTypeFromData = (
+  data,
+  rowIndex,
+  isEdit,
+  handleOnChange
+) => {
   const { inputType, label, value, code, disabled } = data;
-
-  const handleOnChange = (updatedValue) => {
-    console.log("Handle on Change", updatedValue);
-  };
 
   if (inputType === "number") {
     return (
