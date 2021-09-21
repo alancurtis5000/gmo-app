@@ -84,10 +84,14 @@ export const initialState = {
       },
     ],
     // playing around with new data layout.
+    /// abilityScores looks good. lets try this out.
+    // container
     abilityScores: [
+      // each item is a card
       {
         code: "strength",
         label: "Strength",
+        // each card can have multiple inputs or a table
         inputs: [
           { code: "base", label: "Base", value: 11, inputType: "number" },
           { code: "modifier", label: "Mod", value: 2, inputType: "number" },
@@ -102,6 +106,32 @@ export const initialState = {
           { code: "modifier", label: "Mod", value: 4, inputType: "number" },
           { code: "save", label: "Save", value: 1, inputType: "number" },
         ],
+      },
+      {
+        code: "classes",
+        label: "Classes",
+        // each card can have multiple inputs or a table
+        table: {
+          options: {
+            canAddRows: true,
+            canRemoveRows: true,
+          },
+          columns: [
+            { code: "type", label: "Type" },
+
+            { code: "level", label: "Level" },
+          ],
+          rows: [
+            [
+              { code: "type", value: "Fighter", inputType: "text" },
+              { code: "level", value: 0, inputType: "number" },
+            ],
+            [
+              { code: "type", value: "Bard", inputType: "text" },
+              { code: "level", value: 3, inputType: "number" },
+            ],
+          ],
+        },
       },
     ],
     abilityScoresOld: [

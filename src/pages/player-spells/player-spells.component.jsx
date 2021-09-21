@@ -18,9 +18,6 @@ const PlayerSpellsPage = () => {
       <div style={{ padding: "20px" }}>
         <Container className="details-container">
           {renderAbilityScores()}
-          <Card>Card One</Card>
-          <Card>Card Two</Card>
-          <Table>Table</Table>
         </Container>
       </div>
     </div>

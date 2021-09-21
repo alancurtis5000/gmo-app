@@ -3,13 +3,11 @@ import { mapInputTypeFromData } from "../../utils/mapInputTypeFromData";
 import Button from "../../components/button/button.component";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
-
-// todo left of here alan.
-// how do we handle table comps in card?
+import Table from "../table/table.component";
 
 const Card = (props) => {
   const { data, section } = props;
-  const { label, inputs } = data;
+  const { code, label, inputs, table } = data;
   const [isEdit, setIsEdit] = useState(false);
   const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
@@ -52,10 +50,33 @@ const Card = (props) => {
   };
 
   const renderInputs = () => {
-    console.log("renderInputs");
     return inputs.map((input, index) => {
       return mapInputTypeFromData(input, index, isEdit, handleOnChange);
     });
+  };
+
+  const renderTable = () => {
+    return (
+      <Table
+        dataSection={section}
+        dataValue={data}
+        key={code}
+        columns={table.columns}
+        rows={table.rows}
+        isEdit={isEdit}
+      />
+    );
+  };
+
+  const renderContent = () => {
+    switch (true) {
+      case !!inputs:
+        return renderInputs();
+      case !!table:
+        return renderTable();
+      default:
+        return null;
+    }
   };
 
   const handleIsEdit = () => {
@@ -94,7 +115,7 @@ const Card = (props) => {
       <div className="card-header">
         {label} {renderActions()}
       </div>
-      <div className="card-content">{renderInputs()}</div>
+      <div className="card-content">{renderContent()}</div>
     </div>
   );
 };
