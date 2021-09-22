@@ -51,7 +51,15 @@ const Card = (props) => {
 
   const renderInputs = () => {
     return inputs.map((input, index) => {
-      return mapInputTypeFromData(input, index, isEdit, handleOnChange);
+      let isDisabled = "ddd";
+      console.log({ input, index });
+      return mapInputTypeFromData(
+        input,
+        index,
+        isEdit,
+        handleOnChange,
+        isDisabled
+      );
     });
   };
 

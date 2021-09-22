@@ -8,7 +8,7 @@ export const mapInputTypeFromData = (
   isEdit,
   handleOnChange
 ) => {
-  const { inputType, label, value, code, disabled } = data;
+  const { inputType, label, value, code, isDisabled } = data;
 
   if (inputType === "number") {
     return (
@@ -16,7 +16,7 @@ export const mapInputTypeFromData = (
         key={code}
         label={label}
         value={value}
-        disabled={!isEdit}
+        disabled={isDisabled || !isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
@@ -32,7 +32,7 @@ export const mapInputTypeFromData = (
         key={code}
         label={label}
         value={value}
-        disabled={!isEdit}
+        disabled={isDisabled || !isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
@@ -48,7 +48,7 @@ export const mapInputTypeFromData = (
         key={code}
         label={label}
         value={value}
-        disabled={!isEdit}
+        disabled={isDisabled || !isEdit}
         onChange={(e) =>
           handleOnChange({
             rowIndex,
