@@ -517,6 +517,7 @@ export const initialState = {
         },
       },
     ],
+    // left of on converting everything to new data structure.
     resistances: [
       {
         code: "resistances",
@@ -555,31 +556,51 @@ export const initialState = {
       {
         code: "hitPoints",
         label: "Hit Points",
-        max: { label: "Max", value: 34, inputType: "number" },
-        current: { label: "Current", value: 13, inputType: "number" },
-        temporary: { label: "Temp", value: 0 },
+        inputs: [
+          { code: "max", label: "Max", value: 31, inputType: "number" },
+          { code: "current", label: "Current", value: 2, inputType: "number" },
+          { code: "temporary", label: "Temp", value: 4, inputType: "number" },
+        ],
       },
       {
         code: "armorClass",
         label: "Armor Class",
-        value: { label: "Base", value: 13, inputType: "number" },
-        temporary: { label: "Temp", value: 0, inputType: "number" },
-      }, // should be calcutated from equipt items with attribute armorClassContribution
+        inputs: [
+          { code: "base", label: "Base", value: 13, inputType: "number" },
+          { code: "temporary", label: "Temp", value: 4, inputType: "number" },
+        ],
+      },
       {
         code: "proficiency",
         label: "Profienciency",
-        value: { label: "Base", value: 2, inputType: "number" },
+        inputs: [
+          { code: "base", label: "Base", value: 13, inputType: "number" },
+        ],
       },
       {
         code: "initiative",
         label: "Initiative",
-        value: { label: "Base", value: 3, inputType: "number" },
+        inputs: [
+          { code: "base", label: "Base", value: 1, inputType: "number" },
+        ],
       },
       {
         code: "deathSaves",
         label: "Death Saves",
-        successes: { label: "Successes", value: 0, inputType: "number" },
-        failures: { label: "Failures", value: 0, inputType: "number" },
+        inputs: [
+          {
+            code: "successes",
+            label: "Successes",
+            value: 1,
+            inputType: "number",
+          },
+          {
+            code: "failures",
+            label: "Failures",
+            value: 1,
+            inputType: "number",
+          },
+        ],
       },
       {
         code: "hitDice",
@@ -611,8 +632,15 @@ export const initialState = {
       {
         code: "speed",
         label: "Speed",
-        base: { label: "Base", value: 10, inputType: "number" },
-        encombered: { label: "Encombered", value: 4, inputType: "number" },
+        inputs: [
+          { code: "base", label: "Base", value: 1, inputType: "number" },
+          {
+            code: "encombered",
+            label: "Encombered",
+            value: 44,
+            inputType: "number",
+          },
+        ],
       },
     ],
     features: [

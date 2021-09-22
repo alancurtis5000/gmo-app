@@ -137,6 +137,14 @@ const racial = [
 
 const languages = [{ code: "name", value: "", inputType: "text" }];
 const proficiencies = [{ code: "name", value: "", inputType: "text" }];
+const resistances = [
+  { code: "title", value: "", inputType: "text" },
+  {
+    code: "details",
+    value: "",
+    inputType: "textArea",
+  },
+];
 
 export const models = {
   classes,
@@ -150,4 +158,5 @@ export const models = {
   racial,
   languages,
   proficiencies,
+  resistances,
 };
