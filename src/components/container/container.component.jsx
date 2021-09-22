@@ -1,9 +1,9 @@
 const Container = (props) => {
-  const { label, children } = props;
+  const { label, children, className } = props;
   return (
-    <div className={`container ${props.className}`}>
-      <div className={`container-header ${props.className}`}>{label}</div>
-      {children}
+    <div className={`container ${className}`}>
+      <div className={`container-header ${className}`}>{label}</div>
+      <div className={`container-content ${className}`}> {children}</div>
     </div>
   );
 };

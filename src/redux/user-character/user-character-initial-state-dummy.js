@@ -1,61 +1,141 @@
 export const initialState = {
   data: {
+    // character section is array of subSections
     details: [
       {
+        // each subSection has a code this is the card
         code: "name",
         label: "Name",
-        value: { value: "Blurg Wingbat", inputType: "text" },
+        inputs: [
+          // each card has an array of inputs or a table with inputs
+          {
+            code: "name",
+            label: "",
+            value: "Blurg Wingbat",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "eyes",
         label: "Eyes",
-        value: { value: "Blue", inputType: "text" },
+        inputs: [
+          {
+            code: "eyes",
+            label: "",
+            value: "Blue",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "hair",
         label: "Hair",
-        value: { value: "Silver", inputType: "text" },
+        inputs: [
+          {
+            code: "hair",
+            label: "",
+            value: "Silver",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "skin",
         label: "Skin",
-        value: { value: "Tan", inputType: "text" },
+        inputs: [
+          {
+            code: "skin",
+            label: "",
+            value: "Tan",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "size",
         label: "Size",
-        value: { value: "Medium", inputType: "text" },
+        inputs: [
+          {
+            code: "size",
+            label: "",
+            value: "Medium",
+            inputType: "text",
+          },
+        ],
       },
-      { code: "age", label: "Age", value: { value: 32, inputType: "number" } },
-
+      {
+        code: "age",
+        label: "Age",
+        inputs: [
+          {
+            code: "age",
+            label: "",
+            value: 23,
+            inputType: "number",
+          },
+        ],
+      },
       {
         code: "background",
         label: "Background",
-        value: {
-          value:
-            "Village got burnt down by evil man. Looking to for revenge against an unknown evil",
-          inputType: "textArea",
-        },
+        inputs: [
+          {
+            code: "background",
+            label: "",
+            value:
+              "Village got burnt down by evil man. Looking to for revenge against an unknown evil",
+            inputType: "textArea",
+          },
+        ],
       },
       {
         code: "level",
         label: "Level",
-        value: { value: 3, inputType: "number" },
+        inputs: [
+          {
+            code: "level",
+            label: "",
+            value: 3,
+            inputType: "number",
+          },
+        ],
       },
       {
         code: "alignment",
-        label: "alignment",
-        value: { value: "Chaotic Good", inputType: "text" },
+        label: "Alignment",
+        inputs: [
+          {
+            code: "alignment",
+            label: "",
+            value: "Chaotic Good",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "experience",
-        label: "experience",
-        value: { value: "2500", inputType: "number" },
+        label: "Experience",
+        inputs: [
+          {
+            code: "experience",
+            label: "",
+            value: 2300,
+            inputType: "number",
+          },
+        ],
       },
       {
         code: "race",
-        label: "race",
-        value: { value: "Half Elf", inputType: "text" },
+        label: "Race",
+        inputs: [
+          {
+            code: "race",
+            label: "",
+            value: "Half Elf",
+            inputType: "text",
+          },
+        ],
       },
       {
         code: "classes",
@@ -67,7 +147,6 @@ export const initialState = {
           },
           columns: [
             { code: "type", label: "Type" },
-
             { code: "level", label: "Level" },
           ],
           rows: [
@@ -83,9 +162,6 @@ export const initialState = {
         },
       },
     ],
-    // playing around with new data layout.
-    /// abilityScores looks good. lets try this out.
-    // container
     abilityScores: [
       // each item is a card
       {
@@ -118,7 +194,6 @@ export const initialState = {
           },
           columns: [
             { code: "type", label: "Type" },
-
             { code: "level", label: "Level" },
           ],
           rows: [
