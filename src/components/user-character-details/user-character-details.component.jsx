@@ -7,7 +7,8 @@ import { updateUserCharacter } from "../../redux/user-character/user-character.a
 import UserCharacterDetailsClass from "../user-character-details-class/user-character-details-class.component";
 import Button from "../button/button.component";
 import UserCharacterDetailsDescription from "../user-character-details-description/user-character-details-description.component";
-
+// this is old need to be removed or updated
+// alan
 const UserCharacterDetails = (props) => {
   const { updateUserCharacter, character } = props;
 
