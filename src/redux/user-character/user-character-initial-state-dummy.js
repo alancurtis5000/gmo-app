@@ -517,7 +517,6 @@ export const initialState = {
         },
       },
     ],
-    // left of on converting everything to new data structure.
     resistances: [
       {
         code: "resistances",
@@ -947,23 +946,62 @@ export const initialState = {
       {
         code: "platinum",
         label: "Plantinum",
-        value: { value: 3, inputType: "number" },
+        inputs: [
+          {
+            code: "platinum",
+            label: "",
+            value: 233,
+            inputType: "number",
+          },
+        ],
       },
-      { code: "gold", label: "Gold", value: { value: 4, inputType: "number" } },
+      {
+        code: "gold",
+        label: "Gold",
+        inputs: [
+          {
+            code: "gold",
+            label: "",
+            value: 23,
+            inputType: "number",
+          },
+        ],
+      },
       {
         code: "electrum",
         label: "Electrum",
-        value: { value: 2, inputType: "number" },
+        inputs: [
+          {
+            code: "electrum",
+            label: "",
+            value: 23,
+            inputType: "number",
+          },
+        ],
       },
       {
         code: "silver",
         label: "Silver",
-        value: { value: 1, inputType: "number" },
+        inputs: [
+          {
+            code: "silver",
+            label: "",
+            value: 23,
+            inputType: "number",
+          },
+        ],
       },
       {
         code: "copper",
         label: "Copper",
-        value: { value: 0, inputType: "number" },
+        inputs: [
+          {
+            code: "copper",
+            label: "",
+            value: 23,
+            inputType: "number",
+          },
+        ],
       },
     ],
     // todo spells
