@@ -169,7 +169,7 @@ const Table = (props) => {
   };
 
   return (
-    <div className={`character-data-table ${className}`} onClick={onClick}>
+    <div className={`table ${className}`} onClick={onClick}>
       {/* // if you can add rows add AddRow button */}
       {dataValue?.table?.options?.canAddRows && isEdit ? (
         <Button text="Add" onClick={handleAddRow} />

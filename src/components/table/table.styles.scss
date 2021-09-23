@@ -1,17 +1,25 @@
 .table {
-  display: grid;
-  width: 100%;
-  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(197, 197, 200);
+  margin: 5px;
   grid-template-rows: 1fr auto;
+  border: solid 2px black;
+  // max-width: 100%;
   .table-header {
+    background-color: rgb(117, 117, 117);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+    // grid-template-columns: repeat(3, max-content); // 1fr 1fr;
     justify-items: center;
   }
   .table-rows {
+    min-width: fit-content;
+    // width: 700px;
     .row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+      // grid-template-columns: repeat(3, max-content); // 1fr 1fr;
       justify-items: center;
       input {
         text-align: center;
