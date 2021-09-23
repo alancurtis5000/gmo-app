@@ -13,6 +13,11 @@ const Card = (props) => {
   const dispatch = useDispatch();
 
   const handleOnChange = (updatedCharacterData) => {
+    if (section === "") {
+      console.warn("no section prop");
+      return;
+    }
+
     const subSectionIndex = character[section].findIndex(
       (subSection) => subSection.code === data.code
     );
@@ -128,7 +133,7 @@ const Card = (props) => {
 };
 
 Card.defaultProps = {
-  section: "section of userCharacter To update",
+  section: "",
   data: {
     code: "defaultCode",
     label: "Default Label",
