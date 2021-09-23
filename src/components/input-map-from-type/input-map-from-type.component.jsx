@@ -1,13 +1,9 @@
-import InputNumber from "../components/input-number/input-number.component";
-import InputTextArea from "../components/input-text-area/input-text-area.component";
-import InputText from "../components/input-text/input-text.component";
+import InputNumber from "../input-number/input-number.component";
+import InputTextArea from "../input-text-area/input-text-area.component";
+import InputText from "../input-text/input-text.component";
 
-export const mapInputTypeFromData = (
-  data,
-  rowIndex,
-  isEdit,
-  handleOnChange
-) => {
+const InputMapFromType = (props) => {
+  const { data, rowIndex, isEdit, handleOnChange } = props;
   const { inputType, label, value, code, isDisabled } = data;
 
   if (inputType === "number") {
@@ -58,5 +54,9 @@ export const mapInputTypeFromData = (
         }
       />
     );
+  } else {
+    return null;
   }
 };
+
+export default InputMapFromType;

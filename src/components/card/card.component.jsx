@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { mapInputTypeFromData } from "../../utils/mapInputTypeFromData";
 import Button from "../../components/button/button.component";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import Table from "../table/table.component";
+import InputMapFromType from "../input-map-from-type/input-map-from-type.component";
 
 const Card = (props) => {
   const { data, section } = props;
@@ -50,15 +50,14 @@ const Card = (props) => {
   };
 
   const renderInputs = () => {
-    return inputs.map((input, index) => {
-      let isDisabled = "ddd";
-      console.log({ input, index });
-      return mapInputTypeFromData(
-        input,
-        index,
-        isEdit,
-        handleOnChange,
-        isDisabled
+    return inputs.map((data, rowIndex) => {
+      return (
+        <InputMapFromType
+          data={data}
+          rowIndex={rowIndex}
+          isEdit={isEdit}
+          handleOnChange={handleOnChange}
+        />
       );
     });
   };

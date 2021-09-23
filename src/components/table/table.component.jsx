@@ -4,7 +4,7 @@ import Button from "../button/button.component";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import { models } from "../../models/models";
 import TrashIcon from "../../icons/trash.icon";
-import { mapInputTypeFromData } from "../../utils/mapInputTypeFromData";
+import InputMapFromType from "../input-map-from-type/input-map-from-type.component";
 
 const Table = (props) => {
   const { className, onClick, columns, rows, dataSection, dataValue, isEdit } =
@@ -136,7 +136,14 @@ const Table = (props) => {
   };
 
   const getInputType = (data, rowIndex) => {
-    return mapInputTypeFromData(data, rowIndex, isEdit, handleOnChange);
+    return (
+      <InputMapFromType
+        data={data}
+        rowIndex={rowIndex}
+        isEdit={isEdit}
+        handleOnChange={handleOnChange}
+      />
+    );
   };
 
   const renderRows = () => {
