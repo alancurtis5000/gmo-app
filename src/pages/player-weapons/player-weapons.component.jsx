@@ -8,6 +8,10 @@ const PlayerWeaponsPage = () => {
         <Container>
           <Card />
         </Container>
+        <Container>
+          <Card />
+          <Card />
+        </Container>
       </div>
     </div>
   );

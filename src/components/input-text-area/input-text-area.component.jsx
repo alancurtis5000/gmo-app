@@ -18,7 +18,7 @@ const InputTextArea = (props) => {
     <div className={`input-text-area ${className}`}>
       <label htmlFor={id}>{label}</label>
       <textarea
-        className={`text-area ${className}`}
+        className={`input ${className}`}
         id={id}
         onChange={onChange}
         value={value}

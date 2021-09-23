@@ -16,6 +16,7 @@ const InputNumber = (props) => {
     <div className={`input-number ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
+        className={`input ${className}`}
         type="number"
         id={id}
         onClick={handleOnClick}

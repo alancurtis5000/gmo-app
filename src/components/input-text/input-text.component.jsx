@@ -23,6 +23,7 @@ const InputInput = (props) => {
     <div className={`input-text ${className}`}>
       <label htmlFor={id}>{label}</label>
       <input
+        className={`input ${className}`}
         type="text"
         id={id}
         onChange={onChange}

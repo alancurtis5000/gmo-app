@@ -2,13 +2,11 @@
   background-color: rgb(168, 168, 168);
   display: flex;
   flex-direction: column;
-  align-items: center;
   border-radius: 3px;
+  border: solid 2px black;
   margin: 5px;
-  width: 100%;
   .card-header {
     background-color: rgb(110, 110, 110);
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

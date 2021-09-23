@@ -1,14 +1,14 @@
 .input-number {
-  width: auto;
-  margin: 5px;
-  input {
-    text-align: center;
+  padding: 10px;
+  .input {
     width: 100%;
+    padding-left: 10px;
     &:disabled {
       background-color: lightgray;
       background: none;
       border-color: transparent;
       color: black;
+      text-overflow: ellipsis;
     }
   }
 }
