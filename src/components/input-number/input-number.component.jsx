@@ -12,11 +12,12 @@ const InputNumber = (props) => {
     e.target.select();
   };
 
+  let classNameValue = className ? className : "";
   return (
-    <div className={`input-number ${className}`}>
+    <div className={`input-number ${classNameValue}`}>
       <label htmlFor={id}>{label}</label>
       <input
-        className={`input ${className}`}
+        className={`input ${classNameValue}`}
         type="number"
         id={id}
         onClick={handleOnClick}

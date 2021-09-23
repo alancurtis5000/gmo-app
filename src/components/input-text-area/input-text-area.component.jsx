@@ -14,11 +14,12 @@ const InputTextArea = (props) => {
     rows,
   } = props;
 
+  let classNameValue = className ? className : "";
   return (
-    <div className={`input-text-area ${className}`}>
+    <div className={`input-text-area ${classNameValue}`}>
       <label htmlFor={id}>{label}</label>
       <textarea
-        className={`input ${className}`}
+        className={`input ${classNameValue}`}
         id={id}
         onChange={onChange}
         value={value}

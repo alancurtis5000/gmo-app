@@ -10,5 +10,9 @@
     font-weight: bold;
   }
   .container-content {
+    // styleing for container here/ how to layout container
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

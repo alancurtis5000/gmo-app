@@ -1,9 +1,10 @@
 const Container = (props) => {
   const { label, children, className } = props;
+  let classNameValue = className ? className : "";
   return (
-    <div className={`container ${className}`}>
-      <div className={`container-header ${className}`}>{label}</div>
-      <div className={`container-content ${className}`}> {children}</div>
+    <div className={`container ${classNameValue}`}>
+      <div className={`container-header ${classNameValue}`}>{label}</div>
+      <div className={`container-content ${classNameValue}`}> {children}</div>
     </div>
   );
 };

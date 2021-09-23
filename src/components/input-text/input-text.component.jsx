@@ -19,11 +19,12 @@ const InputInput = (props) => {
     }
   };
 
+  let classNameValue = className ? className : "";
   return (
-    <div className={`input-text ${className}`}>
+    <div className={`input-text ${classNameValue}`}>
       <label htmlFor={id}>{label}</label>
       <input
-        className={`input ${className}`}
+        className={`input ${classNameValue}`}
         type="text"
         id={id}
         onChange={onChange}

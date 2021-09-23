@@ -6,7 +6,7 @@ import Table from "../table/table.component";
 import InputMapFromType from "../input-map-from-type/input-map-from-type.component";
 
 const Card = (props) => {
-  const { data, section } = props;
+  const { data, section, className } = props;
   const { code, label, inputs, table } = data;
   const [isEdit, setIsEdit] = useState(false);
   const character = useSelector((state) => state.userCharacter.data);
@@ -121,13 +121,13 @@ const Card = (props) => {
       </div>
     );
   };
-
+  let classNameValue = className ? className : "";
   return (
-    <div className={`card ${props.className}`}>
-      <div className="card-header">
+    <div className={`card ${classNameValue}`}>
+      <div className={`card-header ${classNameValue}`}>
         {label} {renderActions()}
       </div>
-      <div className="card-content">{renderContent()}</div>
+      <div className={`card-content ${classNameValue}`}>{renderContent()}</div>
     </div>
   );
 };
