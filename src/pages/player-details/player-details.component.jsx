@@ -1,4 +1,4 @@
-import CharacterDataCard from "../../components/character-data-card/character-data-card.component";
+import CharacterSubSection from "../../components/character-subsection/character-subsection.component";
 
 import { useSelector } from "react-redux";
 
@@ -6,7 +6,7 @@ const PlayerDetailsPage = () => {
   const character = useSelector((state) => state.userCharacter.data);
   const renderDetials = () => {
     return character.details.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="details"
@@ -16,7 +16,7 @@ const PlayerDetailsPage = () => {
   };
   const renderResistances = () => {
     return character.resistances.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="resistances"
@@ -27,7 +27,7 @@ const PlayerDetailsPage = () => {
 
   const renderFeatures = () => {
     return character.features.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="features"
@@ -38,7 +38,7 @@ const PlayerDetailsPage = () => {
 
   const renderItems = () => {
     return character.items.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="items"
@@ -48,7 +48,7 @@ const PlayerDetailsPage = () => {
   };
   const renderAbilityScores = () => {
     return character.abilityScores.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="abilityScores"
@@ -58,7 +58,7 @@ const PlayerDetailsPage = () => {
   };
   const renderSavingThrows = () => {
     return character.savingThrows.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="savingThrows"
@@ -68,7 +68,7 @@ const PlayerDetailsPage = () => {
   };
   const renderStats = () => {
     return character.stats.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="stats"
@@ -78,7 +78,7 @@ const PlayerDetailsPage = () => {
   };
   const renderTraits = () => {
     return character.traits.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="traits"
@@ -88,7 +88,7 @@ const PlayerDetailsPage = () => {
   };
   const renderMoney = () => {
     return character.money.map((dataValue) => (
-      <CharacterDataCard
+      <CharacterSubSection
         className={dataValue.code}
         key={dataValue.code}
         dataKey="money"

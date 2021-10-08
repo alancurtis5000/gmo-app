@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import CharacterDataCard from "../../components/character-data-card/character-data-card.component";
+// import CharacterDataCard from "../../components/character-data-card/character-data-card.component";
 
 const PlayerSavingThrowsPage = () => {
   const character = useSelector((state) => state.userCharacter.data);
@@ -8,14 +8,15 @@ const PlayerSavingThrowsPage = () => {
     const filtered = character.savingThrows.filter(
       (savingThrow) => savingThrow.type === "base"
     );
-    const mapped = filtered.map((dataValue) => (
-      <CharacterDataCard
-        className={dataValue.code}
-        key={dataValue.code}
-        dataKey="savingThrows"
-        dataValue={dataValue}
-      />
-    ));
+    const mapped = filtered.map(
+      (dataValue) => null
+      // <CharacterDataCard
+      //   className={dataValue.code}
+      //   key={dataValue.code}
+      //   dataKey="savingThrows"
+      //   dataValue={dataValue}
+      // />
+    );
     return (
       <div className="base">
         <div>Base</div>
@@ -27,14 +28,16 @@ const PlayerSavingThrowsPage = () => {
     const filtered = character.savingThrows.filter(
       (savingThrow) => savingThrow.type === "skill"
     );
-    const mapped = filtered.map((dataValue) => (
-      <CharacterDataCard
-        className={dataValue.code}
-        key={dataValue.code}
-        dataKey="savingThrows"
-        dataValue={dataValue}
-      />
-    ));
+    const mapped = filtered.map(
+      (dataValue) =>
+        null
+        // <CharacterDataCard
+        //   className={dataValue.code}
+        //   key={dataValue.code}
+        //   dataKey="savingThrows"
+        //   dataValue={dataValue}
+        // />
+    );
     return (
       <div className="base">
         <div>Skills</div>

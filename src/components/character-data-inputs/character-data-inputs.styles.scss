@@ -1,0 +1,14 @@
+.character-data-inputs {
+  display: grid;
+  width: 100%;
+  padding: 5px;
+  grid-template-rows: 1fr auto;
+  .inputs-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+    justify-items: center;
+    gap: 6px;
+  }
+  .inputs-rows {
+  }
+}

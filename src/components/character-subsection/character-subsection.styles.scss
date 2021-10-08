@@ -1,12 +1,12 @@
-.character-data-card {
-  .character-data-card-header {
+.character-subsection {
+  .character-subsection-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
   }
-  .character-data-card-content {
+  .character-subsection-content {
     overflow: auto;
     display: flex;
     width: 100%;

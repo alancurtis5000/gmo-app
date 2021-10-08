@@ -7,7 +7,7 @@ export const initialState = {
         code: "name",
         label: "Name",
         inputs: [
-          // each card has an array of inputs or a table with inputs
+          // each subsection has an array of inputs or a table with inputs
           {
             code: "name",
             label: "",

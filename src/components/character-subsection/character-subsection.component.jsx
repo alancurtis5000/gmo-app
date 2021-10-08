@@ -7,8 +7,9 @@ import InputText from "../input-text/input-text.component";
 import InputTextArea from "../input-text-area/input-text-area.component";
 import map from "lodash/map";
 import CharacterDataTable from "../character-data-table/character-data-table.component";
+import CharacterDataInputs from "../character-data-inputs/character-data-inputs.component";
 
-const CharacterDataCard = (props) => {
+const CharacterSubSection = (props) => {
   const { dataValue, className, dataKey } = props;
   const dispatch = useDispatch();
   const character = useSelector((state) => state.userCharacter.data);
@@ -49,82 +50,43 @@ const CharacterDataCard = (props) => {
   // Todo: Alan Clean up how this render happens. maybe switch statement.
   const renderStatItems = () => {
     return map(dataValue, (value, key) => {
-      if (
-        key === "label" ||
-        key === "code" ||
-        key === "type" ||
-        key === "ability"
-      ) {
-        return;
-      }
-      if (key === "table") {
-        return (
-          <CharacterDataTable
-            dataSection={dataKey}
-            dataValue={dataValue}
-            key={key}
-            columns={value.columns}
-            rows={value.rows}
-          />
-        );
-      } else {
-        if (value.inputType === "number") {
+      console.log({ dataValue, dataKey });
+      switch (key) {
+        case "table":
           return (
-            <InputNumber
+            <CharacterDataTable
+              dataSection={dataKey}
+              dataValue={dataValue}
               key={key}
-              label={value.label}
-              value={value.value}
-              onChange={(e) =>
-                handleOnChange({
-                  code: dataValue.code,
-                  value: { key, value: e.target.value },
-                })
-              }
+              columns={value.columns}
+              rows={value.rows}
             />
           );
-        } else if (value.inputType === "text") {
+        case "inputs":
           return (
-            <InputText
+            <CharacterDataInputs
+              dataSection={dataKey}
+              dataValue={dataValue}
               key={key}
-              label={value.label}
-              value={value.value}
-              onChange={(e) =>
-                handleOnChange({
-                  code: dataValue.code,
-                  value: { key, value: e.target.value },
-                })
-              }
             />
           );
-        } else if (value.inputType === "textArea") {
-          return (
-            <InputTextArea
-              key={key}
-              label={value.label}
-              value={value.value}
-              onChange={(e) =>
-                handleOnChange({
-                  code: dataValue.code,
-                  value: { key, value: e.target.value },
-                })
-              }
-            />
-          );
-        }
+
+        default:
+          return null;
       }
     });
   };
 
   return (
-    <div className={`character-data-card card ${className}`}>
-      <div className="character-data-card-header">
+    <div className={`character-subsection card ${className}`}>
+      <div className="character-subsection-header">
         <AddIcon height={17} />
         {dataValue.label}
         <EditIcon height={15} />
       </div>
-      <div className="character-data-card-content">{renderStatItems()}</div>
+      <div className="character-subsection-content">{renderStatItems()}</div>
     </div>
   );
 };
 
-export default CharacterDataCard;
+export default CharacterSubSection;

@@ -8,7 +8,7 @@ import {
   getUserCharacter,
   saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
-import CharacterDataCard from "../character-data-card/character-data-card.component";
+//import CharacterDataCard from "../character-data-card/character-data-card.component";
 import characterDataKeys from "../../constants/character-data-keys";
 // import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 // import UserCharacterStats from "../user-character-stats/user-character-stats.component";
@@ -37,14 +37,15 @@ const CreateCharacter = () => {
 
   const renderCharacterData = () => {
     const mapped = characterDataKeys.map((dataKey) => {
-      return character[dataKey].map((dataValue, i) => (
-        <CharacterDataCard
-          className={dataValue.code}
-          key={dataValue.code || dataValue.id}
-          dataKey={dataKey}
-          dataValue={dataValue}
-        />
-      ));
+      return null;
+      // return character[dataKey].map((dataValue, i) => (
+      //   <CharacterDataCard
+      //     className={dataValue.code}
+      //     key={dataValue.code || dataValue.id}
+      //     dataKey={dataKey}
+      //     dataValue={dataValue}
+      //   />
+      // ));
     });
     return mapped;
   };
