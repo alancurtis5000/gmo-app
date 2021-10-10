@@ -9,7 +9,6 @@ const CharacterSubSection = (props) => {
 
   const renderStatItems = () => {
     return map(dataValue, (value, key) => {
-      console.log({ dataValue, dataKey });
       switch (key) {
         case "table":
           return (

@@ -10,7 +10,6 @@ const CharacterDataTable = (props) => {
   const { className, onClick, columns, rows, dataSection, dataValue } = props;
   const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
-  console.log({ props });
 
   const renderHeader = () => {
     let mappedColumns = columns.map((column, i) => (
@@ -97,6 +96,7 @@ const CharacterDataTable = (props) => {
       forEach(row, (field) => {
         createdRow.push(
           <InputSwitch
+            key={field.code}
             data={field}
             rowIndex={rowIndex}
             dataValue={dataValue}

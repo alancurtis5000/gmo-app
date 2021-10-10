@@ -7,6 +7,7 @@ const CharacterDataInputs = (props) => {
   const renderInputs = () => {
     return inputs.map((input, inputIndex) => (
       <InputSwitch
+        key={input.code}
         data={input}
         rowIndex={inputIndex}
         dataValue={dataValue}
