@@ -1,20 +1,10 @@
 import forEach from "lodash/forEach";
 import { useSelector, useDispatch } from "react-redux";
-import InputText from "../input-text/input-text.component";
-import InputNumber from "../input-number/input-number.component";
-import InputTextArea from "../input-text-area/input-text-area.component";
 import Button from "../button/button.component";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 import { models } from "../../models/models";
 import TrashIcon from "../../icons/trash.icon";
-
-/// left of here
-/*
- working on table options.
- add and remove should be on the table options.
- need to update all tables.
- -- started by converting savingThrowsOld to new savingThrows dummy data.
-*/
+import InputSwitch from "../input-switch/InputSwitch.component";
 
 const CharacterDataTable = (props) => {
   const { className, onClick, columns, rows, dataSection, dataValue } = props;
@@ -40,49 +30,6 @@ const CharacterDataTable = (props) => {
       mappedColumns.push(removeColumn);
     }
     return mappedColumns;
-  };
-
-  const handleOnChange = (dataToChange) => {
-    console.log({ dataToChange, dataSection, dataValue });
-    const section = character[dataSection];
-    const subSection = section.find((data) => data.code === dataValue.code);
-    const subSectionIndex = section.findIndex(
-      (data) => data.code === dataValue.code
-    );
-    const subSectionRows = subSection.table.rows;
-    let currentField = subSectionRows[dataToChange.rowIndex].find(
-      (field) => field.code === dataToChange.code
-    );
-    let currentFieldIndex = subSectionRows[dataToChange.rowIndex].findIndex(
-      (field) => field.code === dataToChange.code
-    );
-
-    const updatedField = {
-      ...currentField,
-      value: dataToChange.value,
-    };
-
-    let updatedRow = [...subSectionRows[dataToChange.rowIndex]];
-    updatedRow.splice(currentFieldIndex, 1, updatedField);
-
-    let updatedSubSectionRows = [...subSectionRows];
-    updatedSubSectionRows.splice(dataToChange.rowIndex, 1, updatedRow);
-
-    let updateSubSection = {
-      ...subSection,
-      table: {
-        options: subSection.table.options,
-        columns: subSection.table.columns,
-        rows: updatedSubSectionRows,
-      },
-    };
-
-    let updatedCharacter = {
-      ...character,
-    };
-    updatedCharacter[dataSection][subSectionIndex] = updateSubSection;
-
-    dispatch(updateUserCharacter(updatedCharacter));
   };
 
   const handleAddRow = () => {
@@ -143,59 +90,20 @@ const CharacterDataTable = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
 
-  const getInputType = (data, rowIndex) => {
-    if (data.inputType === "number") {
-      return (
-        <InputNumber
-          key={data.code}
-          value={data.value}
-          onChange={(e) =>
-            handleOnChange({
-              rowIndex,
-              code: data.code,
-              value: e.target.value * 1,
-            })
-          }
-        />
-      );
-    } else if (data.inputType === "text") {
-      return (
-        <InputText
-          key={data.code}
-          value={data.value}
-          disabled={data.disabled}
-          onChange={(e) =>
-            handleOnChange({
-              rowIndex,
-              code: data.code,
-              value: e.target.value,
-            })
-          }
-        />
-      );
-    } else if (data.inputType === "textArea") {
-      return (
-        <InputTextArea
-          key={data.code}
-          value={data.value}
-          onChange={(e) =>
-            handleOnChange({
-              rowIndex,
-              code: data.code,
-              value: e.target.value,
-            })
-          }
-        />
-      );
-    }
-  };
-
   const renderRows = () => {
     let rowsMapped = [];
     forEach(rows, (row, rowIndex) => {
       let createdRow = [];
       forEach(row, (field) => {
-        createdRow.push(getInputType(field, rowIndex));
+        createdRow.push(
+          <InputSwitch
+            data={field}
+            rowIndex={rowIndex}
+            dataValue={dataValue}
+            dataSection={dataSection}
+            isTable
+          />
+        );
       });
       let rowComp = (
         <div key={rowIndex} className="row" styles={{ display: "flex" }}>
