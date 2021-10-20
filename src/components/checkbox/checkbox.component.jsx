@@ -1,18 +1,19 @@
 const Checkbox = (props) => {
   const { label, onChange, className, id, checked, disabled } = props;
 
+  const classNameValue = className ? className : "";
+
   return (
-    <>
+    <div className={`input-checkbox ${classNameValue}`}>
+      <label>{label}</label>
       <input
         type="checkbox"
-        className={`checkbox ${className}`}
-        id={id}
-        onChange={onChange}
         checked={checked}
+        onChange={onChange}
         disabled={disabled}
       />
-      <label htmlFor={id}>{label}</label>
-    </>
+      <span className="checkmark"></span>
+    </div>
   );
 };
 

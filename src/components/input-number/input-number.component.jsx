@@ -12,7 +12,8 @@ const InputNumber = (props) => {
     e.target.select();
   };
 
-  let classNameValue = className ? className : "";
+  const classNameValue = className ? className : "";
+
   return (
     <div className={`input-number ${classNameValue}`}>
       <label htmlFor={id}>{label}</label>

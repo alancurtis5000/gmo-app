@@ -237,7 +237,7 @@ export const initialState = {
                 // Todo: think about moving isDisabled to columns vs row?
                 isDisabled: true,
               },
-              { code: "proficency", value: "true", inputType: "text" },
+              { code: "proficency", value: true, inputType: "checkbox" },
               { code: "modifier", value: 2, inputType: "number" },
             ],
             [
@@ -247,7 +247,7 @@ export const initialState = {
                 inputType: "text",
                 isDisabled: true,
               },
-              { code: "proficency", value: "false", inputType: "text" },
+              { code: "proficency", value: false, inputType: "checkbox" },
               { code: "modifier", value: 0, inputType: "number" },
             ],
             [
@@ -257,7 +257,7 @@ export const initialState = {
                 inputType: "text",
                 isDisabled: true,
               },
-              { code: "proficency", value: "false", inputType: "text" },
+              { code: "proficency", value: false, inputType: "checkbox" },
               { code: "modifier", value: 0, inputType: "number" },
             ],
             [
@@ -267,7 +267,7 @@ export const initialState = {
                 inputType: "text",
                 isDisabled: true,
               },
-              { code: "proficency", value: "false", inputType: "text" },
+              { code: "proficency", value: false, inputType: "checkbox" },
               { code: "modifier", value: 0, inputType: "number" },
             ],
             [
@@ -277,7 +277,7 @@ export const initialState = {
                 inputType: "text",
                 isDisabled: true,
               },
-              { code: "proficency", value: "false", inputType: "text" },
+              { code: "proficency", value: false, inputType: "checkbox" },
               { code: "modifier", value: 0, inputType: "number" },
             ],
             [
@@ -287,7 +287,7 @@ export const initialState = {
                 inputType: "text",
                 isDisabled: true,
               },
-              { code: "proficency", value: "false", inputType: "text" },
+              { code: "proficency", value: false, inputType: "checkbox" },
               { code: "modifier", value: 0, inputType: "number" },
             ],
           ],

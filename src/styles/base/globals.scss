@@ -77,4 +77,10 @@ input,
 textarea {
   background-color: white;
 }
+
+input[type="checkbox"] {
+  -webkit-appearance: auto;
+  border-color: red;
+}
+
 // end fix styles on ipad

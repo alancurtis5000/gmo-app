@@ -1,0 +1,18 @@
+.input-checkbox {
+  // todo: custom style to override  -webkit-appearance: auto;
+  display: flex;
+  align-items: center;
+  input {
+    width: 27px;
+    height: 27px;
+    padding-left: 10px;
+    border-color: transparent;
+    &:disabled {
+      background-color: lightgray;
+      background: none;
+      border-color: transparent;
+      color: black;
+      text-overflow: ellipsis;
+    }
+  }
+}

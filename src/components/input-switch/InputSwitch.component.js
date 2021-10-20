@@ -1,6 +1,7 @@
 import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import InputTextArea from "../input-text-area/input-text-area.component";
+import Checkbox from "../checkbox/checkbox.component";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 
@@ -143,6 +144,21 @@ const InputSwitch = (props) => {
               rowIndex,
               code: data.code,
               value: e.target.value,
+            })
+          }
+        />
+      );
+    case "checkbox":
+      return (
+        <Checkbox
+          key={data.code}
+          label={data.label}
+          checked={data.value}
+          onChange={(e) =>
+            handleOnChange({
+              rowIndex,
+              code: data.code,
+              value: e.target.checked,
             })
           }
         />
