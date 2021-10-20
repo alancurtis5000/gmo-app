@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import AddIcon from "../../icons/add.icon";
 
 const Select = (props) => {
-  const { label, id, options, handleSelect, value, placeholder, disabled } =
-    props;
+  const { label, id, options, onChange, value, placeholder, disabled } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   const close = () => {
@@ -26,7 +25,8 @@ const Select = (props) => {
   };
 
   const selectItem = (option) => {
-    handleSelect(option);
+    console.log({ option });
+    onChange(option.label);
     setIsOpen(false);
   };
 
@@ -34,19 +34,17 @@ const Select = (props) => {
     return options.map((option) => {
       return (
         <button
-          key={option.id || option.code}
+          key={option.id}
           className="select-list-item"
           onClick={() => selectItem(option)}
         >
-          {option?.title ||
-            option?.name ||
-            option?.details?.name ||
-            option?.label}
+          {option.label}
         </button>
       );
     });
   };
 
+  // maybe instead of making this out of buttons use the html <select> element
   return (
     <div className="select-wrapper">
       <label htmlFor={id}>{label}</label>
@@ -64,6 +62,7 @@ const Select = (props) => {
       </button>
       {isOpen ? (
         <div role="list" className="select-list">
+          <hr />
           {renderOptions()}
         </div>
       ) : null}
@@ -75,7 +74,7 @@ Select.defaultProps = {
   placeholder: "",
   value: "",
   options: [],
-  handleSelect: () => {},
+  onChange: () => {},
 };
 
 export default Select;

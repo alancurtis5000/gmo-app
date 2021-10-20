@@ -109,7 +109,7 @@ export const initialState = {
             code: "alignment",
             label: "",
             value: "Chaotic Good",
-            inputType: "text",
+            inputType: "select",
           },
         ],
       },

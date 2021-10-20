@@ -2,6 +2,7 @@ import InputText from "../input-text/input-text.component";
 import InputNumber from "../input-number/input-number.component";
 import InputTextArea from "../input-text-area/input-text-area.component";
 import Checkbox from "../checkbox/checkbox.component";
+import Select from "../select/select.component";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 
@@ -91,6 +92,7 @@ const InputSwitch = (props) => {
     dispatch(updateUserCharacter(updatedCharacter));
   };
   const handleOnChange = (dataToChange) => {
+    console.log({ dataToChange });
     switch (isTable) {
       case true:
         handleOnChangeTable(dataToChange);
@@ -161,6 +163,31 @@ const InputSwitch = (props) => {
               value: e.target.checked,
             })
           }
+        />
+      );
+    case "select":
+      // todo dynamic options from data. put in constants
+      return (
+        <Select
+          label="Alignment"
+          options={[
+            { id: 0, label: "None" },
+            { id: 1, label: "Lawful Good" },
+            { id: 2, label: "Chaotic Good" },
+            { id: 3, label: "Nuetral" },
+            { id: 4, label: "Chaotic Evil" },
+            { id: 5, label: "Lawful Evil" },
+          ]}
+          onChange={(selectedValue) =>
+            handleOnChange({
+              rowIndex,
+              code: data.code,
+              value: selectedValue,
+            })
+          }
+          value={data.value}
+          placeholder="Alignment"
+          disabled={false}
         />
       );
 
