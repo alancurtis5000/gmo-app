@@ -27,7 +27,7 @@ const SelectAlignment = (props) => {
   return (
     <div className="select-character">
       <Select
-        label="Alignment"
+        label=""
         options={options}
         handleSelect={handleSelect}
         value={alignment}

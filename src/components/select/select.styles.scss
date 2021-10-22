@@ -5,39 +5,9 @@
   min-width: 100px;
   position: relative;
   width: auto;
-  .select-header {
+  select {
+    background-color: white;
     padding-left: 10px;
-    display: flex;
-    justify-content: space-between;
-    background-color: white;
-    svg {
-      margin-left: 10px;
-    }
-    .placeholder {
-      color: grey;
-    }
-  }
-  .select-list {
-    width: auto;
-    hr {
-      width: 90%;
-      padding: 0;
-      margin: 0;
-      align-self: center;
-    }
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    width: calc(100% - 20px); // -10px for padding on select-wrapper
-    position: absolute;
-    top: 60px;
-
-    button {
-      border: transparent;
-      background-color: white;
-      &:hover {
-        background-color: yellow;
-      }
-    }
+    padding-right: 20px;
   }
 }
