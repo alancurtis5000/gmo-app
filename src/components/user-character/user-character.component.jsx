@@ -3,13 +3,13 @@ import Button from "../../components/button/button.component";
 import UserCharacterDetails from "../user-character-details/user-character-details.component";
 // import UserCharacterAbilities from "../user-character-abilities/user-character-abilities.component";
 import { useRouteMatch, useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   getUserCharacter,
   saveUserCharacterApiCall,
 } from "../../redux/user-character/user-character.actions";
 //import CharacterDataCard from "../character-data-card/character-data-card.component";
-import characterDataKeys from "../../constants/character-data-keys";
+// import characterDataKeys from "../../constants/character-data-keys";
 // import UserCharacterSavingThrows from "../user-character-saving-throws/user-character-saving-throws.component";
 // import UserCharacterStats from "../user-character-stats/user-character-stats.component";
 // import UserCharacterFeatures from "../user-character-features/user-character-features.component";
@@ -33,21 +33,21 @@ const CreateCharacter = () => {
     history.goBack();
   };
 
-  const character = useSelector((state) => state.userCharacter.data);
+  // const character = useSelector((state) => state.userCharacter.data);
 
   const renderCharacterData = () => {
-    const mapped = characterDataKeys.map((dataKey) => {
-      return null;
-      // return character[dataKey].map((dataValue, i) => (
-      //   <CharacterDataCard
-      //     className={dataValue.code}
-      //     key={dataValue.code || dataValue.id}
-      //     dataKey={dataKey}
-      //     dataValue={dataValue}
-      //   />
-      // ));
-    });
-    return mapped;
+    // const mapped = characterDataKeys.map((dataKey) => {
+    return null;
+    // return character[dataKey].map((dataValue, i) => (
+    //   <CharacterDataCard
+    //     className={dataValue.code}
+    //     key={dataValue.code || dataValue.id}
+    //     dataKey={dataKey}
+    //     dataValue={dataValue}
+    //   />
+    // ));
+    //});
+    // return null;
   };
 
   return (

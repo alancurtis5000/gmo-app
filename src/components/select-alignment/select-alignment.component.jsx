@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
-import Select from "../select/select.component";
-import alignment from "../../constants/alignment";
-import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
+// import { useSelector, useDispatch } from "react-redux";
+// import Select from "../select/select.component";
+// import alignment from "../../constants/alignment";
+// import { updateUserCharacterLocal } from "../../redux/user-character/user-character.actions";
 
 const SelectAlignment = (props) => {
   // const { disabled } = props;
