@@ -8,8 +8,9 @@ const Select = (props) => {
 
   const renderOptions = () => {
     return options.map((option) => {
+      const key = option.code || option.id;
       return (
-        <option key={option.id} className="option" value={option.label}>
+        <option key={key} value={option.label} className="option">
           {option.label}
         </option>
       );
@@ -18,6 +19,7 @@ const Select = (props) => {
 
   return (
     <div className="select-wrapper">
+      {placeholder ? null : null}
       <label htmlFor={id}>{label}</label>
       <select
         name=""

@@ -642,7 +642,7 @@ export const initialState = {
               },
               { code: "max", value: 3, inputType: "number" },
               { code: "used", value: 1, inputType: "number" },
-              { code: "recovery", value: "Long Rest", inputType: "text" },
+              { code: "recovery", value: "Long Rest", inputType: "select" },
             ],
             [
               {
@@ -657,7 +657,7 @@ export const initialState = {
               },
               { code: "max", value: 2, inputType: "number" },
               { code: "used", value: 0, inputType: "number" },
-              { code: "recovery", value: "Short Rest", inputType: "text" },
+              { code: "recovery", value: "Short Rest", inputType: "select" },
             ],
           ],
         },

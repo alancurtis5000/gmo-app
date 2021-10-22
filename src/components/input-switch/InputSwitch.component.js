@@ -183,7 +183,6 @@ const InputSwitch = (props) => {
             })
           }
           value={data.value}
-          placeholder="Alignment"
         />
       );
 

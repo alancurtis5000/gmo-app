@@ -4,7 +4,7 @@ const Checkbox = (props) => {
   const classNameValue = className ? className : "";
 
   return (
-    <div className={`input-checkbox ${classNameValue}`}>
+    <div id={id} className={`input-checkbox ${classNameValue}`}>
       <label>{label}</label>
       <input
         type="checkbox"
