@@ -3,6 +3,7 @@ import InputNumber from "../input-number/input-number.component";
 import InputTextArea from "../input-text-area/input-text-area.component";
 import Checkbox from "../checkbox/checkbox.component";
 import Select from "../select/select.component";
+import constants from "../../constants/constants";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 
@@ -167,17 +168,11 @@ const InputSwitch = (props) => {
       );
     case "select":
       // todo dynamic options from data. put in constants
+      console.log({ data, constants });
       return (
         <Select
-          label="Alignment"
-          options={[
-            { id: 0, label: "None" },
-            { id: 1, label: "Lawful Good" },
-            { id: 2, label: "Chaotic Good" },
-            { id: 3, label: "Nuetral" },
-            { id: 4, label: "Chaotic Evil" },
-            { id: 5, label: "Lawful Evil" },
-          ]}
+          label={data.label}
+          options={constants[data.code]}
           onChange={(selectedValue) =>
             handleOnChange({
               rowIndex,
