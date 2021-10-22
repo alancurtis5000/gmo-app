@@ -294,7 +294,7 @@ export const initialState = {
             { code: "name", label: "Name", disabled: true },
             { code: "proficency", label: "Proficency" },
             { code: "modifier", label: "Mod" },
-            { code: "type", label: "Type" },
+            { code: "type", label: "Type", disabled: true },
           ],
           rows: [
             [
@@ -775,11 +775,11 @@ export const initialState = {
               },
               { code: "damageDice", value: "1d8", inputType: "text" },
               { code: "advantageToHit", value: 2, inputType: "number" },
-              { code: "damageType", value: "Slashing", inputType: "text" },
+              { code: "damageType", value: "Slashing", inputType: "select" },
               { code: "isEquipt", value: true, inputType: "checkbox" },
               { code: "isMagic", value: true, inputType: "checkbox" },
-              { code: "grip", value: "Two Handed", inputType: "text" },
-              { code: "range", value: "Melee", inputType: "text" },
+              { code: "grip", value: "Two Handed", inputType: "select" },
+              { code: "range", value: "Melee", inputType: "select" },
               { code: "distanceMin", value: 0, inputType: "number" },
               { code: "distanceMax", value: 50, inputType: "number" },
               {
