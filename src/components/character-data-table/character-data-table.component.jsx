@@ -94,6 +94,10 @@ const CharacterDataTable = (props) => {
     forEach(rows, (row, rowIndex) => {
       let createdRow = [];
       forEach(row, (field) => {
+        const isColumnDisabled = dataValue.table.columns.find(
+          (column) => column.code === field.code
+        ).disabled;
+
         createdRow.push(
           <InputSwitch
             key={field.code}
@@ -102,6 +106,7 @@ const CharacterDataTable = (props) => {
             dataValue={dataValue}
             dataSection={dataSection}
             isTable
+            disabled={isColumnDisabled}
           />
         );
       });

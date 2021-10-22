@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUserCharacter } from "../../redux/user-character/user-character.actions";
 
 const InputSwitch = (props) => {
-  const { data, rowIndex, dataValue, dataSection, isTable } = props;
+  const { data, rowIndex, dataValue, dataSection, isTable, disabled } = props;
   const character = useSelector((state) => state.userCharacter.data);
   const dispatch = useDispatch();
 
@@ -111,6 +111,7 @@ const InputSwitch = (props) => {
           key={data.code}
           label={data.label}
           value={data.value}
+          disabled={disabled}
           onChange={(e) =>
             handleOnChange({
               rowIndex,
@@ -126,7 +127,7 @@ const InputSwitch = (props) => {
           key={data.code}
           label={data.label}
           value={data.value}
-          disabled={data.disabled}
+          disabled={disabled}
           onChange={(e) =>
             handleOnChange({
               rowIndex,
@@ -142,6 +143,7 @@ const InputSwitch = (props) => {
           key={data.code}
           label={data.label}
           value={data.value}
+          disabled={disabled}
           onChange={(e) =>
             handleOnChange({
               rowIndex,
@@ -157,6 +159,7 @@ const InputSwitch = (props) => {
           key={data.code}
           label={data.label}
           checked={data.value}
+          disabled={disabled}
           onChange={(e) =>
             handleOnChange({
               rowIndex,
@@ -167,12 +170,11 @@ const InputSwitch = (props) => {
         />
       );
     case "select":
-      // todo dynamic options from data. put in constants
-      console.log({ data, constants });
       return (
         <Select
           label={data.label}
           options={constants[data.code]}
+          disabled={disabled}
           onChange={(selectedValue) =>
             handleOnChange({
               rowIndex,
@@ -182,7 +184,6 @@ const InputSwitch = (props) => {
           }
           value={data.value}
           placeholder="Alignment"
-          disabled={false}
         />
       );
 
